@@ -156,11 +156,11 @@ export function ContactConfigurator() {
     if (step === 1 && config.contactTypes.length === 0) {
       return
     }
-    setStep((prev) => Math.min(prev + 1, TOTAL_STEPS))
+    setStep((prev: number) => Math.min(prev + 1, TOTAL_STEPS))
   }
 
   const handleBack = () => {
-    setStep((prev) => Math.max(prev - 1, 1))
+    setStep((prev: number) => Math.max(prev - 1, 1))
   }
 
   const handleContactTypesChange = (types: ContactType[]) => {

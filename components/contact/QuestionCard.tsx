@@ -1,12 +1,13 @@
 "use client"
 
 import { motion } from "framer-motion"
+import type { MouseEventHandler } from "react"
 import { cn } from "@/lib/utils"
 
 interface QuestionCardProps {
   label: string
   selected: boolean
-  onClick: () => void
+  onClick: MouseEventHandler<HTMLButtonElement>
   className?: string
 }
 

@@ -18,6 +18,7 @@ export function QuestionCard({
 }: QuestionCardProps) {
   return (
     <motion.button
+      type="button"
       onClick={onClick}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}

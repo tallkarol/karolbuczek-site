@@ -22,12 +22,12 @@ export function PageHero({ eyebrow, title, description, className, illustration,
   const isCentered = className?.includes("text-center")
   
   return (
-    <section className={`flex items-center min-h-[200px] md:min-h-[240px] py-4 md:py-6 ${className || ""}`}>
+    <section className={`flex items-center min-h-[200px] md:min-h-[240px] py-4 md:py-6 relative z-0 ${className || ""}`}>
       {illustration ? (
         <div className="grid gap-6 md:gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:items-center w-full">
           {/* Illustration */}
-          <div className="flex items-center justify-center order-1 md:order-1 w-full mb-4 md:mb-0">
-            <div className="w-full max-w-[180px] md:max-w-[200px] aspect-square">
+          <div className="flex items-center justify-center order-1 md:order-1 w-full mb-4 md:mb-0 overflow-hidden">
+            <div className="w-full max-w-[180px] md:max-w-[200px] aspect-square relative overflow-hidden">
               {illustration}
             </div>
           </div>

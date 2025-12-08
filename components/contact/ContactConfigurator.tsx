@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ProgressIndicator } from "./ProgressIndicator"
 import { MultiSelectCard } from "./MultiSelectCard"
@@ -38,23 +38,118 @@ export interface ContactConfig {
 }
 
 const TOTAL_STEPS = 4
+const STORAGE_KEY = "karolbuczek_contact_form_state"
 
 export function ContactConfigurator() {
-  const [step, setStep] = useState(1)
-  const [config, setConfig] = useState<ContactConfig>({
-    contactTypes: [],
-  })
+  // Load state from localStorage on mount
+  const loadSavedState = () => {
+    if (typeof window === "undefined") {
+      return { step: 1, config: { contactTypes: [] }, name: "", email: "", company: "" }
+    }
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        // Only restore if it's recent (within 24 hours)
+        if (parsed.timestamp && Date.now() - parsed.timestamp < 24 * 60 * 60 * 1000) {
+          return {
+            step: parsed.step || 1,
+            config: parsed.config || { contactTypes: [] },
+            name: parsed.name || "",
+            email: parsed.email || "",
+            company: parsed.company || "",
+          }
+        }
+      }
+    } catch (e) {
+      console.error("Failed to load saved state:", e)
+    }
+    return { step: 1, config: { contactTypes: [] }, name: "", email: "", company: "" }
+  }
+
+  const savedState = loadSavedState()
+  const [step, setStep] = useState(savedState.step)
+  const [config, setConfig] = useState<ContactConfig>(savedState.config)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [showLocationRestriction, setShowLocationRestriction] = useState(false)
+  // Step 2: Track which type is currently being shown
+  const [currentTypeIndex, setCurrentTypeIndex] = useState(0)
   // Step 4 form state
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [company, setCompany] = useState("")
+  const [name, setName] = useState(savedState.name)
+  const [email, setEmail] = useState(savedState.email)
+  const [company, setCompany] = useState(savedState.company)
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
+  // Save state to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== "undefined" && submitStatus !== "success") {
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify({
+            step,
+            config,
+            name,
+            email,
+            company,
+            timestamp: Date.now(),
+          })
+        )
+      } catch (e) {
+        console.error("Failed to save state:", e)
+      }
+    }
+  }, [step, config, name, email, company, submitStatus])
+
+  // Clear saved state on successful submission
+  useEffect(() => {
+    if (submitStatus === "success" && typeof window !== "undefined") {
+      localStorage.removeItem(STORAGE_KEY)
+    }
+  }, [submitStatus])
 
   const updateConfig = (updates: Partial<ContactConfig>) => {
     setConfig((prev) => ({ ...prev, ...updates }))
+  }
+
+  // Determine which steps are accessible for navigation
+  const getAccessibleSteps = (): number[] => {
+    const accessible: number[] = []
+    
+    // Step 1 is always accessible
+    accessible.push(1)
+    
+    // Step 2 requires at least one contact type
+    if (config.contactTypes.length > 0) {
+      accessible.push(2)
+      
+      // Step 3 is accessible once step 2 is completed
+      if (step >= 3) {
+        accessible.push(3)
+        
+        // Step 4 (contact form) is accessible once step 3 is reached
+        if (step >= 4) {
+          accessible.push(4)
+        }
+      }
+    }
+    
+    return accessible
+  }
+
+  const handleStepClick = (targetStep: number) => {
+    // Always allow backward navigation
+    if (targetStep < step) {
+      setStep(targetStep)
+      return
+    }
+    
+    // Forward navigation requires validation
+    const accessibleSteps = getAccessibleSteps()
+    if (accessibleSteps.includes(targetStep)) {
+      setStep(targetStep)
+    }
   }
 
   const handleNext = () => {
@@ -71,6 +166,24 @@ export function ContactConfigurator() {
   const handleContactTypesChange = (types: ContactType[]) => {
     updateConfig({ contactTypes: types })
   }
+
+  // Reset step 2 type index when contactTypes changes
+  useEffect(() => {
+    if (step === 2) {
+      const specificTypes = config.contactTypes.filter(t => t === "role" || t === "project")
+      setCurrentTypeIndex((prevIndex) => {
+        if (specificTypes.length === 0) {
+          return 0
+        }
+        // If current index is out of bounds, reset to 0
+        if (prevIndex >= specificTypes.length) {
+          return 0
+        }
+        // Otherwise keep the current index
+        return prevIndex
+      })
+    }
+  }, [config.contactTypes, step])
 
   const handleSubmit = async (contactInfo: { name: string; email: string; company?: string }) => {
     updateConfig({ contact: contactInfo })
@@ -165,10 +278,11 @@ export function ContactConfigurator() {
   }
 
   const renderStep2 = () => {
-    // If no specific types selected or only "connect"/"other", skip to message step
-    const hasSpecificTypes = config.contactTypes.some(t => t === "role" || t === "project")
+    // Filter to only specific types that need questions
+    const specificTypes = config.contactTypes.filter(t => t === "role" || t === "project")
     
-    if (!hasSpecificTypes) {
+    // If no specific types selected or only "connect"/"other", skip to message step
+    if (specificTypes.length === 0) {
       // Skip to message step
       return (
         <div className="space-y-8">
@@ -209,11 +323,44 @@ export function ContactConfigurator() {
       )
     }
 
-    // Handle role or project questions
-    const hasRole = config.contactTypes.includes("role")
-    const hasProject = config.contactTypes.includes("project")
+    // Get current type being shown
+    const currentType = specificTypes.length > 0 
+      ? specificTypes[Math.min(currentTypeIndex, specificTypes.length - 1)] 
+      : undefined
 
-    if (hasRole) {
+    // Handle navigation between types
+    const handleNextType = () => {
+      if (specificTypes.length === 0) {
+        handleNext()
+        return
+      }
+      
+      const safeIndex = Math.min(currentTypeIndex, specificTypes.length - 1)
+      if (safeIndex < specificTypes.length - 1) {
+        setCurrentTypeIndex(safeIndex + 1)
+        setShowLocationRestriction(false) // Reset location restriction when moving to next type
+      } else {
+        handleNext()
+      }
+    }
+
+    const handleBackType = () => {
+      if (specificTypes.length === 0) {
+        handleBack()
+        return
+      }
+      
+      const safeIndex = Math.min(currentTypeIndex, specificTypes.length - 1)
+      if (safeIndex > 0) {
+        setCurrentTypeIndex(safeIndex - 1)
+        setShowLocationRestriction(false) // Reset location restriction when going back
+      } else {
+        handleBack()
+      }
+    }
+
+    // Render role questions
+    const renderRoleQuestions = () => {
       const role = config.role || {}
       return (
         <div className="space-y-8">
@@ -221,6 +368,11 @@ export function ContactConfigurator() {
             <Typography variant="h2" as="h2" className="mb-2">
               Tell me about the role
             </Typography>
+            {specificTypes.length > 1 && (
+              <Typography variant="body-sm" className="text-muted-foreground">
+                {Math.min(currentTypeIndex + 1, specificTypes.length)} of {specificTypes.length} contact types
+              </Typography>
+            )}
           </div>
 
           <div>
@@ -233,7 +385,12 @@ export function ContactConfigurator() {
                   key={option}
                   label={option}
                   selected={role.type === option}
-                  onClick={() => updateConfig({ role: { ...role, type: option } })}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    const currentRole = config.role || {}
+                    updateConfig({ role: { ...currentRole, type: option } })
+                  }}
                 />
               ))}
             </div>
@@ -249,7 +406,12 @@ export function ContactConfigurator() {
                   key={option}
                   label={option}
                   selected={role.level === option}
-                  onClick={() => updateConfig({ role: { ...role, level: option } })}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    const currentRole = config.role || {}
+                    updateConfig({ role: { ...currentRole, level: option } })
+                  }}
                 />
               ))}
             </div>
@@ -265,9 +427,12 @@ export function ContactConfigurator() {
                   key={option}
                   label={option}
                   selected={role.location === option}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
                     const newLocation = option
-                    updateConfig({ role: { ...role, location: newLocation } })
+                    const currentRole = config.role || {}
+                    updateConfig({ role: { ...currentRole, location: newLocation } })
                     // Show restriction message if On-site or Hybrid selected
                     if (newLocation === "On-site" || newLocation === "Hybrid") {
                       setShowLocationRestriction(true)
@@ -302,25 +467,26 @@ export function ContactConfigurator() {
 
           <div className="flex justify-between pt-6">
             <Button
-              onClick={handleBack}
+              onClick={handleBackType}
               variant="outline"
               className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
             >
               ← Back
             </Button>
             <Button
-              onClick={handleNext}
+              onClick={handleNextType}
               disabled={showLocationRestriction}
               className="rounded-full px-8 py-2 text-sm font-semibold font-ui disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Continue →
+              {currentTypeIndex < specificTypes.length - 1 ? "Next →" : "Continue →"}
             </Button>
           </div>
         </div>
       )
     }
 
-    if (hasProject) {
+    // Render project questions
+    const renderProjectQuestions = () => {
       const project = config.project || {}
       return (
         <div className="space-y-8">
@@ -328,6 +494,11 @@ export function ContactConfigurator() {
             <Typography variant="h2" as="h2" className="mb-2">
               Tell me about the project
             </Typography>
+            {specificTypes.length > 1 && (
+              <Typography variant="body-sm" className="text-muted-foreground">
+                {Math.min(currentTypeIndex + 1, specificTypes.length)} of {specificTypes.length} contact types
+              </Typography>
+            )}
           </div>
 
           <div>
@@ -340,7 +511,12 @@ export function ContactConfigurator() {
                   key={option}
                   label={option}
                   selected={project.type === option}
-                  onClick={() => updateConfig({ project: { ...project, type: option } })}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    const currentProject = config.project || {}
+                    updateConfig({ project: { ...currentProject, type: option } })
+                  }}
                 />
               ))}
             </div>
@@ -356,7 +532,12 @@ export function ContactConfigurator() {
                   key={option}
                   label={option}
                   selected={project.timeline === option}
-                  onClick={() => updateConfig({ project: { ...project, timeline: option } })}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    const currentProject = config.project || {}
+                    updateConfig({ project: { ...currentProject, timeline: option } })
+                  }}
                 />
               ))}
             </div>
@@ -364,24 +545,70 @@ export function ContactConfigurator() {
 
           <div className="flex justify-between pt-6">
             <Button
-              onClick={handleBack}
+              onClick={handleBackType}
               variant="outline"
               className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
             >
               ← Back
             </Button>
             <Button
-              onClick={handleNext}
+              onClick={handleNextType}
               className="rounded-full px-8 py-2 text-sm font-semibold font-ui"
             >
-              Continue →
+              {currentTypeIndex < specificTypes.length - 1 ? "Next →" : "Continue →"}
             </Button>
           </div>
         </div>
       )
     }
 
-    return null
+    // Render the appropriate questions based on current type
+    if (!currentType) {
+      return (
+        <div className="space-y-8">
+          <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/20">
+            <Typography variant="body" className="text-destructive font-semibold">
+              No contact types selected. Please go back and select at least one contact type.
+            </Typography>
+          </div>
+          <div className="flex justify-end pt-6">
+            <Button
+              onClick={handleBack}
+              variant="outline"
+              className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
+            >
+              ← Back
+            </Button>
+          </div>
+        </div>
+      )
+    }
+
+    switch (currentType) {
+      case "role":
+        return renderRoleQuestions()
+      case "project":
+        return renderProjectQuestions()
+      default:
+        return (
+          <div className="space-y-8">
+            <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/20">
+              <Typography variant="body" className="text-destructive font-semibold">
+                Unknown contact type. Please go back and select a valid contact type.
+              </Typography>
+            </div>
+            <div className="flex justify-end pt-6">
+              <Button
+                onClick={handleBack}
+                variant="outline"
+                className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
+              >
+                ← Back
+              </Button>
+            </div>
+          </div>
+        )
+    }
   }
 
   const renderStep3 = () => {
@@ -399,9 +626,10 @@ export function ContactConfigurator() {
           <Textarea
             placeholder="Anything else I should know?"
             value={config.additional?.message || ""}
-            onChange={(e) =>
-              updateConfig({ additional: { ...config.additional, message: e.target.value } })
-            }
+            onChange={(e) => {
+              const currentAdditional = config.additional || {}
+              updateConfig({ additional: { ...currentAdditional, message: e.target.value } })
+            }}
             className="min-h-[120px]"
           />
         </div>
@@ -554,8 +782,13 @@ export function ContactConfigurator() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
-      <ProgressIndicator currentStep={step} totalSteps={TOTAL_STEPS} />
+    <div className="max-w-3xl mx-auto relative z-10">
+      <ProgressIndicator 
+        currentStep={step} 
+        totalSteps={TOTAL_STEPS}
+        onStepClick={handleStepClick}
+        accessibleSteps={getAccessibleSteps()}
+      />
       
       <AnimatePresence mode="wait">
         <motion.div

@@ -22,6 +22,7 @@ import {
   SiSupabase
 } from "react-icons/si"
 import { Database } from "lucide-react"
+import { RoleFilter } from "@/components/resume/ResumeFilters"
 
 const techCategories = [
   {
@@ -143,9 +144,10 @@ const skillCategories = [
 interface SkillsSectionProps {
   isOpen?: boolean
   onOpenChange?: (open: boolean) => void
+  roleFilter?: RoleFilter
 }
 
-export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange }: SkillsSectionProps = {}) {
+export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange, roleFilter }: SkillsSectionProps = {}) {
   const [internalIsOpen, setInternalIsOpen] = useState(false)
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen
   const setIsOpen = onOpenChange || ((value: boolean) => setInternalIsOpen(value))
@@ -253,10 +255,24 @@ export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange }: Skills
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, index) => {
             const isOpen = openCategories.has(category.name)
+            // Determine if this category is relevant to the role filter
+            const isRelevant = roleFilter && roleFilter !== "all" ? (
+              (roleFilter === "WordPress Engineering" && category.name === "WordPress Engineering") ||
+              (roleFilter === "MarTech / Growth Engineering" && category.name === "MarTech / Growth Engineering") ||
+              (roleFilter === "Product & Internal Tools" && category.name === "Product & Systems Design") ||
+              (roleFilter === "Performance Engineering" && category.name === "Performance Engineering") ||
+              (roleFilter === "Integrations & Automation" && (category.name === "Core Engineering" || category.name === "MarTech / Growth Engineering")) ||
+              (roleFilter === "Implementation Engineer" && (category.name === "Core Engineering" || category.name === "Product & Systems Design" || category.name === "MarTech / Growth Engineering"))
+            ) : true
+            
             return (
               <div
                 key={index}
-                className="border border-border/50 rounded-lg overflow-hidden hover:border-primary/30 transition-colors"
+                className={`border rounded-lg overflow-hidden hover:border-primary/30 transition-colors ${
+                  roleFilter && roleFilter !== "all" && isRelevant
+                    ? "border-primary/50 bg-primary/5"
+                    : "border-border/50"
+                }`}
               >
                 <button
                   onClick={() => toggleCategory(category.name)}

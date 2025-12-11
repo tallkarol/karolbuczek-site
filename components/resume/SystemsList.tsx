@@ -6,6 +6,8 @@ import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { RoleFilter } from "@/components/resume/ResumeFilters"
+import { getSystemsForLens } from "@/lib/resume-data"
 
 const systems = [
   "UTM Attribution Engine",
@@ -24,13 +26,29 @@ const systems = [
 interface SystemsListProps {
   isOpen?: boolean
   onOpenChange?: (open: boolean) => void
+  roleFilter?: RoleFilter
 }
 
-export function SystemsList({ isOpen: controlledIsOpen, onOpenChange }: SystemsListProps = {}) {
+export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter }: SystemsListProps = {}) {
   const [internalIsOpen, setInternalIsOpen] = useState(false)
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen
   const setIsOpen = onOpenChange || ((value: boolean) => setInternalIsOpen(value))
-  const displayedSystems = systems.slice(0, 5)
+  
+  // Filter systems based on role filter
+  const relevantSystems = roleFilter && roleFilter !== "all" 
+    ? getSystemsForLens(roleFilter)
+    : []
+  
+  // If there's a filter, show relevant systems; otherwise show all
+  const displayedSystems = roleFilter && roleFilter !== "all" && relevantSystems.length > 0
+    ? relevantSystems.slice(0, 5)
+    : systems.slice(0, 5)
+  
+  // Helper to check if a system is relevant
+  const isSystemRelevant = (system: string) => {
+    if (!roleFilter || roleFilter === "all") return false
+    return relevantSystems.includes(system)
+  }
   
   return (
     <Card id="featured-work" className="border-border/50 hover:border-primary/30 transition-colors scroll-mt-20">
@@ -68,18 +86,25 @@ export function SystemsList({ isOpen: controlledIsOpen, onOpenChange }: SystemsL
                 A few things you can dive deeper into:
               </Typography>
               <div className="grid gap-3 sm:grid-cols-2 mb-6">
-                {displayedSystems.map((system, index) => (
+                {displayedSystems.map((system, index) => {
+                  const isRelevant = isSystemRelevant(system)
+                  return (
                   <Link
                     key={index}
                     href={`/case-studies#${system.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="group flex items-center justify-between gap-3 p-3 rounded-lg border border-border/50 bg-muted/20 hover:border-primary/50 hover:bg-muted/40 transition-all"
+                    className={`group flex items-center justify-between gap-3 p-3 rounded-lg border transition-all ${
+                      roleFilter && roleFilter !== "all" && isRelevant
+                        ? "border-primary/50 bg-primary/5 hover:border-primary/70 hover:bg-primary/10"
+                        : "border-border/50 bg-muted/20 hover:border-primary/50 hover:bg-muted/40"
+                    }`}
                   >
                     <Typography variant="body-sm" className="font-medium text-foreground group-hover:text-primary transition-colors">
                       {system}
                     </Typography>
                     <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
                   </Link>
-                ))}
+                  )
+                })}
               </div>
               <Link
                 href="/case-studies"

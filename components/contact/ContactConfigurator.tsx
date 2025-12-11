@@ -41,6 +41,8 @@ const TOTAL_STEPS = 4
 const STORAGE_KEY = "karolbuczek_contact_form_state"
 
 export function ContactConfigurator() {
+  const [mounted, setMounted] = useState(false)
+  
   // Load state from localStorage on mount
   const loadSavedState = () => {
     if (typeof window === "undefined") {
@@ -80,6 +82,10 @@ export function ContactConfigurator() {
   const [email, setEmail] = useState(savedState.email)
   const [company, setCompany] = useState(savedState.company)
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Save state to localStorage whenever it changes
   useEffect(() => {

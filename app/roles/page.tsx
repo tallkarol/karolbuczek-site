@@ -8,29 +8,34 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { SystemNodes } from "@/components/illustrations"
+import { ApplyPackModal } from "@/components/resume/ApplyPackModal"
 import Link from "next/link"
-import { ArrowRight, Lock } from "lucide-react"
+import { ArrowRight, Lock, Briefcase } from "lucide-react"
 
 const PASSWORD = "zbigniew"
 const STORAGE_KEY = "roles_page_authenticated"
 
 const roles = [
   {
+    id: "implementation-engineer",
     title: "Implementation Engineer",
     route: "/implementation-engineer",
     description: "Integrating Web APIs, Systems, and Customer Needs",
   },
   {
+    id: "martech-engineer",
     title: "MarTech Engineer / Marketing Systems Engineer",
     route: "/martech-engineer",
     description: "Building Marketing Technology Systems That Drive Growth",
   },
   {
+    id: "web-systems-engineer",
     title: "Web Systems Engineer",
     route: "/web-systems-engineer",
     description: "Building Web Systems That Scale",
   },
   {
+    id: "web-dev-wordpress",
     title: "Web Developer / WordPress Engineer",
     route: "/web-dev-wordpress",
     description: "WordPress Development That Performs",
@@ -42,6 +47,8 @@ export default function RolesPage() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isChecking, setIsChecking] = useState(true)
+  const [selectedRoleId, setSelectedRoleId] = useState<string | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     // Check if already authenticated
@@ -155,18 +162,40 @@ export default function RolesPage() {
                   <Typography variant="body-sm" className="text-muted-foreground">
                     {role.description}
                   </Typography>
-                  <Button asChild variant="outline" className="w-full group/button">
-                    <Link href={role.route}>
-                      View Page
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover/button:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
+                  <div className="flex flex-col gap-2">
+                    <Button asChild variant="outline" className="w-full group/button">
+                      <Link href={role.route}>
+                        View Page
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover/button:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setSelectedRoleId(role.id)
+                        setIsModalOpen(true)
+                      }}
+                      variant="default"
+                      className="w-full group/button"
+                    >
+                      <Briefcase className="mr-2 h-4 w-4" />
+                      Open Apply Pack
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
       </Section>
+
+      <ApplyPackModal
+        roleId={selectedRoleId}
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false)
+          setSelectedRoleId(null)
+        }}
+      />
     </>
   )
 }

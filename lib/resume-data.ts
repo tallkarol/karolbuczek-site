@@ -147,3 +147,170 @@ export function getCaseStudiesForLens(lens: RoleFilter): CaseStudy[] {
   return allCaseStudies.filter(cs => slugs.includes(cs.slug))
 }
 
+// Map lens filters to skill categories
+// This maps skill category names to the lenses they're relevant for
+export const lensToSkillCategories: Record<RoleFilter, string[]> = {
+  "all": [],
+  "WordPress Engineering": [
+    "WordPress Engineering",
+    "Core Engineering",
+    "Performance Engineering",
+    "Tools & Platforms",
+  ],
+  "MarTech / Growth Engineering": [
+    "MarTech / Growth Engineering",
+    "Core Engineering",
+    "Tools & Platforms",
+  ],
+  "Product & Internal Tools": [
+    "Product & Systems Design",
+    "Core Engineering",
+    "Tools & Platforms",
+  ],
+  "Integrations & Automation": [
+    "Core Engineering",
+    "MarTech / Growth Engineering",
+    "Tools & Platforms",
+  ],
+  "Performance Engineering": [
+    "Performance Engineering",
+    "WordPress Engineering",
+    "Core Engineering",
+  ],
+  "Startup Experience": [
+    "Product & Systems Design",
+    "Core Engineering",
+  ],
+  "Implementation Engineer": [
+    "Core Engineering",
+    "Product & Systems Design",
+    "Integrations & Automation",
+    "MarTech / Growth Engineering",
+    "Tools & Platforms",
+  ],
+}
+
+// Skill categories data (extracted from SkillsSection for reference)
+export const skillCategoriesData = [
+  {
+    name: "Core Engineering",
+    skills: [
+      "Custom WordPress plugins & Gutenberg blocks",
+      "React applications & internal tools",
+      "SQL for analytics, pipelines, and large-dataset operations",
+      "API design & integrations with CRMs and marketing platforms",
+      "3+ years integrating Web APIs and providing technical consultation",
+      "Distributed systems design and architecture",
+      "Database design and optimization",
+      "AWS: Amplify, Lambda, Cognito, RDS, S3 signed URLs",
+      "Backend automation: cron jobs, workflow engines, queue-like execution",
+      "Git workflows for feature development & production releases",
+      "Using AI tools in product development to improve quality and efficiency",
+    ],
+  },
+  {
+    name: "WordPress Engineering",
+    skills: [
+      "Performance-focused plugin & block development",
+      "VIP-compliant architecture & coding standards",
+      "WooCommerce performance & checkout optimization",
+      "Core Web Vitals debugging & LCP-first improvements",
+      "Headless WordPress using React + ACF",
+    ],
+  },
+  {
+    name: "MarTech / Growth Engineering",
+    skills: [
+      "Structured dataLayer + GTM event architectures",
+      "First/last-touch UTM persistence & attribution frameworks",
+      "CRM sync bridges & data normalization workflows",
+      "Modular Zapier architectures replacing brittle chains",
+      "Lifecycle automation (email, SMS, retargeting)",
+      "KPI dashboards for funnels, sales efficiency & channel ROI",
+    ],
+  },
+  {
+    name: "Product & Systems Design",
+    skills: [
+      "Architecting internal tools & workflow platforms",
+      "Secure document systems with RBAC (AWS)",
+      "Logging, monitoring & resilience patterns",
+      "Engineering alignment across marketing, product & operations",
+      "Applying systems thinking to funnels, data flow & platform design",
+      "Translating business requirements and workflows into technical solutions",
+      "Identifying and communicating pragmatic solutions to complex integration problems",
+      "Using AI tools in product development to improve quality and efficiency",
+    ],
+  },
+  {
+    name: "Performance Engineering",
+    skills: [
+      "Core Web Vitals improvements (e.g., LCP 5.5s → 3.2s)",
+      "Lighthouse optimization & render-path refinement",
+      "Asset strategy & loading performance",
+    ],
+  },
+  {
+    name: "Tools & Platforms",
+    skills: [
+      "WordPress, WP Engine, Local",
+      "React, Tailwind, Vite",
+      "AWS Amplify, GitHub, Vercel",
+      "Supabase, SQL Server",
+      "Zapier, Mailchimp, Birdeye, Five9",
+      "WooCommerce, Gravity Forms, ACF",
+    ],
+  },
+]
+
+// Get skills for a lens
+export function getSkillsForLens(lens: RoleFilter): string[] {
+  if (lens === "all") return []
+  
+  const relevantCategories = lensToSkillCategories[lens] || []
+  const skills: string[] = []
+  
+  skillCategoriesData.forEach(category => {
+    if (relevantCategories.includes(category.name)) {
+      skills.push(...category.skills)
+    }
+  })
+  
+  return skills
+}
+
+// Get work experience items for a lens
+export function getWorkExperienceForLens(lens: RoleFilter): string[] {
+  if (lens === "all") return []
+  return lensToRoles[lens] || []
+}
+
+// Map systems to lenses based on case study tags
+const systemToLensMap: Record<string, RoleFilter[]> = {
+  "UTM Attribution Engine": ["MarTech / Growth Engineering", "WordPress Engineering", "Implementation Engineer"],
+  "GTM Event Schema & Block": ["MarTech / Growth Engineering", "WordPress Engineering", "Implementation Engineer"],
+  "Core Web Vitals Optimization Framework": ["Performance Engineering", "WordPress Engineering"],
+  "Lead Ingestion Normalizer": ["MarTech / Growth Engineering", "Integrations & Automation", "Implementation Engineer"],
+  "Workflow Automation Engine": ["Integrations & Automation", "MarTech / Growth Engineering", "Implementation Engineer"],
+  "Secure File Portal (AWS)": ["Product & Internal Tools", "Implementation Engineer"],
+  "Headless WordPress Architecture": ["WordPress Engineering", "Product & Internal Tools"],
+  "Zapier Modularization Framework": ["MarTech / Growth Engineering", "Integrations & Automation", "Implementation Engineer"],
+  "CRM Sync Bridges": ["MarTech / Growth Engineering", "Integrations & Automation", "Implementation Engineer"],
+  "Sales Efficiency Dashboards": ["MarTech / Growth Engineering", "Product & Internal Tools"],
+  "Internal Error & Logging Systems": ["Product & Internal Tools", "Core Engineering"],
+}
+
+// Get systems for a lens
+export function getSystemsForLens(lens: RoleFilter): string[] {
+  if (lens === "all") return []
+  
+  const systems: string[] = []
+  Object.entries(systemToLensMap).forEach(([system, relevantLenses]) => {
+    if (relevantLenses.includes(lens)) {
+      systems.push(system)
+    }
+  })
+  
+  return systems
+}
+

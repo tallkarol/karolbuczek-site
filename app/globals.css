@@ -113,3 +113,88 @@
   }
 }
 
+@layer utilities {
+  /* Print styles for resume variants */
+  @media print {
+    /* Hide navigation, header, footer */
+    header,
+    footer,
+    nav,
+    .no-print {
+      display: none !important;
+    }
+    
+    /* Hide header/footer in print layout */
+    .no-print-layout header,
+    .no-print-layout footer,
+    .no-print-layout nav {
+      display: none !important;
+    }
+
+    /* Optimize layout for print */
+    .print-resume-layout {
+      margin: 0;
+      padding: 0;
+    }
+
+    .print-resume {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Ensure cards and sections print well */
+    .print-resume [class*="Card"],
+    .print-resume [class*="Section"] {
+      break-inside: avoid;
+      page-break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+
+    /* Optimize spacing */
+    .print-resume * {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    /* Ensure proper page breaks */
+    .print-resume h1,
+    .print-resume h2,
+    .print-resume h3 {
+      page-break-after: avoid;
+    }
+
+    /* Remove shadows and borders for cleaner print */
+    .print-resume [class*="shadow"] {
+      box-shadow: none !important;
+    }
+    
+    .print-resume [class*="border"] {
+      border: 1px solid #e5e5e5 !important;
+    }
+
+    /* Ensure text is black for readability */
+    .print-resume {
+      color: #000 !important;
+      background: #fff !important;
+    }
+
+    /* Hide interactive elements */
+    .print-resume button:not(.print-keep),
+    .print-resume [role="button"]:not(.print-keep) {
+      display: none !important;
+    }
+
+    /* Show all collapsed sections */
+    .print-resume [class*="overflow-hidden"] {
+      overflow: visible !important;
+      height: auto !important;
+    }
+    
+    /* Ensure proper page margins */
+    @page {
+      margin: 0.5in;
+    }
+  }
+}
+

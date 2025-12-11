@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { ChevronDown, ChevronUp } from "lucide-react"
 import { CareerTimeline } from "./CareerTimeline"
 import { RoleModal, RoleDetails } from "./RoleModal"
+import { RoleFilter } from "@/components/resume/ResumeFilters"
+import { lensToRoles } from "@/lib/resume-data"
 
 interface TimelineItem {
   period: string
@@ -148,9 +150,10 @@ const timelineData: TimelineItem[] = [
 interface WorkExperienceSectionProps {
   isOpen?: boolean
   onOpenChange?: (open: boolean) => void
+  roleFilter?: RoleFilter
 }
 
-export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange }: WorkExperienceSectionProps = {}) {
+export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, roleFilter }: WorkExperienceSectionProps = {}) {
   const [internalIsOpen, setInternalIsOpen] = useState(false)
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen
   const setIsOpen = onOpenChange || ((value: boolean) => setInternalIsOpen(value))
@@ -226,12 +229,33 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange }
     setTimeout(() => setSelectedRole(null), 300)
   }
 
-  const renderTimelineItem = (item: TimelineItem, index: number, isEarly = false) => (
+  const renderTimelineItem = (item: TimelineItem, index: number, isEarly = false) => {
+    // Check if this role is relevant to the filter
+    const relevantRoles = roleFilter && roleFilter !== "all" ? lensToRoles[roleFilter] || [] : []
+    // Extract company/title part (before dates) for matching
+    const itemTitleForMatching = item.officialTitle?.split("(")[0]?.trim() || ""
+    const isRelevant = !roleFilter || roleFilter === "all" || relevantRoles.some(role => {
+      // Extract company/title part from lens role string (before dates)
+      const roleTitleForMatching = role.split("(")[0]?.trim() || ""
+      return itemTitleForMatching === roleTitleForMatching || 
+             itemTitleForMatching.includes(roleTitleForMatching) ||
+             roleTitleForMatching.includes(itemTitleForMatching)
+    })
+    
+    return (
     <div
       key={index}
-      className="relative pl-6 border-l-2 border-border/50 pb-8 last:pb-0 last:border-l-0"
+      className={`relative pl-6 border-l-2 pb-8 last:pb-0 last:border-l-0 ${
+        roleFilter && roleFilter !== "all" && isRelevant
+          ? "border-primary/50"
+          : "border-border/50"
+      }`}
     >
-      <div className="absolute -left-[7px] top-0 h-3 w-3 rounded-full bg-primary border-2 border-background" />
+      <div className={`absolute -left-[7px] top-0 h-3 w-3 rounded-full border-2 border-background ${
+        roleFilter && roleFilter !== "all" && isRelevant
+          ? "bg-primary"
+          : "bg-primary/50"
+      }`} />
       
       <div className="space-y-3">
         <div>
@@ -257,7 +281,11 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange }
             </Typography>
           )}
           {item.reality && (
-            <div className="mt-2 p-3 rounded-lg bg-muted/30 border border-border/50">
+            <div className={`mt-2 p-3 rounded-lg border ${
+              roleFilter && roleFilter !== "all" && isRelevant
+                ? "bg-primary/5 border-primary/30"
+                : "bg-muted/30 border-border/50"
+            }`}>
               <Typography variant="body-sm" className="text-muted-foreground italic text-xs">
                 {item.reality}
               </Typography>
@@ -284,7 +312,8 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange }
         )}
       </div>
     </div>
-  )
+    )
+  }
 
   return (
     <>

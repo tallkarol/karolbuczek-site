@@ -297,7 +297,7 @@ const systemToLensMap: Record<string, RoleFilter[]> = {
   "Zapier Modularization Framework": ["MarTech / Growth Engineering", "Integrations & Automation", "Implementation Engineer"],
   "CRM Sync Bridges": ["MarTech / Growth Engineering", "Integrations & Automation", "Implementation Engineer"],
   "Sales Efficiency Dashboards": ["MarTech / Growth Engineering", "Product & Internal Tools"],
-  "Internal Error & Logging Systems": ["Product & Internal Tools", "Core Engineering"],
+  "Internal Error & Logging Systems": ["Product & Internal Tools", "Implementation Engineer"],
 }
 
 // Get systems for a lens

@@ -101,7 +101,7 @@ export default function ResumeVariantPage() {
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <Link
-                            href={`/case-studies#${caseStudy.slug}`}
+                            href={`/case-studies/${caseStudy.slug}`}
                             className="group"
                           >
                             <Typography variant="body-sm" className="font-semibold mb-1 group-hover:text-primary transition-colors">
@@ -118,7 +118,7 @@ export default function ResumeVariantPage() {
                           </Link>
                         </div>
                         <Link
-                          href={`/case-studies#${caseStudy.slug}`}
+                          href={`/case-studies/${caseStudy.slug}`}
                           className="flex-shrink-0 text-muted-foreground hover:text-primary transition-colors"
                           aria-label={`View ${caseStudy.title} case study`}
                         >

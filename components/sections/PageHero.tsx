@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 import { Typography } from "@/components/typography"
 import { ReactNode } from "react"
 
@@ -19,10 +20,15 @@ const fadeUp = {
 }
 
 export function PageHero({ eyebrow, title, description, className, illustration, buttons }: PageHeroProps) {
+  const [mounted, setMounted] = useState(false)
   const isCentered = className?.includes("text-center")
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   
   return (
-    <section className={`flex items-center min-h-[200px] md:min-h-[240px] py-4 md:py-6 relative z-0 ${className || ""}`}>
+    <section className={`flex items-center min-h-[200px] md:min-h-[240px] py-6 relative z-0 ${className || ""}`}>
       {illustration ? (
         <div className="grid gap-6 md:gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:items-center w-full">
           {/* Illustration */}
@@ -34,7 +40,7 @@ export function PageHero({ eyebrow, title, description, className, illustration,
           
           {/* Text content */}
           <motion.div
-            initial="hidden"
+            initial={mounted ? "hidden" : "visible"}
             animate="visible"
             variants={fadeUp}
             transition={{ duration: 0.6 }}

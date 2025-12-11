@@ -151,18 +151,23 @@ export default function RolesPage() {
             {roles.map((role, index) => (
               <Card
                 key={role.route}
-                className="border-border/50 hover:border-primary/30 transition-colors group"
+                className="border-border/50 hover:border-primary/30 transition-colors group flex flex-col h-full"
               >
-                <CardHeader>
-                  <CardTitle className="text-lg font-display group-hover:text-primary transition-colors">
-                    {role.title}
+                <CardHeader className="flex-shrink-0">
+                  <CardTitle className="text-lg font-display group-hover:text-primary transition-colors min-h-[3rem] flex items-start">
+                    <Link 
+                      href={role.route}
+                      className="hover:text-primary transition-colors"
+                    >
+                      {role.title}
+                    </Link>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <Typography variant="body-sm" className="text-muted-foreground">
+                <CardContent className="flex flex-col flex-1 space-y-4">
+                  <Typography variant="body-sm" className="text-muted-foreground flex-1">
                     {role.description}
                   </Typography>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 mt-auto pt-2">
                     <Button asChild variant="outline" className="w-full group/button">
                       <Link href={role.route}>
                         View Page

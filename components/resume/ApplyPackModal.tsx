@@ -18,9 +18,9 @@ interface ApplyPackModalProps {
 
 export function ApplyPackModal({ roleId, isOpen, onClose }: ApplyPackModalProps) {
   const [copiedItem, setCopiedItem] = useState<string | null>(null)
-  const [expandedBullets, setExpandedBullets] = useState(false)
-  const [expandedLinkedIn, setExpandedLinkedIn] = useState(false)
-  const [expandedEmail, setExpandedEmail] = useState(false)
+  const [expandedBullets, setExpandedBullets] = useState(true) // Expanded by default
+  const [expandedLinkedIn, setExpandedLinkedIn] = useState(true) // Expanded by default
+  const [expandedEmail, setExpandedEmail] = useState(true) // Expanded by default
 
   const config = roleId ? getRoleConfig(roleId) : null
   const caseStudies = roleId ? getCaseStudiesForRole(roleId) : []
@@ -81,6 +81,14 @@ export function ApplyPackModal({ roleId, isOpen, onClose }: ApplyPackModalProps)
     window.open(url, "_blank")
   }
 
+  const handleCopyLandingPageURL = () => {
+    if (!config) return
+    const fullUrl = typeof window !== "undefined" 
+      ? `${window.location.origin}${config.landingPath}`
+      : config.landingPath
+    copyToClipboard(fullUrl, "landing-page")
+  }
+
   if (!isOpen || !config) return null
 
   return (
@@ -136,14 +144,21 @@ export function ApplyPackModal({ roleId, isOpen, onClose }: ApplyPackModalProps)
                 </Typography>
                 <div className="grid gap-3 sm:grid-cols-2">
                   <Button
-                    asChild
+                    onClick={handleCopyLandingPageURL}
                     variant="outline"
                     className="w-full justify-start gap-2"
                   >
-                    <Link href={config.landingPath} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4" />
-                      View Landing Page
-                    </Link>
+                    {copiedItem === "landing-page" ? (
+                      <>
+                        <Check className="h-4 w-4 text-primary" />
+                        Copied!
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="h-4 w-4" />
+                        Copy Landing Page URL
+                      </>
+                    )}
                   </Button>
                   <Button
                     onClick={handleDownloadPDF}
@@ -155,6 +170,69 @@ export function ApplyPackModal({ roleId, isOpen, onClose }: ApplyPackModalProps)
                   </Button>
                 </div>
               </div>
+
+              {/* Copyable Bullets */}
+              {copyableBullets.length > 0 && (
+                <div className="mb-8">
+                  <button
+                    onClick={() => setExpandedBullets(!expandedBullets)}
+                    className="flex items-center justify-between w-full mb-4 group"
+                  >
+                    <Typography variant="body-sm" className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                      Copyable Bullets
+                    </Typography>
+                    {expandedBullets ? (
+                      <ChevronUp className="h-4 w-4 text-muted-foreground" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
+                    )}
+                  </button>
+                  <AnimatePresence>
+                    {expandedBullets && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <Card className="border-border/50">
+                          <CardContent className="p-4">
+                            <ul className="space-y-2 mb-4">
+                              {copyableBullets.map((bullet, index) => (
+                                <li key={index} className="flex items-start gap-2">
+                                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                                  <Typography variant="body-sm" className="text-muted-foreground text-xs">
+                                    {bullet}
+                                  </Typography>
+                                </li>
+                              ))}
+                            </ul>
+                            <Button
+                              onClick={() => copyToClipboard(copyableBullets.join("\n• "), "bullets")}
+                              variant="outline"
+                              size="sm"
+                              className="w-full"
+                            >
+                              {copiedItem === "bullets" ? (
+                                <>
+                                  <Check className="h-4 w-4 mr-2 text-primary" />
+                                  Copied All Bullets!
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="h-4 w-4 mr-2" />
+                                  Copy All Bullets
+                                </>
+                              )}
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )}
 
               {/* LinkedIn Template */}
               <div className="mb-8">
@@ -275,108 +353,68 @@ export function ApplyPackModal({ roleId, isOpen, onClose }: ApplyPackModalProps)
                     Featured Case Studies
                   </Typography>
                   <div className="space-y-2">
-                    {caseStudies.map((caseStudy: CaseStudy) => (
-                      <Card
-                        key={caseStudy.slug}
-                        className="border-border/50 hover:border-primary/30 transition-colors"
-                      >
-                        <CardContent className="p-4">
-                          <div className="flex items-start justify-between gap-4">
-                            <div className="flex-1">
-                              <Typography variant="body-sm" className="font-semibold mb-1">
-                                {caseStudy.title}
-                              </Typography>
-                              <Typography variant="body-sm" className="text-muted-foreground text-xs mb-2">
-                                {caseStudy.summary}
-                              </Typography>
-                              {caseStudy.metric && (
-                                <Typography variant="body-sm" className="text-xs text-primary">
-                                  {caseStudy.metric}
-                                </Typography>
-                              )}
-                            </div>
-                            <Button
-                              asChild
-                              variant="ghost"
-                              size="sm"
-                              className="flex-shrink-0"
-                            >
-                              <Link
-                                href={`/case-studies#${caseStudy.slug}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <ExternalLink className="h-4 w-4" />
-                              </Link>
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Copyable Bullets */}
-              {copyableBullets.length > 0 && (
-                <div>
-                  <button
-                    onClick={() => setExpandedBullets(!expandedBullets)}
-                    className="flex items-center justify-between w-full mb-4 group"
-                  >
-                    <Typography variant="body-sm" className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                      Copyable Bullets
-                    </Typography>
-                    {expandedBullets ? (
-                      <ChevronUp className="h-4 w-4 text-muted-foreground" />
-                    ) : (
-                      <ChevronDown className="h-4 w-4 text-muted-foreground" />
-                    )}
-                  </button>
-                  <AnimatePresence>
-                    {expandedBullets && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <Card className="border-border/50">
+                    {caseStudies.map((caseStudy: CaseStudy) => {
+                      const caseStudyUrl = `/case-studies/${caseStudy.slug}`
+                      const fullCaseStudyUrl = typeof window !== "undefined" 
+                        ? `${window.location.origin}${caseStudyUrl}`
+                        : caseStudyUrl
+                      
+                      return (
+                        <Card
+                          key={caseStudy.slug}
+                          className="border-border/50 hover:border-primary/30 transition-colors"
+                        >
                           <CardContent className="p-4">
-                            <ul className="space-y-2 mb-4">
-                              {copyableBullets.map((bullet, index) => (
-                                <li key={index} className="flex items-start gap-2">
-                                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                                  <Typography variant="body-sm" className="text-muted-foreground text-xs">
-                                    {bullet}
+                            <div className="flex items-start justify-between gap-4">
+                              <div className="flex-1">
+                                <Typography variant="body-sm" className="font-semibold mb-1">
+                                  {caseStudy.title}
+                                </Typography>
+                                <Typography variant="body-sm" className="text-muted-foreground text-xs mb-2">
+                                  {caseStudy.summary}
+                                </Typography>
+                                {caseStudy.metric && (
+                                  <Typography variant="body-sm" className="text-xs text-primary">
+                                    {caseStudy.metric}
                                   </Typography>
-                                </li>
-                              ))}
-                            </ul>
-                            <Button
-                              onClick={() => copyToClipboard(copyableBullets.join("\n• "), "bullets")}
-                              variant="outline"
-                              size="sm"
-                              className="w-full"
-                            >
-                              {copiedItem === "bullets" ? (
-                                <>
-                                  <Check className="h-4 w-4 mr-2 text-primary" />
-                                  Copied All Bullets!
-                                </>
-                              ) : (
-                                <>
-                                  <Copy className="h-4 w-4 mr-2" />
-                                  Copy All Bullets
-                                </>
-                              )}
-                            </Button>
+                                )}
+                              </div>
+                              <div className="flex items-center gap-2 flex-shrink-0">
+                                <Button
+                                  onClick={() => copyToClipboard(fullCaseStudyUrl, `case-study-${caseStudy.slug}`)}
+                                  variant="ghost"
+                                  size="sm"
+                                  className="p-2"
+                                  aria-label={`Copy ${caseStudy.title} URL`}
+                                >
+                                  {copiedItem === `case-study-${caseStudy.slug}` ? (
+                                    <Check className="h-4 w-4 text-primary" />
+                                  ) : (
+                                    <Copy className="h-4 w-4" />
+                                  )}
+                                </Button>
+                                <Button
+                                  asChild
+                                  variant="ghost"
+                                  size="sm"
+                                  className="p-2"
+                                  aria-label={`Visit ${caseStudy.title}`}
+                                >
+                                  <Link
+                                    href={caseStudyUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    <ExternalLink className="h-4 w-4" />
+                                  </Link>
+                                </Button>
+                              </div>
+                            </div>
                           </CardContent>
                         </Card>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      )
+                    })}
+                  </div>
                 </div>
               )}
             </div>

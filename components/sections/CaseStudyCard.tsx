@@ -17,9 +17,10 @@ export interface CaseStudy {
 interface CaseStudyCardProps {
   caseStudy: CaseStudy
   index: number
+  onClick?: () => void
 }
 
-export function CaseStudyCard({ caseStudy, index }: CaseStudyCardProps) {
+export function CaseStudyCard({ caseStudy, index, onClick }: CaseStudyCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -29,7 +30,7 @@ export function CaseStudyCard({ caseStudy, index }: CaseStudyCardProps) {
       whileHover={{ y: -4 }}
       className="h-full"
     >
-      <Card className="group h-full flex flex-col hover:shadow-lg transition-all border-border/50 hover:border-primary/30 relative overflow-hidden">
+      <Card className={`group h-full flex flex-col hover:shadow-lg transition-all border-border/50 hover:border-primary/30 relative overflow-hidden ${onClick ? 'cursor-pointer' : ''}`}>
         {/* Subtle accent line */}
         <div className="absolute top-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-300" />
         
@@ -55,12 +56,23 @@ export function CaseStudyCard({ caseStudy, index }: CaseStudyCardProps) {
           )}
         </CardContent>
         <CardFooter className="pt-4">
-          <Button asChild variant="outline" className="w-full rounded-full border-border/50 font-ui hover:border-primary transition-colors">
-            <Link href={`/case-studies/${caseStudy.slug}`}>
+          {onClick ? (
+            <Button 
+              onClick={onClick}
+              variant="outline" 
+              className="w-full rounded-full border-border/50 font-ui hover:border-primary transition-colors"
+            >
               View case study
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+            </Button>
+          ) : (
+            <Button asChild variant="outline" className="w-full rounded-full border-border/50 font-ui hover:border-primary transition-colors">
+              <Link href={`/case-studies/${caseStudy.slug}`}>
+                View case study
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          )}
         </CardFooter>
       </Card>
     </motion.div>

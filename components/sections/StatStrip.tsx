@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 import { Typography } from "@/components/typography"
 
 const focusAreas = [
@@ -23,6 +24,12 @@ const focusAreas = [
 ]
 
 export function StatStrip() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <div className="border-y border-border/50 py-10 bg-muted/20">
       <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
@@ -30,9 +37,9 @@ export function StatStrip() {
           {focusAreas.map((area, index) => (
             <motion.div
               key={area.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative space-y-1.5 pl-4 border-l-2 border-border/30 hover:border-primary transition-colors"
             >

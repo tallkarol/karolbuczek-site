@@ -1,10 +1,13 @@
 "use client"
 
+import { useState } from "react"
 import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RoleFilter } from "./ResumeFilters"
 import { getCaseStudiesForLens, lensToRoles } from "@/lib/resume-data"
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard"
+import { CaseStudyModal } from "./CaseStudyModal"
+import type { CaseStudy } from "@/components/sections/CaseStudyCard"
 
 interface RoleSectionProps {
   role: RoleFilter
@@ -88,6 +91,9 @@ const roleContent: Record<RoleFilter, { title: string; items: string[] }> = {
 }
 
 export function RoleSection({ role, isVisible }: RoleSectionProps) {
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   if (!isVisible || role === "all") return null
 
   const content = roleContent[role]
@@ -95,6 +101,16 @@ export function RoleSection({ role, isVisible }: RoleSectionProps) {
 
   const relatedRoles = lensToRoles[role] || []
   const relatedCaseStudies = getCaseStudiesForLens(role)
+
+  const handleCaseStudyClick = (caseStudy: CaseStudy) => {
+    setSelectedCaseStudy(caseStudy)
+    setIsModalOpen(true)
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setTimeout(() => setSelectedCaseStudy(null), 300)
+  }
 
   return (
     <div className="space-y-8">
@@ -152,11 +168,22 @@ export function RoleSection({ role, isVisible }: RoleSectionProps) {
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {relatedCaseStudies.map((caseStudy, index) => (
-              <CaseStudyCard key={caseStudy.slug} caseStudy={caseStudy} index={index} />
+              <CaseStudyCard 
+                key={caseStudy.slug}
+                caseStudy={caseStudy} 
+                index={index}
+                onClick={() => handleCaseStudyClick(caseStudy)}
+              />
             ))}
           </div>
         </div>
       )}
+
+      <CaseStudyModal
+        caseStudy={selectedCaseStudy}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   )
 }

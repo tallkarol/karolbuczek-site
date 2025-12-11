@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 import { Typography } from "@/components/typography"
 import { SystemNodes } from "@/components/illustrations"
 
@@ -40,6 +41,12 @@ const skillCategories = [
 ]
 
 export function SkillsMap() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <div className="space-y-8">
       <div className="space-y-2">
@@ -50,9 +57,9 @@ export function SkillsMap() {
         {skillCategories.map((category, index) => (
           <motion.div
             key={category.name}
-            initial={{ opacity: 0, y: 20 }}
+            initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="group relative p-6 border border-border/50 rounded-lg hover:shadow-lg transition-all hover:border-primary/30 overflow-hidden"
           >

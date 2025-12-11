@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -12,10 +13,16 @@ const fadeUp = {
 }
 
 export function HeroIntro() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <section className="grid items-center gap-6 pt-0 pb-0 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-6 md:py-0">
       <motion.div
-        initial="hidden"
+        initial={mounted ? "hidden" : "visible"}
         animate="visible"
         variants={fadeUp}
         transition={{ duration: 0.6 }}
@@ -49,7 +56,7 @@ export function HeroIntro() {
 
       {/* Photo */}
       <motion.div
-        initial="hidden"
+        initial={mounted ? "hidden" : "visible"}
         animate="visible"
         variants={fadeUp}
         transition={{ duration: 0.6, delay: 0.2 }}

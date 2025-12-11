@@ -1,9 +1,16 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
 import { Typography } from "@/components/typography"
 
 export function WhoIWorkBestWith() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const items = [
     "Marketing teams that want dev velocity",
     "Product teams that need clean architecture",
@@ -18,9 +25,9 @@ export function WhoIWorkBestWith() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5 }}
         className="space-y-4"
       >
@@ -32,9 +39,9 @@ export function WhoIWorkBestWith() {
           {items.map((item, index) => (
             <motion.li
               key={index}
-              initial={{ opacity: 0, x: -10 }}
+              initial={mounted ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
               className="flex items-start gap-3"
             >

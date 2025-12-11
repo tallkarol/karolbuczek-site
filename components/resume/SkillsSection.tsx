@@ -17,7 +17,9 @@ import {
   SiGit,
   SiHtml5,
   SiCss3,
-  SiTailwindcss
+  SiTailwindcss,
+  SiVercel,
+  SiSupabase
 } from "react-icons/si"
 import { Database } from "lucide-react"
 
@@ -46,6 +48,8 @@ const techCategories = [
     items: [
       { name: "WordPress", icon: SiWordpress, color: "text-[#21759B]" },
       { name: "AWS", icon: SiAmazon, color: "text-[#FF9900]" },
+      { name: "Vercel", icon: SiVercel, color: "text-[#000000]" },
+      { name: "Supabase", icon: SiSupabase, color: "text-[#3ECF8E]" },
       { name: "SQL Server", icon: Database, color: "text-[#CC2927]" },
       { name: "Git", icon: SiGit, color: "text-[#F05032]" },
     ],
@@ -55,7 +59,11 @@ const techCategories = [
 const softSkills = [
   "Engineering mindset with cross-functional fluency",
   "Communicates clearly with product, marketing & dev teams",
-  "Fast problem solver; strong use of AI for acceleration",
+  "Comfortable leading meetings with high-level decision makers",
+  "Fast problem solver; uses AI tools to improve product quality and development efficiency",
+  "Navigates ambiguity and makes decisions by pulling in the right people",
+  "Growth mindset with a bias toward action",
+  "Empathetic to customer and end-user needs",
   "High ownership & autonomy",
   "UX-aware without being a designer",
 ]
@@ -68,9 +76,13 @@ const skillCategories = [
       "React applications & internal tools",
       "SQL for analytics, pipelines, and large-dataset operations",
       "API design & integrations with CRMs and marketing platforms",
+      "3+ years integrating Web APIs and providing technical consultation",
+      "Distributed systems design and architecture",
+      "Database design and optimization",
       "AWS: Amplify, Lambda, Cognito, RDS, S3 signed URLs",
       "Backend automation: cron jobs, workflow engines, queue-like execution",
       "Git workflows for feature development & production releases",
+      "Using AI tools in product development to improve quality and efficiency",
     ],
   },
   {
@@ -102,6 +114,9 @@ const skillCategories = [
       "Logging, monitoring & resilience patterns",
       "Engineering alignment across marketing, product & operations",
       "Applying systems thinking to funnels, data flow & platform design",
+      "Translating business requirements and workflows into technical solutions",
+      "Identifying and communicating pragmatic solutions to complex integration problems",
+      "Using AI tools in product development to improve quality and efficiency",
     ],
   },
   {
@@ -118,6 +133,7 @@ const skillCategories = [
       "WordPress, WP Engine, Local",
       "React, Tailwind, Vite",
       "AWS Amplify, GitHub, Vercel",
+      "Supabase, SQL Server",
       "Zapier, Mailchimp, Birdeye, Five9",
       "WooCommerce, Gravity Forms, ACF",
     ],

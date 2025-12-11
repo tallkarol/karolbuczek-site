@@ -10,6 +10,7 @@ export type RoleFilter =
   | "Integrations & Automation"
   | "Performance Engineering"
   | "Startup Experience"
+  | "Implementation Engineer"
   | "all"
 
 interface ResumeFiltersProps {
@@ -25,6 +26,7 @@ const filters: RoleFilter[] = [
   "Integrations & Automation",
   "Performance Engineering",
   "Startup Experience",
+  "Implementation Engineer",
 ]
 
 export function ResumeFilters({ selectedFilter, onFilterChange }: ResumeFiltersProps) {

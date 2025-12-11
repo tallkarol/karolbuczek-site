@@ -26,8 +26,8 @@ export function PageHero({ eyebrow, title, description, className, illustration,
       {illustration ? (
         <div className="grid gap-6 md:gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:items-center w-full">
           {/* Illustration */}
-          <div className="flex items-center justify-center order-1 md:order-1 w-full mb-4 md:mb-0 overflow-hidden">
-            <div className="w-full max-w-[180px] md:max-w-[200px] aspect-square relative overflow-hidden">
+          <div className="flex items-center justify-center order-1 md:order-1 w-full mb-4 md:mb-0">
+            <div className="w-full max-w-[180px] md:max-w-[200px] aspect-square relative">
               {illustration}
             </div>
           </div>

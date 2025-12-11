@@ -71,6 +71,13 @@ export const lensToCaseStudies: Record<RoleFilter, string[]> = {
     "cwv-optimization-block",
   ],
   "Startup Experience": [],
+  "Implementation Engineer": [
+    "backend_workflow_automations",
+    "zapier_subzap_refactors",
+    "aws-secure-file-portal",
+    "utm-persistence-plugin",
+    "gtm-event-button-block",
+  ],
 }
 
 // Map lens filters to related roles/positions
@@ -101,6 +108,11 @@ export const lensToRoles: Record<RoleFilter, string[]> = {
     "CUBE Karaoke — Co-founder / Creative Director (2013-2014)",
     "in2itiv media — Co-founder / CEO (2012-2013)",
     "Freelance Developer / Designer (2009-2019)",
+  ],
+  "Implementation Engineer": [
+    "Universal Windows Direct — Full Stack Web Developer (2021-2023)",
+    "Mineralife Nutraceuticals — Marketing & IT Consultant (2021-Present)",
+    "Perfect Power Wash — Marketing Director / Head of IT (2019-2021)",
   ],
 }
 

@@ -18,6 +18,7 @@ const filterLabels: Record<RoleFilter, string> = {
   "Integrations & Automation": "Integrations & Automation",
   "Performance Engineering": "Performance Engineering",
   "Startup Experience": "Startup Experience",
+  "Implementation Engineer": "Implementation Engineer",
 }
 
 const filters: RoleFilter[] = [
@@ -28,6 +29,7 @@ const filters: RoleFilter[] = [
   "Integrations & Automation",
   "Performance Engineering",
   "Startup Experience",
+  "Implementation Engineer",
 ]
 
 export function LensDropdown({ selectedFilter, onFilterChange }: LensDropdownProps) {

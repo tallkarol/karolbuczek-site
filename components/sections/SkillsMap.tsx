@@ -13,6 +13,7 @@ const skillCategories = [
       "Internal tools, React apps, AWS architecture",
       "PHP/SQL automation, cron jobs",
       "WooCommerce optimization",
+      "Using AI tools in product development to improve quality and efficiency",
     ],
   },
   {

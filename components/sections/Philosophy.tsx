@@ -55,7 +55,15 @@ export function Philosophy() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.4 }}
               >
-                <Typography variant="body-sm" className="inline">Iterate quickly</Typography>
+                <Typography variant="body-sm" className="inline">Navigate ambiguity by pulling in the right people</Typography>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                <Typography variant="body-sm" className="inline">Iterate quickly with a bias toward action</Typography>
               </motion.li>
             </ol>
           </div>
@@ -86,6 +94,14 @@ export function Philosophy() {
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
                 <Typography variant="body-sm" className="font-semibold">Outcomes over deliverables.</Typography>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.4 }}
+              >
+                <Typography variant="body-sm" className="font-semibold">Growth mindset with continuous learning.</Typography>
               </motion.div>
             </div>
           </div>

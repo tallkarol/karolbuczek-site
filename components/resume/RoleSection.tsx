@@ -69,6 +69,22 @@ const roleContent: Record<RoleFilter, { title: string; items: string[] }> = {
       "These experiences taught product ownership, cross-functional collaboration, and building systems from scratch — skills that translate directly to internal tools and product engineering roles",
     ],
   },
+  "Implementation Engineer": {
+    title: "Implementation Engineer",
+    items: [
+      "5+ years integrating Web APIs and providing technical consultation for complex integration projects",
+      "Experience working with distributed systems, database design, and systems architecture",
+      "Translating business requirements and workflows into technical solutions that deliver value",
+      "Identifying and communicating pragmatic solutions to complex integration problems",
+      "Empathetic to customer and end-user needs with ability to bridge technical and business perspectives",
+      "Comfortable leading meetings with high-level decision makers and navigating ambiguity",
+      "Proven ability to quickly learn new technologies, understand complex systems (APIs, databases, SDKs), and improve technical acumen",
+      "Backend workflow systems integrating Mailchimp, Birdeye, Five9, CRMs, and lead aggregators",
+      "Modular Zapier architectures replacing brittle 70+ step workflows with maintainable systems",
+      "Full-stack AWS implementations (Amplify, Cognito, S3, RDS, Lambda) with role-based access and audit logging",
+      "API integrations and data pipelines handling large datasets with custom error handling",
+    ],
+  },
 }
 
 export function RoleSection({ role, isVisible }: RoleSectionProps) {
@@ -109,16 +125,19 @@ export function RoleSection({ role, isVisible }: RoleSectionProps) {
           )}
           
           <div>
-            <Typography variant="body-sm" className="font-semibold mb-2 text-foreground">
+            <Typography variant="body-sm" className="font-semibold mb-4 text-foreground">
               Highlights:
             </Typography>
-            <div className="space-y-2">
+            <ul className="space-y-3">
               {content.items.map((item, index) => (
-                <Typography key={index} variant="body-sm" className="text-muted-foreground">
-                  {item}
-                </Typography>
+                <li key={index} className="flex items-start gap-3 group">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0 group-hover:scale-125 transition-transform" />
+                  <Typography variant="body-sm" className="text-muted-foreground leading-relaxed flex-1">
+                    {item}
+                  </Typography>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </CardContent>
       </Card>

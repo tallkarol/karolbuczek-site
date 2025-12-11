@@ -7,9 +7,12 @@ interface SystemNodesProps {
 }
 
 export function SystemNodes({ className }: SystemNodesProps) {
+  const isSmall = className?.includes('h-32') || className?.includes('h-24') || className?.includes('h-20')
+  const scaleClass = isSmall ? '' : 'scale-150 sm:scale-[2.5]'
+  
   return (
     <div className={`relative h-full w-full ${className || ""}`}>
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className={`absolute inset-0 flex items-center justify-center ${scaleClass}`}>
         {/* Central node */}
         <motion.div
           className="relative h-12 w-12 rounded-full border-2 border-primary/40 bg-primary/10 flex items-center justify-center"
@@ -49,7 +52,7 @@ export function SystemNodes({ className }: SystemNodesProps) {
         })}
         
         {/* Connection lines */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
           {[0, 1, 2, 3].map((i) => {
             const angle = (i * 90) * (Math.PI / 180)
             const radius = 20

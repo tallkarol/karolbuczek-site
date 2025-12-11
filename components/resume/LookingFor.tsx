@@ -15,6 +15,7 @@ const targetRoles = [
   "Senior WordPress Engineer",
   "Full-Stack Web Engineer (WordPress + React)",
   "Integrations / MarTech Engineer",
+  "Implementation Engineer",
   "Product / Platform Engineer",
   "Engineering Manager",
   "Product Manager",

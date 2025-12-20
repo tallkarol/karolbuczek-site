@@ -26,7 +26,7 @@ export function FeaturedQuote() {
             <div className="text-4xl md:text-5xl text-primary/20 font-serif leading-none mt-1 flex-shrink-0">"</div>
             <div className="flex-1 space-y-3">
               <Typography variant="body" className="italic text-foreground leading-relaxed">
-                He&apos;s one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. He never just built a solution, he understood the business case behind it. Whether the work involved internal tools, customer-facing platforms, or data connections between legacy systems, he always approached challenges with clarity, logic, and a calm, solutions-focused mindset.
+                He&apos;s one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. Whether the work involved internal tools, customer-facing platforms, or data connections between legacy systems, he always approached challenges with clarity, logic, and a calm, solutions-focused mindset.
               </Typography>
               <div className="pt-2 border-t border-border/30">
                 <Typography variant="body-sm" className="font-semibold text-foreground">

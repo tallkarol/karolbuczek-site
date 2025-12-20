@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -12,12 +12,25 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
+const words = ["systems", "websites", "internal tools", "automations"]
+
 export function HeroIntro() {
   const [mounted, setMounted] = useState(false)
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    if (!mounted) return
+    
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prev) => (prev + 1) % words.length)
+    }, 3000) // Change word every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [mounted])
 
   return (
     <section className="grid items-center gap-6 pt-0 pb-0 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-6 md:py-0">
@@ -40,20 +53,41 @@ export function HeroIntro() {
           </div>
         </div>
         <Typography variant="eyebrow" className="text-muted-foreground">
-          Web Systems Engineer • WordPress & MarTech • Internal Tools & Automation
+          Web Systems Engineer • Full-Stack Developer • MarTech & Automation
         </Typography>
 
-        <Typography variant="h1" as="h1">
-          I build the systems that make marketing, product, and engineering actually work together.
+        <Typography variant="h1" as="h1" className="flex flex-wrap items-baseline gap-2">
+          I build{" "}
+          <span className="relative inline-block min-w-[180px] text-left">
+            {mounted ? (
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={words[currentWordIndex]}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="inline-block text-primary"
+                >
+                  {words[currentWordIndex]}
+                </motion.span>
+              </AnimatePresence>
+            ) : (
+              <span className="inline-block text-primary">
+                {words[0]}
+              </span>
+            )}
+          </span>{" "}
+          that help marketing, product, and engineering actually work together.
         </Typography>
 
         <Typography variant="body" className="max-w-xl text-muted-foreground">
-          I fix cross-functional problems — attribution gaps, slow WordPress stacks, scattered data, manual workflows — and turn them into fast, measurable, maintainable systems.
+          I fix cross-functional problems — slow or fragile stacks, attribution gaps, scattered data, manual workflows — using modern web tooling, cloud platforms, and practical AI to turn them into reliable, measurable systems.
         </Typography>
 
         <div className="flex flex-wrap items-center gap-3">
           <Button asChild className="rounded-full px-6 py-2 text-sm font-semibold font-ui">
-            <a href="#case-studies">View my work</a>
+            <a href="#case-studies">View case studies</a>
           </Button>
           <Button
             asChild

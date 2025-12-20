@@ -28,6 +28,17 @@ export function HeroIntro() {
         transition={{ duration: 0.6 }}
         className="space-y-2 md:space-y-3"
       >
+        <div className="flex items-center gap-4 mb-2">
+          <div className="relative h-16 w-16 md:h-20 md:w-20 flex-shrink-0">
+            <Image
+              src="/logo.png"
+              alt="Karol Buczek"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </div>
         <Typography variant="eyebrow" className="text-muted-foreground">
           Web Systems Engineer • WordPress & MarTech • Internal Tools & Automation
         </Typography>

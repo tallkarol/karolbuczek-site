@@ -312,7 +312,7 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
         )}
       </div>
     </div>
-    )
+  )
   }
 
   return (

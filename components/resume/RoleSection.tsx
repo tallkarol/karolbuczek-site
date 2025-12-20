@@ -5,6 +5,7 @@ import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RoleFilter } from "./ResumeFilters"
 import { getCaseStudiesForLens, lensToRoles } from "@/lib/resume-data"
+import { getRoleConfigByFilter } from "@/lib/role-configs"
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard"
 import { CaseStudyModal } from "./CaseStudyModal"
 import type { CaseStudy } from "@/components/sections/CaseStudyCard"
@@ -101,6 +102,7 @@ export function RoleSection({ role, isVisible }: RoleSectionProps) {
 
   const relatedRoles = lensToRoles[role] || []
   const relatedCaseStudies = getCaseStudiesForLens(role)
+  const roleConfig = getRoleConfigByFilter(role)
 
   const handleCaseStudyClick = (caseStudy: CaseStudy) => {
     setSelectedCaseStudy(caseStudy)
@@ -114,6 +116,32 @@ export function RoleSection({ role, isVisible }: RoleSectionProps) {
 
   return (
     <div className="space-y-8">
+      {/* Quote */}
+      {roleConfig?.quote && (
+        <Card className="border-border/50 bg-muted/30">
+          <CardContent className="pt-6">
+            <div className="flex items-start gap-3">
+              <div className="text-4xl text-primary/20 font-serif leading-none mt-1">"</div>
+              <div className="flex-1">
+                <Typography variant="body" className="italic text-foreground mb-4 leading-relaxed">
+                  {roleConfig.quote.text}
+                </Typography>
+                <div className="pt-3 border-t border-border/30">
+                  <Typography variant="body-sm" className="font-semibold">
+                    {roleConfig.quote.author}
+                  </Typography>
+                  {roleConfig.quote.role && (
+                    <Typography variant="body-sm" className="text-muted-foreground">
+                      {roleConfig.quote.role}
+                    </Typography>
+                  )}
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
       <Card className="border-border/50 bg-card">
         <CardHeader className="pb-4 border-b border-border/30">
           <div className="flex items-center gap-2 mb-1">

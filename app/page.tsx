@@ -1,5 +1,6 @@
 import { Section } from "@/components/Section"
 import { HeroIntro } from "@/components/sections/HeroIntro"
+import { FeaturedQuote } from "@/components/sections/FeaturedQuote"
 import { SkillsMap } from "@/components/sections/SkillsMap"
 import { WhoIWorkBestWith } from "@/components/sections/WhoIWorkBestWith"
 import { Philosophy } from "@/components/sections/Philosophy"
@@ -12,6 +13,10 @@ export default function HomePage() {
     <>
       <Section className="py-4 md:py-6">
         <HeroIntro />
+      </Section>
+
+      <Section>
+        <FeaturedQuote />
       </Section>
 
       <Section>

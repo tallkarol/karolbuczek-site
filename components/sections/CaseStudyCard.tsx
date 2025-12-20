@@ -67,11 +67,11 @@ export function CaseStudyCard({ caseStudy, index, onClick }: CaseStudyCardProps)
             </Button>
           ) : (
             <Button asChild variant="outline" className="w-full rounded-full border-border/50 font-ui hover:border-primary transition-colors">
-              <Link href={`/case-studies/${caseStudy.slug}`}>
-                View case study
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <Link href={`/case-studies/${caseStudy.slug}`}>
+              View case study
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
           )}
         </CardFooter>
       </Card>

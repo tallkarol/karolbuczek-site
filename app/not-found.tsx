@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { Typography } from "@/components/typography"
 import { Button } from "@/components/ui/button"
 import { BrokenCode } from "@/components/illustrations/BrokenCode"
@@ -15,6 +16,16 @@ export default function NotFound() {
   return (
     <div className="bg-background text-foreground flex items-center justify-center px-6 py-12" style={{ minHeight: '100vh', maxHeight: '100dvh' }}>
       <div className="max-w-2xl w-full flex flex-col items-center text-center space-y-6 md:space-y-8 px-4">
+        {/* Logo */}
+        <div className="relative h-16 w-16 md:h-20 md:w-20 flex-shrink-0 mb-2">
+          <Image
+            src="/logo.png"
+            alt="Karol Buczek"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
         {/* Illustration */}
         <div className="w-full max-w-[160px] md:max-w-[240px] aspect-square flex items-center justify-center flex-shrink-0 p-4">
           <BrokenCode className="w-full h-full" />

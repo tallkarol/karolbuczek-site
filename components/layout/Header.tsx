@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Moon, Sun, Menu, X } from "lucide-react"
@@ -21,7 +22,16 @@ export function Header() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:px-6 lg:px-8">
           {/* Logo + name */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="leading-tight">
+            <div className="relative h-8 w-8 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Karol Buczek"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="leading-tight hidden sm:block">
               <div className="text-sm font-semibold tracking-wide text-foreground">
                 KAROL BUCZEK
               </div>
@@ -91,7 +101,17 @@ export function Header() {
         <div className="fixed inset-0 z-50 bg-background sm:hidden">
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-6 border-b border-border">
-              <span className="text-sm font-semibold">Menu</span>
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2">
+                <div className="relative h-6 w-6 flex-shrink-0">
+                  <Image
+                    src="/logo.png"
+                    alt="Karol Buczek"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-sm font-semibold">Karol Buczek</span>
+              </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 hover:bg-accent rounded-lg transition-colors"

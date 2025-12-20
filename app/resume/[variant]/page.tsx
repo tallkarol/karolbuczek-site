@@ -21,7 +21,7 @@ export default function ResumeVariantPage() {
   const [skillsOpen, setSkillsOpen] = useState(true)
   const [workExperienceOpen, setWorkExperienceOpen] = useState(true)
   const [projectsOpen, setProjectsOpen] = useState(true)
-  
+
   useEffect(() => {
     setMounted(true)
     // Auto-trigger print dialog when page loads (for PDF generation)

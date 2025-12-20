@@ -6,16 +6,16 @@ import { Building2 } from "lucide-react"
 
 const references = [
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    author: "Client Name",
-    role: "Company Name",
-    relationship: "President — Direct Report",
+    quote: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. He never just built a solution, he understood the business case behind it. His integration work created a lasting impact across multiple systems and departments, with an incredible ability to simplify complexity and design solutions that actually solved the root problem instead of just addressing the symptoms.",
+    author: "John Kosmides",
+    role: "Vice President of Marketing",
+    relationship: "Perfect Power Wash & Universal Windows Direct — Direct Manager",
   },
   {
-    quote: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    author: "Client Name",
-    role: "Company Name",
-    relationship: "Developer — Team Member",
+    quote: "Karol is a wildly multi-talented man with an absurd amount of expertise in numerous fields. He's an incredible mentor and played a critical role on my path to software development, but his skillset allows him to operate as an expert in nearly every aspect of a business. Whether you need someone to lead or support you in any role, Karol is your man.",
+    author: "Julian Quesada",
+    role: "Software Engineer",
+    relationship: "Direct Report",
   },
 ]
 

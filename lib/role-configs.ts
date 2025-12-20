@@ -15,6 +15,11 @@ export interface RoleConfig {
   }
   resumeVariantId: string
   copyableBullets?: string[] // Optional - can be auto-generated
+  quote?: {
+    text: string
+    author: string
+    role?: string
+  }
 }
 
 // Helper function to get case studies dynamically
@@ -34,6 +39,12 @@ export function getRelatedRolesForRole(roleId: string): string[] {
 // Helper to get role config by ID
 export function getRoleConfig(roleId: string): RoleConfig | null {
   return roleConfigs[roleId] || null
+}
+
+// Helper to get role config by RoleFilter
+export function getRoleConfigByFilter(roleFilter: RoleFilter): RoleConfig | null {
+  const config = Object.values(roleConfigs).find(config => config.roleFilter === roleFilter)
+  return config || null
 }
 
 // Generate copyable bullets dynamically based on role filter
@@ -126,6 +137,11 @@ Karol Buczek`,
       "Modular Zapier architectures replacing brittle 70+ step workflows with maintainable systems",
       "Full-stack AWS implementations (Amplify, Cognito, S3, RDS, Lambda) with role-based access and audit logging",
     ],
+    quote: {
+      text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. His integration work created a lasting impact across multiple systems and departments, with an incredible ability to simplify complexity and design solutions that actually solved the root problem instead of just addressing the symptoms.",
+      author: "John Kosmides",
+      role: "Vice President of Marketing — Perfect Power Wash & Universal Windows Direct",
+    },
   },
   "martech-engineer": {
     id: "martech-engineer",
@@ -187,6 +203,11 @@ Karol Buczek`,
       "First/last-touch UTM persistence & attribution frameworks",
       "CRM sync bridges & data normalization workflows",
     ],
+    quote: {
+      text: "He never just built a solution, he understood the business case behind it. His integration work created a lasting impact across multiple systems and departments, with an incredible ability to simplify complexity, work collaboratively with other departments, and design solutions that actually solved the root problem instead of just addressing the symptoms.",
+      author: "John Kosmides",
+      role: "Vice President of Marketing — Perfect Power Wash",
+    },
   },
   "web-systems-engineer": {
     id: "web-systems-engineer",
@@ -247,6 +268,11 @@ Karol Buczek`,
       "Tech: React, Amplify, Cognito, S3, RDS, Lambda",
       "Features: Folder isolation, Signed URLs, Delete-protection & retention windows, Audit logs, Role-based access",
     ],
+    quote: {
+      text: "His skillset allows him to operate as an expert in nearly every aspect of a business. Whether you need someone to lead or support you in any role, Karol is your man.",
+      author: "Julian Quesada",
+      role: "Software Engineer — Direct Report",
+    },
   },
   "web-dev-wordpress": {
     id: "web-dev-wordpress",
@@ -308,6 +334,11 @@ Karol Buczek`,
       "WooCommerce performance & checkout optimization",
       "Core Web Vitals debugging & LCP-first improvements",
     ],
+    quote: {
+      text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. He never just built a solution, he understood the business case behind it. Whether the work involved internal tools, customer-facing platforms, or data connections between legacy systems, he always approached challenges with clarity, logic, and a calm, solutions-focused mindset.",
+      author: "John Kosmides",
+      role: "Vice President of Marketing — Universal Windows Direct",
+    },
   },
 }
 

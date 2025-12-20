@@ -159,7 +159,7 @@ export default function RolesPage() {
                       href={role.route}
                       className="hover:text-primary transition-colors"
                     >
-                      {role.title}
+                    {role.title}
                     </Link>
                   </CardTitle>
                 </CardHeader>

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 export function Footer() {
@@ -8,14 +9,24 @@ export function Footer() {
     <footer className="border-t border-border/50 bg-muted/30 py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-4 sm:items-start">
-          <div className="leading-tight">
-            <div className="text-sm font-semibold tracking-wide">
-              KAROL BUCZEK
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <div className="relative h-8 w-8 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Karol Buczek"
+                fill
+                className="object-contain"
+              />
             </div>
-            <div className="text-xs text-muted-foreground">
-              Web Systems Engineer • WordPress & MarTech • Internal Tools & Automation
+            <div className="leading-tight">
+              <div className="text-sm font-semibold tracking-wide">
+                KAROL BUCZEK
+              </div>
+              <div className="text-xs text-muted-foreground">
+                Web Systems Engineer • WordPress & MarTech • Internal Tools & Automation
+              </div>
             </div>
-          </div>
+          </Link>
           <div className="space-y-2">
             <div className="text-lg font-semibold">
               Want to talk about a role or a project?

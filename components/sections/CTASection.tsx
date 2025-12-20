@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/typography"
 import { Mail, Linkedin } from "lucide-react"
@@ -18,6 +19,18 @@ export function CTASection({
     <div className="relative rounded-lg border border-border/50 bg-muted/30 p-8 md:p-12 text-center space-y-6 overflow-hidden">
       {/* Subtle accent */}
       <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
+      
+      {/* Logo */}
+      <div className="flex justify-center">
+        <div className="relative h-[175px] w-[210px] md:h-[250px] md:w-[300px] flex-shrink-0">
+          <Image
+            src="/logo.png"
+            alt="Karol Buczek"
+            fill
+            className="object-contain"
+          />
+        </div>
+      </div>
       
       <div className="space-y-2">
         <Typography variant="h2" as="h2" className="text-2xl md:text-3xl">{heading}</Typography>

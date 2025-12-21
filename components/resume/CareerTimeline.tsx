@@ -20,8 +20,9 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    period: "2025 — Present",
-    officialTitle: "Independent Web Systems Engineer",
+    period: "2023 — Present",
+    officialTitle: "Tall Karol",
+    reality: "A consultancy helping brands fix what's disconnected. Aligning identity, websites, and internal systems so brand, technology, and operations work as one unified ecosystem. Combining brand strategy, full-stack development, and systems architecture to solve problems across the entire digital stack.",
     keyProjects: [
       "Headless WordPress (React + ACF) — early architecture for decoupled CMS workflows",
       "AI-side projects — workout tracker (progressive overload logic), AI-assisted shopping list with pantry state, recipe recommendation logic",
@@ -31,9 +32,8 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
-    period: "2021 — 2024",
+    period: "2021 — 2023",
     officialTitle: "Universal Windows Direct — Full Stack Web Developer",
-    officialDates: "Official Position: Oct 2021 – Jan 2023",
     reality: "Delivered backend automation and systems engineering solutions across WordPress, APIs, and data pipelines.",
     systems: [
       "Custom performance block (WordPress VIP-compliant) — Built a top-funnel block that reduced LCP ~5.5s → 3.2s and Lighthouse 70 → 83",

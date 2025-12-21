@@ -5,58 +5,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp } from "lucide-react"
-import { 
-  SiPhp, 
-  SiJavascript, 
-  SiTypescript, 
-  SiReact, 
-  SiNodedotjs,
-  SiMysql,
-  SiWordpress,
-  SiAmazon,
-  SiGit,
-  SiHtml5,
-  SiCss3,
-  SiTailwindcss,
-  SiVercel,
-  SiSupabase
-} from "react-icons/si"
-import { Database } from "lucide-react"
-import { RoleFilter } from "@/components/resume/ResumeFilters"
-
-const techCategories = [
-  {
-    name: "Languages",
-    items: [
-      { name: "PHP", icon: SiPhp, color: "text-[#777BB4]" },
-      { name: "JavaScript", icon: SiJavascript, color: "text-[#F7DF1E]" },
-      { name: "TypeScript", icon: SiTypescript, color: "text-[#3178C6]" },
-      { name: "SQL", icon: SiMysql, color: "text-[#4479A1]" },
-      { name: "HTML5", icon: SiHtml5, color: "text-[#E34F26]" },
-      { name: "CSS3", icon: SiCss3, color: "text-[#1572B6]" },
-    ],
-  },
-  {
-    name: "Libraries & Frameworks",
-    items: [
-      { name: "React", icon: SiReact, color: "text-[#61DAFB]" },
-      { name: "Node.js", icon: SiNodedotjs, color: "text-[#339933]" },
-      { name: "TailwindCSS", icon: SiTailwindcss, color: "text-[#06B6D4]" },
-    ],
-  },
-  {
-    name: "Platforms & Tools",
-    items: [
-      { name: "WordPress", icon: SiWordpress, color: "text-[#21759B]" },
-      { name: "AWS", icon: SiAmazon, color: "text-[#FF9900]" },
-      { name: "Vercel", icon: SiVercel, color: "text-[#000000]" },
-      { name: "Supabase", icon: SiSupabase, color: "text-[#3ECF8E]" },
-      { name: "SQL Server", icon: Database, color: "text-[#CC2927]" },
-      { name: "Git", icon: SiGit, color: "text-[#F05032]" },
-    ],
-  },
-]
-
 const softSkills = [
   "Engineering mindset with cross-functional fluency",
   "Communicates clearly with product, marketing & dev teams",
@@ -128,26 +76,14 @@ const skillCategories = [
       "Asset strategy & loading performance",
     ],
   },
-  {
-    name: "Tools & Platforms",
-    skills: [
-      "WordPress, WP Engine, Local",
-      "React, Tailwind, Vite",
-      "AWS Amplify, GitHub, Vercel",
-      "Supabase, SQL Server",
-      "Zapier, Mailchimp, Birdeye, Five9",
-      "WooCommerce, Gravity Forms, ACF",
-    ],
-  },
 ]
 
 interface SkillsSectionProps {
   isOpen?: boolean
   onOpenChange?: (open: boolean) => void
-  roleFilter?: RoleFilter
 }
 
-export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange, roleFilter }: SkillsSectionProps = {}) {
+export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange }: SkillsSectionProps = {}) {
   const [internalIsOpen, setInternalIsOpen] = useState(false)
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen
   const setIsOpen = onOpenChange || ((value: boolean) => setInternalIsOpen(value))
@@ -195,39 +131,6 @@ export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange, roleFilt
             className="overflow-hidden"
           >
             <CardContent className="pt-6">
-        {/* Tech Stack Tiles */}
-        <div className="mb-8 pb-6 border-b border-border/30">
-          <div className="space-y-6">
-            {techCategories.map((category, catIndex) => (
-              <div key={category.name} className="space-y-3">
-                <Typography variant="body-sm" className="font-semibold text-foreground text-xs uppercase tracking-wide">
-                  {category.name}
-                </Typography>
-                <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-3">
-                  {category.items.map((item, index) => {
-                    const Icon = item.icon
-                    const globalIndex = catIndex * 10 + index
-                    return (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.2, delay: globalIndex * 0.03 }}
-                        className="group flex flex-col items-center gap-2 p-3 rounded-lg border border-border/50 hover:border-primary/30 hover:bg-muted/20 transition-all cursor-default"
-                      >
-                        <Icon className={`h-6 w-6 ${item.color} group-hover:scale-110 transition-transform`} />
-                        <Typography variant="body-sm" className="text-xs text-muted-foreground text-center group-hover:text-foreground transition-colors">
-                          {item.name}
-                        </Typography>
-                      </motion.div>
-                    )
-                  })}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Soft Skills / Work Style - Full Width, Always Visible */}
         <div className="mb-8 pb-6 border-b border-border/30">
           <div className="border border-border/50 rounded-lg overflow-hidden hover:border-primary/30 transition-colors">
@@ -255,24 +158,11 @@ export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange, roleFilt
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category, index) => {
             const isOpen = openCategories.has(category.name)
-            // Determine if this category is relevant to the role filter
-            const isRelevant = roleFilter && roleFilter !== "all" ? (
-              (roleFilter === "WordPress Engineering" && category.name === "WordPress Engineering") ||
-              (roleFilter === "MarTech / Growth Engineering" && category.name === "MarTech / Growth Engineering") ||
-              (roleFilter === "Product & Internal Tools" && category.name === "Product & Systems Design") ||
-              (roleFilter === "Performance Engineering" && category.name === "Performance Engineering") ||
-              (roleFilter === "Integrations & Automation" && (category.name === "Core Engineering" || category.name === "MarTech / Growth Engineering")) ||
-              (roleFilter === "Implementation Engineer" && (category.name === "Core Engineering" || category.name === "Product & Systems Design" || category.name === "MarTech / Growth Engineering"))
-            ) : true
             
             return (
               <div
                 key={index}
-                className={`border rounded-lg overflow-hidden hover:border-primary/30 transition-colors ${
-                  roleFilter && roleFilter !== "all" && isRelevant
-                    ? "border-primary/50 bg-primary/5"
-                    : "border-border/50"
-                }`}
+                className="border border-border/50 rounded-lg overflow-hidden hover:border-primary/30 transition-colors"
               >
                 <button
                   onClick={() => toggleCategory(category.name)}

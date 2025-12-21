@@ -94,7 +94,7 @@ export const lensToRoles: Record<RoleFilter, string[]> = {
     "Mineralife Nutraceuticals — Marketing & IT Consultant (2021-Present)",
   ],
   "Product & Internal Tools": [
-    "Independent Web Systems Engineer (2025-Present)",
+    "Tall Karol (2023-Present)",
     "Perfect Power Wash — Marketing Director / Head of IT (2019-2021)",
   ],
   "Integrations & Automation": [
@@ -155,22 +155,18 @@ export const lensToSkillCategories: Record<RoleFilter, string[]> = {
     "WordPress Engineering",
     "Core Engineering",
     "Performance Engineering",
-    "Tools & Platforms",
   ],
   "MarTech / Growth Engineering": [
     "MarTech / Growth Engineering",
     "Core Engineering",
-    "Tools & Platforms",
   ],
   "Product & Internal Tools": [
     "Product & Systems Design",
     "Core Engineering",
-    "Tools & Platforms",
   ],
   "Integrations & Automation": [
     "Core Engineering",
     "MarTech / Growth Engineering",
-    "Tools & Platforms",
   ],
   "Performance Engineering": [
     "Performance Engineering",
@@ -186,7 +182,6 @@ export const lensToSkillCategories: Record<RoleFilter, string[]> = {
     "Product & Systems Design",
     "Integrations & Automation",
     "MarTech / Growth Engineering",
-    "Tools & Platforms",
   ],
 }
 
@@ -248,17 +243,6 @@ export const skillCategoriesData = [
       "Core Web Vitals improvements (e.g., LCP 5.5s → 3.2s)",
       "Lighthouse optimization & render-path refinement",
       "Asset strategy & loading performance",
-    ],
-  },
-  {
-    name: "Tools & Platforms",
-    skills: [
-      "WordPress, WP Engine, Local",
-      "React, Tailwind, Vite",
-      "AWS Amplify, GitHub, Vercel",
-      "Supabase, SQL Server",
-      "Zapier, Mailchimp, Birdeye, Five9",
-      "WooCommerce, Gravity Forms, ACF",
     ],
   },
 ]

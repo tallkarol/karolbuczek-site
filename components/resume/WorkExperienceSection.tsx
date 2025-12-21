@@ -22,9 +22,9 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    period: "2025 — Present",
-    officialTitle: "Independent Web Engineer",
-    reality: "Engineering custom WordPress/React tooling, improving performance, and building integrations that support marketing, product, and operations.",
+    period: "2023 — Present",
+    officialTitle: "Tall Karol - Founder & Principal Consultant",
+    reality: "Combining brand strategy, full-stack development, and systems architecture to solve problems across the entire digital stack.",
     systems: [
       "Built attribution frameworks & event pipelines",
       "Developed WordPress plugins and React-based internal tools",
@@ -34,9 +34,8 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
-    period: "2021 — 2024",
+    period: "2021 — 2023",
     officialTitle: "Universal Windows Direct — Full Stack Web Developer",
-    officialDates: "Official Role: Oct 2021 – Jan 2023 • Contractor through 2024",
     reality: "Improved performance, tracking accuracy, and operational reliability across marketing and engineering.",
     systems: [
       "VIP-compliant Gutenberg block → LCP 5.5s → 3.2s, Lighthouse 70 → 83",

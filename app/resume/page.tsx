@@ -3,22 +3,18 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Section } from "@/components/Section"
-import { Typography } from "@/components/typography"
 import { PageHero } from "@/components/sections/PageHero"
 import { ResumeIllustration } from "@/components/illustrations"
-import { RoleFilter } from "@/components/resume/ResumeFilters"
-import { ResumeSnapshot } from "@/components/resume/ResumeSnapshot"
-import { RoleSection } from "@/components/resume/RoleSection"
 import { EducationSection } from "@/components/resume/EducationSection"
 import { SkillsSection } from "@/components/resume/SkillsSection"
+import { TechStackSection } from "@/components/resume/TechStackSection"
 import { WorkExperienceSection } from "@/components/resume/WorkExperienceSection"
-import { LensDropdown } from "@/components/resume/LensDropdown"
 import { SystemsList } from "@/components/resume/SystemsList"
 import { ReferencesSection } from "@/components/resume/ReferencesSection"
 
 export default function ResumePage() {
-  const [selectedFilter, setSelectedFilter] = useState<RoleFilter>("all")
   const [skillsOpen, setSkillsOpen] = useState(true)
+  const [techStackOpen, setTechStackOpen] = useState(true)
   const [workExperienceOpen, setWorkExperienceOpen] = useState(true)
   const [projectsOpen, setProjectsOpen] = useState(false)
 
@@ -58,8 +54,8 @@ export default function ResumePage() {
       <Section>
         <PageHero
           eyebrow="Interactive Resume"
-          title="My Engineering Work Across WordPress, React & Integrations"
-          description="A structured, interactive overview of my roles, skills, and contributions across engineering, automation, and cross-platform workflows."
+          title="My name is Karol Buczek and I am a Full-Stack Web Engineer who works across WordPress, React & Integrations"
+          description="I build high-impact web tools and workflows using WordPress and React, and I develop the integrations, automation, and backend logic that connect them to the platforms and software your business runs on."
           illustration={<ResumeIllustration />}
           buttons={
             <div className="flex flex-wrap items-center gap-4">
@@ -100,44 +96,28 @@ export default function ResumePage() {
         />
       </Section>
 
-      <Section>
+      <Section className="pt-4 md:pt-6">
         <div className="space-y-8 max-w-5xl mx-auto">
+          {/* Resume Content */}
+          <div className="space-y-8">
+            {/* Skills */}
+            <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
 
-          {/* Snapshot */}
-          <ResumeSnapshot />
+            {/* Tech Stack */}
+            <TechStackSection isOpen={techStackOpen} onOpenChange={setTechStackOpen} />
 
-          {/* Lens Filter */}
-          <div className="flex items-center justify-between pt-4 border-t border-border/50">
-            <Typography variant="body-sm" className="text-muted-foreground font-medium">
-              Filter by focus area:
-            </Typography>
-            <LensDropdown selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+            {/* Work Experience */}
+            <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
+
+            {/* Featured Work */}
+            <SystemsList isOpen={projectsOpen} onOpenChange={setProjectsOpen} />
+
+            {/* Education */}
+            <EducationSection />
+
+            {/* References */}
+            <ReferencesSection />
           </div>
-
-          {/* Filtered View */}
-          {selectedFilter !== "all" && (
-            <RoleSection role={selectedFilter} isVisible={true} />
-          )}
-
-          {/* Full Resume View */}
-          {selectedFilter === "all" && (
-            <div className="space-y-8 pt-4">
-              {/* Skills */}
-              <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
-
-              {/* Work Experience */}
-              <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
-
-              {/* Featured Work */}
-              <SystemsList isOpen={projectsOpen} onOpenChange={setProjectsOpen} />
-
-              {/* Education */}
-              <EducationSection />
-
-              {/* References */}
-              <ReferencesSection />
-            </div>
-          )}
         </div>
       </Section>
     </>

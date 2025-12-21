@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, transform } from "framer-motion"
 import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -23,67 +23,72 @@ interface TimelineItem {
 const timelineData: TimelineItem[] = [
   {
     period: "2023 — Present",
-    officialTitle: "Tall Karol - Founder & Principal Consultant",
-    reality: "Combining brand strategy, full-stack development, and systems architecture to solve problems across the entire digital stack.",
+    officialTitle: "Tall Karol - Systems Architect & Full-Stack Developer",
+    reality: "",
     systems: [
-      "Built attribution frameworks & event pipelines",
-      "Developed WordPress plugins and React-based internal tools",
-      "Created automation workflows and API integrations",
-      "Improved analytics, funnel reliability & data accuracy",
-      "Advised on platform architecture & engineering best practices",
+      "Architected enterprise performance improvements, including a VIP-compliant Gutenberg Block system → LCP 5.5s → 3.2s, Lighthouse 70 → 83",
+      "Built UTM Attribution plugin powering multi-touch tracking across web + CRM funnels",
+      "Created marketer-friendly GTM Event Button Block for standardized event pipelines",
+      "Developed secure React-based AWS document portal (Amplify, Cognito, RDS, Lambda, S3) with RBAC + audit logging",
+      "Built REST-based ingestion pipelines into a data warehouse for analytics + forecasting",
+      "Delivered automation workflows across CRMs, email providers, and lead platforms",
     ],
   },
   {
     period: "2021 — 2023",
-    officialTitle: "Universal Windows Direct — Full Stack Web Developer",
-    reality: "Improved performance, tracking accuracy, and operational reliability across marketing and engineering.",
+    officialTitle: "Universal Windows Direct — Backend & Integration Engineer (Full Stack)",
+    reality: "Built and maintained backend systems, automations, and PHP/SQL infrastructure supporting high-volume marketing and operational workflows.",
     systems: [
-      "VIP-compliant Gutenberg block → LCP 5.5s → 3.2s, Lighthouse 70 → 83",
-      "Built UTM Attribution Plugin for reliable multi-touch tracking",
-      "Created GTM Event Button Block for standardized events",
-      "Developed backend automation pipelines across CRMs & lead providers",
-      "Implemented structured logging & error-handling frameworks",
+      "Developed PHP + SQL-driven automation frameworks for lead routing, attribution logic, and CRM/ops workflows",
+      "Built and maintained API integrations into third-party platforms (Five9, Mailchimp, Hover, Birdeye, internal CRMs)",
+      "Engineered cron-based data pipelines running on a VPS to transform, clean, and distribute data across systems",
+      "Architected an extensible utility framework for logging, error handling, and maintainability across automation codebase",
+      "Designed and operated server-level scripts and ingestion processes for operational data warehousing",
+      "Orchestrated GoDaddy VPS infrastructure migration (Gen3 → Gen4) with zero downtime impact",
+      "Led full Joomla → WordPress rebuild, preserving custom functionality while improving extensibility and stability",
+      "Delivered Zapier-based integrations for fast-paced marketing automation workflows",
     ],
   },
   {
     period: "2021 — Present",
-    officialTitle: "Mineralife Nutraceuticals — Marketing & IT Consultant",
-    officialDates: "July 2021 – Present",
-    reality: "Enhanced e-commerce performance, marketing data, and lifecycle automation supporting ongoing business growth.",
+    officialTitle: "Mineralife Nutraceuticals — Web & Marketing Systems Consultant",
+    reality: "Engineering improvements across B2C and B2B ecommerce platforms, enhancing WooCommerce performance, data visibility, and user experience.",
     systems: [
-      "WooCommerce performance tuning & UX improvements",
-      "Lifecycle automation with segmentation refinements",
-      "Funnel restructuring & product-page optimization",
-      "CRM → email → analytics integrations",
+      "Optimized performance and UX across WooCommerce B2C and B2B websites, collaborating with designers to implement improved layouts and interactions",
+      "Built an internal WooCommerce data dashboard to surface order, inventory, and revenue insight for team decision-making",
+      "Developed lifecycle automation workflows and segmentation logic supporting retention and repeat purchase behavior",
+      "Implemented data and event integrations between WooCommerce, email platforms, and analytics systems",
     ],
   },
   {
     period: "2019 — 2021",
-    officialTitle: "Perfect Power Wash — Marketing Director / Head of IT",
-    officialDates: "Apr 2019 – Jul 2021",
-    reality: "Built a unified operational engine across marketing, IT, and sales with automated workflows and clearer reporting.",
+    officialTitle: "Perfect Power Wash — Marketing Director / Head of IT (Systems & Ops Engineering)",
+    reality: "Led technology, marketing operations, and data infrastructure initiatives during rapid organizational growth (expansion from 1 market to 4).",
     systems: [
-      "Redesigned WordPress funnels with measurable CRO lift",
-      "Built dashboards for call center, lifecycle & ROI",
-      "Automated opportunity tracking across all inbound channels",
-      "Implemented structured data processes for forecasting",
+      "Progressed from Marketing Developer to Marketing Director, owning strategy, analytics, and technology integration",
+      "Designed and implemented internal systems for lead management, call center workflows, and automated customer pipelines",
+      "Engineered custom tools that enhanced efficiency across sales, operations, and marketing handoffs",
+      "Built data dashboards and reporting models for forecasting, ROI analysis, and lifecycle performance",
+      "Drove website redesign + testing initiatives, achieving measurable conversion improvements (237% lift, 175% CTR gains)",
+      "Directed cross-functional teams and mentored engineers/marketers on technical implementation and process automation",
+      "Standardized brand systems and coordinated with creative agencies (web, TV, radio, design) to ensure operational cohesion",
     ],
   },
   {
     period: "2009 — 2019",
     officialTitle: "Freelance Developer / Designer",
-    officialDates: "Jan 2009 – Apr 2019",
-    reality: "Delivered custom WordPress builds and internal tools for small businesses and creative teams.",
+    reality: "Delivered full-stack web development and digital product solutions for small businesses, early-stage startups, and music industry clients. Combined engineering, UX design, and brand support to build functional online platforms and creative assets.",
     systems: [
-      "Custom WP themes, plugins & site builds",
-      "Basic dashboards and workflow automation",
-      "Brand & conversion-focused redesigns",
+      "Built custom websites using HTML/CSS, PHP, and WordPress, including bespoke themes and plugins",
+      "Designed UX flows and page architectures to support lead funnels, e-commerce, and content publishing",
+      "Created brand and visual systems (logos, identity suites, album art, promotional graphics) for musicians and small business clients",
+      "Produced marketing copy and social content campaigns supporting launches and event promotions",
+      "Managed end-to-end project execution: requirements, design, build, deployment, and maintenance",
     ],
   },
   {
     period: "2016 — 2018",
     officialTitle: "Red Light Management — Marketing / Creative Consultant",
-    officialDates: "Sept 2016 – Apr 2018",
     reality: "Created scalable digital assets and repeatable content systems supporting touring artists and management teams.",
     systems: [
       "Designed reusable social and digital toolkits",
@@ -94,7 +99,6 @@ const timelineData: TimelineItem[] = [
   {
     period: "2014 — 2015",
     officialTitle: "Localtopia Columbus — UX / Marketing Consultant",
-    officialDates: "Nov 2014 – Jun 2015",
     reality: "Improved product onboarding, user flows, and design alignment for a local startup marketplace.",
     systems: [
       "Led UX redesign",
@@ -105,7 +109,6 @@ const timelineData: TimelineItem[] = [
   {
     period: "2013 — 2014",
     officialTitle: "CUBE Karaoke — Co-founder / Creative Director",
-    officialDates: "Jan 2013 – Apr 2014",
     reality: "Built the brand, customer experience, and early marketing tech stack for a concept-stage entertainment venture.",
     systems: [
       "Designed end-to-end customer experience flows",
@@ -114,14 +117,13 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
-    period: "2012 — 2013",
+    period: "2011 — 2013",
     officialTitle: "in2itiv media — Co-founder / CEO",
-    officialDates: "Feb 2012 – Jan 2013",
-    reality: "Launched and operated a live-events organization with an emphasis on workflow design and digital promotion.",
+    reality: "Launched and operated a live-events organization with an emphasis on building community and promoting local events.",
     systems: [
       "Built operational pipelines for staffing, logistics & coordination",
       "Managed budgets, schedules & team communication",
-      "Created promotional web assets and marketing flows",
+      "Created promotional web assets and marketing flows for local events",
     ],
   },
   {
@@ -269,9 +271,6 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
               <Typography variant="body" className="font-semibold text-foreground group-hover:text-primary transition-colors">
                 {item.officialTitle}
               </Typography>
-              <Typography variant="body-sm" className="text-xs text-muted-foreground mt-0.5 group-hover:text-primary/70 transition-colors">
-                Click to view details →
-              </Typography>
             </button>
           )}
           {item.officialDates && (
@@ -350,9 +349,6 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
                 <div className="space-y-8">
                   {/* Recent work */}
                   <div>
-                    <Typography variant="body-sm" className="font-semibold mb-4 text-foreground uppercase tracking-wide text-xs">
-                      Recent (2019 — Present)
-                    </Typography>
                     <div className="space-y-0">
                       {recentItems.map((item, index) => renderTimelineItem(item, index))}
                     </div>

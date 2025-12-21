@@ -4,6 +4,7 @@ import { WhoIWorkBestWith } from "@/components/sections/WhoIWorkBestWith"
 import { Philosophy } from "@/components/sections/Philosophy"
 import { WhatImNot } from "@/components/sections/WhatImNot"
 import { LookingFor } from "@/components/resume/LookingFor"
+import { TechnicalSkills } from "@/components/sections/TechnicalSkills"
 
 export const metadata: Metadata = {
   title: "About | Karol Buczek",
@@ -32,6 +33,10 @@ export default function AboutPage() {
 
       <Section>
         <LookingFor />
+      </Section>
+
+      <Section>
+        <TechnicalSkills />
       </Section>
     </>
   )

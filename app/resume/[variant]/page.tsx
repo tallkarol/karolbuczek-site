@@ -65,7 +65,7 @@ export default function ResumeVariantPage() {
 
         {/* Skills */}
         <div className="mb-8 print:mb-6">
-          <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} roleFilter={roleFilter} />
+          <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
         </div>
 
         {/* Work Experience */}

@@ -39,11 +39,9 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
     }
   }, [isOpen, onClose])
 
-  if (!isOpen || !caseStudy) return null
-
   return (
-    <AnimatePresence>
-      {isOpen && (
+    <AnimatePresence mode="wait">
+      {isOpen && caseStudy && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={onClose}

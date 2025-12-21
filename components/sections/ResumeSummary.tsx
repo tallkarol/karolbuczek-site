@@ -22,11 +22,10 @@ export function ResumeSummary() {
           </div>
 
           <Typography variant="body" className="text-muted-foreground">
-            Full-stack developer building systems, websites, internal tools, and automations that help marketing, product, and engineering work together. I fix cross-functional problems — slow stacks, attribution gaps, scattered data, manual workflows — using modern web tooling, cloud platforms, and practical AI.
-          </Typography>
+          Full-stack developer with a track record in performance engineering, WordPress/VIP builds, data pipelines, and internal tools across AWS and modern web stacks.          </Typography>
 
           <div className="flex flex-wrap gap-2 pt-2">
-            <Button asChild variant="outline" size="sm" className="rounded-full text-xs font-ui border-border/50 hover:border-primary transition-colors">
+            <Button asChild size="sm" className="rounded-full text-xs font-ui">
               <Link href="/resume">
                 View full resume
                 <ArrowRight className="ml-2 h-3 w-3" />

@@ -12,13 +12,22 @@ export function CaseStudyGrid() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleCaseStudyClick = (caseStudy: CaseStudy) => {
+    if (!caseStudy) return
     setSelectedCaseStudy(caseStudy)
     setIsModalOpen(true)
   }
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
-    setTimeout(() => setSelectedCaseStudy(null), 300) // Delay to allow animation
+    // Clear case study after animation completes
+    setTimeout(() => {
+      setSelectedCaseStudy(null)
+    }, 300)
+  }
+
+  // Ensure we have case studies before rendering
+  if (!allCaseStudies || allCaseStudies.length === 0) {
+    return null
   }
 
   return (

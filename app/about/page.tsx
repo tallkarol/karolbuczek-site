@@ -3,6 +3,7 @@ import { Section } from "@/components/Section"
 import { WhoIWorkBestWith } from "@/components/sections/WhoIWorkBestWith"
 import { Philosophy } from "@/components/sections/Philosophy"
 import { WhatImNot } from "@/components/sections/WhatImNot"
+import { LookingFor } from "@/components/resume/LookingFor"
 
 export const metadata: Metadata = {
   title: "About | Karol Buczek",
@@ -27,6 +28,10 @@ export default function AboutPage() {
 
       <Section>
         <WhatImNot />
+      </Section>
+
+      <Section>
+        <LookingFor />
       </Section>
     </>
   )

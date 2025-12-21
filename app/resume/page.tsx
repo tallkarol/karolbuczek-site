@@ -14,13 +14,12 @@ import { SkillsSection } from "@/components/resume/SkillsSection"
 import { WorkExperienceSection } from "@/components/resume/WorkExperienceSection"
 import { LensDropdown } from "@/components/resume/LensDropdown"
 import { SystemsList } from "@/components/resume/SystemsList"
-import { LookingFor } from "@/components/resume/LookingFor"
 import { ReferencesSection } from "@/components/resume/ReferencesSection"
 
 export default function ResumePage() {
   const [selectedFilter, setSelectedFilter] = useState<RoleFilter>("all")
-  const [skillsOpen, setSkillsOpen] = useState(false)
-  const [workExperienceOpen, setWorkExperienceOpen] = useState(false)
+  const [skillsOpen, setSkillsOpen] = useState(true)
+  const [workExperienceOpen, setWorkExperienceOpen] = useState(true)
   const [projectsOpen, setProjectsOpen] = useState(false)
 
   const handleSkillsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -137,11 +136,6 @@ export default function ResumePage() {
 
               {/* References */}
               <ReferencesSection />
-
-              {/* What I'm Looking For */}
-              <div className="pt-4 border-t border-border/50">
-                <LookingFor />
-              </div>
             </div>
           )}
         </div>

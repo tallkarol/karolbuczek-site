@@ -8,4 +8,7 @@ export { ResumeTimeline } from "./ResumeTimeline"
 export { ResumeIllustration } from "./ResumeIllustration"
 export { CaseStudiesIllustration } from "./CaseStudiesIllustration"
 export { ContactIllustration } from "./ContactIllustration"
+export { BuildIllustration } from "./BuildIllustration"
+export { OptimizeIllustration } from "./OptimizeIllustration"
+export { ConnectIllustration } from "./ConnectIllustration"
 

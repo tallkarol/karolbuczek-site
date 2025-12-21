@@ -23,7 +23,7 @@ export function Footer() {
                 KAROL BUCZEK
               </div>
               <div className="text-xs text-muted-foreground">
-                Web Systems Engineer • WordPress & MarTech • Internal Tools & Automation
+                Web Systems Engineer • Full-Stack Developer • MarTech & Automation
               </div>
             </div>
           </Link>

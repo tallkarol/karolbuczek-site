@@ -3,39 +3,43 @@
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { Typography } from "@/components/typography"
-import { SystemNodes } from "@/components/illustrations"
+import { BuildIllustration, OptimizeIllustration, ConnectIllustration } from "@/components/illustrations"
 
 const skillCategories = [
   {
     name: "Build",
     description: "Custom engineering that solves real business problems.",
+    illustration: BuildIllustration,
     skills: [
-      "WordPress plugins, blocks, VIP-compliant code",
-      "Internal tools, React apps, AWS architecture",
-      "PHP/SQL automation, cron jobs",
-      "WooCommerce optimization",
-      "Using AI tools in product development to improve quality and efficiency",
+      "Full-stack internal tools & web apps",
+      "WordPress engineering",
+      "AWS-backed workflows & automation",
+      "PHP/SQL data logic",
+      "Practical AI to speed up iteration and QA",
     ],
   },
   {
     name: "Optimize",
-    description: "MarTech, attribution, analytics, and performance systems.",
+    description: "Improve performance, analytics accuracy, and data workflows.",
+    illustration: OptimizeIllustration,
     skills: [
-      "UTM persistence & attribution",
-      "GTM event/dataLayer architecture",
-      "Core Web Vitals",
-      "Funnel + lead workflow design",
-      "Analytics dashboards",
+      "UTM + attribution architecture",
+      "GTM + dataLayer event systems",
+      "Core Web Vitals + site performance",
+      "Funnel & lead workflow design",
+      "Data normalization & standardization",
     ],
   },
   {
     name: "Connect",
-    description: "Integration and orchestration across the stack.",
+    description: "Integrate platforms and orchestrate data movement.",
+    illustration: ConnectIllustration,
     skills: [
-      "CRM integrations (Mailchimp, Five9, Birdeye…)",
-      "Modular Zapier architectures",
-      "API + data pipelines",
-      "Error-handling frameworks",
+      "CRM + API integrations",
+      "Zapier optimizations",
+      "Data pipelines & orchestration",
+      "Error-handling & process visibility",
+      "AI-assisted workflow design",
     ],
   },
 ]
@@ -49,27 +53,32 @@ export function SkillsMap() {
 
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
+      <div className="space-y-4">
         <Typography variant="h2" as="h2">What I Do</Typography>
+        <Typography variant="body" className="max-w-3xl text-muted-foreground">
+          I like working on the unglamorous parts of the stack — the places where broken handoffs, bad data, or slow UX are quietly costing you money.
+        </Typography>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
-        {skillCategories.map((category, index) => (
-          <motion.div
-            key={category.name}
-            initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative p-6 border border-border/50 rounded-lg hover:shadow-lg transition-all hover:border-primary/30 overflow-hidden"
-          >
-            {/* Subtle accent */}
-            <div className="absolute top-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-300" />
-            
-            {/* Illustration */}
-            <div className="h-24 w-full mb-4 rounded border border-border/30 bg-muted/20 overflow-hidden">
-              <SystemNodes className="h-full w-full" />
-            </div>
+        {skillCategories.map((category, index) => {
+          const Illustration = category.illustration
+          return (
+            <motion.div
+              key={category.name}
+              initial={mounted ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative p-6 border border-border/50 rounded-lg hover:shadow-lg transition-all hover:border-primary/30 overflow-hidden"
+            >
+              {/* Subtle accent */}
+              <div className="absolute top-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-300" />
+              
+              {/* Illustration */}
+              <div className="h-24 w-full mb-4 rounded border border-border/30 bg-muted/20 overflow-hidden">
+                <Illustration className="h-full w-full" />
+              </div>
             
             <Typography variant="h3" as="h3" className="mb-3 group-hover:text-primary transition-colors">{category.name}</Typography>
             <Typography variant="body-sm" className="mb-4 text-muted-foreground">{category.description}</Typography>
@@ -81,8 +90,9 @@ export function SkillsMap() {
                 </li>
               ))}
             </ul>
-          </motion.div>
-        ))}
+            </motion.div>
+          )
+        })}
       </div>
     </div>
   )

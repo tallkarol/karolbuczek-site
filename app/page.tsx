@@ -2,9 +2,7 @@ import { Section } from "@/components/Section"
 import { HeroIntro } from "@/components/sections/HeroIntro"
 import { FeaturedQuote } from "@/components/sections/FeaturedQuote"
 import { SkillsMap } from "@/components/sections/SkillsMap"
-import { WhoIWorkBestWith } from "@/components/sections/WhoIWorkBestWith"
-import { Philosophy } from "@/components/sections/Philosophy"
-import { WhatImNot } from "@/components/sections/WhatImNot"
+import { ResumeSummary } from "@/components/sections/ResumeSummary"
 import { CaseStudyGrid } from "@/components/sections/CaseStudyGrid"
 import { CTASection } from "@/components/sections/CTASection"
 
@@ -24,15 +22,7 @@ export default function HomePage() {
       </Section>
 
       <Section>
-        <WhoIWorkBestWith />
-      </Section>
-
-      <Section>
-        <Philosophy />
-      </Section>
-
-      <Section>
-        <WhatImNot />
+        <ResumeSummary />
       </Section>
 
       <Section id="case-studies">

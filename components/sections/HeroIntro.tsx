@@ -1,61 +1,37 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/typography"
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-}
-
 const words = ["systems", "websites", "internal tools", "automations"]
+
+// Dynamically import framer-motion only for the word animation
+const AnimatedWord = dynamic(() => import("./AnimatedWord").then(mod => ({ default: mod.AnimatedWord })), { ssr: false })
 
 export function HeroIntro() {
   const [mounted, setMounted] = useState(false)
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  useEffect(() => {
-    if (!mounted) return
-    
-    // Delay animation start to reduce initial blocking
-    let interval: NodeJS.Timeout | null = null
-    const timeout = setTimeout(() => {
-      interval = setInterval(() => {
-        setCurrentWordIndex((prev) => (prev + 1) % words.length)
-      }, 3000)
-    }, 100)
-
-    return () => {
-      clearTimeout(timeout)
-      if (interval) clearInterval(interval)
-    }
-  }, [mounted])
-
   return (
     <section className="grid items-center gap-6 pt-0 pb-0 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-6 md:py-0">
-      <motion.div
-        initial={false}
-        animate="visible"
-        variants={fadeUp}
-        transition={{ duration: 0.3 }}
-        className="space-y-2 md:space-y-3"
-      >
+      <div className="space-y-2 md:space-y-3">
         <div className="flex items-center gap-4 mb-2">
           <div className="relative h-16 w-16 md:h-20 md:w-20 flex-shrink-0">
             <Image
               src="/logo.png"
               alt="Karol Buczek"
-              fill
+              width={80}
+              height={80}
               className="object-contain"
               priority
+              fetchPriority="high"
             />
           </div>
         </div>
@@ -67,18 +43,7 @@ export function HeroIntro() {
           I build{" "}
           <span className="relative inline-block min-w-[180px] text-left">
             {mounted ? (
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={words[currentWordIndex]}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="inline-block text-primary"
-                >
-                  {words[currentWordIndex]}
-                </motion.span>
-              </AnimatePresence>
+              <AnimatedWord words={words} />
             ) : (
               <span className="inline-block text-primary">
                 {words[0]}
@@ -104,16 +69,10 @@ export function HeroIntro() {
             <Link href="/resume">Open interactive resume</Link>
           </Button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Photo */}
-      <motion.div
-        initial={false}
-        animate="visible"
-        variants={fadeUp}
-        transition={{ duration: 0.3, delay: 0.1 }}
-        className="relative flex aspect-[3/4] w-full overflow-hidden rounded-lg"
-      >
+      <div className="relative flex aspect-[3/4] w-full overflow-hidden rounded-lg">
         <div className="relative h-full w-full">
           <Image
             src="/karol-photo.png"
@@ -127,7 +86,7 @@ export function HeroIntro() {
             fetchPriority="low"
           />
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

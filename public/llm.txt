@@ -1,0 +1,56 @@
+# Karol Buczek - Web Systems Engineer
+
+## About
+Karol Buczek is a web systems engineer and full-stack developer specializing in building internal tools, automation pipelines, and integrations. With 10+ years of experience, he focuses on WordPress, React, APIs, MarTech systems, and full-stack development.
+
+## Core Skills
+- Web Systems Engineering
+- Full-Stack Development (React, Next.js, TypeScript, PHP, JavaScript, SQL)
+- WordPress Development (VIP, WooCommerce, plugin/block development)
+- MarTech & Marketing Technology Systems
+- API Integration & Automation
+- AWS Cloud Services (Amplify, Lambda, RDS, S3, Cognito)
+- Data Pipelines & Workflow Automation
+- Performance Engineering & Core Web Vitals Optimization
+
+## Experience
+- Tall Karol (2023-Present) - Systems Architect & Full-Stack Developer
+- Universal Windows Direct (2021-2023) - Backend & Integration Engineer (Full Stack)
+- Mineralife Nutraceuticals (2021-Present) - Web & Marketing Systems Consultant
+- Perfect Power Wash (2019-2021) - Marketing Director / Head of IT (Systems & Ops Engineering)
+- Freelance Developer / Designer (2009-2019)
+
+## Education
+- Case Western Reserve University - Full Stack Web Development
+- Miami University - International Studies (with Marketing Coursework)
+
+## Services
+- Web systems architecture and development
+- Internal tools and workflow platforms
+- MarTech automation and integration
+- API development and integration
+- WordPress plugin and block development
+- Performance optimization
+- Data pipeline engineering
+
+## Contact
+- Website: https://karolbuczek.com
+- LinkedIn: https://www.linkedin.com/in/karolbuczek
+- Email: Available through contact form at https://karolbuczek.com/contact
+
+## Key Projects & Case Studies
+- Enterprise Core Web Vitals Optimization (LCP: 5.5s → 3.2s, Lighthouse 70 → 83)
+- UTM Persistence & Attribution Plugin for WordPress
+- Custom GTM Event Button Block
+- Secure File Sharing Portal on AWS (Amplify, Cognito, S3, RDS, Lambda)
+- Backend Workflow Automations & Data Pipelines
+- Modular Zapier Architecture (70+ steps → 22 structured steps)
+
+## Focus Areas
+- Cross-functional problem solving
+- Attribution gaps and measurement
+- Tech debt reduction
+- Data integration and automation
+- System architecture
+- Performance optimization
+

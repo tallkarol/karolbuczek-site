@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow private/job search pages
+Disallow: /roles
+Disallow: /job-search
+Disallow: /resume/export/
+
+# Sitemap
+Sitemap: https://karolbuczek.com/sitemap.xml
+

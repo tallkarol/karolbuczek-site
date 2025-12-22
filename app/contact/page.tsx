@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     url: "https://karolbuczek.com/contact",
     images: [
       {
-        url: "/logo.png",
+        url: "/logo-square.png",
         width: 512,
         height: 512,
         alt: "Karol Buczek - Web Systems Engineer",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/logo.png"],
+    images: ["/logo-square.png"],
   },
 }
 

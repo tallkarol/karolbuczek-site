@@ -8,18 +8,21 @@ const interTight = Inter_Tight({
   subsets: ["latin"],
   variable: "--font-inter-tight",
   display: "swap",
+  preload: true,
 })
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
   display: "swap",
+  preload: false,
 })
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: false,
 })
 
 export const metadata: Metadata = {
@@ -50,9 +53,10 @@ export default function RootLayout({
       <body>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
+          storageKey="theme"
         >
           <LayoutShell>{children}</LayoutShell>
         </ThemeProvider>

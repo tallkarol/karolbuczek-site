@@ -25,20 +25,27 @@ export function HeroIntro() {
   useEffect(() => {
     if (!mounted) return
     
-    const interval = setInterval(() => {
-      setCurrentWordIndex((prev) => (prev + 1) % words.length)
-    }, 3000) // Change word every 3 seconds
+    // Delay animation start to reduce initial blocking
+    let interval: NodeJS.Timeout | null = null
+    const timeout = setTimeout(() => {
+      interval = setInterval(() => {
+        setCurrentWordIndex((prev) => (prev + 1) % words.length)
+      }, 3000)
+    }, 100)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearTimeout(timeout)
+      if (interval) clearInterval(interval)
+    }
   }, [mounted])
 
   return (
     <section className="grid items-center gap-6 pt-0 pb-0 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] md:gap-6 md:py-0">
       <motion.div
-        initial={mounted ? "hidden" : "visible"}
+        initial={false}
         animate="visible"
         variants={fadeUp}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.3 }}
         className="space-y-2 md:space-y-3"
       >
         <div className="flex items-center gap-4 mb-2">
@@ -101,22 +108,24 @@ export function HeroIntro() {
 
       {/* Photo */}
       <motion.div
-        initial={mounted ? "hidden" : "visible"}
+        initial={false}
         animate="visible"
         variants={fadeUp}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="relative hidden aspect-[3/4] w-full md:flex overflow-hidden rounded-lg border border-border/50 bg-muted/20"
+        transition={{ duration: 0.3, delay: 0.1 }}
+        className="relative flex aspect-[3/4] w-full overflow-hidden rounded-lg"
       >
-        {/* Placeholder - replace with actual photo */}
-        <div className="relative h-full w-full bg-gradient-to-br from-muted/50 to-muted/30">
-          {/* Uncomment when you have the photo */}
-          {/* <Image
-            src="/images/karol-photo.jpg"
+        <div className="relative h-full w-full">
+          <Image
+            src="/karol-photo.png"
             alt="Karol Buczek"
             fill
             className="object-cover"
-            priority
-          /> */}
+            loading="lazy"
+            decoding="async"
+            sizes="(max-width: 768px) 100vw, 33vw"
+            quality={80}
+            fetchPriority="low"
+          />
         </div>
       </motion.div>
     </section>

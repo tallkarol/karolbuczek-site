@@ -12,7 +12,7 @@
     /* Light mode */
     --background: var(--paper);
     --foreground: var(--ink);
-    --card: var(--paper);
+    --card: 35 18% 94%;
     --card-foreground: var(--ink);
     --popover: var(--paper);
     --popover-foreground: var(--ink);

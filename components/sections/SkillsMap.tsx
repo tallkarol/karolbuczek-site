@@ -55,7 +55,7 @@ export function SkillsMap() {
     <div className="space-y-8">
       <div className="space-y-4">
         <Typography variant="h2" as="h2">What I Do</Typography>
-        <Typography variant="body" className="max-w-3xl text-muted-foreground">
+        <Typography variant="body" className="text-muted-foreground">
           I like working on the unglamorous parts of the stack — the places where broken handoffs, bad data, or slow UX are quietly costing you money.
         </Typography>
       </div>
@@ -70,7 +70,7 @@ export function SkillsMap() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative p-6 border border-border/50 rounded-lg hover:shadow-lg transition-all hover:border-primary/30 overflow-hidden"
+              className="group relative p-6 border border-border/50 rounded-lg bg-card hover:shadow-lg transition-all hover:border-primary/30 overflow-hidden"
             >
               {/* Subtle accent */}
               <div className="absolute top-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-300" />

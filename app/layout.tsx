@@ -27,6 +27,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://karolbuczek.com"),
   title: "Karol Buczek | Web Systems Engineer • Full-Stack Developer • MarTech & Automation",
   description: "Web systems engineer building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
   icons: {

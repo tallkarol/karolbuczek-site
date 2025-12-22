@@ -15,6 +15,15 @@ const STORAGE_KEY = "job_search_page_authenticated"
 
 const searchQueries = [
   {
+    id: "director-martech",
+    title: "⭐ Director, Marketing Technology",
+    subtitle: "Leadership roles in MarTech",
+    description: "Senior leadership positions in marketing technology and systems.",
+    query: `remote ("Director Marketing Technology" OR "Marketing Technology Director" OR "Marketing Technology Manager" OR "Director Marketing Systems" OR "Marketing Systems Director" OR "Marketing Systems Manager")
+AND ("MarTech" OR "Marketing Technology" OR "Marketing Systems" OR Automation OR CRM OR Data)`,
+    linkedinUrl: "https://www.linkedin.com/jobs/search-results/?keywords=remote%20(%22Director%20Marketing%20Technology%22%20OR%20%22Marketing%20Technology%20Director%22%20OR%20%22Marketing%20Technology%20Manager%22%20OR%20%22Director%20Marketing%20Systems%22%20OR%20%22Marketing%20Systems%20Director%22%20OR%20%22Marketing%20Systems%20Manager%22)%20AND%20(%22MarTech%22%20OR%20%22Marketing%20Technology%22%20OR%20%22Marketing%20Systems%22%20OR%20%22Automation%22%20OR%20%22CRM%22%20OR%20%22Data%22)",
+  },
+  {
     id: "master",
     title: "⭐ MASTER BOOLEAN SEARCH — CORE ROLES",
     subtitle: "Your main pipeline",

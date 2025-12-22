@@ -11,7 +11,7 @@ const skillCategories = [
     description: "Custom engineering that solves real business problems.",
     illustration: BuildIllustration,
     skills: [
-      "Full-stack internal tools & web apps",
+      "Full-stack internal tools, websites, & web apps",
       "WordPress engineering",
       "AWS-backed workflows & automation",
       "PHP/SQL data logic",

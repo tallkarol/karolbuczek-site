@@ -17,6 +17,18 @@ const STORAGE_KEY = "roles_page_authenticated"
 
 const roles = [
   {
+    id: "director-marketing-technology",
+    title: "Director, Marketing Technology",
+    route: "/director-marketing-technology",
+    description: "Leading Marketing Technology Strategy & Systems Architecture",
+  },
+  {
+    id: "business-solutions-manager",
+    title: "Business Solutions Manager",
+    route: "/business-solutions-manager",
+    description: "Translating Business Requirements Into Technical Solutions",
+  },
+  {
     id: "implementation-engineer",
     title: "Implementation Engineer",
     route: "/implementation-engineer",

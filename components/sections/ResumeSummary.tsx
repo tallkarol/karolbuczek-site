@@ -16,13 +16,51 @@ export function ResumeSummary() {
             <Typography variant="h3" as="h3" className="font-display">
               Experience at a Glance
             </Typography>
-            <Typography variant="body-sm" className="text-muted-foreground">
-              20+ years coding • 15+ years in marketing & growth
-            </Typography>
           </div>
 
-          <Typography variant="body" className="text-muted-foreground">
-          Full-stack developer with a track record in performance engineering, WordPress/VIP builds, data pipelines, and internal tools across AWS and modern web stacks.          </Typography>
+          <ul className="space-y-2">
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+                10+ years building web platforms, internal tools & data workflows
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+              Full-stack web apps & websites using React, TailWind, Next.js, and more.
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+                Deep experience with APIs, automation pipelines & PHP/SQL engineering
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+                WordPress/VIP/WooCommerce engineering + plugin/block/system architecture
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+                AWS cloud experience — Amplify, Lambda, RDS, S3, Cognito
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+                Strong cross-functional background → product, marketing, engineering
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+                Cross-team communication & stakeholder leadership              </Typography>
+            </li>
+          </ul>
 
           <div className="flex flex-wrap gap-2 pt-2">
             <Button asChild size="sm" className="rounded-full text-xs font-ui">

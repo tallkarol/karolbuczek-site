@@ -87,7 +87,8 @@ export default function ResumePage() {
               </a>
               <span className="text-muted-foreground/30">·</span>
               <a
-                href="/resume.pdf"
+                href="/resume-karol-buczek.pdf"
+                download="resume-karol-buczek.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
@@ -144,7 +145,8 @@ export default function ResumePage() {
               </Button>
               <Button asChild variant="outline" className="rounded-full px-6 py-2 text-sm font-ui border-border/50 hover:border-primary transition-colors">
                 <a
-                  href="/resume.pdf"
+                  href="/resume-karol-buczek.pdf"
+                  download="resume-karol-buczek.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

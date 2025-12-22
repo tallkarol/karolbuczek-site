@@ -76,9 +76,12 @@ export function ApplyPackModal({ roleId, isOpen, onClose }: ApplyPackModalProps)
   }
 
   const handleDownloadPDF = () => {
-    if (!config) return
-    const url = `/resume/${config.resumeVariantId}?print=true`
-    window.open(url, "_blank")
+    const link = document.createElement("a")
+    link.href = "/resume-karol-buczek.pdf"
+    link.download = "resume-karol-buczek.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   const handleCopyLandingPageURL = () => {

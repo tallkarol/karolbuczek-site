@@ -7,7 +7,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/typography"
 
-const words = ["systems", "websites", "internal tools", "automations"]
+const words = ["internal tools", "systems", "web apps", "integrations", "automations" ]
 
 // Dynamically import framer-motion only for the word animation
 const AnimatedWord = dynamic(() => import("./AnimatedWord").then(mod => ({ default: mod.AnimatedWord })), { ssr: false })
@@ -54,9 +54,7 @@ export function HeroIntro() {
         </Typography>
 
         <Typography variant="body" className="max-w-xl text-muted-foreground">
-          I fix cross-functional problems — slow or fragile stacks, attribution gaps, scattered data, manual workflows — using modern web tooling, cloud platforms, and practical AI to turn them into reliable, measurable systems.
-        </Typography>
-
+        I fix cross-functional problems — attribution gaps, tech debt, scattered data, and broken manual workflows and API integrations — using web tooling, cloud platforms, and practical AI to build reliable, measurable systems.        </Typography>
         <div className="flex flex-wrap items-center gap-3">
           <Button asChild className="rounded-full px-6 py-2 text-sm font-semibold font-ui">
             <a href="#case-studies">View case studies</a>

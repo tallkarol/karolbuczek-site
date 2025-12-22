@@ -79,6 +79,175 @@ export function getCopyableBulletsForRole(roleId: string): string[] {
 }
 
 export const roleConfigs: Record<string, RoleConfig> = {
+  "director-marketing-technology": {
+    id: "director-marketing-technology",
+    label: "Director, Marketing Technology",
+    shortDescription: "Leading marketing technology strategy, systems architecture, and cross-functional teams to build scalable MarTech infrastructure that drives measurable business growth.",
+    landingPath: "/director-marketing-technology",
+    targetTitles: [
+      "Director Marketing Technology",
+      "Marketing Technology Director",
+      "Marketing Technology Manager",
+      "Director Marketing Systems",
+      "Marketing Systems Director",
+      "Marketing Systems Manager",
+      "Head of Marketing Technology",
+      "VP Marketing Technology",
+    ],
+    roleFilter: "MarTech / Growth Engineering",
+    outreachTemplates: {
+      linkedin: `Hi [Name],
+
+I saw the [Job Title] role at [Company] and wanted to reach out. I lead marketing technology strategy and systems architecture, building scalable MarTech infrastructure that drives measurable business growth.
+
+I've architected enterprise marketing technology systems including multi-touch attribution frameworks, standardized dataLayer event architectures, and automation workflows that connect marketing efforts to measurable outcomes. I've also led cross-functional teams, bridging engineering, marketing, and product to deliver systems that solve real business problems.
+
+My experience includes:
+• Leading marketing technology strategy and systems architecture
+• Building attribution frameworks & event pipelines that provide accurate ROI measurement
+• Architecting automation workflows across CRMs, email platforms, and lead systems
+• Cross-functional leadership bridging marketing, product, and engineering
+• 10+ years building web platforms, internal tools & data workflows
+
+I'd love to discuss how I can help [Company] build a marketing technology infrastructure that scales and delivers measurable results.
+
+Here's my role-specific landing page: https://karolbuczek.com/director-marketing-technology
+
+Best,
+Karol`,
+      email: `Subject: Director, Marketing Technology Role at [Company]
+
+Hi [Name],
+
+I'm reaching out regarding the Director, Marketing Technology position at [Company]. I lead marketing technology strategy and systems architecture, building scalable MarTech infrastructure that drives measurable business growth.
+
+My experience includes:
+• Leading marketing technology strategy and systems architecture for enterprise organizations
+• Building attribution frameworks & event pipelines that provide accurate ROI measurement
+• Architecting automation workflows across CRMs, email platforms, and lead systems
+• Cross-functional leadership bridging marketing, product, and engineering teams
+• 10+ years building web platforms, internal tools & data workflows
+• Deep experience with APIs, automation pipelines & PHP/SQL engineering
+• WordPress/VIP/WooCommerce engineering + plugin/block/system architecture
+• AWS stack experience (Amplify, Cognito, Lambda, RDS, S3)
+
+I've built multi-touch attribution layers for direct mail → digital funnels, designed standardized dataLayer event schemas for GTM across enterprise sites, refactored complex automation workflows into maintainable systems, and produced dashboards for sales efficiency, ROI, and channel performance.
+
+I'd welcome the opportunity to discuss how my leadership experience and technical expertise can help [Company] build a marketing technology infrastructure that scales.
+
+You can learn more about my MarTech leadership work here: https://karolbuczek.com/director-marketing-technology
+
+Best regards,
+Karol Buczek`,
+    },
+    resumeVariantId: "director-marketing-technology",
+    copyableBullets: [
+      "Leading marketing technology strategy and systems architecture for enterprise organizations",
+      "Building attribution frameworks & event pipelines that provide accurate ROI measurement",
+      "Architecting automation workflows across CRMs, email platforms, and lead systems",
+      "Cross-functional leadership bridging marketing, product, and engineering teams",
+      "10+ years building web platforms, internal tools & data workflows",
+      "Deep experience with APIs, automation pipelines & PHP/SQL engineering",
+      "WordPress/VIP/WooCommerce engineering + plugin/block/system architecture",
+      "AWS stack experience (Amplify, Cognito, Lambda, RDS, S3)",
+      "Multi-touch attribution layers for direct mail → digital funnels",
+      "Standardized dataLayer event schemas for GTM across enterprise sites",
+      "Refactored complex automation workflows (70+ steps) into maintainable systems",
+      "Dashboards for sales efficiency, ROI, and channel performance",
+      "Cross-team communication & stakeholder leadership",
+    ],
+    quote: {
+      text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. His integration work created a lasting impact across multiple systems and departments, with an incredible ability to simplify complexity and design solutions that actually solved the root problem instead of just addressing the symptoms.",
+      author: "John Kosmides",
+      role: "Vice President of Marketing — Perfect Power Wash & Universal Windows Direct",
+    },
+  },
+  "business-solutions-manager": {
+    id: "business-solutions-manager",
+    label: "Business Solutions Manager",
+    shortDescription: "Translating business requirements into technical solutions. I bridge the gap between business stakeholders and engineering teams to deliver systems that solve real problems and drive measurable outcomes.",
+    landingPath: "/business-solutions-manager",
+    targetTitles: [
+      "Business Solutions Manager",
+      "Solutions Manager",
+      "Technical Solutions Manager",
+      "Business Systems Manager",
+      "Solutions Architect",
+      "Technical Solutions Architect",
+      "Product Solutions Manager",
+      "Customer Solutions Manager",
+    ],
+    roleFilter: "Product & Internal Tools",
+    outreachTemplates: {
+      linkedin: `Hi [Name],
+
+I saw the [Job Title] role at [Company] and wanted to reach out. I translate business requirements into technical solutions, bridging the gap between business stakeholders and engineering teams.
+
+I've worked with cross-functional teams to understand business needs, translate workflows into technical specifications, and deliver systems that solve real problems. My experience includes architecting internal tools, designing workflow platforms, and building solutions that align engineering with business goals.
+
+My experience includes:
+• Translating business requirements and workflows into technical solutions
+• Identifying and communicating pragmatic solutions to complex integration problems
+• Engineering alignment across marketing, product & operations
+• Architecting internal tools & workflow platforms
+• Cross-functional communication & stakeholder leadership
+• 10+ years building web platforms, internal tools & data workflows
+
+I'd love to discuss how I can help [Company] bridge the gap between business needs and technical implementation.
+
+Here's my role-specific landing page: https://karolbuczek.com/business-solutions-manager
+
+Best,
+Karol`,
+      email: `Subject: Business Solutions Manager Role at [Company]
+
+Hi [Name],
+
+I'm reaching out regarding the Business Solutions Manager position at [Company]. I translate business requirements into technical solutions, bridging the gap between business stakeholders and engineering teams.
+
+My experience includes:
+• Translating business requirements and workflows into technical solutions that deliver value
+• Identifying and communicating pragmatic solutions to complex integration problems
+• Engineering alignment across marketing, product & operations
+• Architecting internal tools & workflow platforms
+• Applying systems thinking to funnels, data flow & platform design
+• Cross-functional communication & stakeholder leadership
+• 10+ years building web platforms, internal tools & data workflows
+• Deep experience with APIs, automation pipelines & PHP/SQL engineering
+• AWS stack experience (Amplify, Cognito, Lambda, RDS, S3)
+
+I've architected internal tools & workflow platforms, designed secure document systems with RBAC, and built solutions that enhance efficiency across sales, operations, and marketing handoffs. I'm comfortable leading meetings with high-level decision makers and navigating ambiguity to make decisions that pull in the right people.
+
+I'd welcome the opportunity to discuss how my experience bridging business and technical teams can help [Company] deliver solutions that solve real business problems.
+
+You can learn more about my solutions management work here: https://karolbuczek.com/business-solutions-manager
+
+Best regards,
+Karol Buczek`,
+    },
+    resumeVariantId: "business-solutions-manager",
+    copyableBullets: [
+      "Translating business requirements and workflows into technical solutions that deliver value",
+      "Identifying and communicating pragmatic solutions to complex integration problems",
+      "Engineering alignment across marketing, product & operations",
+      "Architecting internal tools & workflow platforms",
+      "Applying systems thinking to funnels, data flow & platform design",
+      "Cross-functional communication & stakeholder leadership",
+      "Comfortable leading meetings with high-level decision makers",
+      "Navigates ambiguity and makes decisions by pulling in the right people",
+      "10+ years building web platforms, internal tools & data workflows",
+      "Deep experience with APIs, automation pipelines & PHP/SQL engineering",
+      "AWS stack experience (Amplify, Cognito, Lambda, RDS, S3)",
+      "Architected internal tools & workflow platforms",
+      "Designed secure document systems with RBAC (AWS)",
+      "Built solutions that enhance efficiency across sales, operations, and marketing handoffs",
+    ],
+    quote: {
+      text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. He never just built a solution, he understood the business case behind it. Whether the work involved internal tools, customer-facing platforms, or data connections between legacy systems, he always approached challenges with clarity, logic, and a calm, solutions-focused mindset.",
+      author: "John Kosmides",
+      role: "Vice President of Marketing — Universal Windows Direct",
+    },
+  },
   "implementation-engineer": {
     id: "implementation-engineer",
     label: "Implementation Engineer",

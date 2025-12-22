@@ -7,12 +7,24 @@ import { LookingFor } from "@/components/resume/LookingFor"
 import { TechnicalSkills } from "@/components/sections/TechnicalSkills"
 
 export const metadata: Metadata = {
-  title: "About | Karol Buczek",
-  description: "Learn about how I work, who I work best with, and what I'm not.",
+  title: "About | Karol Buczek - How I Work & Who I Work Best With",
+  description: "Learn how I approach engineering problems, who I collaborate best with, and my philosophy on building systems that solve real business challenges.",
   openGraph: {
-    title: "About | Karol Buczek",
-    description: "Learn about how I work, who I work best with, and what I'm not.",
+    title: "About | Karol Buczek - How I Work & Who I Work Best With",
+    description: "Learn how I approach engineering problems, who I collaborate best with, and my philosophy on building systems that solve real business challenges.",
     url: "https://karolbuczek.com/about",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Karol Buczek - Web Systems Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/logo.png"],
   },
 }
 

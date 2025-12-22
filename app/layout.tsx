@@ -26,20 +26,37 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Karol Buczek | Web Systems Engineer",
-  description: "Systems-oriented web engineer specializing in WordPress, MarTech, backend scripting, and internal tools. I build end-to-end solutions that solve real business problems.",
+  title: "Karol Buczek | Web Systems Engineer • Full-Stack Developer • MarTech & Automation",
+  description: "Web systems engineer building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+  icons: {
+    icon: [
+      { url: "/logo.png", sizes: "64x64", type: "image/png" },
+      { url: "/logo.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: "/logo.png",
+  },
   openGraph: {
-    title: "Karol Buczek | Web Systems Engineer",
-    description: "Systems-oriented web engineer specializing in WordPress, MarTech, backend scripting, and internal tools. I build end-to-end solutions that solve real business problems.",
+    title: "Karol Buczek | Web Systems Engineer • Full-Stack Developer • MarTech & Automation",
+    description: "Web systems engineer building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
     url: "https://karolbuczek.com",
     siteName: "Karol Buczek",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Karol Buczek - Web Systems Engineer",
+      },
+    ],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karol Buczek | Web Systems Engineer",
-    description: "Systems-oriented web engineer specializing in WordPress, MarTech, backend scripting, and internal tools. I build end-to-end solutions that solve real business problems.",
+    title: "Karol Buczek | Web Systems Engineer • Full-Stack Developer • MarTech & Automation",
+    description: "Web systems engineer building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+    images: ["/logo.png"],
   },
 }
 

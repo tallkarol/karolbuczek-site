@@ -5,8 +5,25 @@ import { CaseStudiesIllustration } from "@/components/illustrations"
 import { CaseStudyGrid } from "@/components/sections/CaseStudyGrid"
 
 export const metadata: Metadata = {
-  title: "Case Studies | Karol Buczek",
-  description: "Real problems, constraints, solutions, and measurable outcomes from my work.",
+  title: "Case Studies | Karol Buczek - Real Problems & Measurable Solutions",
+  description: "Case studies showcasing web systems engineering, MarTech automation, API integrations, and full-stack development projects with measurable business outcomes.",
+  openGraph: {
+    title: "Case Studies | Karol Buczek - Real Problems & Measurable Solutions",
+    description: "Case studies showcasing web systems engineering, MarTech automation, API integrations, and full-stack development projects with measurable business outcomes.",
+    url: "https://karolbuczek.com/case-studies",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Karol Buczek - Web Systems Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/logo.png"],
+  },
 }
 
 export default function CaseStudiesPage() {

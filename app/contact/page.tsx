@@ -5,12 +5,24 @@ import { ContactConfigurator } from "@/components/contact/ContactConfigurator"
 import { Section } from "@/components/Section"
 
 export const metadata: Metadata = {
-  title: "Contact | Karol Buczek",
-  description: "Get in touch to discuss a role or project. Let's talk about how I can help.",
+  title: "Contact | Karol Buczek - Get In Touch",
+  description: "Contact Karol Buczek for engineering roles or consulting projects. Discuss web systems, MarTech, automation, or full-stack development opportunities.",
   openGraph: {
-    title: "Contact | Karol Buczek",
-    description: "Get in touch to discuss a role or project. Let's talk about how I can help.",
+    title: "Contact | Karol Buczek - Get In Touch",
+    description: "Contact Karol Buczek for engineering roles or consulting projects. Discuss web systems, MarTech, automation, or full-stack development opportunities.",
     url: "https://karolbuczek.com/contact",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Karol Buczek - Web Systems Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/logo.png"],
   },
 }
 

@@ -195,6 +195,66 @@
     @page {
       margin: 0.5in;
     }
+
+    /* Print styles for cover letters */
+    .print-cover-letter-layout {
+      margin: 0;
+      padding: 0;
+    }
+
+    .print-cover-letter {
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Ensure cards and sections print well */
+    .print-cover-letter [class*="Card"],
+    .print-cover-letter [class*="Section"] {
+      break-inside: avoid;
+      page-break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+
+    /* Optimize spacing */
+    .print-cover-letter * {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    /* Ensure proper page breaks */
+    .print-cover-letter h1,
+    .print-cover-letter h2,
+    .print-cover-letter h3 {
+      page-break-after: avoid;
+    }
+
+    /* Remove shadows and borders for cleaner print */
+    .print-cover-letter [class*="shadow"] {
+      box-shadow: none !important;
+    }
+    
+    .print-cover-letter [class*="border"] {
+      border: 1px solid #e5e5e5 !important;
+    }
+
+    /* Ensure text is black for readability */
+    .print-cover-letter {
+      color: #000 !important;
+      background: #fff !important;
+    }
+
+    /* Hide interactive elements */
+    .print-cover-letter button:not(.print-keep),
+    .print-cover-letter [role="button"]:not(.print-keep),
+    .print-cover-letter .no-print {
+      display: none !important;
+    }
+
+    /* Ensure proper page margins for cover letters */
+    @page {
+      margin: 0.75in;
+    }
   }
 }
 

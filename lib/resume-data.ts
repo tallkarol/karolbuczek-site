@@ -90,7 +90,7 @@ export const allCaseStudies: CaseStudy[] = [
       "Single source of truth across Five9, CRM, and Mailchimp reduced lead duplication and data discrepancies, improving reporting confidence across departments",
       "Shared logging and error handling framework reduced debugging time by an estimated XX% and made the system extensible for future integrations without rearchitecting",
     ],
-    additionalImages: ["/placeholder-image.png", "/placeholder-image.png"],
+    image: "/uwd-crm-parent-files.png",
     clientLogo: "/uwd-logo.png",
     clientDescription: "Universal Windows Direct is a home improvement company with national reach, running high-volume call center, CRM, and marketing operations.",
     clientStage: "Enterprise",

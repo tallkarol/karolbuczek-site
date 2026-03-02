@@ -28,7 +28,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://karolbuczek.com"),
-  title: "Karol Buczek | Solutions Architect | Cloud | Integrations | MarTech",
+  title: "Karol Buczek | Solutions Architect | Cloud Systems | MarTech | AI",
   description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
   icons: {
     icon: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     apple: "/logo-square.png",
   },
   openGraph: {
-    title: "Karol Buczek | Solutions Architect | Cloud | Integrations | MarTech",
+    title: "Karol Buczek | Solutions Architect | Cloud Systems | MarTech | AI",
     description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
     url: "https://karolbuczek.com",
     siteName: "Karol Buczek",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karol Buczek | Solutions Architect | Cloud | Integrations | MarTech",
+    title: "Karol Buczek | Solutions Architect | Cloud Systems | MarTech | AI",
     description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
     images: ["/logo-square.png"],
   },

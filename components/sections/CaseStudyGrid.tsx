@@ -8,7 +8,12 @@ import { CaseStudyModal } from "@/components/resume/CaseStudyModal"
 import { allCaseStudies } from "@/lib/resume-data"
 import type { CaseStudy } from "./CaseStudyCard"
 
-export function CaseStudyGrid() {
+interface CaseStudyGridProps {
+  /** When "large", card images use taller aspect ratio (case-studies page) */
+  imageSize?: "default" | "large"
+}
+
+export function CaseStudyGrid({ imageSize = "default" }: CaseStudyGridProps) {
   const searchParams = useSearchParams()
   const [mounted, setMounted] = useState(false)
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null)
@@ -76,6 +81,7 @@ export function CaseStudyGrid() {
               caseStudy={caseStudy} 
               index={index}
               onClick={() => handleCaseStudyClick(caseStudy)}
+              imageSize={imageSize}
             />
           ))}
         </div>

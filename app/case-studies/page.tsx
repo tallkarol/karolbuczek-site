@@ -41,7 +41,7 @@ export default function CaseStudiesPage() {
 
       <Section>
         <Suspense fallback={<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 h-48" />}>
-          <CaseStudyGrid />
+          <CaseStudyGrid imageSize="large" />
         </Suspense>
       </Section>
     </>

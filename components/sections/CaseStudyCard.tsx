@@ -45,10 +45,13 @@ interface CaseStudyCardProps {
   caseStudy: CaseStudy
   index: number
   onClick?: () => void
+  /** When "large", uses taller aspect ratio for the card image (case-studies page) */
+  imageSize?: "default" | "large"
 }
 
-export function CaseStudyCard({ caseStudy, index, onClick }: CaseStudyCardProps) {
+export function CaseStudyCard({ caseStudy, index, onClick, imageSize = "default" }: CaseStudyCardProps) {
   const imageSrc = caseStudy.image || PLACEHOLDER_IMAGE
+  const imageAspect = imageSize === "large" ? "aspect-[16/7]" : "aspect-[16/5]"
 
   return (
     <motion.div
@@ -70,7 +73,7 @@ export function CaseStudyCard({ caseStudy, index, onClick }: CaseStudyCardProps)
         <div className="absolute top-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-300 z-10" />
 
         {/* Image - prominent at top, pills overlay */}
-        <div className="relative aspect-[16/5] w-full overflow-hidden bg-muted/30">
+        <div className={`relative ${imageAspect} w-full overflow-hidden bg-muted/30`}>
           <Image
             src={imageSrc}
             alt={caseStudy.title}
@@ -78,7 +81,7 @@ export function CaseStudyCard({ caseStudy, index, onClick }: CaseStudyCardProps)
             className="object-cover transition-transform duration-300 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-primary opacity-60 group-hover:opacity-0 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-primary opacity-[0.3] group-hover:opacity-0 transition-opacity duration-300" />
           {/* Tags over photo - top */}
           <div className="absolute top-0 left-0 right-0 p-2 flex flex-wrap gap-1.5">
             {caseStudy.tags.slice(0, 3).map((tag) => (

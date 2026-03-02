@@ -1,0 +1,1001 @@
+{
+    "metadata": {
+      "totalListingsAnalyzed": 31,
+      "salaryRangeObserved": {
+        "floor": "$120,000",
+        "ceiling": "$290,000",
+        "medianFloor": "$135,000",
+        "medianCeiling": "$195,000"
+      },
+      "sourcesUsed": [
+        "Indeed",
+        "Dice",
+        "Glassdoor",
+        "LinkedIn",
+        "BuiltIn",
+        "WeWorkRemotely",
+        "RemoteOK",
+        "Himalayas",
+        "ZipRecruiter",
+        "Remotive",
+        "Company career pages"
+      ],
+      "dateCollected": "2026-03-01",
+      "industriesCovered": [
+        "Cybersecurity",
+        "Healthcare",
+        "Cloud Computing",
+        "AI/ML",
+        "Manufacturing",
+        "Financial Services",
+        "Government/Defense",
+        "eCommerce",
+        "FoodTech",
+        "Telecom",
+        "IT Consulting",
+        "SaaS"
+      ]
+    },
+    "responsibilities": {
+      "preSales": [
+        {
+          "label": "Architect client-specific solutions with sales teams",
+          "description": "Work closely with sales teams to architect and propose solutions that address prospective client requirements, demonstrating platform value and differentiators",
+          "frequency": 14,
+          "match": true,
+          "category": "preSales"
+        },
+        {
+          "label": "Develop and deliver customized demos and POCs",
+          "description": "Develop and present customized demonstrations and proof-of-concept solutions to prospective clients, showcasing technical capabilities aligned to their use cases",
+          "frequency": 11,
+          "match": true,
+          "category": "preSales"
+        },
+        {
+          "label": "Lead technical discovery and requirements gathering",
+          "description": "Lead technical discovery sessions with client stakeholders to gather requirements, understand business goals, and translate them into actionable solution designs",
+          "frequency": 18,
+          "match": true,
+          "category": "preSales"
+        },
+        {
+          "label": "Respond to RFPs/RFIs with technical proposals",
+          "description": "Oversee RFP/RFI responses, craft detailed technical solution proposals, and provide accurate project scoping and estimation for statements of work",
+          "frequency": 7,
+          "match": true,
+          "category": "preSales"
+        },
+        {
+          "label": "Qualify opportunities and define solution approaches",
+          "description": "Collaborate with sales leadership to qualify opportunities, define technical approaches, and identify architectural risks during the presales cycle",
+          "frequency": 9,
+          "match": true,
+          "category": "preSales"
+        },
+        {
+          "label": "Support contract finalization and delivery handoff",
+          "description": "Facilitate smooth transition from sales to implementation, ensuring clear communication of proposed solutions, scope boundaries, and client expectations to delivery teams",
+          "frequency": 8,
+          "match": "partial",
+          "category": "preSales"
+        },
+        {
+          "label": "Achieve or support revenue and consumption targets",
+          "description": "Contribute to achieving quarterly revenue targets by identifying new opportunities for expansion, upselling, and driving platform adoption within accounts",
+          "frequency": 6,
+          "match": "partial",
+          "category": "preSales"
+        }
+      ],
+      "implementation": [
+        {
+          "label": "Lead end-to-end solution design and implementation",
+          "description": "Lead the design and implementation of scalable, high-performance solutions aligned with client objectives, from requirements through deployment and go-live",
+          "frequency": 20,
+          "match": true,
+          "category": "implementation"
+        },
+        {
+          "label": "Define technical architecture and development standards",
+          "description": "Define technical architecture, solution designs, coding standards, and development guidelines for project teams to ensure quality and consistency",
+          "frequency": 17,
+          "match": true,
+          "category": "implementation"
+        },
+        {
+          "label": "Conduct technical feasibility analysis",
+          "description": "Conduct technical feasibility analysis for current and future requirements, ensuring alignment with capacity, project scope, and architectural constraints",
+          "frequency": 12,
+          "match": true,
+          "category": "implementation"
+        },
+        {
+          "label": "Oversee project delivery across all phases",
+          "description": "Act as technical lead on customer engagements, guiding implementation teams and ensuring end-to-end delivery excellence across design, build, test, and deployment phases",
+          "frequency": 14,
+          "match": true,
+          "category": "implementation"
+        },
+        {
+          "label": "Troubleshoot and resolve complex production issues",
+          "description": "Troubleshoot and resolve complex code-level and infrastructure issues across development and production environments, including root cause analysis and performance tuning",
+          "frequency": 11,
+          "match": true,
+          "category": "implementation"
+        },
+        {
+          "label": "Manage project scope, timelines, and client expectations",
+          "description": "Ensure delivery excellence by managing scope, timelines, resource allocation, and client expectations throughout the engagement lifecycle",
+          "frequency": 10,
+          "match": true,
+          "category": "implementation"
+        }
+      ],
+      "integration": [
+        {
+          "label": "Design end-to-end integration architectures",
+          "description": "Design end-to-end integration architectures connecting multiple platforms, systems, and data sources using APIs, middleware, and iPaaS tools",
+          "frequency": 13,
+          "match": true,
+          "category": "integration"
+        },
+        {
+          "label": "Define integration standards and governance models",
+          "description": "Establish integration standards, reference architectures, API governance models, and reusable patterns to ensure consistency, scalability, and maintainability across the enterprise",
+          "frequency": 9,
+          "match": "partial",
+          "category": "integration"
+        },
+        {
+          "label": "Architect API management and gateway solutions",
+          "description": "Architect API management solutions including gateway configuration, security policies, versioning, rate limiting, documentation standards, and analytics integration",
+          "frequency": 8,
+          "match": "partial",
+          "category": "integration"
+        },
+        {
+          "label": "Implement data mappings and transformation logic",
+          "description": "Implement complex data mappings, transformations (JSON, XML, XSLT, CSV), and ETL/ELT pipelines to ensure data integrity across integrated systems",
+          "frequency": 8,
+          "match": "partial",
+          "category": "integration"
+        },
+        {
+          "label": "Lead platform migration strategies",
+          "description": "Lead discovery, assessment, and migration planning from on-premises middleware to cloud integration platforms, including cutover strategies and rollback plans",
+          "frequency": 6,
+          "match": false,
+          "category": "integration"
+        },
+        {
+          "label": "Integrate with enterprise systems and third-party platforms",
+          "description": "Oversee integration with enterprise applications (ERP, CRM, OMS), payment gateways, third-party vendors, and external APIs, ensuring data integrity and performance",
+          "frequency": 15,
+          "match": true,
+          "category": "integration"
+        }
+      ],
+      "stakeholderManagement": [
+        {
+          "label": "Translate business requirements into technical designs",
+          "description": "Collaborate with business stakeholders to gather technical and functional requirements, understand business goals, and translate them into detailed architectural designs",
+          "frequency": 25,
+          "match": true,
+          "category": "stakeholderManagement"
+        },
+        {
+          "label": "Present to executive and technical audiences",
+          "description": "Present architecture designs, technical trade-offs, and solution options to diverse audiences including senior executives, engineering teams, and external partners",
+          "frequency": 23,
+          "match": true,
+          "category": "stakeholderManagement"
+        },
+        {
+          "label": "Serve as trusted technical advisor",
+          "description": "Act as a trusted technology advisor to clients and internal leadership, framing decisions in business terms and clearly explaining options, tradeoffs, and risk",
+          "frequency": 16,
+          "match": true,
+          "category": "stakeholderManagement"
+        },
+        {
+          "label": "Bridge business and engineering across teams",
+          "description": "Act as key technical leader bridging business needs and engineering execution, coordinating across product, sales, engineering, and operations teams",
+          "frequency": 20,
+          "match": true,
+          "category": "stakeholderManagement"
+        },
+        {
+          "label": "Manage vendor and partner technical relationships",
+          "description": "Serve as technical point of contact for third-party vendors, integration partners, and technology alliances, resolving issues and driving collaborative outcomes",
+          "frequency": 11,
+          "match": true,
+          "category": "stakeholderManagement"
+        },
+        {
+          "label": "Act as voice of the customer internally",
+          "description": "Share customer insights, feedback, success stories, and field learnings with product management, engineering, and R&D teams to influence roadmap and product direction",
+          "frequency": 8,
+          "match": true,
+          "category": "stakeholderManagement"
+        }
+      ],
+      "architectureDesign": [
+        {
+          "label": "Design scalable, secure cloud-native architectures",
+          "description": "Design scalable, reliable, secure, and cost-effective cloud infrastructure and application architectures for enterprise and customer-facing environments",
+          "frequency": 22,
+          "match": "partial",
+          "category": "architectureDesign"
+        },
+        {
+          "label": "Create reference architectures and solution playbooks",
+          "description": "Create and scale reference architectures, solution playbooks, reusable patterns, and architectural guardrails for repeatable engagements",
+          "frequency": 12,
+          "match": "partial",
+          "category": "architectureDesign"
+        },
+        {
+          "label": "Define technology roadmaps aligned to business strategy",
+          "description": "Develop architecture and technology roadmaps aligned with business objectives, including phased transformation plans and multi-year strategy",
+          "frequency": 14,
+          "match": true,
+          "category": "architectureDesign"
+        },
+        {
+          "label": "Evaluate and recommend emerging technologies",
+          "description": "Evaluate emerging cloud technologies, industry trends, and platform updates, recommending adoption strategies and assessing impact on existing architectures",
+          "frequency": 13,
+          "match": true,
+          "category": "architectureDesign"
+        },
+        {
+          "label": "Conduct design reviews and enforce best practices",
+          "description": "Review and validate code, configurations, and integration approaches; conduct design reviews and enforce adherence to architecture standards and best practices",
+          "frequency": 14,
+          "match": "partial",
+          "category": "architectureDesign"
+        },
+        {
+          "label": "Architect for high availability and disaster recovery",
+          "description": "Define architecture for high availability, data redundancy, data loss prevention, site recovery, resilience, and business continuity at the architecture level",
+          "frequency": 8,
+          "match": "partial",
+          "category": "architectureDesign"
+        }
+      ],
+      "documentation": [
+        {
+          "label": "Create architecture diagrams and design documents",
+          "description": "Create and maintain detailed architecture diagrams, network diagrams, design documents, and operational procedures using standard notation and frameworks",
+          "frequency": 19,
+          "match": true,
+          "category": "documentation"
+        },
+        {
+          "label": "Document solution specs, data flows, and API requirements",
+          "description": "Define and maintain deployment specifications, data flow diagrams, API requirements, integration documentation, and solution acceptance criteria",
+          "frequency": 14,
+          "match": true,
+          "category": "documentation"
+        },
+        {
+          "label": "Develop reusable playbooks and enablement content",
+          "description": "Develop reusable solution playbooks, demo frameworks, best practice guides, case studies, and technical enablement content for internal and partner use",
+          "frequency": 8,
+          "match": "partial",
+          "category": "documentation"
+        }
+      ]
+    },
+    "skillsAndKeywords": {
+      "cloud": [
+        {
+          "label": "AWS",
+          "description": "Amazon Web Services — VPC, Lambda, S3, EC2, RDS, SageMaker, CloudFront, Direct Connect, Transit Gateway, IAM, CloudFormation. Most frequently required cloud platform.",
+          "frequency": 15,
+          "match": true,
+          "category": "cloud"
+        },
+        {
+          "label": "Microsoft Azure",
+          "description": "Azure cloud platform — VNet, AKS, Azure AD, ExpressRoute, Azure DevOps, Azure AI Studio, App Service, Logic Apps, Service Bus, Key Vault, Azure Monitor",
+          "frequency": 13,
+          "match": false,
+          "category": "cloud"
+        },
+        {
+          "label": "Google Cloud Platform (GCP)",
+          "description": "GCP services including Vertex AI, Pub/Sub, Apigee, BigQuery, Cloud Functions, GKE. Third most requested cloud platform.",
+          "frequency": 8,
+          "match": false,
+          "category": "cloud"
+        },
+        {
+          "label": "Multi-cloud architecture",
+          "description": "Experience designing and operating across multiple cloud providers simultaneously. Increasingly expected at principal/senior levels.",
+          "frequency": 6,
+          "match": false,
+          "category": "cloud"
+        },
+        {
+          "label": "Cloud-native design patterns",
+          "description": "Serverless, event-driven, cloud-native application architectures. Understanding of IaaS, PaaS, SaaS models and when to apply each.",
+          "frequency": 14,
+          "match": "partial",
+          "category": "cloud"
+        },
+        {
+          "label": "Serverless (Lambda, Functions)",
+          "description": "Experience with serverless compute services — AWS Lambda, Azure Functions, Google Cloud Functions for event-driven architectures",
+          "frequency": 7,
+          "match": true,
+          "category": "cloud"
+        }
+      ],
+      "apisAndIntegration": [
+        {
+          "label": "REST API design and development",
+          "description": "Designing, building, and consuming RESTful APIs. The most universally required integration skill across all SA sub-types.",
+          "frequency": 22,
+          "match": true,
+          "category": "apisAndIntegration"
+        },
+        {
+          "label": "API management platforms",
+          "description": "Experience with enterprise API management — Apigee, Azure API Management, AWS API Gateway, Oracle API Gateway, MuleSoft. Includes gateway configuration, rate limiting, and developer portals.",
+          "frequency": 8,
+          "match": "partial",
+          "category": "apisAndIntegration"
+        },
+        {
+          "label": "Integration patterns (pub/sub, event-driven, orchestration)",
+          "description": "Knowledge of enterprise integration patterns — request/response, publish/subscribe, event-driven, orchestration/choreography, SOA, hub-and-spoke",
+          "frequency": 12,
+          "match": "partial",
+          "category": "apisAndIntegration"
+        },
+        {
+          "label": "Microservices architecture",
+          "description": "Designing and implementing microservices-based architectures including service decomposition, inter-service communication, and domain-driven design",
+          "frequency": 10,
+          "match": "partial",
+          "category": "apisAndIntegration"
+        },
+        {
+          "label": "iPaaS platforms (Boomi, MuleSoft, Workato)",
+          "description": "Enterprise integration-platform-as-a-service tools for building, deploying, and managing integrations at scale without custom code",
+          "frequency": 5,
+          "match": false,
+          "category": "apisAndIntegration"
+        },
+        {
+          "label": "Webhooks and event streaming",
+          "description": "Implementing webhook-based integrations and event streaming architectures using Kafka, AWS EventBridge/Kinesis, Azure Event Hubs, or Google Pub/Sub",
+          "frequency": 7,
+          "match": "partial",
+          "category": "apisAndIntegration"
+        },
+        {
+          "label": "OpenAPI/Swagger specification",
+          "description": "Defining and documenting APIs using OpenAPI/Swagger specifications for standardized API contracts and developer onboarding",
+          "frequency": 5,
+          "match": "partial",
+          "category": "apisAndIntegration"
+        },
+        {
+          "label": "Data formats and transformations (JSON, XML, XSLT, EDI)",
+          "description": "Working with enterprise data interchange formats including JSON, XML, XSLT, CSV, and EDI X12/EDIFACT for B2B integrations",
+          "frequency": 8,
+          "match": "partial",
+          "category": "apisAndIntegration"
+        }
+      ],
+      "data": [
+        {
+          "label": "SQL and relational databases",
+          "description": "Proficiency in SQL for data querying, database design, data modeling, and working with relational database systems (MySQL, PostgreSQL, Azure SQL, Oracle)",
+          "frequency": 16,
+          "match": true,
+          "category": "data"
+        },
+        {
+          "label": "Data modeling and architecture",
+          "description": "Designing data models, schemas, canonical models, and data architecture for enterprise-scale applications and analytics",
+          "frequency": 12,
+          "match": "partial",
+          "category": "data"
+        },
+        {
+          "label": "Data warehousing and analytics platforms",
+          "description": "Experience with modern data platforms — Snowflake, Databricks, Azure Synapse, AWS Redshift, Google BigQuery, Microsoft Fabric for analytics workloads",
+          "frequency": 8,
+          "match": "partial",
+          "category": "data"
+        },
+        {
+          "label": "Data migration and ETL/ELT",
+          "description": "Planning and executing data migration strategies, building ETL/ELT pipelines, and managing data transformation at scale across platforms",
+          "frequency": 9,
+          "match": "partial",
+          "category": "data"
+        },
+        {
+          "label": "AI/ML data pipelines and frameworks",
+          "description": "Experience with AI/ML workflows — PyTorch, TensorFlow, SageMaker, Vertex AI, Azure ML, LangChain, RAG architectures, and MLOps practices",
+          "frequency": 8,
+          "match": false,
+          "category": "data"
+        },
+        {
+          "label": "BI and dashboard tools (Power BI, Tableau)",
+          "description": "Creating analytics dashboards and reports using Power BI, Tableau, Looker, or custom visualization tools for business stakeholder consumption",
+          "frequency": 6,
+          "match": "partial",
+          "category": "data"
+        }
+      ],
+      "languages": [
+        {
+          "label": "Python",
+          "description": "Python scripting and development — the most requested programming language across SA listings, used for automation, data processing, AI/ML, and scripting",
+          "frequency": 14,
+          "match": "partial",
+          "category": "languages"
+        },
+        {
+          "label": "JavaScript / TypeScript",
+          "description": "JavaScript and TypeScript for front-end, back-end (Node.js), and full-stack development. Common in implementation and cloud SA roles.",
+          "frequency": 10,
+          "match": true,
+          "category": "languages"
+        },
+        {
+          "label": "Java",
+          "description": "Java development for enterprise applications, microservices, and backend systems. Common in enterprise and integration SA roles.",
+          "frequency": 6,
+          "match": false,
+          "category": "languages"
+        },
+        {
+          "label": "SQL (advanced)",
+          "description": "Advanced SQL for complex querying, stored procedures, performance optimization, and database administration across multiple RDBMS platforms",
+          "frequency": 16,
+          "match": true,
+          "category": "languages"
+        },
+        {
+          "label": "PowerShell / Bash scripting",
+          "description": "Shell scripting for infrastructure automation, DevOps tasks, and system administration across Windows (PowerShell) and Linux (Bash) environments",
+          "frequency": 5,
+          "match": "partial",
+          "category": "languages"
+        },
+        {
+          "label": "Go / Golang",
+          "description": "Go programming language, appearing primarily in cybersecurity and cloud-native SA roles (CrowdStrike, infrastructure tools)",
+          "frequency": 3,
+          "match": false,
+          "category": "languages"
+        },
+        {
+          "label": "PHP",
+          "description": "PHP for web development and backend services. Rarely mentioned in SA listings but relevant for WordPress ecosystem and legacy web integrations.",
+          "frequency": 0,
+          "match": true,
+          "category": "languages",
+          "note": "Not appearing in SA listings but is a strong candidate skill — reframe as full-stack and API development experience"
+        }
+      ],
+      "softSkills": [
+        {
+          "label": "Executive communication and presentation",
+          "description": "Ability to present complex technical concepts to senior executives, C-suite, board-level stakeholders, and non-technical audiences with clarity and confidence",
+          "frequency": 25,
+          "match": true,
+          "category": "softSkills"
+        },
+        {
+          "label": "Cross-functional collaboration",
+          "description": "Working effectively across product, engineering, sales, marketing, and operations teams. Coordinating distributed teams across regions and time zones.",
+          "frequency": 25,
+          "match": true,
+          "category": "softSkills"
+        },
+        {
+          "label": "Business acumen and strategic thinking",
+          "description": "Understanding business drivers, commercial strategy, and the ability to frame technical decisions in terms of business value, ROI, and competitive differentiation",
+          "frequency": 20,
+          "match": true,
+          "category": "softSkills"
+        },
+        {
+          "label": "Mentorship and technical leadership",
+          "description": "Mentoring junior architects, developers, and consultants. Providing technical guidance, fostering skill growth, and promoting knowledge sharing across teams.",
+          "frequency": 15,
+          "match": true,
+          "category": "softSkills"
+        },
+        {
+          "label": "Customer-centric mindset",
+          "description": "Deep empathy for client needs, proactive advocacy for customer success, and ability to build trust as a long-term technical advisor",
+          "frequency": 14,
+          "match": true,
+          "category": "softSkills"
+        },
+        {
+          "label": "Problem solving and analytical thinking",
+          "description": "Strong analytical and problem-solving abilities, with a bias toward action and attention to detail in complex technical environments",
+          "frequency": 16,
+          "match": true,
+          "category": "softSkills"
+        },
+        {
+          "label": "Influence without authority",
+          "description": "Leading through matrix influence rather than direct line management. Resolving contested decisions and aligning teams when there is ambiguity.",
+          "frequency": 8,
+          "match": true,
+          "category": "softSkills"
+        },
+        {
+          "label": "Consultative selling approach",
+          "description": "Engaging with prospects using a consultative methodology — actively listening, respectfully challenging assumptions, and building trust through expertise",
+          "frequency": 10,
+          "match": true,
+          "category": "softSkills"
+        }
+      ],
+      "toolsAndPlatforms": [
+        {
+          "label": "Terraform / Infrastructure as Code",
+          "description": "Terraform, ARM Templates, CloudFormation, Ansible, Pulumi for defining and provisioning infrastructure programmatically. Increasingly table-stakes for cloud SA.",
+          "frequency": 8,
+          "match": false,
+          "category": "toolsAndPlatforms"
+        },
+        {
+          "label": "Kubernetes / Docker / Containers",
+          "description": "Container orchestration with Kubernetes (AKS, EKS, GKE), Docker containerization, and container registry management for microservices deployments",
+          "frequency": 8,
+          "match": false,
+          "category": "toolsAndPlatforms"
+        },
+        {
+          "label": "CI/CD pipelines (Jenkins, GitHub Actions, Azure DevOps)",
+          "description": "Building and managing continuous integration and continuous deployment pipelines for automated testing, building, and deployment of applications and infrastructure",
+          "frequency": 14,
+          "match": "partial",
+          "category": "toolsAndPlatforms"
+        },
+        {
+          "label": "Jira / Confluence / Agile tools",
+          "description": "Agile project management and documentation tools — Jira for sprint management, Confluence for documentation, Agile/Scrum ceremony facilitation",
+          "frequency": 9,
+          "match": "partial",
+          "category": "toolsAndPlatforms"
+        },
+        {
+          "label": "Git version control",
+          "description": "Git-based version control, branching strategies, pull request workflows, and code review practices using GitHub, GitLab, or Bitbucket",
+          "frequency": 10,
+          "match": true,
+          "category": "toolsAndPlatforms"
+        },
+        {
+          "label": "Salesforce ecosystem",
+          "description": "Salesforce platform — Commerce Cloud (SFCC), Experience Cloud, Einstein AI, MuleSoft integration, Sales Cloud, Service Cloud. Critical for CRM-focused SA roles.",
+          "frequency": 5,
+          "match": false,
+          "category": "toolsAndPlatforms"
+        },
+        {
+          "label": "Monitoring and observability (Datadog, Splunk, New Relic)",
+          "description": "Enterprise monitoring, APM, log analytics, and observability tools for production health monitoring, alerting, and performance optimization",
+          "frequency": 7,
+          "match": "partial",
+          "category": "toolsAndPlatforms"
+        },
+        {
+          "label": "Zapier / low-code automation platforms",
+          "description": "Low-code/no-code automation tools for workflow automation and system integration. Less commonly mentioned in enterprise SA listings but relevant for SMB/mid-market.",
+          "frequency": 1,
+          "match": true,
+          "category": "toolsAndPlatforms",
+          "note": "Reframe Zapier expertise as 'workflow automation and iPaaS architecture' to align with enterprise terminology"
+        },
+        {
+          "label": "ServiceNow",
+          "description": "ServiceNow platform for IT service management, workflow automation, and enterprise service delivery. Appears in enterprise/internal SA roles.",
+          "frequency": 3,
+          "match": false,
+          "category": "toolsAndPlatforms"
+        }
+      ],
+      "security": [
+        {
+          "label": "Cloud security architecture",
+          "description": "Designing secure cloud environments — network segmentation, access control policies, Zero Trust architecture, encryption at rest and in transit, identity management",
+          "frequency": 10,
+          "match": "partial",
+          "category": "security"
+        },
+        {
+          "label": "Compliance frameworks (SOX, HIPAA, GDPR, CCPA)",
+          "description": "Understanding of regulatory compliance requirements and how they impact architecture decisions — data protection, privacy, audit controls",
+          "frequency": 8,
+          "match": "partial",
+          "category": "security"
+        },
+        {
+          "label": "Identity and access management (IAM)",
+          "description": "Designing authentication and authorization architectures — OAuth, OpenID Connect, SAML, Azure AD, AWS IAM, Cognito, SSO implementations",
+          "frequency": 7,
+          "match": "partial",
+          "category": "security"
+        }
+      ],
+      "martech": [
+        {
+          "label": "Marketing technology platforms",
+          "description": "GTM, GA4, Mailchimp, marketing automation, attribution modeling, server-side tracking, UTM management. Rarely referenced in SA listings but valuable for MarTech-adjacent roles.",
+          "frequency": 1,
+          "match": true,
+          "category": "martech",
+          "note": "MarTech skills are a unique differentiator for SA roles in eCommerce, DTC, and digital marketing platforms — position as domain expertise rather than core SA skill"
+        },
+        {
+          "label": "eCommerce platforms (Shopify, WooCommerce, SFCC)",
+          "description": "Experience with eCommerce platforms including Salesforce Commerce Cloud, Shopify Plus, WooCommerce, and headless commerce architectures",
+          "frequency": 2,
+          "match": "partial",
+          "category": "martech"
+        }
+      ]
+    },
+    "qualificationsAndCerts": [
+      {
+        "label": "Bachelor's degree in CS, Engineering, IT, or related field",
+        "description": "Bachelor's degree in Computer Science, Information Technology, Engineering, Information Systems, or related technical field. Most common baseline qualification.",
+        "frequency": 24,
+        "match": "partial",
+        "type": "degree",
+        "note": "If degree is non-technical, 10-15 years of equivalent experience typically satisfies this requirement"
+      },
+      {
+        "label": "Master's degree or MBA (preferred)",
+        "description": "Master's degree in Computer Science, Engineering, or MBA preferred for senior and principal-level positions",
+        "frequency": 6,
+        "match": false,
+        "type": "degree"
+      },
+      {
+        "label": "5+ years of relevant experience",
+        "description": "Minimum five years in solution architecture, software engineering, technical consulting, or related technical leadership roles",
+        "frequency": 26,
+        "match": true,
+        "type": "experience"
+      },
+      {
+        "label": "8+ years of relevant experience",
+        "description": "Eight or more years in architecture, engineering, or consulting. Common threshold for senior SA roles at $140K+ compensation.",
+        "frequency": 16,
+        "match": true,
+        "type": "experience"
+      },
+      {
+        "label": "10-15+ years total experience",
+        "description": "Ten to fifteen-plus years of total professional experience for principal, lead, or staff-level SA positions ($160K+ compensation)",
+        "frequency": 8,
+        "match": true,
+        "type": "experience"
+      },
+      {
+        "label": "Client-facing or consulting experience",
+        "description": "Proven experience in client-facing roles, technical consulting, professional services, or customer-facing solution design",
+        "frequency": 18,
+        "match": true,
+        "type": "experience"
+      },
+      {
+        "label": "AWS Solutions Architect certification (Associate or Professional)",
+        "description": "AWS Certified Solutions Architect — Associate (SAA-C03) or Professional level. Most frequently required cloud certification.",
+        "frequency": 10,
+        "match": "partial",
+        "type": "certification",
+        "note": "Candidate is actively pursuing SAA-C03. High priority to complete."
+      },
+      {
+        "label": "Azure Solutions Architect Expert",
+        "description": "Microsoft Certified: Azure Solutions Architect Expert (AZ-305). Second most requested cloud certification, especially at Microsoft partner firms.",
+        "frequency": 7,
+        "match": false,
+        "type": "certification"
+      },
+      {
+        "label": "TOGAF 9.2 certification",
+        "description": "The Open Group Architecture Framework certification. Appears in enterprise architect and principal-level roles.",
+        "frequency": 3,
+        "match": false,
+        "type": "certification"
+      },
+      {
+        "label": "CISSP or equivalent security certification",
+        "description": "Certified Information Systems Security Professional or equivalent (CEH, Security+, CCSP). Required for cybersecurity-focused SA roles.",
+        "frequency": 5,
+        "match": false,
+        "type": "certification"
+      },
+      {
+        "label": "PMP or Scrum/Agile certification",
+        "description": "Project Management Professional, Certified Scrum Master, or equivalent Agile certification. Appears in implementation and delivery SA roles.",
+        "frequency": 4,
+        "match": false,
+        "type": "certification"
+      },
+      {
+        "label": "Salesforce certifications",
+        "description": "Salesforce platform certifications — B2C Commerce Developer, Solution Architect, Platform Developer. Required for Salesforce-ecosystem SA roles.",
+        "frequency": 3,
+        "match": false,
+        "type": "certification"
+      },
+      {
+        "label": "Kubernetes / Terraform certifications",
+        "description": "Certified Kubernetes Administrator (CKA) or HashiCorp Certified Terraform Associate. Increasingly valued for cloud infrastructure SA roles.",
+        "frequency": 3,
+        "match": false,
+        "type": "certification"
+      },
+      {
+        "label": "Boomi / iPaaS certifications",
+        "description": "Boomi Professional Developer, Associate Integration Architect, or equivalent iPaaS platform certifications for integration-focused SA roles",
+        "frequency": 2,
+        "match": false,
+        "type": "certification"
+      },
+      {
+        "label": "Full-cycle implementation experience",
+        "description": "Two or more full end-to-end implementation lifecycles for an enterprise platform (ERP, CRM, cloud migration). Verified project experience.",
+        "frequency": 10,
+        "match": "partial",
+        "type": "experience"
+      },
+      {
+        "label": "Agile/Scrum methodology experience",
+        "description": "Working experience with Agile methodologies — Scrum, Kanban, SAFe. Participating in sprint planning, standups, retrospectives, and agile ceremonies.",
+        "frequency": 14,
+        "match": "partial",
+        "type": "experience"
+      }
+    ],
+    "resumeBullets": [
+      {
+        "label": "Pre-sales POC delivery and deal closure",
+        "bulletTemplate": "Architected and delivered [X] proof-of-concept solutions and customized demos for prospective enterprise clients, directly contributing to $[X] in closed annual contract value",
+        "category": "preSales",
+        "targetRole": "Pre-Sales Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Technical discovery and requirements translation",
+        "bulletTemplate": "Led [X]+ technical discovery sessions with C-suite and business stakeholders, translating complex requirements into actionable solution architectures and detailed statements of work",
+        "category": "preSales",
+        "targetRole": "Pre-Sales Solution Architect",
+        "match": true
+      },
+      {
+        "label": "End-to-end solution architecture and delivery",
+        "bulletTemplate": "Designed and implemented [scalable/cloud-native/integrated] [solution type] architecture serving [X] users across [X] locations, achieving [X]% uptime and [measurable business outcome]",
+        "category": "implementation",
+        "targetRole": "Implementation/Delivery Solution Architect",
+        "match": true
+      },
+      {
+        "label": "REST API integration layer development",
+        "bulletTemplate": "Built end-to-end REST API integration layer connecting [X] enterprise platforms (CRM, call center, marketing automation, mobile apps), eliminating [X] manual workflows and improving data accuracy by [X]%",
+        "category": "integration",
+        "targetRole": "Integration Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Custom data warehouse and analytics platform",
+        "bulletTemplate": "Architected and deployed a custom data warehouse consolidating [X] data sources across [X] business locations, powering real-time dashboards that drove [X]% improvement in operational decision-making",
+        "category": "data",
+        "targetRole": "General Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Workflow automation at scale",
+        "bulletTemplate": "Engineered modular automation architecture processing [X]+ workflows monthly across [X] integrated platforms, reducing manual operations by [X] hours/week and eliminating [X] error-prone handoffs",
+        "category": "integration",
+        "targetRole": "Integration Solution Architect",
+        "match": true
+      },
+      {
+        "label": "AWS cloud solution design and deployment",
+        "bulletTemplate": "Designed and deployed cloud-native solutions on AWS (Lambda, S3, RDS, Cognito, Amplify), reducing infrastructure costs by [X]% while maintaining [X]% availability SLA for [X] concurrent users",
+        "category": "cloud",
+        "targetRole": "Cloud Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Business scaling through technology strategy",
+        "bulletTemplate": "Scaled [company/division] from [X] to [X] markets as [Marketing Director/Technology Leader], defining technology strategy and leading cross-functional teams that supported [X]% revenue growth over [X] years",
+        "category": "leadership",
+        "targetRole": "Enterprise Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Technical standards and team enablement",
+        "bulletTemplate": "Established coding standards, architecture patterns, and development guidelines adopted across [X]-person engineering team, reducing deployment defects by [X]% and improving development velocity by [X]%",
+        "category": "implementation",
+        "targetRole": "Implementation/Delivery Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Stakeholder alignment and cross-functional leadership",
+        "bulletTemplate": "Served as trusted technical advisor to [X]+ clients across [industries], bridging business strategy and engineering execution and coordinating cross-functional teams of [X]+ members spanning product, engineering, and operations",
+        "category": "stakeholderManagement",
+        "targetRole": "General Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Third-party platform integration management",
+        "bulletTemplate": "Managed technical integration of [X] third-party platforms (Five9, [CRM], [marketing platform], [survey tool]) with custom middleware layer, serving as primary technical liaison and reducing integration issues by [X]%",
+        "category": "integration",
+        "targetRole": "Integration Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Compliance and data privacy architecture",
+        "bulletTemplate": "Designed and implemented GDPR/CCPA-compliant data collection and tracking architecture including server-side tag management, consent management, and attribution modeling for [X] digital properties",
+        "category": "security",
+        "targetRole": "General Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Process documentation and architecture diagrams",
+        "bulletTemplate": "Created comprehensive solution documentation including architecture diagrams, data flow specifications, API contracts, and deployment runbooks for [X] enterprise engagements, reducing onboarding time for delivery teams by [X]%",
+        "category": "documentation",
+        "targetRole": "General Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Client consulting and scope management",
+        "bulletTemplate": "Conducted [X]+ consulting engagements over [X] years, managing end-to-end solution scoping from stakeholder interviews through project timelines, with [X]% on-time, on-budget delivery rate",
+        "category": "preSales",
+        "targetRole": "Pre-Sales Solution Architect",
+        "match": true
+      },
+      {
+        "label": "Full-stack architecture bridging marketing and engineering",
+        "bulletTemplate": "Uniquely combined [X] years of marketing leadership and full-stack engineering to architect solutions that directly connect technical implementation to measurable business outcomes — [specific example: attribution, revenue tracking, customer journey optimization]",
+        "category": "differentiator",
+        "targetRole": "General Solution Architect",
+        "match": true,
+        "note": "This is a rare and highly valuable differentiator. Few SA candidates can credibly claim both marketing and engineering depth."
+      }
+    ],
+    "gapAnalysis": [
+      {
+        "label": "Azure cloud platform experience",
+        "description": "Microsoft Azure appears in 13 of 31 listings and is the second most requested cloud platform. Many enterprise SA roles and all Microsoft partner firms (3Cloud, Cognizant, DXC) require deep Azure expertise.",
+        "gapLevel": "high",
+        "frequency": 13,
+        "match": false,
+        "recommendation": "Start with AZ-900 fundamentals (free exam vouchers available), then pursue AZ-305 Solutions Architect Expert. Build a side project deploying to Azure to demonstrate hands-on experience. Focus on Azure equivalents of AWS services you already know."
+      },
+      {
+        "label": "Kubernetes and container orchestration",
+        "description": "Kubernetes (AKS, EKS, GKE), Docker, and container orchestration appear in 8 of 31 listings and are increasingly expected for cloud and enterprise SA roles, especially at $150K+ levels.",
+        "gapLevel": "high",
+        "frequency": 8,
+        "match": false,
+        "recommendation": "Complete a Kubernetes basics course (KodeKloud or LinuxFoundation). Containerize an existing project with Docker, deploy to EKS/ECS. This demonstrates capability without needing CKA certification immediately."
+      },
+      {
+        "label": "Infrastructure as Code (Terraform, CloudFormation)",
+        "description": "Terraform, ARM Templates, CloudFormation, or Ansible appear in 8 of 31 listings. IaC is becoming table-stakes for any cloud-focused SA role and signals modern DevOps maturity.",
+        "gapLevel": "high",
+        "frequency": 8,
+        "match": false,
+        "recommendation": "Learn Terraform first — it is cloud-agnostic and the most marketable IaC skill. Rewrite existing AWS infrastructure as Terraform configs. Add to portfolio as a demonstrable skill."
+      },
+      {
+        "label": "Formal cloud certification (AWS SAA-C03)",
+        "description": "AWS Solutions Architect certification explicitly appears in 10 of 31 listings. It is the single most referenced certification and often a hard filter in applicant tracking systems.",
+        "gapLevel": "high",
+        "frequency": 10,
+        "match": "partial",
+        "recommendation": "Complete SAA-C03 as quickly as possible — this is the highest-ROI certification action. The in-progress status should be mentioned on resume as 'AWS Solutions Architect Associate (expected [month] 2026)' to show intent."
+      },
+      {
+        "label": "Enterprise CRM platforms (Salesforce, Dynamics 365, HubSpot)",
+        "description": "Salesforce, Dynamics 365, or HubSpot appear in 5 of 31 listings. Critical for implementation SA roles at consulting firms and CRM-ecosystem positions.",
+        "gapLevel": "medium",
+        "frequency": 5,
+        "match": false,
+        "recommendation": "Complete Salesforce Trailhead basics and HubSpot Academy certifications (both free). Even foundational knowledge helps in interviews. Position existing CRM integration experience (Five9, custom CRMs) as adjacent."
+      },
+      {
+        "label": "Python proficiency (advanced)",
+        "description": "Python appears in 14 of 31 listings as a required or preferred skill. Advanced Python is expected for data, AI/ML, automation, and scripting across most SA sub-types.",
+        "gapLevel": "medium",
+        "frequency": 14,
+        "match": "partial",
+        "recommendation": "Level up from functional to intermediate-advanced. Build 2-3 Python projects for portfolio: a REST API with FastAPI, a data processing script, and an AWS Lambda function in Python. This bridges the functional-to-advanced gap visibly."
+      },
+      {
+        "label": "CI/CD pipeline tools (Jenkins, GitHub Actions, Azure DevOps)",
+        "description": "CI/CD pipelines appear in 14 of 31 listings. Hands-on experience with specific tools like GitHub Actions, Jenkins, or Azure DevOps is expected, not just conceptual understanding.",
+        "gapLevel": "medium",
+        "frequency": 14,
+        "match": "partial",
+        "recommendation": "Set up GitHub Actions for an existing project — automated testing, linting, and deployment. Document the pipeline in your portfolio. This is a quick win that demonstrates DevOps awareness."
+      },
+      {
+        "label": "Enterprise monitoring and observability (Datadog, Splunk, New Relic)",
+        "description": "Monitoring and observability tools appear in 7 of 31 listings. Enterprise SA roles expect familiarity with APM, log analytics, and production health monitoring.",
+        "gapLevel": "medium",
+        "frequency": 7,
+        "match": "partial",
+        "recommendation": "Set up CloudWatch monitoring for existing AWS projects. Explore Datadog free tier. Position existing production monitoring experience (custom dashboards, error logging) using enterprise terminology."
+      },
+      {
+        "label": "Microservices architecture (formal patterns)",
+        "description": "Microservices architecture appears in 10 of 31 listings. Understanding of service decomposition, domain-driven design, and inter-service communication patterns is expected.",
+        "gapLevel": "medium",
+        "frequency": 10,
+        "match": "partial",
+        "recommendation": "Read 'Building Microservices' by Sam Newman. Reframe existing modular architecture work (SubZap architecture, API layer design) using microservices vocabulary in resume and portfolio."
+      },
+      {
+        "label": "GCP experience",
+        "description": "Google Cloud Platform appears in 8 of 31 listings. Less critical than Azure but increasingly relevant for multi-cloud SA roles and AI-focused positions.",
+        "gapLevel": "medium",
+        "frequency": 8,
+        "match": false,
+        "recommendation": "Lower priority than Azure. GCP offers free tier and $300 credit for new accounts. Explore basics if targeting AI/ML-heavy SA roles specifically."
+      },
+      {
+        "label": "Java proficiency",
+        "description": "Java appears in 6 of 31 listings, primarily in enterprise and cybersecurity SA roles. Not universal but can be a blocker for specific positions.",
+        "gapLevel": "low",
+        "frequency": 6,
+        "match": false,
+        "recommendation": "Low priority unless targeting enterprise Java ecosystem roles specifically. Existing JavaScript/TypeScript/PHP experience demonstrates polyglot capability that interviewers will accept as adjacent."
+      },
+      {
+        "label": "Formal Agile/PMP/Scrum certification",
+        "description": "PMP, CSM, or formal Agile certifications appear in 4 of 31 listings. Less common than cloud certs but valued in implementation and delivery SA roles.",
+        "gapLevel": "low",
+        "frequency": 4,
+        "match": false,
+        "recommendation": "Low priority relative to cloud cert. If pursuing, PSM I (Professional Scrum Master) is fastest and cheapest. Position existing project management experience using Agile language on resume."
+      },
+      {
+        "label": "TOGAF enterprise architecture framework",
+        "description": "TOGAF certification appears in 3 of 31 listings, specifically in principal/enterprise architect roles at $160K+ levels.",
+        "gapLevel": "low",
+        "frequency": 3,
+        "match": false,
+        "recommendation": "Only pursue if targeting pure enterprise architect titles. Foundation level can be self-studied. Not needed for pre-sales, integration, or cloud SA roles."
+      },
+      {
+        "label": "iPaaS platforms (Boomi, MuleSoft, Workato)",
+        "description": "Enterprise iPaaS tools appear in 5 of 31 listings, concentrated in integration architect roles at consulting firms. Niche but well-compensated specialization.",
+        "gapLevel": "low",
+        "frequency": 5,
+        "match": false,
+        "recommendation": "Position advanced Zapier/custom integration experience as iPaaS-adjacent. Boomi and MuleSoft offer free trial/developer environments. Only invest time here if targeting integration SA roles specifically."
+      },
+      {
+        "label": "Security domain expertise (CISSP-level)",
+        "description": "CISSP or equivalent security certifications appear in 5 of 31 listings, concentrated in cybersecurity SA roles (CrowdStrike, RKON, Akamai).",
+        "gapLevel": "low",
+        "frequency": 5,
+        "match": false,
+        "recommendation": "Only relevant if targeting cybersecurity SA roles specifically. GDPR/CCPA compliance experience partially addresses security awareness. CompTIA Security+ is the fastest path if needed."
+      }
+    ]
+  }

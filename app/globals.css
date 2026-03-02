@@ -173,6 +173,22 @@
       border: 1px solid #e5e5e5 !important;
     }
 
+    /* Flatten nested boxes for cleaner one-sheet print */
+    .print-resume .print-flat {
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    /* Strip borders from work experience timeline items when printing — keep outer Card border */
+    .print-resume .print-timeline,
+    .print-resume .print-timeline *,
+    .print-resume .print-timeline-item,
+    .print-resume .print-timeline-dot {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
     /* Ensure text is black for readability */
     .print-resume {
       color: #000 !important;

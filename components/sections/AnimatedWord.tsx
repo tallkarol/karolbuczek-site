@@ -16,7 +16,7 @@ export function AnimatedWord({ words }: AnimatedWordProps) {
     const timeout = setTimeout(() => {
       interval = setInterval(() => {
         setCurrentWordIndex((prev) => (prev + 1) % words.length)
-      }, 3000)
+      }, 3250)
     }, 500)
 
     return () => {

@@ -40,7 +40,7 @@ export default function UmbrellaResumePage() {
               KAROL BUCZEK
             </Typography>
             <Typography variant="body" className="text-[15px] leading-tight print:text-[13px]">
-              Web Systems Engineer • Marketing Technology & Business Systems
+              Solutions Architect • Marketing Technology & Business Systems
             </Typography>
             <Typography variant="body-sm" className="text-muted-foreground text-[13px] leading-tight print:text-[11px] pt-[5px]">
               🔗 karolbuczek.com · LinkedIn.com/in/karolbuczek

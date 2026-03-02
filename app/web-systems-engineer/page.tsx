@@ -14,7 +14,7 @@ export default function WebSystemsEngineerPage() {
     <>
       <Section>
         <PageHero
-          eyebrow="Web Systems Engineer"
+          eyebrow="Solutions Architect"
           title="Building Web Systems That Scale"
           description="I architect and build web systems—internal tools, workflow platforms, secure document systems, and full-stack applications—that solve real business problems with clean architecture and maintainable code."
           illustration={<SystemNodes />}

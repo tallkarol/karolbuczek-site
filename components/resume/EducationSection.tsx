@@ -12,9 +12,7 @@ const education = [
     program: "Full Stack Web Development (2018–2019)",
     period: "2018–2019",
     bullets: [
-      "Completed a rigorous engineering program with emphasis on modern JavaScript development",
-      "Built production-grade applications using React, Node, SQL, REST APIs, and test-driven approaches",
-      "Strengthened architectural thinking, debugging skills, and real-world engineering workflows",
+      "Completed a rigorous engineering program with emphasis on modern JavaScript development. Built production-grade applications using React, Node, SQL, REST APIs, and test-driven approaches. Strengthened architectural thinking, debugging skills, and real-world engineering workflows.",
     ],
   },
   {
@@ -33,7 +31,7 @@ const education = [
     bullets: [
       "Interdisciplinary coursework blending marketing, cultural analysis, business, language, and global systems",
       "Member of the China Business Program",
-      "Developed analytical skills and cross-cultural communication that inform cross-functional engineering work today",
+      "Developed analytical skills and cross-cultural communication that inform cross-functional work today",
     ],
   },
 ]
@@ -78,14 +76,14 @@ export function EducationSection() {
             <div key={index} className="space-y-2">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                 <div className="space-y-1">
-                  <Typography variant="body" className="font-semibold">
+                  <Typography variant="body-sm" className="font-semibold text-foreground">
                     {edu.institution}
                   </Typography>
-                  <Typography variant="body-sm" className="font-medium text-foreground">
+                  <Typography variant="body-sm" className="text-foreground">
                     {edu.program}
                   </Typography>
                 </div>
-                <Typography variant="body-sm" className="text-muted-foreground font-medium italic whitespace-nowrap">
+                <Typography variant="body-sm" className="text-muted-foreground text-xs italic whitespace-nowrap">
                   {edu.period}
                 </Typography>
               </div>
@@ -93,7 +91,7 @@ export function EducationSection() {
                 {edu.bullets.map((bullet, bulletIndex) => (
                   <li key={bulletIndex} className="flex items-start gap-2">
                     <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                    <Typography variant="body-sm" className="text-muted-foreground leading-relaxed">
+                    <Typography variant="body-sm" className="text-muted-foreground text-xs leading-relaxed">
                       {bullet}
                     </Typography>
                   </li>

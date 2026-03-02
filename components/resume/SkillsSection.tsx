@@ -6,12 +6,13 @@ import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp } from "lucide-react"
 const softSkills = [
-  "Strong cross-functional communication — comfortable working with engineering, product, marketing, and leadership teams.",
-  "High ownership and autonomy — able to take a problem from definition to delivery without heavy oversight.",
-  "Fast, pragmatic problem-solver — prioritizes outcomes and uses AI tools to speed up iteration and QA.",
-  "Operates well in ambiguity — can make decisions with incomplete information and move projects forward.",
-  "Systems-level thinking — understands how technical decisions affect business outcomes and user experience.",
-  "Leadership-oriented collaboration — experienced guiding discussions, managing expectations, and presenting solutions to stakeholders.",
+  "Translates complex technical concepts for executive, engineering, and business audiences equally",
+  "Operates across org sizes from early-stage startups to 3,000+ person enterprises",
+  "High ownership — takes a problem from discovery through delivery without heavy oversight",
+  "Experienced in pre-sales scoping, POC delivery, stakeholder interviews, and SOW definition",
+  "Systems-level thinking — understands how technical decisions affect business outcomes",
+  "Leads through influence — coordinates across engineering, product, marketing, and operations without requiring direct authority",
+  "AI-forward in practice — uses LLM-based tooling to accelerate analysis, documentation, and system iteration",
 ]
 
 interface SkillsSectionProps {

@@ -1,6 +1,6 @@
 # karolbuczek.com
 
-Portfolio and interactive resume site for Karol Buczek - Web Systems Engineer.
+Portfolio and interactive resume site for Karol Buczek - Solutions Architect.
 
 ## Tech Stack
 

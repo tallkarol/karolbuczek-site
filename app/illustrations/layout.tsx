@@ -9,7 +9,7 @@ export const metadata: Metadata = {
         url: "/logo-square.png",
         width: 512,
         height: 512,
-        alt: "Karol Buczek - Web Systems Engineer",
+        alt: "Karol Buczek - Solutions Architect",
       },
     ],
   },

@@ -8,7 +8,7 @@ import { ReactNode } from "react"
 interface PageHeroProps {
   eyebrow?: string
   title: string | ReactNode
-  description: string
+  description: string | ReactNode
   className?: string
   illustration?: ReactNode
   buttons?: ReactNode
@@ -58,9 +58,13 @@ export function PageHero({ eyebrow, title, description, className, illustration,
             ) : (
               <div className={isCentered ? "mx-auto md:mx-0" : ""}>{title}</div>
             )}
-            <Typography variant="body" className={`max-w-3xl text-muted-foreground ${isCentered ? "mx-auto md:mx-0" : ""}`}>
-              {description}
-            </Typography>
+            <div className={`max-w-3xl text-muted-foreground ${isCentered ? "mx-auto md:mx-0" : ""}`}>
+              {typeof description === "string" ? (
+                <Typography variant="body">{description}</Typography>
+              ) : (
+                description
+              )}
+            </div>
             {buttons && (
               <div className={`flex flex-wrap items-center gap-3 pt-1 ${isCentered ? "justify-center md:justify-start" : ""}`}>
                 {buttons}
@@ -82,9 +86,13 @@ export function PageHero({ eyebrow, title, description, className, illustration,
           ) : (
             <div className={isCentered ? "mx-auto" : ""}>{title}</div>
           )}
-          <Typography variant="body" className={`max-w-3xl text-muted-foreground ${isCentered ? "mx-auto" : ""}`}>
-            {description}
-          </Typography>
+          <div className={`max-w-3xl text-muted-foreground ${isCentered ? "mx-auto" : ""}`}>
+            {typeof description === "string" ? (
+              <Typography variant="body">{description}</Typography>
+            ) : (
+              description
+            )}
+          </div>
           {buttons && (
             <div className={`flex flex-wrap items-center gap-3 pt-1 ${isCentered ? "justify-center" : ""}`}>
               {buttons}

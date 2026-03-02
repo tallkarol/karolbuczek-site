@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence, transform } from "framer-motion"
+import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
 import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -18,132 +19,75 @@ interface TimelineItem {
   reality?: string
   keyProjects?: string[]
   systems?: string[]
+  logo?: string
 }
 
 const timelineData: TimelineItem[] = [
   {
     period: "2023 — Present",
-    officialTitle: "Tall Karol - Systems Architect & Full-Stack Developer",
-    reality: "",
+    officialTitle: "Tall Karol — Principal Solutions Architect",
+    logo: "/tallkarol-monogram-logo.png",
+    reality: "Scoping, designing, and shipping systems end-to-end across cloud infrastructure, API integrations, and MarTech — from pre-sales discovery through production deployment for growth-stage and enterprise clients.",
     systems: [
-      "Architected enterprise performance improvements, including a VIP-compliant Gutenberg Block system → LCP 5.5s → 3.2s, Lighthouse 70 → 83",
-      "Built UTM Attribution plugin powering multi-touch tracking across web + CRM funnels",
-      "Created marketer-friendly GTM Event Button Block for standardized event pipelines",
-      "Developed secure React-based AWS document portal (Amplify, Cognito, RDS, Lambda, S3) with RBAC + audit logging",
-      "Built REST-based ingestion pipelines into a data warehouse for analytics + forecasting",
-      "Delivered automation workflows across CRMs, email providers, and lead platforms",
+      "Built a secure document portal on AWS where teams can upload, manage, and audit sensitive files with role-based access — replacing a manual, email-based process (Amplify, Cognito, Lambda, S3, RDS)",
+      "Built a Python ETL middleware layer on GCP that extracts, transforms, and loads data into a Databricks data warehouse — connecting raw business data to analytics-ready tables",
+      "Designed a custom data pipeline that pulls data from multiple business sources into a central warehouse, powering dashboards used for reporting and revenue forecasting",
+      "Built and delivered automation systems connecting CRMs, email platforms, and lead sources — eliminating manual handoffs and keeping data clean across the stack",
+      "Built a UTM attribution system that tracks how leads find a business across the web and CRM — giving marketing teams reliable first-touch and last-touch data for the first time",
+      "Built a locally-hosted AI transcription system using HuggingFace Whisper — processing meeting audio on-premise with zero external data transmission, multi-language support, and automated deadline extraction with calendar output",
+      "Created a reusable Google Tag Manager component that lets marketers fire analytics events without needing a developer for every change",
+      "Redesigned a client's WordPress architecture to meet VIP standards, cutting page load time from 5.5s to 3.2s and lifting Lighthouse score from 70 to 83",
     ],
   },
   {
     period: "2021 — 2023",
     officialTitle: "Universal Windows Direct — Backend & Integration Engineer (Full Stack)",
-    reality: "Built and maintained backend systems, automations, and PHP/SQL infrastructure supporting high-volume marketing and operational workflows.",
+    logo: "/uwd-logo.png",
+    reality: "Full-stack integration engineering role — automation infrastructure, API integrations, and internal tooling supporting marketing, sales, and operations across an enterprise home services organization.",
     systems: [
-      "Developed PHP + SQL-driven automation frameworks for lead routing, attribution logic, and CRM/ops workflows",
-      "Built and maintained API integrations into third-party platforms (Five9, Mailchimp, Hover, Birdeye, internal CRMs)",
-      "Engineered cron-based data pipelines running on a VPS to transform, clean, and distribute data across systems",
-      "Architected an extensible utility framework for logging, error handling, and maintainability across automation codebase",
-      "Designed and operated server-level scripts and ingestion processes for operational data warehousing",
-      "Orchestrated GoDaddy VPS infrastructure migration (Gen3 → Gen4) with zero downtime impact",
-      "Led full Joomla → WordPress rebuild, preserving custom functionality while improving extensibility and stability",
-      "Delivered Zapier-based integrations for fast-paced marketing automation workflows",
+      "Built a custom API and automation layer connecting Five9 (call center), Mailchimp, CRM, and internal tools — replacing manual data handoffs across sales and marketing ops",
+      "Designed a shared logging and error handling framework used across all internal scripts and automation — making the system debuggable and fast to extend",
+      "Built internal lead management and intake systems that streamlined how the business captured, routed, and acted on inbound leads",
+      "Engineered cron-based data pipelines running on VPS to transform, clean, and distribute data across systems",
+      "Migrated server infrastructure across 4 VPS partitions with zero downtime",
+      "Led full site migration from Joomla to WordPress, preserving all custom functionality",
     ],
   },
   {
     period: "2021 — Present",
     officialTitle: "Mineralife Nutraceuticals — Web & Marketing Systems Consultant",
-    reality: "Engineering improvements across B2C and B2B ecommerce platforms, enhancing WooCommerce performance, data visibility, and user experience.",
+    logo: "/mineralife-logo.png",
+    reality: "Engineering improvements across B2C and B2B ecommerce platforms, improving data visibility, lifecycle automation, and marketing system reliability.",
     systems: [
-      "Optimized performance and UX across WooCommerce B2C and B2B websites, collaborating with designers to implement improved layouts and interactions",
-      "Built an internal WooCommerce data dashboard to surface order, inventory, and revenue insight for team decision-making",
+      "Optimized performance and UX across WooCommerce B2C and B2B environments",
+      "Built an internal WooCommerce data dashboard surfacing order, inventory, and revenue data for operational decision-making",
       "Developed lifecycle automation workflows and segmentation logic supporting retention and repeat purchase behavior",
       "Implemented data and event integrations between WooCommerce, email platforms, and analytics systems",
     ],
   },
   {
     period: "2019 — 2021",
-    officialTitle: "Perfect Power Wash — Marketing Director / Head of IT (Systems & Ops Engineering)",
-    reality: "Led technology, marketing operations, and data infrastructure initiatives during rapid organizational growth (expansion from 1 market to 4).",
+    officialTitle: "Perfect Power Wash — Marketing Director / Head of IT",
+    logo: "/ppw.png",
+    reality: "Grew into the Marketing Director seat from a marketing developer role — owning both the strategy and the technology stack during a period of rapid expansion from 1 market to 4.",
     systems: [
-      "Progressed from Marketing Developer to Marketing Director, owning strategy, analytics, and technology integration",
-      "Designed and implemented internal systems for lead management, call center workflows, and automated customer pipelines",
-      "Engineered custom tools that enhanced efficiency across sales, operations, and marketing handoffs",
-      "Built data dashboards and reporting models for forecasting, ROI analysis, and lifecycle performance",
-      "Drove website redesign + testing initiatives, achieving measurable conversion improvements (237% lift, 175% CTR gains)",
-      "Directed cross-functional teams and mentored engineers/marketers on technical implementation and process automation",
-      "Standardized brand systems and coordinated with creative agencies (web, TV, radio, design) to ensure operational cohesion",
+      "Built and maintained internal tooling across call center operations, lead management, and marketing automation — eventually hiring and training a developer to extend the systems I built",
+      "Redesigned the company website through systematic A/B testing, achieving a 237% conversion rate increase and 175% CTR improvement",
+      "Designed the data infrastructure and reporting dashboards that gave leadership visibility into performance across markets",
+      "Built a scalable marketing framework that supported multi-market expansion and adapted through pandemic-era operational restrictions",
+      "Reduced PPC spend while improving both organic and paid market penetration through a structured testing methodology",
+      "Directed cross-functional teams across marketing, sales, and operations — collaborating with agencies on brand, radio, and TV execution",
     ],
   },
   {
     period: "2009 — 2019",
     officialTitle: "Freelance Developer / Designer",
-    reality: "Delivered full-stack web development and digital product solutions for small businesses, early-stage startups, and music industry clients. Combined engineering, UX design, and brand support to build functional online platforms and creative assets.",
+    logo: "/logo.png",
+    reality: "10 years of client-facing freelance work spanning full-stack web development, brand strategy, and digital infrastructure for small and mid-sized businesses.",
     systems: [
-      "Built custom websites using HTML/CSS, PHP, and WordPress, including bespoke themes and plugins",
-      "Designed UX flows and page architectures to support lead funnels, e-commerce, and content publishing",
-      "Created brand and visual systems (logos, identity suites, album art, promotional graphics) for musicians and small business clients",
-      "Produced marketing copy and social content campaigns supporting launches and event promotions",
-      "Managed end-to-end project execution: requirements, design, build, deployment, and maintenance",
-    ],
-  },
-  {
-    period: "2016 — 2018",
-    officialTitle: "Red Light Management — Marketing / Creative Consultant",
-    reality: "Created scalable digital assets and repeatable content systems supporting touring artists and management teams.",
-    systems: [
-      "Designed reusable social and digital toolkits",
-      "Streamlined content workflows across multiple artists",
-      "Supported tour marketing with templates and rapid-turnaround assets",
-    ],
-  },
-  {
-    period: "2014 — 2015",
-    officialTitle: "Localtopia Columbus — UX / Marketing Consultant",
-    reality: "Improved product onboarding, user flows, and design alignment for a local startup marketplace.",
-    systems: [
-      "Led UX redesign",
-      "Built onboarding flows and prototypes",
-      "Improved alignment between product and marketing goals",
-    ],
-  },
-  {
-    period: "2013 — 2014",
-    officialTitle: "CUBE Karaoke — Co-founder / Creative Director",
-    reality: "Built the brand, customer experience, and early marketing tech stack for a concept-stage entertainment venture.",
-    systems: [
-      "Designed end-to-end customer experience flows",
-      "Conducted research for product and brand positioning",
-      "Built early marketing tech foundations",
-    ],
-  },
-  {
-    period: "2011 — 2013",
-    officialTitle: "in2itiv media — Co-founder / CEO",
-    reality: "Launched and operated a live-events organization with an emphasis on building community and promoting local events.",
-    systems: [
-      "Built operational pipelines for staffing, logistics & coordination",
-      "Managed budgets, schedules & team communication",
-      "Created promotional web assets and marketing flows for local events",
-    ],
-  },
-  {
-    period: "2011 — 2012",
-    officialTitle: "Miami University — Print Production Assistant",
-    reality: "Supported high-volume print operations with quality, consistency, and workflow efficiency.",
-    systems: [
-      "Oversaw production processes to ensure consistency",
-      "Established repeatable quality standards",
-      "Assisted with layout, formatting & production prep",
-    ],
-  },
-  {
-    period: "2009 — 2010",
-    officialTitle: "Miami University — Marketing Coordinator",
-    reality: "Built foundational marketing assets and repeatable templates for university programs.",
-    systems: [
-      "Developed marketing collateral and reusable templates",
-      "Supported digital and on-campus campaigns",
-      "Improved workflow efficiency through iterative refinement",
+      "Worked directly with business owners to translate goals into technical and creative outcomes — websites, ecommerce builds, brand systems, and marketing campaigns",
+      "Developed early expertise in requirements gathering, project scoping, and managing client expectations across the full delivery lifecycle",
+      "Built a foundation in frontend and backend development, UX, and systems thinking that underpins current architecture work",
     ],
   },
 ]
@@ -179,39 +123,65 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
     return startYear <= 2018 && endYear < 2019
   })
 
-  const handleRoleClick = (item: TimelineItem) => {
-    const getDummyData = () => {
+  const getRoleModalData = (item: TimelineItem): Partial<RoleDetails> => {
+    const title = item.officialTitle || ""
+    if (title.includes("Tall Karol")) {
       return {
-        stats: [
-          { label: "Lorem Ipsum", value: "123%" },
-          { label: "Dolor Sit", value: "45+" },
-          { label: "Amet Consectetur", value: "99.9%" },
-        ],
-        highlights: [
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-          "Sed do eiusmod tempor incididunt ut labore et dolore",
-          "Ut enim ad minim veniam, quis nostrud exercitation",
-        ],
         relatedCaseStudies: [
-          { slug: "case-study-1", title: "Case Study One" },
-          { slug: "case-study-2", title: "Case Study Two" },
-          { slug: "case-study-3", title: "Case Study Three" },
-        ],
-        quote: {
-          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-          author: "Lorem Ipsum",
-          role: "Dolor Sit Amet",
-        },
-        exampleWork: [
-          "Lorem ipsum dolor sit amet consectetur",
-          "Adipiscing elit sed do eiusmod tempor",
-          "Incididunt ut labore et dolore magna",
+          { slug: "secure-document-management-portal", title: "Bliss Secure File Share" },
+          { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform" },
+          { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API" },
+          { slug: "local-ai-meeting-intelligence", title: "Local AI Meeting Intelligence" },
+          { slug: "martech-extension-architecture", title: "MarTech Extension Architecture" },
         ],
       }
     }
+    if (title.includes("Universal Windows Direct")) {
+      return {
+        relatedCaseStudies: [
+          { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API" },
+        ],
+        quote: {
+          text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. His integration work created a lasting impact across multiple systems and departments.",
+          author: "John Kosmides",
+          role: "Vice President of Marketing — Direct Manager",
+        },
+      }
+    }
+    if (title.includes("Mineralife")) {
+      return {
+        relatedCaseStudies: [
+          { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform" },
+        ],
+      }
+    }
+    if (title.includes("Perfect Power Wash")) {
+      return {
+        stats: [
+          { label: "Conversion rate increase", value: "237%" },
+          { label: "CTR improvement", value: "175%" },
+        ],
+        quote: {
+          text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. He never just built a solution, he understood the business case behind it.",
+          author: "John Kosmides",
+          role: "Vice President of Marketing — Direct Manager",
+        },
+      }
+    }
+    if (title.includes("Freelance")) {
+      return {
+        quote: {
+          text: "Karol is a wildly multi-talented man with an absurd amount of expertise in numerous fields. He's an incredible mentor and played a critical role on my path to software development.",
+          author: "Julian Quesada",
+          role: "Software Engineer — Direct Report",
+        },
+      }
+    }
+    return {}
+  }
 
-    const dummyData = getDummyData()
-    
+  const handleRoleClick = (item: TimelineItem) => {
+    const modalData = getRoleModalData(item)
     const roleDetails: RoleDetails = {
       period: item.period,
       officialTitle: item.officialTitle || "",
@@ -219,7 +189,7 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
       reality: item.reality,
       keyProjects: item.keyProjects,
       systems: item.systems,
-      ...dummyData,
+      ...modalData,
     }
     setSelectedRole(roleDetails)
     setIsModalOpen(true)
@@ -259,38 +229,48 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
       }`} />
       
       <div className="space-y-3">
-        <div>
-          <Typography variant="body-sm" className="text-xs text-muted-foreground mb-1 font-medium">
-            {item.period}
-          </Typography>
-          {item.officialTitle && (
-            <button
-              onClick={() => handleRoleClick(item)}
-              className="text-left group cursor-pointer"
-            >
-              <Typography variant="body" className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                {item.officialTitle}
-              </Typography>
-            </button>
+        <div className="flex items-start gap-3">
+          {item.logo && (
+            <Image
+              src={item.logo}
+              alt=""
+              width={40}
+              height={40}
+              className="flex-shrink-0 h-12 w-12 object-contain mt-0.5"
+            />
           )}
-          {item.officialDates && (
-            <Typography variant="body-sm" className="text-xs text-muted-foreground italic mt-1">
-              {item.officialDates}
+          <div className="flex-1 min-w-0">
+            <Typography variant="body-sm" className="text-xs text-muted-foreground font-medium">
+              {item.period}
             </Typography>
-          )}
-          {item.reality && (
-            <div className={`mt-2 p-3 rounded-lg border ${
-              roleFilter && roleFilter !== "all" && isRelevant
-                ? "bg-primary/5 border-primary/30"
-                : "bg-muted/30 border-border/50"
-            }`}>
-              <Typography variant="body-sm" className="text-muted-foreground italic text-xs">
-                {item.reality}
+            {item.officialTitle && (
+              <button
+                onClick={() => handleRoleClick(item)}
+                className="text-left group cursor-pointer w-full mt-0.5"
+              >
+                <Typography variant="body-sm" className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {item.officialTitle}
+                </Typography>
+              </button>
+            )}
+            {item.officialDates && (
+              <Typography variant="body-sm" className="text-xs text-muted-foreground italic mt-1">
+                {item.officialDates}
               </Typography>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-
+        {item.reality && (
+          <div className={`mt-2 p-3 rounded-lg border ${
+            roleFilter && roleFilter !== "all" && isRelevant
+              ? "bg-primary/5 border-primary/30"
+              : "bg-muted/30 border-border/50"
+          }`}>
+            <Typography variant="body-sm" className="text-muted-foreground italic text-xs">
+              {item.reality}
+            </Typography>
+          </div>
+        )}
         {item.systems && item.systems.length > 0 && (
           <div>
             <Typography variant="body-sm" className="font-semibold mb-2 text-foreground text-xs">
@@ -378,6 +358,39 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
                       )}
                     </div>
                   )}
+
+                  {/* Early Career Experience — not part of timeline */}
+                  <div className="pt-6 border-t border-border/50">
+                    <Typography variant="body-sm" className="font-semibold text-foreground uppercase tracking-wide text-xs mb-3">
+                      Early Career Experience
+                    </Typography>
+                    <ul className="space-y-1.5 pl-4">
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                        <Typography variant="body-sm" className="text-muted-foreground text-xs">
+                          Marketing / Design — Red Light Management <span className="text-muted-foreground/70">(2016 — 2018)</span>
+                        </Typography>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                        <Typography variant="body-sm" className="text-muted-foreground text-xs">
+                          Marketing & IT Consultant — Localtopia <span className="text-muted-foreground/70">(2014 — 2015)</span>
+                        </Typography>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                        <Typography variant="body-sm" className="text-muted-foreground text-xs">
+                          Co-Founder / Creative Director — CUBE Karaoke LLC <span className="text-muted-foreground/70">(2013 — 2014)</span>
+                        </Typography>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                        <Typography variant="body-sm" className="text-muted-foreground text-xs">
+                          Co-Founder / CEO — in2itiv media LLC <span className="text-muted-foreground/70">(2012 — 2013)</span>
+                        </Typography>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </CardContent>
             </motion.div>

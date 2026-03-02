@@ -22,7 +22,7 @@ const narrativePoints = [
   },
   {
     period: "2021–2024",
-    description: "Became a full Web Systems Engineer — building WordPress systems, backend automations, cloud tools, and performance-first architecture.",
+    description: "Became a full Solutions Architect — building WordPress systems, backend automations, cloud tools, and performance-first architecture.",
   },
   {
     period: "2025+",

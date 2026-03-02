@@ -28,7 +28,7 @@ AND ("MarTech" OR "Marketing Technology" OR "Marketing Systems" OR Automation OR
     title: "⭐ MASTER BOOLEAN SEARCH — CORE ROLES",
     subtitle: "Your main pipeline",
     description: "This will surface jobs nearly identical to your resume.",
-    query: `("web systems engineer" OR "implementation engineer" OR "integration engineer" OR 
+    query: `("solutions architect" OR "implementation engineer" OR "integration engineer" OR 
 "solutions engineer" OR "platform engineer" OR "web application engineer" OR 
 "data integration engineer" OR "automation engineer")
 AND (api OR integration OR workflow OR "internal tools" OR "data pipeline" OR wordpress OR php OR react OR sql)
@@ -51,7 +51,7 @@ NOT ("sales engineer" OR "ml" OR "robotics" OR "embedded" OR "manufacturing" OR 
     title: "⭐ VARIANT 2 — INTERNAL TOOLS + PRODUCT ENGINEERING",
     subtitle: "Avoid LeetCode",
     description: "This finds roles that care about systems thinking, not pure CS fundamentals.",
-    query: `("web systems engineer" OR "platform engineer" OR "solutions engineer" OR 
+    query: `("solutions architect" OR "platform engineer" OR "solutions engineer" OR 
 "web application engineer")
 AND ("internal tools" OR "dashboard" OR "workflow" OR automation OR integrations)
 NOT ("whiteboard" OR "leetcode" OR "algorithms" OR "low level" OR "c++" OR "kernel" OR "graphics")`,
@@ -84,7 +84,7 @@ NOT ("SEO specialist" OR "copywriter" OR "PPC manager")`,
     subtitle: "Remote positions",
     description: 'Paste into LinkedIn → enable "remote."',
     query: `("implementation engineer" OR "integration engineer" OR "solutions engineer" OR 
-"platform engineer" OR "web systems engineer" OR "data integration engineer" OR 
+"platform engineer" OR "solutions architect" OR "data integration engineer" OR 
 "automation engineer" OR "web application engineer" OR "wordpress engineer")
 AND (remote OR "work from home")
 NOT ("government clearance" OR "onsite only")`,
@@ -204,6 +204,14 @@ export default function JobSearchPage() {
           description="Curated boolean search queries for finding relevant engineering roles. Copy and paste directly into LinkedIn Jobs."
           illustration={<SystemNodes />}
         />
+        <div className="max-w-5xl mx-auto mt-4">
+          <a
+            href="/job-search/solution-architect"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-4"
+          >
+            → Solution Architect research pack (responsibilities, skills, resume bullets, gap analysis)
+          </a>
+        </div>
       </Section>
 
       <Section>

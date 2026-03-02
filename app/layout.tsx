@@ -28,8 +28,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://karolbuczek.com"),
-  title: "Karol Buczek | Web Systems Engineer • Full-Stack Developer • MarTech & Automation",
-  description: "Web systems engineer building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+  title: "Karol Buczek | Solutions Architect | Cloud | Integrations | MarTech",
+  description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
   icons: {
     icon: [
       { url: "/logo-square.png", sizes: "64x64", type: "image/png" },
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     apple: "/logo-square.png",
   },
   openGraph: {
-    title: "Karol Buczek | Web Systems Engineer • Full-Stack Developer • MarTech & Automation",
-    description: "Web systems engineer building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+    title: "Karol Buczek | Solutions Architect | Cloud | Integrations | MarTech",
+    description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
     url: "https://karolbuczek.com",
     siteName: "Karol Buczek",
     images: [
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
         url: "/logo-square.png",
         width: 512,
         height: 512,
-        alt: "Karol Buczek - Web Systems Engineer",
+        alt: "Karol Buczek - Solutions Architect",
       },
     ],
     locale: "en_US",
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karol Buczek | Web Systems Engineer • Full-Stack Developer • MarTech & Automation",
-    description: "Web systems engineer building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+    title: "Karol Buczek | Solutions Architect | Cloud | Integrations | MarTech",
+    description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
     images: ["/logo-square.png"],
   },
 }
@@ -66,14 +66,14 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Karol Buczek",
-  jobTitle: "Web Systems Engineer",
-  description: "Web systems engineer building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+  jobTitle: "Solutions Architect",
+  description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
   url: "https://karolbuczek.com",
   sameAs: [
     "https://www.linkedin.com/in/karolbuczek",
   ],
   knowsAbout: [
-    "Web Systems Engineering",
+    "Solutions Architecture",
     "Full-Stack Development",
     "WordPress Development",
     "React",
@@ -102,15 +102,15 @@ const personSchema = {
 const professionalServiceSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Karol Buczek - Web Systems Engineering",
-  description: "Web systems engineering, full-stack development, MarTech automation, and API integration services.",
+  name: "Karol Buczek - Solutions Architecture",
+  description: "Solutions architecture, full-stack development, MarTech automation, and API integration services.",
   provider: {
     "@type": "Person",
     name: "Karol Buczek",
   },
   areaServed: "Worldwide",
   serviceType: [
-    "Web Systems Engineering",
+    "Solutions Architecture",
     "Full-Stack Development",
     "MarTech Automation",
     "API Integration",
@@ -124,7 +124,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Karol Buczek",
-  description: "Web systems engineer building internal tools, automation pipelines, and integrations.",
+  description: "Solutions architect building internal tools, automation pipelines, and integrations.",
   url: "https://karolbuczek.com",
   potentialAction: {
     "@type": "SearchAction",

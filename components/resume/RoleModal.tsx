@@ -220,7 +220,7 @@ export function RoleModal({ role, isOpen, onClose }: RoleModalProps) {
                       {role.relatedCaseStudies.map((caseStudy, index) => (
                         <Link
                           key={index}
-                          href={`/case-studies/${caseStudy.slug}`}
+                          href={`/case-studies?cs=${caseStudy.slug}`}
                           className="p-4 rounded-lg border border-border/50 bg-card hover:border-primary/50 hover:bg-muted/20 transition-all group"
                         >
                           <Typography variant="body-sm" className="font-semibold group-hover:text-primary transition-colors">

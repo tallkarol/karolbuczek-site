@@ -6,20 +6,47 @@ import { Section } from "@/components/Section"
 import { PageHero } from "@/components/sections/PageHero"
 import { ResumeIllustration } from "@/components/illustrations"
 import { EducationSection } from "@/components/resume/EducationSection"
+import { CertificationsSection } from "@/components/resume/CertificationsSection"
 import { SkillsSection } from "@/components/resume/SkillsSection"
 import { TechStackSection } from "@/components/resume/TechStackSection"
 import { WorkExperienceSection } from "@/components/resume/WorkExperienceSection"
 import { SystemsList } from "@/components/resume/SystemsList"
+import { CaseStudyModal } from "@/components/resume/CaseStudyModal"
 import { ReferencesSection } from "@/components/resume/ReferencesSection"
+import { allCaseStudies } from "@/lib/resume-data"
+import type { CaseStudy } from "@/components/sections/CaseStudyCard"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/typography"
 import { Download, Mail, Linkedin } from "lucide-react"
+
+const featuredCaseStudies = [
+  { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform", subtitle: "Customer Data Portal & Lifecycle Automation", logo: "/zemvelo-logo.png" },
+  { slug: "secure-document-management-portal", title: "Bliss Secure File Share", subtitle: "Enterprise Document Portal on AWS", logo: "/bliss-cb.png" },
+  { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API", subtitle: "Centralized Integration Layer", logo: "/uwd-logo.png" },
+  { slug: "local-ai-meeting-intelligence", title: "Local AI Meeting Intelligence", subtitle: "Private On-Premise Transcription System", logo: "/tallkarol-monogram-logo.png" },
+  { slug: "martech-extension-architecture", title: "MarTech Extension Architecture", subtitle: "Custom WordPress Engineering", logo: "/tallkarol-monogram-logo.png" },
+]
 
 export default function ResumePage() {
   const [skillsOpen, setSkillsOpen] = useState(true)
   const [techStackOpen, setTechStackOpen] = useState(true)
   const [workExperienceOpen, setWorkExperienceOpen] = useState(true)
   const [projectsOpen, setProjectsOpen] = useState(true)
+  const [selectedCaseStudy, setSelectedCaseStudy] = useState<CaseStudy | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleCaseStudyClick = (slug: string) => {
+    const cs = allCaseStudies.find((c) => c.slug === slug)
+    if (cs) {
+      setSelectedCaseStudy(cs)
+      setIsModalOpen(true)
+    }
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+    setTimeout(() => setSelectedCaseStudy(null), 300)
+  }
 
   const handleSkillsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
@@ -57,11 +84,37 @@ export default function ResumePage() {
       <Section>
         <PageHero
           eyebrow="Resume"
-          title="Web Systems Engineer & Full-Stack Developer"
-          description="Building internal tools, automation pipelines, and performance-focused web systems across modern stacks."
+          title="Solutions Architect with over a decade of experience"
+          description={
+            <ul className="space-y-2 [&_li]:flex [&_li]:items-start [&_li]:gap-2">
+              <li>
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                <Typography variant="body" as="span">
+                  10+ years designing and delivering systems across cloud infrastructure, API integrations, data pipelines, and marketing technology.
+                </Typography>
+              </li>
+              <li>
+                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                <Typography variant="body" as="span">
+                  My background spans full-stack engineering and marketing leadership, which means I understand what these systems need to do for the business, not just how to build them.
+                </Typography>
+              </li>
+            </ul>
+          }
           illustration={<ResumeIllustration />}
           buttons={
             <div className="flex flex-wrap items-center gap-4">
+              <Button asChild size="sm" className="rounded-full">
+                <a
+                  href="/resume-karol-buczek.pdf"
+                  download="resume-karol-buczek.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
               <a
                 href="#work-experience"
                 onClick={handleWorkExperienceClick}
@@ -85,16 +138,6 @@ export default function ResumePage() {
               >
                 References
               </a>
-              <span className="text-muted-foreground/30">·</span>
-              <a
-                href="/resume-karol-buczek.pdf"
-                download="resume-karol-buczek.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
-              >
-                Download Resume
-              </a>
             </div>
           }
         />
@@ -107,14 +150,22 @@ export default function ResumePage() {
             {/* Technical Skills */}
             <TechStackSection isOpen={techStackOpen} onOpenChange={setTechStackOpen} />
 
+            {/* Certifications */}
+            <CertificationsSection />
+
+            {/* Soft Skills */}
+            <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
+
             {/* Work Experience */}
             <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
 
             {/* Featured Work */}
-            <SystemsList isOpen={projectsOpen} onOpenChange={setProjectsOpen} />
-
-            {/* Soft Skills */}
-            <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
+            <SystemsList
+              isOpen={projectsOpen}
+              onOpenChange={setProjectsOpen}
+              caseStudies={featuredCaseStudies}
+              onCaseStudyClick={handleCaseStudyClick}
+            />
 
             {/* Education */}
             <EducationSection />
@@ -168,6 +219,12 @@ export default function ResumePage() {
           </div>
         </div>
       </Section>
+
+      <CaseStudyModal
+        caseStudy={selectedCaseStudy}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
     </>
   )
 }

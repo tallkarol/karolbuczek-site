@@ -34,7 +34,7 @@ export function ReferencesSection() {
             <div key={index} className="space-y-5">
               <blockquote className="relative pl-6">
                 <div className="absolute left-0 top-0 h-full w-0.5 bg-primary/40" />
-                <Typography variant="body-sm" className="text-muted-foreground italic leading-relaxed">
+                <Typography variant="body-sm" className="text-muted-foreground text-xs italic leading-relaxed">
                   &ldquo;{ref.quote}&rdquo;
                 </Typography>
               </blockquote>
@@ -44,7 +44,7 @@ export function ReferencesSection() {
                     <Building2 className="h-5 w-5 text-muted-foreground" />
                   </div>
                   <div className="flex-1 min-w-0 space-y-1.5">
-                    <Typography variant="body-sm" className="font-semibold text-foreground">
+                    <Typography variant="body-sm" className="font-semibold text-foreground text-xs">
                       {ref.author}
                     </Typography>
                     <Typography variant="body-sm" className="text-muted-foreground text-xs">

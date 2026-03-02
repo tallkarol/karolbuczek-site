@@ -42,7 +42,7 @@ const roles = [
   },
   {
     id: "web-systems-engineer",
-    title: "Web Systems Engineer",
+    title: "Solutions Architect",
     route: "/web-systems-engineer",
     description: "Building Web Systems That Scale",
   },

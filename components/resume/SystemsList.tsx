@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -23,18 +24,27 @@ const systems = [
   "Internal Error & Logging Systems",
 ]
 
+interface CaseStudyLink {
+  slug: string
+  title: string
+  subtitle: string
+  logo?: string
+}
+
 interface SystemsListProps {
   isOpen?: boolean
   onOpenChange?: (open: boolean) => void
   roleFilter?: RoleFilter
+  caseStudies?: CaseStudyLink[]
+  onCaseStudyClick?: (slug: string) => void
 }
 
-export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter }: SystemsListProps = {}) {
+export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter, caseStudies, onCaseStudyClick }: SystemsListProps = {}) {
   const [internalIsOpen, setInternalIsOpen] = useState(false)
   const isOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen
   const setIsOpen = onOpenChange || ((value: boolean) => setInternalIsOpen(value))
   
-  // Filter systems based on role filter
+  // Filter systems based on role filter (when not using case studies)
   const relevantSystems = roleFilter && roleFilter !== "all" 
     ? getSystemsForLens(roleFilter)
     : []
@@ -49,6 +59,8 @@ export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter
     if (!roleFilter || roleFilter === "all") return false
     return relevantSystems.includes(system)
   }
+  
+  const useCaseStudies = caseStudies && caseStudies.length > 0
   
   return (
     <Card id="featured-work" className="border-border/50 hover:border-primary/30 transition-colors scroll-mt-20">
@@ -82,29 +94,76 @@ export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter
             className="overflow-hidden"
           >
             <CardContent className="pt-6">
-              <Typography variant="body-sm" className="text-muted-foreground mb-6">
-                A few things you can dive deeper into:
+              <Typography variant="body-sm" className="text-muted-foreground text-xs mb-6">
+                {useCaseStudies ? "These projects represent the full arc — discovery, architecture, build, and measurable impact." : "A few things you can dive deeper into:"}
               </Typography>
               <div className="grid gap-3 sm:grid-cols-2 mb-6">
-                {displayedSystems.map((system, index) => {
-                  const isRelevant = isSystemRelevant(system)
-                  return (
-                  <Link
-                    key={index}
-                    href={`/case-studies#${system.toLowerCase().replace(/\s+/g, "-")}`}
-                    className={`group flex items-center justify-between gap-3 p-3 rounded-lg border transition-all ${
-                      roleFilter && roleFilter !== "all" && isRelevant
-                        ? "border-primary/50 bg-primary/5 hover:border-primary/70 hover:bg-primary/10"
-                        : "border-border/50 bg-muted/20 hover:border-primary/50 hover:bg-muted/40"
-                    }`}
-                  >
-                    <Typography variant="body-sm" className="font-medium text-foreground group-hover:text-primary transition-colors">
-                      {system}
-                    </Typography>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
-                  </Link>
+                {useCaseStudies ? (
+                  caseStudies!.map((cs) =>
+                    (() => {
+                      const logoEl = cs.logo ? (
+                        <Image
+                          src={cs.logo}
+                          alt=""
+                          width={20}
+                          height={20}
+                          className="flex-shrink-0 h-5 w-5 object-contain"
+                        />
+                      ) : null
+                      const sharedContent = (
+                        <>
+                          <div className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-2 min-w-0">
+                              {logoEl}
+                              <Typography variant="body-sm" className="text-foreground group-hover:text-primary transition-colors text-xs truncate">
+                                {cs.title}
+                              </Typography>
+                            </div>
+                            <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
+                          </div>
+                          <Typography variant="body-sm" className="text-xs text-muted-foreground">
+                            {cs.subtitle}
+                          </Typography>
+                        </>
+                      )
+                      const sharedClass = "group flex flex-col gap-0.5 p-3 rounded-lg border border-border/50 bg-muted/20 hover:border-primary/50 hover:bg-muted/40 transition-all w-full text-left"
+                      return onCaseStudyClick ? (
+                        <button
+                          key={cs.slug}
+                          type="button"
+                          onClick={() => onCaseStudyClick(cs.slug)}
+                          className={sharedClass}
+                        >
+                          {sharedContent}
+                        </button>
+                      ) : (
+                        <Link key={cs.slug} href={`/case-studies?cs=${cs.slug}`} className={sharedClass}>
+                          {sharedContent}
+                        </Link>
+                      )
+                    })()
                   )
-                })}
+                ) : (
+                  displayedSystems.map((system, index) => {
+                    const isRelevant = isSystemRelevant(system)
+                    return (
+                      <Link
+                        key={index}
+                        href={`/case-studies#${system.toLowerCase().replace(/\s+/g, "-")}`}
+                        className={`group flex items-center justify-between gap-3 p-3 rounded-lg border transition-all ${
+                          roleFilter && roleFilter !== "all" && isRelevant
+                            ? "border-primary/50 bg-primary/5 hover:border-primary/70 hover:bg-primary/10"
+                            : "border-border/50 bg-muted/20 hover:border-primary/50 hover:bg-muted/40"
+                        }`}
+                      >
+                        <Typography variant="body-sm" className="text-foreground group-hover:text-primary transition-colors text-xs">
+                          {system}
+                        </Typography>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
+                      </Link>
+                    )
+                  })
+                )}
               </div>
               <Link
                 href="/case-studies"

@@ -12,8 +12,8 @@ interface CTASectionProps {
 }
 
 export function CTASection({
-  heading = "Open to new engineering roles and select consulting engagements.",
-  description = "If you're hiring or exploring a systems/automation project, feel free to reach out.",
+  heading = "Actively exploring remote senior Solutions Architect and Implementation Engineer roles",
+  description = "If my background fits what you're building, let's talk.",
 }: CTASectionProps) {
   return (
     <div className="relative rounded-lg border border-border/50 bg-muted/30 p-8 md:p-12 text-center space-y-6 overflow-hidden">

@@ -22,43 +22,62 @@ export function ResumeSummary() {
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
               <Typography variant="body-sm" className="text-muted-foreground">
-                10+ years building web platforms, internal tools & data workflows
+                10+ years spanning solutions architecture, full-stack engineering, and marketing leadership
               </Typography>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
               <Typography variant="body-sm" className="text-muted-foreground">
-              Full-stack web apps & websites using React, TailWind, Next.js, and more.
+              Operated across org sizes from early-stage startups to 3,000+ person enterprises — presenting to C-suite, collaborating with agencies, and coordinating across engineering, marketing, and operations teams
               </Typography>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
               <Typography variant="body-sm" className="text-muted-foreground">
-                Deep experience with APIs, automation pipelines & PHP/SQL engineering
+                Cloud infrastructure on AWS — Lambda, RDS, S3, Cognito, Amplify — and GCP
               </Typography>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
               <Typography variant="body-sm" className="text-muted-foreground">
-                WordPress/VIP/WooCommerce engineering + plugin/block/system architecture
+                End-to-end API integration experience across CRM, call center, marketing, and analytics platforms
               </Typography>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
               <Typography variant="body-sm" className="text-muted-foreground">
-                AWS cloud experience — Amplify, Lambda, RDS, S3, Cognito
+                Custom data warehousing, ETL pipelines, and React-based dashboard development
               </Typography>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
               <Typography variant="body-sm" className="text-muted-foreground">
-                Strong cross-functional background → product, marketing, engineering
+                Pre-sales experience — scoping, POC delivery, stakeholder interviews, and SOW definition
               </Typography>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
               <Typography variant="body-sm" className="text-muted-foreground">
-                Cross-team communication & stakeholder leadership              </Typography>
+                Former Marketing Director — I understand what these systems need to do for the people using them, not just how to build them
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+              AI-forward in practice — using LLM-based tooling to accelerate analysis, documentation, and system iteration
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+              Built and deployed AI-powered tooling for local inference, document automation, and workflow integration — without external data transmission
+              </Typography>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <Typography variant="body-sm" className="text-muted-foreground">
+                AWS Solutions Architect Associate in progress (SAA-C03)
+              </Typography>
             </li>
           </ul>
 

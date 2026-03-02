@@ -1,10 +1,10 @@
-# Karol Buczek - Web Systems Engineer
+# Karol Buczek - Solutions Architect
 
 ## About
-Karol Buczek is a web systems engineer and full-stack developer specializing in building internal tools, automation pipelines, and integrations. With 10+ years of experience, he focuses on WordPress, React, APIs, MarTech systems, and full-stack development.
+Karol Buczek is a solutions architect and full-stack developer specializing in building internal tools, automation pipelines, and integrations. With 10+ years of experience, he focuses on WordPress, React, APIs, MarTech systems, and full-stack development.
 
 ## Core Skills
-- Web Systems Engineering
+- Solutions Architecture
 - Full-Stack Development (React, Next.js, TypeScript, PHP, JavaScript, SQL)
 - WordPress Development (VIP, WooCommerce, plugin/block development)
 - MarTech & Marketing Technology Systems
@@ -25,7 +25,7 @@ Karol Buczek is a web systems engineer and full-stack developer specializing in 
 - Miami University - International Studies (with Marketing Coursework)
 
 ## Services
-- Web systems architecture and development
+- Solutions architecture and development
 - Internal tools and workflow platforms
 - MarTech automation and integration
 - API development and integration

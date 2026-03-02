@@ -36,7 +36,7 @@ export function Header() {
                 KAROL BUCZEK
               </div>
               <div className="text-xs text-muted-foreground">
-                Web Systems Engineer
+                Solutions Architect
               </div>
             </div>
           </Link>

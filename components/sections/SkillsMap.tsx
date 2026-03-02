@@ -7,39 +7,36 @@ import { BuildIllustration, OptimizeIllustration, ConnectIllustration } from "@/
 
 const skillCategories = [
   {
-    name: "Build",
-    description: "Custom engineering that solves real business problems.",
+    name: "Architect",
+    description: "Solution design from discovery through deployment.",
     illustration: BuildIllustration,
     skills: [
-      "Full-stack internal tools, websites, & web apps",
-      "WordPress engineering",
-      "AWS-backed workflows & automation",
-      "PHP/SQL data logic",
-      "Practical AI to speed up iteration and QA",
+      "Pre-sales scoping, requirements analysis, and stakeholder alignment",
+      "Cloud architecture on AWS (Lambda, S3, RDS, Cognito, Amplify)",
+      "API design, integration layer architecture, and system documentation",
+      "Full-stack engineering when the solution requires it",
+    ],
+  },
+  {
+    name: "Integrate",
+    description: "Connect platforms and orchestrate data across the stack.",
+    illustration: ConnectIllustration,
+    skills: [
+      "REST API integrations across CRM, marketing, call center, and ecommerce platforms",
+      "Data pipeline architecture — ingestion, transformation, and warehouse delivery",
+      "ETL middleware, event-driven automation, and error-handling frameworks",
+      "Zapier and custom scripting automation at scale",
     ],
   },
   {
     name: "Optimize",
-    description: "Improve performance, analytics accuracy, and data workflows.",
+    description: "Make existing systems observable, reliable, and measurable.",
     illustration: OptimizeIllustration,
     skills: [
-      "UTM + attribution architecture",
-      "GTM + dataLayer event systems",
-      "Core Web Vitals + site performance",
-      "Funnel & lead workflow design",
-      "Data normalization & standardization",
-    ],
-  },
-  {
-    name: "Connect",
-    description: "Integrate platforms and orchestrate data movement.",
-    illustration: ConnectIllustration,
-    skills: [
-      "CRM + API integrations",
-      "Zapier optimizations",
-      "Data pipelines & orchestration",
-      "Error-handling & process visibility",
-      "AI-assisted workflow design",
+      "UTM and attribution architecture for multi-touch tracking",
+      "GTM event schema design and server-side tracking pipelines",
+      "Core Web Vitals and site performance remediation",
+      "Data normalization, reporting visibility, and dashboard infrastructure",
     ],
   },
 ]
@@ -56,7 +53,7 @@ export function SkillsMap() {
       <div className="space-y-4">
         <Typography variant="h2" as="h2">What I Do</Typography>
         <Typography variant="body" className="text-muted-foreground">
-          I like working on the unglamorous parts of the stack — the places where broken handoffs, bad data, or slow UX are quietly costing you money.
+        I work on the parts of the stack where broken handoffs, bad data, and disconnected systems are quietly costing you money — comfortably operating across engineering, product, and business stakeholders at any level of the org.
         </Typography>
       </div>
 

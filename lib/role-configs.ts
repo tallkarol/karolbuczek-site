@@ -380,11 +380,11 @@ Karol Buczek`,
   },
   "web-systems-engineer": {
     id: "web-systems-engineer",
-    label: "Web Systems Engineer",
+    label: "Solutions Architect",
     shortDescription: "Architecting and building web systems—internal tools, workflow platforms, secure document systems, and full-stack applications—that solve real business problems with clean architecture and maintainable code.",
     landingPath: "/web-systems-engineer",
     targetTitles: [
-      "Web Systems Engineer",
+      "Solutions Architect",
       "Systems Engineer",
       "Platform Engineer",
       "Internal Tools Engineer",
@@ -404,11 +404,11 @@ Check out my systems engineering work: https://karolbuczek.com/web-systems-engin
 
 Best,
 Karol`,
-      email: `Subject: Web Systems Engineer Role at [Company]
+      email: `Subject: Solutions Architect Role at [Company]
 
 Hi [Name],
 
-I'm reaching out regarding the Web Systems Engineer position at [Company]. I architect and build web systems that solve real business problems with clean architecture and maintainable code.
+I'm reaching out regarding the Solutions Architect position at [Company]. I architect and build web systems that solve real business problems with clean architecture and maintainable code.
 
 My experience includes:
 • Architecting internal tools & workflow platforms

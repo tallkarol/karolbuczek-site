@@ -252,11 +252,24 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
 
 
               {/* The Client */}
-              {(caseStudy.clientLogo || caseStudy.clientDescription || caseStudy.clientStage) && (
+              {(caseStudy.clientLogo || (caseStudy.clientLogos && caseStudy.clientLogos.length > 0) || caseStudy.clientDescription || caseStudy.clientStage) && (
                 <div className="mb-6">
-                  <Typography variant="body-sm" as="h3" className="font-semibold mb-2">The Client</Typography>
-                  <div className="pl-4 flex flex-wrap items-start gap-4">
-                    {caseStudy.clientLogo && (
+                  <Typography variant="body-sm" as="h3" className="font-semibold mb-2">The Client(s)</Typography>
+                  <div className="pl-4 flex flex-wrap items-center gap-4">
+                    {caseStudy.clientLogos && caseStudy.clientLogos.length > 0 ? (
+                      <div className="flex flex-wrap gap-6 items-center">
+                        {caseStudy.clientLogos.map((src, i) => (
+                          <div key={i} className={`relative h-12 flex-shrink-0 ${i === 0 ? "w-10" : "w-24"}`}>
+                            <Image
+                              src={src}
+                              alt={`Client logo ${i + 1}`}
+                              fill
+                              className="object-contain object-left"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    ) : caseStudy.clientLogo ? (
                       <div className="relative h-12 w-32 flex-shrink-0">
                         <Image
                           src={caseStudy.clientLogo}
@@ -265,7 +278,7 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
                           className="object-contain object-left"
                         />
                       </div>
-                    )}
+                    ) : null}
                     <div className="space-y-2 min-w-0 flex-1">
                       {caseStudy.clientStage && (
                         <span className="inline-block text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">

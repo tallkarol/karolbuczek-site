@@ -31,6 +31,8 @@ export interface CaseStudy {
   additionalImages?: string[]
   /** Client logo path (e.g. /uwd-logo.png) for "The Client" section */
   clientLogo?: string
+  /** Multiple client logos for "The Client" section (e.g. Mineralife, Zemvelo, GDI) */
+  clientLogos?: string[]
   /** Short description of the client/company */
   clientDescription?: string
   /** Company stage: startup, growth stage, or enterprise */

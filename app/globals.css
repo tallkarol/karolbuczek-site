@@ -180,12 +180,25 @@
       box-shadow: none !important;
     }
 
-    /* Strip borders from work experience timeline items when printing — keep outer Card border */
+    /* Preserve accent/primary left border when printing (e.g. References blockquote) */
+    .print-resume .print-keep-accent-border {
+      border: none !important;
+      border-left: 2px solid hsl(358 78% 42%) !important;
+    }
+
+    /* Strip borders from work experience timeline items when printing */
     .print-resume .print-timeline,
     .print-resume .print-timeline *,
     .print-resume .print-timeline-item,
     .print-resume .print-timeline-dot {
       border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Remove box around Early Career Experience when printing */
+    .print-resume .early-career-print-flat {
+      border: none !important;
+      background: transparent !important;
       box-shadow: none !important;
     }
 

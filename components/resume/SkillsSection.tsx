@@ -6,13 +6,13 @@ import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp } from "lucide-react"
 const softSkills = [
-  "Translates complex technical concepts for executive, engineering, and business audiences equally",
-  "Operates across org sizes from early-stage startups to 3,000+ person enterprises",
-  "High ownership — takes a problem from discovery through delivery without heavy oversight",
-  "Experienced in pre-sales scoping, POC delivery, stakeholder interviews, and SOW definition",
-  "Systems-level thinking — understands how technical decisions affect business outcomes",
-  "Leads through influence — coordinates across engineering, product, marketing, and operations without requiring direct authority",
-  "AI-forward in practice — uses LLM-based tooling to accelerate analysis, documentation, and system iteration",
+  "Stakeholder Orchestration: Translates business objectives into technical requirements; communicates ROI and risk mitigation to C-suite and engineering teams alike.",
+  "Organizational Adaptability: Scalable experience across high-growth startups and 3,000+ person enterprise environments.",
+  "Autonomous Ownership: Leads the full architectural lifecycle—discovery, POC, and deployment—with zero oversight required.",
+  "Strategic Scoping: Expert in technical discovery and SOW definition, balancing business velocity with technical feasibility.",
+  "Systems Thinking: Aligns architectural decisions with long-term business outcomes to ensure technology serves as a revenue multiplier.",
+  "Cross-Functional Leadership: Builds consensus across engineering, product, and marketing to drive complex, multi-departmental initiatives.",
+  "AI-Forward Practice: Utilizes AI/LLM tooling to accelerate documentation, system iteration, and architectural analysis.",
 ]
 
 interface SkillsSectionProps {
@@ -58,14 +58,18 @@ export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange }: Skills
           >
             <CardContent className="pt-6">
               <ul className="space-y-2">
-                {softSkills.map((skill, skillIndex) => (
-                  <li key={skillIndex} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                    <Typography variant="body-sm" className="text-muted-foreground text-xs leading-relaxed">
-                      {skill}
-                    </Typography>
-                  </li>
-                ))}
+                {softSkills.map((skill, skillIndex) => {
+                  const [label, ...rest] = skill.split(": ")
+                  const description = rest.join(": ")
+                  return (
+                    <li key={skillIndex} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                      <Typography variant="body-sm" className="text-muted-foreground text-xs leading-relaxed">
+                        <strong className="font-semibold text-foreground">{label}:</strong> {description}
+                      </Typography>
+                    </li>
+                  )
+                })}
               </ul>
             </CardContent>
           </motion.div>

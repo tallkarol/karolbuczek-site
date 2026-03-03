@@ -224,6 +224,18 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
                 </div>
               </div>
 
+              {/* The Client */}
+              {caseStudy.clientDescription && (
+                <div className="mb-6">
+                  <Typography variant="body-sm" as="h3" className="font-semibold mb-2">The Client</Typography>
+                  <div className="pl-4">
+                    <Typography variant="body-sm" className="text-muted-foreground">
+                      {caseStudy.clientDescription}
+                    </Typography>
+                  </div>
+                </div>
+              )}
+
               {/* The Problem */}
               {caseStudy.problem && (
                 <div className="mb-6">
@@ -236,7 +248,20 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
                 </div>
               )}
 
-              
+              {/* The Constraints */}
+              {caseStudy.constraints && caseStudy.constraints.length > 0 && (
+                <div className="mb-6">
+                  <Typography variant="body-sm" as="h3" className="font-semibold mb-2">The Constraints</Typography>
+                  <ul className="pl-4 space-y-2">
+                    {caseStudy.constraints.map((constraint, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                        {constraint}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* The Solution */}
               {caseStudy.solution && (
@@ -246,51 +271,6 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
                     <Typography variant="body-sm" className="text-muted-foreground">
                       {caseStudy.solution}
                     </Typography>
-                  </div>
-                </div>
-              )}
-
-
-              {/* The Client */}
-              {(caseStudy.clientLogo || (caseStudy.clientLogos && caseStudy.clientLogos.length > 0) || caseStudy.clientDescription || caseStudy.clientStage) && (
-                <div className="mb-6">
-                  <Typography variant="body-sm" as="h3" className="font-semibold mb-2">The Client(s)</Typography>
-                  <div className="pl-4 flex flex-wrap items-center gap-4">
-                    {caseStudy.clientLogos && caseStudy.clientLogos.length > 0 ? (
-                      <div className="flex flex-wrap gap-6 items-center">
-                        {caseStudy.clientLogos.map((src, i) => (
-                          <div key={i} className={`relative h-12 flex-shrink-0 ${i === 0 ? "w-10" : "w-24"}`}>
-                            <Image
-                              src={src}
-                              alt={`Client logo ${i + 1}`}
-                              fill
-                              className="object-contain object-left"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    ) : caseStudy.clientLogo ? (
-                      <div className="relative h-12 w-32 flex-shrink-0">
-                        <Image
-                          src={caseStudy.clientLogo}
-                          alt="Client logo"
-                          fill
-                          className="object-contain object-left"
-                        />
-                      </div>
-                    ) : null}
-                    <div className="space-y-2 min-w-0 flex-1">
-                      {caseStudy.clientStage && (
-                        <span className="inline-block text-xs font-semibold uppercase tracking-wide px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">
-                          {caseStudy.clientStage}
-                        </span>
-                      )}
-                      {caseStudy.clientDescription && (
-                        <Typography variant="body-sm" className="text-muted-foreground">
-                          {caseStudy.clientDescription}
-                        </Typography>
-                      )}
-                    </div>
                   </div>
                 </div>
               )}

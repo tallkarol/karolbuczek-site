@@ -25,6 +25,8 @@ export interface CaseStudy {
   businessImpact?: string[]
   /** The problem this project addressed */
   problem?: string
+  /** Architectural constraints and trade-offs that shaped the solution */
+  constraints?: string[]
   /** The solution delivered */
   solution?: string
   /** Additional images shown at the end of the case study (e.g. screenshots, diagrams) */

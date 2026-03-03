@@ -43,6 +43,10 @@ export function Header() {
 
           {/* Desktop Nav links */}
           <div className="hidden items-center gap-6 text-xs font-medium text-muted-foreground sm:flex">
+            <Link href="/about" className="hover:text-primary transition-colors uppercase tracking-[0.05em] relative group">
+              About
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+            </Link>
             <Link href="/resume" className="hover:text-primary transition-colors uppercase tracking-[0.05em] relative group">
               Resume
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
@@ -121,6 +125,13 @@ export function Header() {
               </button>
             </div>
             <nav className="flex flex-col gap-4 p-6">
+              <Link
+                href="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-lg font-medium hover:text-primary transition-colors"
+              >
+                About
+              </Link>
               <Link
                 href="/resume"
                 onClick={() => setMobileMenuOpen(false)}

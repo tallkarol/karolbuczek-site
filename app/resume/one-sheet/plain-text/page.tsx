@@ -15,11 +15,10 @@ export default function ResumePlainTextPage() {
   }, [])
 
   const experience = [
-    { period: "2023 — Present", title: "Tall Karol — Principal Solutions Architect", logo: "/tallkarol-monogram-logo.png", bullets: ["Scoping, designing, and shipping systems end-to-end across cloud infrastructure, API integrations, and MarTech — from pre-sales discovery through production deployment.", "AWS document portals, Python ETL pipelines, UTM attribution, locally-hosted AI transcription (HuggingFace), GTM components, WordPress VIP performance (LCP 5.5s→3.2s).", "AI-forward — LLM tooling for analysis, docs, and iteration; local AI tooling for inference, automation, and workflows without external data."] },
-    { period: "2021 — 2023", title: "Universal Windows Direct — Backend & Integration Engineer", logo: "/uwd-logo.png", bullets: ["Automation infrastructure, API integrations, and internal tooling for marketing, sales, and operations.", "Custom API connecting Five9, Mailchimp, CRM; shared logging framework; lead management systems; cron-based data pipelines; Joomla→WordPress migration with zero downtime."] },
-    { period: "2021 — Present", title: "Mineralife Nutraceuticals — Web & Marketing Systems Consultant", logo: "/mineralife-logo.png", bullets: ["Engineering improvements across B2C ecommerce and B2B.", "WooCommerce data dashboard for order/inventory/revenue; lifecycle automation and segmentation; integrations between WooCommerce, email, and analytics."] },
-    { period: "2019 — 2021", title: "Perfect Power Wash — Marketing Director / Head of IT", logo: "/ppw.png", bullets: ["Owned strategy and technology stack during expansion from 1 to 4 markets.", "Internal tooling for call center, lead management, marketing automation; hired and trained developer.", "237% conversion increase, 175% CTR via A/B testing; data infrastructure and dashboards for multi-market visibility."] },
-    { period: "2009 — 2019", title: "Freelance Developer / Designer", logo: "/logo.png", bullets: ["10 years of client-facing work: full-stack web development, brand strategy, ecommerce builds, digital infrastructure.", "Expertise in requirements gathering, project scoping, and systems thinking that underpins current architecture work."] },
+    { period: "2023 — Present", title: "Tall Karol — Principal Solutions Architect", logo: "/tallkarol-monogram-logo.png", bullets: ["Directs the full architectural lifecycle—from pre-sales discovery to production deployment—for enterprise and growth-stage clients.", "Architected a multi-tenant serverless AWS document portal (Amplify, Cognito, Lambda, S3) with role-based access and immutable audit logging to meet enterprise compliance standards.", "Designed a decoupled GCP/Python ETL layer to orchestrate asynchronous data transfers into Databricks, ensuring data integrity and idempotency across heterogeneous systems.", "Engineered air-gapped AI meeting intelligence using local HuggingFace inference, automating deadline extraction while maintaining 100% data residency and privacy."] },
+    { period: "2021 — 2023", title: "Universal Windows Direct — Backend & Integration Engineer", logo: "/uwd-logo.png", bullets: ["Owned the integration architecture and internal tooling for a national enterprise home-services organization.", "Designed a templatable, maintainable service-oriented integration layer that unified diverse systems (Five9, Mailchimp, CRM, and others); replaced brittle, manual handoffs with a robust, event-driven automation framework.", "Implemented a shared telemetry and logging framework across the internal ecosystem, significantly reducing MTTR through full request-lifecycle visibility.", "Architected modular lead-ingestion systems that optimized routing logic and capture speed, directly impacting sales-floor conversion velocity."] },
+    { period: "2019 — 2021", title: "Perfect Power Wash — Marketing Director / Head of IT", logo: "/ppw.png", bullets: ["Led the technical and strategic expansion of the organization from 1 to 4 markets.", "Architected the internal tech stack for call center and lead management operations; hired and mentored the engineering team to scale custom systems.", "Designed multi-market reporting infrastructure and data dashboards, providing leadership with a unified view of performance metrics across all operational territories."] },
+    { period: "2009 — 2019", title: "Freelance Developer / Designer", logo: "/logo.png", bullets: ["Managed full-cycle delivery for mid-market clients, focusing on digital infrastructure strategy.", "Translated business goals into technical architectures for e-commerce and brand systems, developing foundational expertise in requirements gathering and stakeholder management."] },
   ]
 
   const softSkills = [
@@ -65,11 +64,11 @@ export default function ResumePlainTextPage() {
           <ul className="space-y-2 text-sm print:text-xs pl-4">
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <span>10+ years designing and delivering systems across cloud infrastructure, API integrations, data pipelines, and marketing technology.</span>
+              <span><strong>Strategic Architect:</strong> 10+ years designing web systems, cloud infrastructure, API integrations, and data pipelines — bridging the gap between full-stack engineering and C-suite business objectives.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <span>Full-stack engineering and marketing leadership background — understand what systems need to do for the business, not just how to build them.</span>
+              <span><strong>Systems Leader:</strong> Expert in technical discovery and autonomous project ownership, aligning architectural decisions with long-term revenue and operational efficiency.</span>
             </li>
           </ul>
         </section>
@@ -140,17 +139,21 @@ export default function ResumePlainTextPage() {
                   )}
                   <div className="min-w-0">
                     <div className="mb-1">
-                      <strong className="text-sm print:text-xs block">{item.title}</strong>
+                      <strong className="text-sm print:text-xs">{item.title}</strong>
+                      <span className="text-primary mx-3">|</span>
                       <span className="text-sm text-muted-foreground print:text-xs">{item.period}</span>
                     </div>
-                    <ul className="space-y-1.5 text-sm text-muted-foreground print:text-xs pl-0">
-                      {item.bullets.map((bullet, j) => (
-                        <li key={j} className="flex items-start gap-2">
-                          <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="space-y-1.5 text-sm text-muted-foreground print:text-xs">
+                      <p>{item.bullets[0]}</p>
+                      <ul className="space-y-1.5 pl-2">
+                        {item.bullets.slice(1).map((bullet, j) => (
+                          <li key={j} className="flex items-start gap-2">
+                            <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               ))}

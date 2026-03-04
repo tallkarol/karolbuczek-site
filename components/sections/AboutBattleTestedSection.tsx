@@ -45,7 +45,7 @@ export function AboutBattleTestedSection() {
               </Button>
             )}
             <Typography variant="body" className="text-lg text-muted-foreground">
-              At <strong className="text-foreground">Universal Windows Direct</strong>, I designed a shared logging and telemetry framework to reduce MTTR and make failures traceable across Five9, CRM, and Mailchimp integrations — under high-volume, zero-downtime constraints. I chose a modular API strategy so each integration could be added or updated without structural refactoring. I delivered senior-level architectural results because the business required them, regardless of the formal title on my desk.
+              At <strong className="text-foreground">Universal Windows Direct</strong>, I designed a shared logging and telemetry framework to reduce MTTR and make failures traceable across a diverse set of integrations (Five9, Mailchimp, CRM, and many others) — under high-volume, zero-downtime constraints. I chose a modular API strategy so each integration could be added or updated without structural refactoring. I delivered senior-level architectural results because the business required them, regardless of the formal title on my desk.
             </Typography>
             <Typography variant="body" className="text-lg text-muted-foreground">
               The complexity is real: multi-system orchestration, data consistency across boundaries, governance at scale. I've shipped it.

@@ -98,7 +98,7 @@ export default function AboutPage() {
           </Typography>
           <div className="space-y-6">
             <Typography variant="body" className="text-lg">
-              If you're looking for a Solutions Architect who thinks like an owner — who understands ROI, speaks to Marketing and C-Suite stakeholders, and ships without hand-holding — I'm your candidate. I bring a unique trifecta to your team: the strategic lens of a Director, the tactical execution of an Engineer, and the systemic oversight of a Principal Architect.
+              If you're looking for a Solutions Architect who thinks like an owner — who understands ROI, speaks to Marketing and C-Suite stakeholders, and ships without hand-holding — I'm your candidate. I bring a unique trifecta to your team: the <strong className="text-foreground">strategic lens</strong> of a Director, the <strong className="text-foreground">tactical execution</strong> of an Engineer, and the <strong className="text-foreground">systemic oversight</strong> of a Principal Architect.
             </Typography>
             <Typography variant="body" className="text-lg text-muted-foreground">
               I don't see a divide between "business goals" and "technical requirements." My background allows me to build with a dual perspective: engineering systems that are technically rigorous and strategically aligned. I build infrastructure that acts as a multiplier for business strategy.

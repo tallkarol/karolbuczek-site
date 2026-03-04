@@ -90,13 +90,13 @@ export default function ResumePage() {
               <li>
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
                 <Typography variant="body" as="span">
-                  10+ years designing and delivering systems across cloud infrastructure, API integrations, data pipelines, and marketing technology.
+                  <strong>Strategic Architect:</strong> 10+ years designing web systems, cloud infrastructure, API integrations, and data pipelines — bridging the gap between full-stack engineering and C-suite business objectives.
                 </Typography>
               </li>
               <li>
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
                 <Typography variant="body" as="span">
-                  My background spans full-stack engineering and marketing leadership, which means I understand what these systems need to do for the business, not just how to build them.
+                  <strong>Systems Leader:</strong> Expert in technical discovery and autonomous project ownership, aligning architectural decisions with long-term revenue and operational efficiency.
                 </Typography>
               </li>
             </ul>
@@ -181,10 +181,10 @@ export default function ResumePage() {
             
             <div className="space-y-2">
               <Typography variant="h2" as="h2" className="text-2xl md:text-3xl">
-                Open to new engineering roles and select consulting engagements.
+                Open to solutions architect roles and select consulting engagements.
               </Typography>
               <Typography variant="body" className="text-muted-foreground">
-                If you're hiring or exploring a systems/automation project, feel free to reach out.
+                If you're hiring or exploring an architecture engagement—discovery, scoping, or system design—feel free to reach out.
               </Typography>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

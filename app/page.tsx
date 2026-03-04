@@ -34,7 +34,7 @@ export default function HomePage() {
             ))}
           </div>
         }>
-          <CaseStudyGrid />
+          <CaseStudyGrid limit={3} showViewAllButton />
         </Suspense>
       </Section>
 

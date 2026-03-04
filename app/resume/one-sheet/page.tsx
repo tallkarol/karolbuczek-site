@@ -67,19 +67,13 @@ export default function ResumeOneSheetPage() {
               <li className="flex items-start gap-2">
                 <span className="mt-1 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
                 <Typography variant="body-sm" className="text-[11px] leading-relaxed print:text-[9px] text-foreground">
-                  10+ years architecting and delivering high-stakes systems across cloud infrastructure, API orchestration, and data pipelines.
+                  10+ years designing and delivering systems across cloud infrastructure, API integrations, data pipelines, and marketing technology.
                 </Typography>
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
                 <Typography variant="body-sm" className="text-[11px] leading-relaxed print:text-[9px] text-foreground">
-                  Combines a Principal Engineering mindset with a Marketing Director background to bridge the gap between complex technical requirements and C-suite business objectives.
-                </Typography>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="mt-1 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                <Typography variant="body-sm" className="text-[11px] leading-relaxed print:text-[9px] text-foreground">
-                  Expert in designing for observability, security, and ROI.
+                  Full-stack engineering and marketing leadership background — understand what systems need to do for the business, not just how to build them.
                 </Typography>
               </li>
             </ul>
@@ -99,11 +93,9 @@ export default function ResumeOneSheetPage() {
                   title: "Tall Karol — Principal Solutions Architect",
                   logo: "/tallkarol-monogram-logo.png",
                   bullets: [
-                    "Directs the full architectural lifecycle—from pre-sales discovery to production deployment—for enterprise and growth-stage clients.",
-                    "Architected a serverless AWS document portal (Amplify, Cognito, Lambda, S3) with role-based access and immutable audit logging to meet enterprise compliance standards.",
-                    "Designed a decoupled GCP/Python ETL layer to orchestrate asynchronous data transfers into Databricks, ensuring data integrity and idempotency across heterogeneous systems.",
-                    "Engineered air-gapped AI meeting intelligence using local HuggingFace inference, automating deadline extraction while maintaining 100% data residency and privacy.",
-                    "Optimized WordPress VIP performance, reducing LCP from 5.5s to 3.2s through render-path refinement and asset orchestration.",
+                    "Scoping, designing, and shipping systems end-to-end across cloud infrastructure, API integrations, and MarTech — from pre-sales discovery through production deployment.",
+                    "AWS document portals, Python ETL pipelines, UTM attribution, locally-hosted AI transcription (HuggingFace), GTM components, WordPress VIP performance (LCP 5.5s→3.2s).",
+                    "AI-forward — LLM tooling for analysis, docs, and iteration; local AI tooling for inference, automation, and workflows without external data.",
                   ],
                 },
                 {
@@ -111,10 +103,17 @@ export default function ResumeOneSheetPage() {
                   title: "Universal Windows Direct — Backend & Integration Engineer",
                   logo: "/uwd-logo.png",
                   bullets: [
-                    "Owned the integration architecture and internal tooling for a national enterprise home-services organization.",
-                    "Designed a service-oriented integration layer connecting Five9, Mailchimp, and CRM; replaced brittle, manual handoffs with a robust, event-driven automation framework.",
-                    "Implemented a shared telemetry and logging framework across the internal ecosystem, significantly reducing MTTR through full request-lifecycle visibility.",
-                    "Architected modular lead-ingestion systems that optimized routing logic and capture speed, directly impacting sales-floor conversion velocity.",
+                    "Automation infrastructure, API integrations, and internal tooling for marketing, sales, and operations.",
+                    "Custom API connecting Five9, Mailchimp, CRM; shared logging framework; lead management systems; cron-based data pipelines; Joomla→WordPress migration with zero downtime.",
+                  ],
+                },
+                {
+                  period: "2021 — Present",
+                  title: "Mineralife Nutraceuticals — Web & Marketing Systems Consultant",
+                  logo: "/mineralife-logo.png",
+                  bullets: [
+                    "Engineering improvements across B2C ecommerce and B2B.",
+                    "WooCommerce data dashboard for order/inventory/revenue; lifecycle automation and segmentation; integrations between WooCommerce, email, and analytics.",
                   ],
                 },
                 {
@@ -122,9 +121,9 @@ export default function ResumeOneSheetPage() {
                   title: "Perfect Power Wash — Marketing Director / Head of IT",
                   logo: "/ppw.png",
                   bullets: [
-                    "Led the technical and strategic expansion of the organization from 1 to 4 markets.",
-                    "Architected the internal tech stack for call center and lead management operations; hired and mentored the engineering team to scale custom systems.",
-                    "Designed multi-market reporting infrastructure and data dashboards, providing leadership with a unified view of performance metrics across all operational territories.",
+                    "Owned strategy and technology stack during expansion from 1 to 4 markets.",
+                    "Internal tooling for call center, lead management, marketing automation; hired and trained developer.",
+                    "237% conversion increase, 175% CTR via A/B testing; data infrastructure and dashboards for multi-market visibility.",
                   ],
                 },
                 {
@@ -132,8 +131,8 @@ export default function ResumeOneSheetPage() {
                   title: "Freelance Developer / Designer",
                   logo: "/logo.png",
                   bullets: [
-                    "Managed full-cycle delivery for mid-market clients, focusing on digital infrastructure strategy.",
-                    "Translated business goals into technical architectures for e-commerce and brand systems, developing foundational expertise in requirements gathering and stakeholder management.",
+                    "10 years of client-facing work: full-stack web development, brand strategy, ecommerce builds, digital infrastructure.",
+                    "Expertise in requirements gathering, project scoping, and systems thinking that underpins current architecture work.",
                   ],
                 },
               ].map((item, index, arr) => (
@@ -154,26 +153,24 @@ export default function ResumeOneSheetPage() {
                         />
                       )}
                       <div className="flex-1 min-w-0">
-                        <Typography variant="body" className="font-semibold text-[11px] print:text-[9px] text-foreground">
-                          {item.title} <span className="text-primary mx-3">|</span> <span className="font-medium text-muted-foreground">{item.period}</span>
+                        <Typography variant="body" className="font-semibold text-[11px] print:text-[9px] text-foreground block">
+                          {item.title}
+                        </Typography>
+                        <Typography variant="body-sm" className="text-[11px] print:text-[9px] text-muted-foreground font-medium">
+                          {item.period}
                         </Typography>
                       </div>
                     </div>
-                    <div className="mt-1 p-2 print:p-0 print:mt-0.5 rounded-lg border bg-muted/30 border-border/50 print-flat space-y-1 print:space-y-0.5 pl-0">
-                      <Typography variant="body-sm" className="text-[11px] leading-relaxed print:text-[8px] text-muted-foreground italic">
-                        {item.bullets[0]}
-                      </Typography>
-                      <ul className="space-y-1 print:space-y-0.5 pl-2">
-                        {item.bullets.slice(1).map((bullet, bi) => (
-                          <li key={bi} className="flex items-start gap-2">
-                            <span className="mt-1 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                            <Typography variant="body-sm" className="text-[11px] leading-relaxed print:text-[8px] text-muted-foreground italic">
-                              {bullet}
-                            </Typography>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ul className="mt-1 p-2 print:p-0 print:mt-0.5 rounded-lg border bg-muted/30 border-border/50 print-flat space-y-1 print:space-y-0.5 pl-0">
+                      {item.bullets.map((bullet, bi) => (
+                        <li key={bi} className="flex items-start gap-2">
+                          <span className="mt-1 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                          <Typography variant="body-sm" className="text-[11px] leading-relaxed print:text-[8px] text-muted-foreground italic">
+                            {bullet}
+                          </Typography>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               ))}
@@ -226,10 +223,11 @@ export default function ResumeOneSheetPage() {
             </Typography>
             <ul className="space-y-1 print:space-y-0.5 pl-4">
               {[
-                "Stakeholder Orchestration: Translates business goals into rigorous technical requirements for engineering teams.",
-                "Organizational Adaptability: Successful in both high-velocity startups and 3,000+ person enterprise environments.",
-                "Autonomous Ownership: Leads the architectural lifecycle from discovery through production with zero oversight.",
-                "Strategic Scoping: Expert in technical discovery, POC delivery, and SOW definition for high-stakes projects.",
+                "Stakeholder Orchestration: Translates business objectives into technical requirements; communicates ROI and risk mitigation to C-suite and engineering teams alike.",
+                "Autonomous Ownership: Leads the full architectural lifecycle—discovery, POC, and deployment—with zero oversight required.",
+                "Strategic Scoping: Expert in technical discovery and SOW definition, balancing business velocity with technical feasibility.",
+                "Systems Thinking: Aligns architectural decisions with long-term business outcomes to ensure technology serves as a revenue multiplier.",
+                "Cross-Functional Leadership: Builds consensus across engineering, product, and marketing to drive complex, multi-departmental initiatives.",
               ].map((skill) => {
                 const [label, ...rest] = skill.split(": ")
                 return (

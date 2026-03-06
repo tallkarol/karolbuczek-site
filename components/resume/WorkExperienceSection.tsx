@@ -43,13 +43,12 @@ const timelineData: TimelineItem[] = [
     period: "2021 — 2023",
     officialTitle: "Universal Windows Direct — Backend & Integration Engineer (Full Stack)",
     logo: "/uwd-logo.png",
-    reality: "Owned the integration architecture and internal tooling for a national enterprise home services organization, focusing on system reliability and operational scalability.",
+    reality: "Full-stack integration engineering role — automation infrastructure, API integrations, and internal tooling supporting marketing, sales, and operations across an enterprise home services organization.",
     systems: [
-      "Designed a centralized, service-oriented integration layer connecting Five9, Mailchimp, and CRM; replaced brittle, manual handoffs with a robust, event-driven automation framework.",
-      "Implemented a shared telemetry and logging framework across the internal automation ecosystem, reducing Mean Time to Recovery (MTTR) by providing full request-lifecycle visibility.",
-      "Architected a modular lead management and intake system that optimized routing logic and capture speed, directly impacting sales-floor responsiveness.",
-      "Engineered resilient cron-based data pipelines on VPS infrastructure to transform and clean high-volume datasets prior to distribution across marketing and sales systems.",
-      "Managed critical infrastructure operations, including a zero-downtime migration across 4 VPS partitions and a complex platform transition from legacy Joomla to WordPress.",
+      "Built a custom API and automation layer connecting Five9 (call center), Mailchimp, CRM, and internal tools — replacing manual data handoffs across sales and marketing ops.",
+      "Designed a shared logging and error handling framework used across all internal scripts — making the system debuggable and fast to extend.",
+      "Migrated server infrastructure across 4 VPS partitions with zero downtime.",
+      "Led full site migration from Joomla to WordPress, preserving all custom functionality.",
     ],
   },
   {

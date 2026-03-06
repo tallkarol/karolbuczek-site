@@ -56,6 +56,7 @@ const techCategories: { label: string; items: TechItem[] }[] = [
       { name: "Zapier", icon: SiZapier },
       { name: "Five9" },
       { name: "Mailchimp", icon: SiMailchimp },
+      { name: "Databricks" },
     ],
   },
   {

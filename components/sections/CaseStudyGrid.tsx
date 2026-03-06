@@ -12,7 +12,7 @@ import type { CaseStudy } from "./CaseStudyCard"
 
 const HOMEPAGE_FEATURED_SLUGS = [
   "secure-document-management-portal",
-  "unified-customer-lifecycle-platform",
+  "local-ai-meeting-intelligence",
   "uwd-enterprise-integration-api",
 ]
 

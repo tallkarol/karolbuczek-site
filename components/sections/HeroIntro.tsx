@@ -12,7 +12,6 @@ const animatedPhrases = [
   "that scale.",
   "that integrate.",
   "that stay observable.",
-  "that don't fail silently.",
 ]
 
 const AnimatedLine = dynamic(

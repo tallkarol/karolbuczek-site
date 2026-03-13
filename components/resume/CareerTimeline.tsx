@@ -32,6 +32,20 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
+    period: "2021 — Present",
+    officialTitle: "Mineralife Nutraceuticals — Marketing Systems Consultant",
+    officialDates: "Official Position: July 2021 – Present",
+    reality: "Delivered systems work across both engagements simultaneously, focusing on e-commerce optimization and marketing automation.",
+    systems: [
+      "WooCommerce configuration + optimization",
+      "Migrating and improving product pages and funnels",
+      "Email/SMS improvements (metrics to be added later)",
+      "Analytics + GTM + GA4 enhancements",
+      "Performance tuning and page restructuring where needed",
+      "Integrations with Hover, Mailchimp, and other marketing ops tools",
+    ],
+  },
+  {
     period: "2021 — 2023",
     officialTitle: "Universal Windows Direct — Full Stack Web Developer",
     reality: "Delivered backend automation and systems engineering solutions across WordPress, APIs, and data pipelines.",
@@ -47,22 +61,8 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
-    period: "2021 — Present",
-    officialTitle: "Mineralife Nutraceuticals — Marketing & IT Consultant",
-    officialDates: "Official Position: July 2021 – Present",
-    reality: "Delivered systems work across both engagements simultaneously, focusing on e-commerce optimization and marketing automation.",
-    systems: [
-      "WooCommerce configuration + optimization",
-      "Migrating and improving product pages and funnels",
-      "Email/SMS improvements (metrics to be added later)",
-      "Analytics + GTM + GA4 enhancements",
-      "Performance tuning and page restructuring where needed",
-      "Integrations with Hover, Mailchimp, and other marketing ops tools",
-    ],
-  },
-  {
     period: "2019 — 2021",
-    officialTitle: "Perfect Power Wash — Marketing Director / Head of IT",
+    officialTitle: "Perfect Power Wash — Marketing Director",
     officialDates: "Official Position: Apr 2019 – Jul 2021",
     reality: "Delivered MarTech engineering solutions and internal tool development, including dashboards, analytics models, and automation systems.",
     systems: [

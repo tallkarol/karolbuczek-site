@@ -116,29 +116,11 @@ export default function MartechEngineerResumePage() {
               {/* Divider */}
               <div className="border-t border-border/20 print:border-border/10" />
 
-              {/* Universal Windows Direct */}
-              <div>
-                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-0.5 print:mb-0">
-                  <Typography variant="body" className="font-semibold text-[15px] print:text-[12px] leading-tight text-foreground">
-                    Universal Windows Direct — Backend & Integration Engineer (Full Stack)
-                  </Typography>
-                  <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[10px]">
-                    2021 — 2023
-                  </Typography>
-                </div>
-                <Typography variant="body-sm" className="text-[13px] leading-relaxed print:text-[10px] print:leading-relaxed text-foreground">
-                  Built and maintained automation frameworks for lead routing, attribution logic, and CRM workflows using PHP, SQL, GTM, and server-side integrations. Implemented pixel-based and server-side tracking across advertising platforms, ecommerce funnels, and call-center systems. Collaborated with marketing and data teams to improve attribution accuracy and reporting consistency across environments.
-                </Typography>
-              </div>
-
-              {/* Divider */}
-              <div className="border-t border-border/20 print:border-border/10" />
-
               {/* Mineralife */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-0.5 print:mb-0">
                   <Typography variant="body" className="font-semibold text-[15px] print:text-[12px] leading-tight text-foreground">
-                    Mineralife Nutraceuticals — Marketing & Systems Consultant
+                    Mineralife Nutraceuticals — Marketing Systems Consultant
                   </Typography>
                   <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[10px]">
                     2021 — Present
@@ -152,11 +134,29 @@ export default function MartechEngineerResumePage() {
               {/* Divider */}
               <div className="border-t border-border/20 print:border-border/10" />
 
+              {/* Universal Windows Direct */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-0.5 print:mb-0">
+                  <Typography variant="body" className="font-semibold text-[15px] print:text-[12px] leading-tight text-foreground">
+                    Universal Windows Direct — Integration Engineer (Full Stack)
+                  </Typography>
+                  <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[10px]">
+                    2021 — 2023
+                  </Typography>
+                </div>
+                <Typography variant="body-sm" className="text-[13px] leading-relaxed print:text-[10px] print:leading-relaxed text-foreground">
+                  Built and maintained automation frameworks for lead routing, attribution logic, and CRM workflows using PHP, SQL, GTM, and server-side integrations. Implemented pixel-based and server-side tracking across advertising platforms, ecommerce funnels, and call-center systems. Collaborated with marketing and data teams to improve attribution accuracy and reporting consistency across environments.
+                </Typography>
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-border/20 print:border-border/10" />
+
               {/* Perfect Power Wash */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-0.5 print:mb-0">
                   <Typography variant="body" className="font-semibold text-[15px] print:text-[12px] leading-tight text-foreground">
-                    Perfect Power Wash — Marketing Director / Head of IT
+                    Perfect Power Wash — Marketing Director
                   </Typography>
                   <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[10px]">
                     2019 — 2021

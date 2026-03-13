@@ -111,26 +111,11 @@ export default function UmbrellaResumePage() {
                 </Typography>
               </div>
 
-              {/* Universal Windows Direct */}
-              <div>
-                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1 print:mb-0.5">
-                  <Typography variant="body" className="font-semibold text-[15px] print:text-[13px]">
-                    Universal Windows Direct — Backend & Integration Engineer (Full Stack)
-                  </Typography>
-                  <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[11px]">
-                    2021 — 2023
-                  </Typography>
-                </div>
-                <Typography variant="body-sm" className="text-[13px] leading-relaxed print:text-[11px]">
-                  Built PHP/SQL automation frameworks for lead routing, attribution logic, and CRM/ops workflows. Managed API integrations (Five9, Mailchimp, Hover, Birdeye) and engineered data ingestion pipelines + VPS infrastructure improvements supporting marketing and operations.
-                </Typography>
-              </div>
-
               {/* Mineralife */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1 print:mb-0.5">
                   <Typography variant="body" className="font-semibold text-[15px] print:text-[13px]">
-                    Mineralife Nutraceuticals — Web & Marketing Systems Consultant
+                    Mineralife Nutraceuticals — Marketing Systems Consultant
                   </Typography>
                   <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[11px]">
                     2021 — Present
@@ -141,11 +126,26 @@ export default function UmbrellaResumePage() {
                 </Typography>
               </div>
 
+              {/* Universal Windows Direct */}
+              <div>
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1 print:mb-0.5">
+                  <Typography variant="body" className="font-semibold text-[15px] print:text-[13px]">
+                    Universal Windows Direct — Integration Engineer (Full Stack)
+                  </Typography>
+                  <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[11px]">
+                    2021 — 2023
+                  </Typography>
+                </div>
+                <Typography variant="body-sm" className="text-[13px] leading-relaxed print:text-[11px]">
+                  Built PHP/SQL automation frameworks for lead routing, attribution logic, and CRM/ops workflows. Managed API integrations (Five9, Mailchimp, Hover, Birdeye) and engineered data ingestion pipelines + VPS infrastructure improvements supporting marketing and operations.
+                </Typography>
+              </div>
+
               {/* Perfect Power Wash */}
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1 print:mb-0.5">
                   <Typography variant="body" className="font-semibold text-[15px] print:text-[13px]">
-                    Perfect Power Wash — Marketing Director / Head of IT (Systems & Ops Engineering)
+                    Perfect Power Wash — Marketing Director (Systems & Ops Engineering)
                   </Typography>
                   <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[11px]">
                     2019 — 2021

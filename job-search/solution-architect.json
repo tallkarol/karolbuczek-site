@@ -717,14 +717,6 @@
       "note": "In progress — listed correctly on all touchpoints. Complete ASAP."
     },
     {
-      "label": "Azure Fundamentals (AZ-900)",
-      "description": "Entry-level Azure certification",
-      "frequency": 3,
-      "match": true,
-      "type": "certification",
-      "changeFromV1": "upgraded — cert now completed"
-    },
-    {
       "label": "Google Cloud Digital Leader (GCP-DL)",
       "description": "GCP fundamentals certification",
       "frequency": 2,

@@ -85,22 +85,7 @@ export default function ResumePage() {
         <PageHero
           eyebrow="Resume"
           title="Solutions Architect with over a decade of experience"
-          description={
-            <ul className="space-y-2 [&_li]:flex [&_li]:items-start [&_li]:gap-2">
-              <li>
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                <Typography variant="body" as="span">
-                  <strong>Strategic Architect:</strong> 10+ years designing web systems, cloud infrastructure, API integrations, and data pipelines — bridging the gap between full-stack engineering and C-suite business objectives.
-                </Typography>
-              </li>
-              <li>
-                <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                <Typography variant="body" as="span">
-                  <strong>Systems Leader:</strong> Expert in technical discovery and autonomous project ownership, aligning architectural decisions with long-term revenue and operational efficiency.
-                </Typography>
-              </li>
-            </ul>
-          }
+          description="Solutions architect with 10+ years of experience spanning engineering leadership, full-stack development, and consulting. Combines director-level strategy with hands-on systems design to architect web platforms, cloud infrastructure, integrations, and data pipelines that align technology with real business outcomes."
           illustration={<ResumeIllustration />}
           buttons={
             <div className="flex flex-wrap items-center gap-4">
@@ -147,17 +132,17 @@ export default function ResumePage() {
         <div className="space-y-8 max-w-5xl mx-auto">
           {/* Resume Content */}
           <div className="space-y-8">
+            {/* Work Experience */}
+            <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
+
+            {/* Core Strengths */}
+            <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
+
             {/* Technical Skills */}
             <TechStackSection isOpen={techStackOpen} onOpenChange={setTechStackOpen} />
 
             {/* Certifications */}
             <CertificationsSection />
-
-            {/* Soft Skills */}
-            <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
-
-            {/* Work Experience */}
-            <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
 
             {/* Featured Work */}
             <SystemsList

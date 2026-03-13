@@ -48,7 +48,7 @@ export function HeroIntro() {
 
       <div className="space-y-2 md:space-y-3 order-1 md:order-2">
         <Typography variant="eyebrow" className="text-muted-foreground">
-          Solutions Architect <span className="text-primary">|</span> Cloud Systems <span className="text-primary">|</span> MarTech <span className="text-primary">|</span> AI
+          Solutions Architect <span className="text-primary">|</span> Cloud Systems <span className="text-primary">|</span> Integrations <span className="text-primary">|</span> AI
         </Typography>
 
         <Typography variant="h1" as="h1" className="flex flex-col gap-1">

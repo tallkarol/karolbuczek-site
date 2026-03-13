@@ -154,33 +154,33 @@ export const lensToCaseStudies: Record<RoleFilter, string[]> = {
 export const lensToRoles: Record<RoleFilter, string[]> = {
   "all": [],
   "WordPress Engineering": [
-    "Universal Windows Direct — Backend & Integration Engineer (Full Stack) (2021-2023)",
-    "Mineralife Nutraceuticals — Web & Marketing Systems Consultant (2021-Present)",
+    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
+    "Mineralife Nutraceuticals — Marketing Systems Consultant (2021-Present)",
     "Freelance Developer / Designer (2009-2019)",
   ],
   "MarTech / Growth Engineering": [
-    "Universal Windows Direct — Backend & Integration Engineer (Full Stack) (2021-2023)",
-    "Perfect Power Wash — Marketing Director / Head of IT (2019-2021)",
-    "Mineralife Nutraceuticals — Web & Marketing Systems Consultant (2021-Present)",
+    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
+    "Perfect Power Wash — Marketing Director (2019-2021)",
+    "Mineralife Nutraceuticals — Marketing Systems Consultant (2021-Present)",
   ],
   "Product & Internal Tools": [
     "Tall Karol — Principal Solutions Architect (2023-Present)",
-    "Perfect Power Wash — Marketing Director / Head of IT (2019-2021)",
+    "Perfect Power Wash — Marketing Director (2019-2021)",
   ],
   "Integrations & Automation": [
-    "Universal Windows Direct — Backend & Integration Engineer (Full Stack) (2021-2023)",
-    "Mineralife Nutraceuticals — Web & Marketing Systems Consultant (2021-Present)",
+    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
+    "Mineralife Nutraceuticals — Marketing Systems Consultant (2021-Present)",
   ],
   "Performance Engineering": [
-    "Universal Windows Direct — Backend & Integration Engineer (Full Stack) (2021-2023)",
+    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
   ],
   "Startup Experience": [
     "Freelance Developer / Designer (2009-2019)",
   ],
   "Implementation Engineer": [
-    "Universal Windows Direct — Backend & Integration Engineer (Full Stack) (2021-2023)",
-    "Mineralife Nutraceuticals — Web & Marketing Systems Consultant (2021-Present)",
-    "Perfect Power Wash — Marketing Director / Head of IT (2019-2021)",
+    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
+    "Mineralife Nutraceuticals — Marketing Systems Consultant (2021-Present)",
+    "Perfect Power Wash — Marketing Director (2019-2021)",
   ],
 }
 

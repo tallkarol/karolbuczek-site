@@ -28,17 +28,12 @@ interface Certification {
 
 const certifications: Certification[] = [
   {
-    name: "Azure Fundamentals (AZ-900)",
-    category: "cloud",
-    logo: "azure",
-  },
-  {
-    name: "Google Cloud Digital Leader (GCP-DL)",
+    name: "Google Cloud Digital Leader",
     category: "cloud",
     logo: "gcp",
   },
   {
-    name: "AWS Solutions Architect Associate (SAA-C03)",
+    name: "AWS Solutions Architect Associate",
     category: "cloud",
     logo: "aws",
     inProgress: true,

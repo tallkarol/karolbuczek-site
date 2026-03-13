@@ -38,7 +38,7 @@ export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange }: Skills
         >
           <CardTitle className="text-lg font-display flex items-center gap-2 group-hover:text-primary transition-colors pointer-events-none">
             <span className="h-1 w-1 rounded-full bg-primary" />
-            Soft Skills
+            Core Strengths
           </CardTitle>
           {isOpen ? (
             <ChevronUp className="h-5 w-5 text-muted-foreground pointer-events-none" />

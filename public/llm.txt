@@ -15,9 +15,9 @@ Karol Buczek is a solutions architect and full-stack developer specializing in b
 
 ## Experience
 - Tall Karol (2023-Present) - Systems Architect & Full-Stack Developer
-- Universal Windows Direct (2021-2023) - Backend & Integration Engineer (Full Stack)
-- Mineralife Nutraceuticals (2021-Present) - Web & Marketing Systems Consultant
-- Perfect Power Wash (2019-2021) - Marketing Director / Head of IT (Systems & Ops Engineering)
+- Universal Windows Direct (2021-2023) - Integration Engineer (Full Stack)
+- Mineralife Nutraceuticals (2021-Present) - Marketing Systems Consultant
+- Perfect Power Wash (2019-2021) - Marketing Director (Systems & Ops Engineering)
 - Freelance Developer / Designer (2009-2019)
 
 ## Education

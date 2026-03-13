@@ -39,7 +39,7 @@ const techCategories: { label: string; items: TechItem[] }[] = [
   {
     label: "Cloud & Infrastructure",
     items: [
-      { name: "AWS (Amplify, Lambda, Cognito, RDS, S3)", icon: SiAmazonwebservices },
+      { name: "AWS", icon: SiAmazonwebservices },
       { name: "GCP", icon: SiGooglecloud },
       { name: "Vercel", icon: SiVercel },
       { name: "Supabase", icon: SiSupabase },
@@ -148,7 +148,7 @@ export function TechStackSection({ isOpen: controlledIsOpen, onOpenChange }: Tec
                 ))}
                 <div className="space-y-3">
                   <Typography variant="body-sm" className="font-semibold text-foreground text-xs uppercase tracking-wide">
-                    Core Strengths
+                    Expertise Areas
                   </Typography>
                   <ul className="grid gap-x-6 gap-y-1.5 sm:grid-cols-2 pl-6">
                     {[

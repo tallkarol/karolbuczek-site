@@ -4,15 +4,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-export default function ResumeVariantLayout({
+export default function RolesLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <div className="print-resume-layout no-print-layout">
-      {children}
-    </div>
-  )
+  return <>{children}</>
 }
-

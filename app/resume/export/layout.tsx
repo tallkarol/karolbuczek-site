@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Resume Export | Karol Buczek - PDF Resume Download",
   description: "One-page PDF resume export for Karol Buczek - Solutions Architect & Full-Stack Developer.",
+  robots: { index: false, follow: false },
   openGraph: {
     images: [
       {

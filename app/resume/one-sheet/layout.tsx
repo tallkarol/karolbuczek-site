@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Resume One-Sheet | Karol Buczek - Print / PDF",
   description: "One-page resume for printing or PDF export. Karol Buczek - Principal Solutions Architect.",
+  robots: { index: false, follow: false },
 }
 
 export default function OneSheetLayout({

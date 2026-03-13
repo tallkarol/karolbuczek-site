@@ -84,8 +84,8 @@ export default function ResumePage() {
       <Section>
         <PageHero
           eyebrow="Resume"
-          title="Solutions Architect with over a decade of experience"
-          description="Solutions architect with 10+ years of experience spanning engineering leadership, full-stack development, and consulting. Combines director-level strategy with hands-on systems design to architect web platforms, cloud infrastructure, integrations, and data pipelines that align technology with real business outcomes."
+          title="Solutions Architect combining engineering depth with business leadership"
+          description="Solutions architect with 10+ years of experience spanning marketing leadership, full-stack development, and consulting. Combines director-level strategy with hands-on systems design to architect web platforms, cloud infrastructure, integrations, and data pipelines that align technology with real business outcomes."
           illustration={<ResumeIllustration />}
           buttons={
             <div className="flex flex-wrap items-center gap-4">

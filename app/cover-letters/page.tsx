@@ -5,6 +5,7 @@ import Link from "next/link"
 import { FileText } from "lucide-react"
 
 const coverLetters = [
+  { slug: "coinbase", company: "Coinbase", role: "Solutions Architect" },
   { slug: "spotnana", company: "Spotnana", role: "Solutions Architect" },
   { slug: "five9", company: "Five9", role: "Automation Engineer – Professional Services" },
   { slug: "servicetitan", company: "ServiceTitan", role: "Solutions Engineer" },

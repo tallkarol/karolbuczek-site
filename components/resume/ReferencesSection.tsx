@@ -17,6 +17,18 @@ const references = [
     role: "Software Engineer",
     relationship: "Direct Report",
   },
+  {
+    quote: "I've worked with Karol on a wide variety of API and integration projects spanning sales, marketing, and operations. He is highly technical, incredibly quick to learn new workflows, and remarkably dynamic when it comes to evolving project requirements. His responsiveness and ability to handle feedback make him a pleasure to collaborate with. I highly recommend Karol for any role that requires technical expertise paired with a strong business mindset.",
+    author: "Christopher Jarvis",
+    role: "VP of Enterprise Digital Marketing",
+    relationship: "Universal Windows Direct & Great Day Improvements — Direct Manager",
+  },
+  {
+    quote: "I had the pleasure of working with Karol at Universal Windows Direct and appreciated the expertise and professionalism he brought to our team. He played a key role in ensuring our lead generation systems worked seamlessly, helping implement and manage integrations using tools like Zapier to ensure leads flowed accurately from our platforms into the CRM. He also maintained strong quality control over our data pipelines, regularly validating that information was transferring correctly and that our systems remained reliable. I really valued Karol's collaboration and willingness to explain things in a way that was easy for someone who isn't as tech-savvy to understand. His positive attitude and pleasant demeanor made him easy to work with and an awesome partner.",
+    author: "Anne-Marie Colant",
+    role: "Director of Social Media",
+    relationship: "Universal Windows Direct & Great Day Improvements — Cross-functional Collaborator",
+  },
 ]
 
 export function ReferencesSection() {

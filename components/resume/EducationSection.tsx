@@ -8,30 +8,19 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 
 const education = [
   {
-    institution: "Case Western Reserve University",
-    program: "Full Stack Web Development (2018–2019)",
+    institution: "Case Western Reserve",
+    program: "Full Stack Web Development",
     period: "2018–2019",
     bullets: [
-      "Completed a rigorous engineering program with emphasis on modern JavaScript development. Built production-grade applications using React, Node, SQL, REST APIs, and test-driven approaches. Strengthened architectural thinking, debugging skills, and real-world engineering workflows.",
-    ],
-  },
-  {
-    institution: "Columbus State Community College",
-    program: "Real Estate Licensure Program (2014)",
-    period: "2014",
-    bullets: [
-      "Completed to support a startup requiring commercial property evaluation",
-      "Gained practical experience with contracts, compliance, negotiation, due diligence, and structured procedural workflows",
+      "Completed a rigorous engineering program with emphasis on modern JavaScript development. Built production-grade applications using React, Node, SQL, REST APIs, and test-driven approaches.",
     ],
   },
   {
     institution: "Miami University",
-    program: "International Studies — East Asia (2008–2013)",
+    program: "International Marketing",
     period: "2008–2013",
     bullets: [
-      "Interdisciplinary coursework blending marketing, cultural analysis, business, language, and global systems",
-      "Member of the China Business Program",
-      "Developed analytical skills and cross-cultural communication that inform cross-functional work today",
+      "Interdisciplinary coursework blending marketing, cultural analysis, business, language, and global systems.",
     ],
   },
 ]

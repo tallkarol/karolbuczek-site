@@ -84,8 +84,8 @@ export default function ResumePage() {
       <Section>
         <PageHero
           eyebrow="Resume"
-          title="Solutions Architect combining engineering depth with business leadership"
-          description="Solutions architect with 10+ years of experience spanning marketing leadership, full-stack development, and consulting. Combines director-level strategy with hands-on systems design to architect web platforms, cloud infrastructure, integrations, and data pipelines that align technology with real business outcomes."
+          title="Integration Engineer · Solutions Architect · API & Cloud Automation"
+          description="Integration engineer and solutions architect with 7 years of hands-on delivery across API integrations, automation, data pipelines, and cloud applications. Former Marketing Director — I now build the systems I wish I'd had. Currently running an independent practice with retained clients; looking for a full-time integration or implementation role."
           illustration={<ResumeIllustration />}
           buttons={
             <div className="flex flex-wrap items-center gap-4">
@@ -113,7 +113,7 @@ export default function ResumePage() {
                 onClick={handleSkillsClick}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
               >
-                Skill Summary
+                Focus Areas
               </a>
               <span className="text-muted-foreground/30">·</span>
               <a
@@ -166,10 +166,10 @@ export default function ResumePage() {
             
             <div className="space-y-2">
               <Typography variant="h2" as="h2" className="text-2xl md:text-3xl">
-                Open to solutions architect roles and select consulting engagements.
+                Looking for a full-time integration or implementation role.
               </Typography>
               <Typography variant="body" className="text-muted-foreground">
-                If you're hiring or exploring an architecture engagement—discovery, scoping, or system design—feel free to reach out.
+                Open to select consulting engagements as well — discovery, scoping, or system design. Feel free to reach out.
               </Typography>
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

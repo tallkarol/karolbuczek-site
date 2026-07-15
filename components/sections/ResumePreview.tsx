@@ -48,12 +48,12 @@ export function ResumePreview() {
                 <ResumeTimeline className="h-full w-full" />
               </div>
               <div className="space-y-2">
-                <div className="font-semibold">Full-Stack Developer & Systems Architect</div>
+                <div className="font-semibold">Integration Engineer · Solutions Architect</div>
                 <div className="text-sm text-muted-foreground">
-                  20+ years coding • 15+ years in marketing & growth
+                  7 years hands-on delivery · API integrations, automation, cloud apps
                 </div>
                 <div className="text-sm">
-                  Built web apps, internal tools, and growth systems that solve real business problems.
+                  Building the systems I wish I&apos;d had as a Marketing Director — integrations, data pipelines, and cloud applications.
                 </div>
               </div>
             </div>
@@ -65,21 +65,21 @@ export function ResumePreview() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-4 border border-border rounded-lg">
-                  <div className="font-semibold mb-2">Build</div>
+                  <div className="font-semibold mb-2">Integrate</div>
                   <div className="text-sm text-muted-foreground">
-                    WordPress, React, AWS, custom tools
+                    CRM, Five9, ecommerce, email via REST & webhooks
                   </div>
                 </div>
                 <div className="p-4 border border-border rounded-lg">
-                  <div className="font-semibold mb-2">Operate</div>
+                  <div className="font-semibold mb-2">Ship</div>
                   <div className="text-sm text-muted-foreground">
-                    Lead funnels, automations, dashboards
+                    AWS serverless, Next.js/React apps to production
                   </div>
                 </div>
                 <div className="p-4 border border-border rounded-lg">
-                  <div className="font-semibold mb-2">Connect</div>
+                  <div className="font-semibold mb-2">Pipeline</div>
                   <div className="text-sm text-muted-foreground">
-                    API integrations, data pipelines, orchestration
+                    ETL, warehousing, and leadership dashboards
                   </div>
                 </div>
               </div>
@@ -93,10 +93,10 @@ export function ResumePreview() {
               <div className="space-y-2">
                 <div className="font-semibold">Key Achievements</div>
                 <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                  <li>Architected secure file sharing portal on AWS</li>
-                  <li>Optimized Core Web Vitals (LCP 5.5s → 3.2s)</li>
-                  <li>Built UTM persistence and attribution systems</li>
-                  <li>Refactored complex Zapier workflows (70+ → 22 steps)</li>
+                  <li>Enterprise CRM/retail sync & WordPress VIP migration (GDI)</li>
+                  <li>Serverless AWS document portal with audit logging</li>
+                  <li>Production A&R discovery platform (Next.js + PostgreSQL)</li>
+                  <li>Centralized integration layer across 7+ systems</li>
                 </ul>
               </div>
             </div>

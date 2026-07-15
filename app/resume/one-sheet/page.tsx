@@ -5,8 +5,8 @@ import Link from "next/link"
 import { FileText } from "lucide-react"
 
 const oneSheetVariants = [
-  { slug: "solution-architect", role: "Solutions Architect", description: "Cloud infrastructure, data pipelines, AI-enabled automation" },
-  { slug: "solution-integration-engineer", role: "Solution / Integration Engineer", description: "API integrations, CRM & martech systems, internal tooling" },
+  { slug: "solution-architect", role: "Solutions Architect", description: "API integrations, cloud automation, data pipelines, client delivery" },
+  { slug: "solution-integration-engineer", role: "Integration Engineer", description: "API integrations, CRM & call-center systems, cloud automation" },
 ]
 
 export default function OneSheetIndexPage() {
@@ -24,7 +24,7 @@ export default function OneSheetIndexPage() {
           />
           <div>
             <h1 className="text-xl font-bold text-foreground">Karol Buczek</h1>
-            <p className="text-sm text-muted-foreground">Solutions Architect <span className="text-primary mx-1">|</span> Cloud Systems <span className="text-primary mx-1">|</span> Integrations <span className="text-primary mx-1">|</span> AI</p>
+            <p className="text-sm text-muted-foreground">Integration Engineer <span className="text-primary mx-1">·</span> Solutions Architect <span className="text-primary mx-1">·</span> API &amp; Cloud Automation</p>
           </div>
         </div>
 

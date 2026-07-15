@@ -18,7 +18,6 @@ import {
   SiZapier,
   SiMailchimp,
   SiPhp,
-  SiJavascript,
   SiTypescript,
   SiPython,
   SiMysql,
@@ -37,46 +36,51 @@ interface TechItem {
 
 const techCategories: { label: string; items: TechItem[] }[] = [
   {
-    label: "Cloud & Infrastructure",
+    label: "Integration",
     items: [
-      { name: "AWS", icon: SiAmazonwebservices },
+      { name: "REST APIs" },
+      { name: "Webhooks" },
+      { name: "Event-driven automation" },
+      { name: "ETL" },
+      { name: "Zapier", icon: SiZapier },
+      { name: "Workato" },
+    ],
+  },
+  {
+    label: "Cloud",
+    items: [
+      { name: "AWS (Lambda, Cognito, S3, RDS, Amplify)", icon: SiAmazonwebservices },
       { name: "GCP", icon: SiGooglecloud },
       { name: "Vercel", icon: SiVercel },
+      { name: "Railway" },
       { name: "Supabase", icon: SiSupabase },
     ],
   },
   {
-    label: "Platforms & Tools",
+    label: "Platforms",
     items: [
-      { name: "WordPress (VIP)", icon: SiWordpress },
+      { name: "WordPress VIP", icon: SiWordpress },
       { name: "WooCommerce", icon: SiWoocommerce },
-      { name: "Google Tag Manager", icon: SiGoogletagmanager },
-      { name: "Google Analytics 4", icon: SiGoogleanalytics },
-      { name: "HuggingFace", icon: SiHuggingface },
-      { name: "Zapier", icon: SiZapier },
       { name: "Five9" },
       { name: "Mailchimp", icon: SiMailchimp },
-      { name: "Databricks" },
+      { name: "GA4/GTM", icon: SiGoogleanalytics },
+      { name: "Google Tag Manager", icon: SiGoogletagmanager },
     ],
   },
   {
-    label: "Languages",
+    label: "Languages & Frameworks",
     items: [
       { name: "PHP", icon: SiPhp },
-      { name: "JavaScript", icon: SiJavascript },
-      { name: "TypeScript", icon: SiTypescript },
+      { name: "JavaScript/TypeScript", icon: SiTypescript },
       { name: "Python", icon: SiPython },
       { name: "SQL", icon: SiMysql },
+      { name: "React", icon: SiReact },
+      { name: "Next.js" },
+      { name: "Node.js", icon: SiNodedotjs },
       { name: "HTML5", icon: SiHtml5 },
       { name: "CSS3", icon: SiCss3 },
-    ],
-  },
-  {
-    label: "Frameworks",
-    items: [
-      { name: "React", icon: SiReact },
-      { name: "Node.js", icon: SiNodedotjs },
       { name: "TailwindCSS", icon: SiTailwindcss },
+      { name: "HuggingFace", icon: SiHuggingface },
     ],
   },
 ]
@@ -152,16 +156,14 @@ export function TechStackSection({ isOpen: controlledIsOpen, onOpenChange }: Tec
                   </Typography>
                   <ul className="grid gap-x-6 gap-y-1.5 sm:grid-cols-2 pl-6">
                     {[
-                      "Solution architecture & pre-sales scoping",
-                      "API design & integration architecture",
+                      "Systems integration across CRM, call center, ecommerce, and email",
+                      "API design & event-driven automation",
                       "Data pipeline & ETL engineering",
-                      "Cloud systems (AWS/GCP)",
-                      "Marketing technology & attribution systems",
-                      "Workflow automation",
+                      "Cloud & full-stack delivery (AWS, Next.js/React)",
+                      "Client discovery, SOWs, and architecture decisions",
+                      "Workflow automation (Zapier, Workato)",
                       "Requirements analysis & stakeholder alignment",
-                      "Full-stack engineering",
-                      "Core Web Vitals performance optimization",
-                      "Privacy-compliant analytics (GDPR/CCPA)",
+                      "Buyer-side fluency from marketing leadership",
                     ].map((strength) => (
                       <li key={strength} className="flex items-start gap-2">
                         <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />

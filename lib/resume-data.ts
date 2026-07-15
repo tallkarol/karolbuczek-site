@@ -154,33 +154,33 @@ export const lensToCaseStudies: Record<RoleFilter, string[]> = {
 export const lensToRoles: Record<RoleFilter, string[]> = {
   "all": [],
   "WordPress Engineering": [
-    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
-    "Mineralife Nutraceuticals — Marketing Systems Consultant (2021-Present)",
-    "Freelance Developer / Designer (2009-2019)",
+    "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
+    "Early Career — Freelance Development & Startups (2009-2019)",
   ],
   "MarTech / Growth Engineering": [
-    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
-    "Perfect Power Wash — Marketing Director (2019-2021)",
-    "Mineralife Nutraceuticals — Marketing Systems Consultant (2021-Present)",
+    "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
+    "Perfect Power Wash — Marketing Systems Engineer → Marketing Director (2019-2021)",
   ],
   "Product & Internal Tools": [
-    "Tall Karol — Principal Solutions Architect (2023-Present)",
-    "Perfect Power Wash — Marketing Director (2019-2021)",
+    "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
+    "Perfect Power Wash — Marketing Systems Engineer → Marketing Director (2019-2021)",
   ],
   "Integrations & Automation": [
-    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
-    "Mineralife Nutraceuticals — Marketing Systems Consultant (2021-Present)",
+    "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
   ],
   "Performance Engineering": [
-    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
   ],
   "Startup Experience": [
-    "Freelance Developer / Designer (2009-2019)",
+    "Early Career — Freelance Development & Startups (2009-2019)",
   ],
   "Implementation Engineer": [
-    "Universal Windows Direct — Integration Engineer (Full Stack) (2021-2023)",
-    "Mineralife Nutraceuticals — Marketing Systems Consultant (2021-Present)",
-    "Perfect Power Wash — Marketing Director (2019-2021)",
+    "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
+    "Perfect Power Wash — Marketing Systems Engineer → Marketing Director (2019-2021)",
   ],
 }
 

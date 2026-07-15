@@ -12,6 +12,10 @@ const coverLetters = [
   { slug: "shipium", company: "Shipium", role: "Senior Solutions Engineer" },
   { slug: "array", company: "Array", role: "Strategic Sales Engineering / Solutions Architecture" },
   { slug: "imanage", company: "iManage", role: "Solutions Engineer" },
+  { slug: "perficient", company: "Perficient", role: "Workato Integration Architect" },
+  { slug: "figure", company: "Figure", role: "Solutions Engineer" },
+  { slug: "atlan", company: "Atlan", role: "Solutions Engineer / Implementation" },
+  { slug: "morpho", company: "Morpho", role: "Integration Engineer / Solutions" },
 ]
 
 export default function CoverLettersIndexPage() {

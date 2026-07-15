@@ -7,10 +7,17 @@ import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChevronDown, ChevronUp } from "lucide-react"
-import { CareerTimeline } from "./CareerTimeline"
 import { RoleModal, RoleDetails } from "./RoleModal"
 import { RoleFilter } from "@/components/resume/ResumeFilters"
 import { lensToRoles } from "@/lib/resume-data"
+
+interface ClientEngagement {
+  client: string
+  role: string
+  period: string
+  logo?: string
+  bullets: string[]
+}
 
 interface TimelineItem {
   period: string
@@ -19,78 +26,92 @@ interface TimelineItem {
   reality?: string
   keyProjects?: string[]
   systems?: string[]
+  engagements?: ClientEngagement[]
   logo?: string
 }
 
 const timelineData: TimelineItem[] = [
   {
     period: "2023 — Present",
-    officialTitle: "Tall Karol — Principal Solutions Architect",
+    officialTitle: "Tall Karol — Independent Solutions Architect & Consultant",
     logo: "/tallkarol-monogram-logo.png",
-    reality: "Independent consulting practice focused on solutions architecture, cloud infrastructure, and AI-enabled automation for enterprise and growth-stage clients.",
-    systems: [
-      "Partner with C-suite, VPs, and founders to translate business requirements into scalable systems, owning solution architecture from discovery through production deployment.",
-      "Architected a secure serverless AWS document portal with role-based access and immutable audit logging, replacing manual email-based workflows for handling sensitive files.",
-      "Architected an air-gapped AI meeting intelligence system using local Whisper inference to transcribe recordings and extract action items, deadlines, and calendar events without sending sensitive data to external services.",
-      "Engineered performance-optimized WordPress infrastructure for an enterprise client, including session-persistent UTM attribution and custom container architecture improving Lighthouse (70 → 83) and load time (5.5s → 3.2s).",
-    ],
-  },
-  {
-    period: "2021 — Present",
-    officialTitle: "Mineralife Nutraceuticals — Marketing Systems Consultant",
-    logo: "/mineralife-logo.png",
-    reality: "Consulting role focused on ecommerce infrastructure, internal B2B platforms, and marketing automation architecture.",
-    systems: [
-      "Architected a multi-tenant CDP layer supporting lifecycle automation and segmentation for a flagship product line, enabling retention campaigns and repeat purchase behavior.",
-      "Built a custom CRM-style interface to manage the B2B sales workflow from form submission through contact and conversion, improving lead prioritization and filtering out-of-scope inquiries.",
-      "Engineered WooCommerce storefront infrastructure improvements, optimizing performance and UX while implementing data and event integrations with email platforms and analytics systems.",
-      "Developed an internal WooCommerce data dashboard surfacing order, inventory, and revenue metrics for operational decision-making.",
+    reality: "Solo consulting practice: systems integration, automation, cloud application development, and enterprise / multi-site WordPress for retained and project clients.",
+    engagements: [
+      {
+        client: "Great Day Improvements",
+        role: "Systems Integration & WordPress VIP Engineering",
+        period: "Apr 2025 – Present",
+        logo: "/gdi-logo.svg",
+        bullets: [
+          "Built automations syncing data between retail store systems and brand CRMs, and integrated multiple CRMs into shared cross-brand workflows.",
+          "Contributing engineer on an enterprise-wide migration consolidating all brand websites onto a single WordPress VIP platform: custom Gutenberg blocks, reusable patterns, and templates that let marketing teams build pages without developer tickets.",
+        ],
+      },
+      {
+        client: "Mineralife Nutraceuticals",
+        role: "Marketing Systems Consultant — Ecommerce & B2B",
+        period: "2021 – Present",
+        logo: "/mineralife-logo.png",
+        bullets: [
+          "Built an event-driven sync layer unifying WooCommerce, CRM, and email data to trigger lifecycle automation.",
+          "Built a custom B2B sales-workflow interface to manage lead intake through contact and conversion.",
+          "Re-architected the B2B website as a headless WordPress + React application, preserving WordPress for content management while replacing the legacy frontend with a leaner delivery layer. Raised mobile Lighthouse performance from 51 to 94, cut time to interactive from 12.5s to 3.1s, and reduced network requests from 314 to 51.",
+        ],
+      },
+      {
+        client: "Audit & Certification Provider",
+        role: "Solutions Architect — Secure Document Portal",
+        period: "Project engagement",
+        logo: "/bliss-cb.png",
+        bullets: [
+          "Designed and shipped a serverless document portal on AWS using managed identity and signed-URL file delivery to enforce role-based access with immutable audit logging.",
+          "Replaced email-based file sharing for compliance-sensitive workflows. Ran discovery, scoping, and delivery end to end.",
+        ],
+      },
+      {
+        client: "Artist House",
+        role: "Full-Stack Engineer — A&R Discovery Platform",
+        period: "Project engagement",
+        logo: "/artisthouse_logo_square.png",
+        bullets: [
+          "Built and shipped a production A&R discovery platform used daily by junior and senior A&R staff: role-based analytics, automated chart/social crawls, XLSX reports, email delivery, and artist watchlists.",
+          "Next.js/TypeScript application with a PostgreSQL backend, deployed on Vercel and Railway.",
+        ],
+      },
     ],
   },
   {
     period: "2021 — 2023",
-    officialTitle: "Universal Windows Direct — Integration Engineer (Full Stack)",
+    officialTitle: "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack",
     logo: "/uwd-logo.png",
-    reality: "Full-stack integration engineering role focused on automation infrastructure, internal platforms, and API integrations supporting marketing, sales, and operations across an enterprise home services organization.",
+    reality: "Automation infrastructure and API integrations across marketing, sales, and call-center operations at an enterprise home services organization.",
     systems: [
-      "Built a custom integration layer connecting call center, CRM, MarTech, and internal systems, including a shared logging and error-handling framework used across all automation scripts.",
-      "Migrated server infrastructure across four VPS partitions with zero downtime, modernizing legacy PHP scripts and removing deprecated patterns and security risks.",
-      "Implemented server-side tagging improving attribution reliability and first-party signal capture.",
-      "Led the full website migration from Joomla to WordPress while preserving all custom functionality.",
+      "Built a centralized integration layer connecting 7+ systems including Five9, CRM, Mailchimp, and internal platforms, with a shared logging and error-handling framework that made failures traceable across all automations.",
+      "Migrated server infrastructure across four VPS partitions with zero downtime, modernizing legacy PHP and removing deprecated security risks.",
+      "Implemented server-side tagging, improving attribution reliability and first-party data capture.",
     ],
   },
   {
     period: "2019 — 2021",
-    officialTitle: "Perfect Power Wash — Marketing Director",
+    officialTitle: "Perfect Power Wash — Marketing Systems Engineer → Marketing Director",
     logo: "/ppw.png",
-    reality: "Promoted to lead the entire marketing department, including IT — owning both the strategy and the technology stack during a period of rapid expansion from 1 market to 4.",
+    reality: "Recruited to modernize web and data infrastructure; promoted to lead marketing, including ownership of the technology stack, through expansion from one market to four.",
     systems: [
-      "Directed cross-functional teams across marketing, sales, and operations, collaborating with external agencies on strategy and execution.",
-      "Designed a scalable marketing framework supporting multi-market expansion and adapting to pandemic-era operational constraints.",
-      "Architected the data infrastructure and reporting dashboards that gave leadership visibility into performance across markets.",
-      "Developed internal tooling across call center operations, lead management, and marketing automation, later hiring and training a developer to extend the systems.",
-    ],
-  },
-  {
-    period: "2019",
-    officialTitle: "Perfect Power Wash — Marketing Systems Engineer",
-    logo: "/ppw.png",
-    reality: "Recruited to modernize legacy web infrastructure and re-engineer the conversion pipeline, leveraging emerging technologies to architect omni-channel automations across the customer journey.",
-    systems: [
-      "Built the organization's first centralized data warehouse aggregating marketing and operational data to support cross-channel attribution and ROI modeling.",
-      "Implemented a customer engagement platform orchestrating lead capture and lifecycle automation through multi-touch workflows across email, SMS, and direct mail, improving speed-to-lead and engagement consistency.",
-      "Re-architected the website around Core Web Vitals and conversion performance through structured A/B testing and UX analysis, increasing lead velocity while improving both organic and paid market penetration.",
+      "Built the organization's first centralized data warehouse aggregating marketing and operational data for cross-channel attribution.",
+      "Developed internal tooling across call-center operations, lead management, and automation, then hired and trained a developer to extend the systems.",
     ],
   },
   {
     period: "2009 — 2019",
-    officialTitle: "Freelance Designer / Developer",
+    officialTitle: "Early Career — Freelance Development & Startups",
     logo: "/logo.png",
-    reality: "10 years of client-facing freelance work spanning full-stack web development, brand strategy, and digital infrastructure for small and mid-sized businesses.",
+    reality: "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded two ventures, raising $340K for one.",
     systems: [
-      "Worked directly with business owners to translate goals into technical and creative solutions, delivering websites, ecommerce platforms, brand systems, and marketing campaigns.",
-      "Led requirements gathering, project scoping, and client communication across the full delivery lifecycle.",
-      "Built foundational expertise in frontend and backend development, UX design, and systems thinking that informs current architecture work.",
+      "Marketing / Design — Red Light Management (2016 — 2018)",
+      "Marketing & IT Consultant — Localtopia (2014 — 2015)",
+      "Co-Founder / CEO — Garcia L8r (2013 — 2016)",
+      "Co-Founder / Creative Director — CUBE Karaoke LLC (2013 — 2014)",
+      "Co-Founder / CEO — in2itiv media LLC (2012 — 2013)",
     ],
   },
 ]
@@ -109,20 +130,19 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
   const [selectedRole, setSelectedRole] = useState<RoleDetails | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  // Split timeline into recent (2019+) and early years (2018 and earlier)
   const recentItems = timelineData.filter((item) => {
     const startYear = parseInt(item.period.split("—")[0]?.trim() || item.period.split("–")[0]?.trim() || "0")
     const endPart = item.period.split("—")[1] || item.period.split("–")[1] || ""
     const endYear = endPart.includes("Present") ? 9999 : parseInt(endPart.trim().split(" ")[0] || "0")
-    
+
     return startYear >= 2019 || endYear >= 2019
   })
-  
+
   const earlyItems = timelineData.filter((item) => {
     const startYear = parseInt(item.period.split("—")[0]?.trim() || item.period.split("–")[0]?.trim() || "0")
     const endPart = item.period.split("—")[1] || item.period.split("–")[1] || ""
     const endYear = endPart.includes("Present") ? 9999 : parseInt(endPart.trim().split(" ")[0] || "0")
-    
+
     return startYear <= 2018 && endYear < 2019
   })
 
@@ -145,17 +165,10 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
           { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API" },
         ],
         quote: {
-          text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. His integration work created a lasting impact across multiple systems and departments.",
-          author: "John Kosmides",
-          role: "Vice President of Marketing — Direct Manager",
+          text: "I've worked with Karol on a wide variety of API and integration projects spanning sales, marketing, and operations. He is highly technical, incredibly quick to learn new workflows, and remarkably dynamic when it comes to evolving project requirements. I highly recommend Karol for any role that requires technical expertise paired with a strong business mindset.",
+          author: "Christopher Jarvis",
+          role: "VP of Enterprise Digital Marketing, Great Day Improvements — Direct Manager",
         },
-      }
-    }
-    if (title.includes("Mineralife")) {
-      return {
-        relatedCaseStudies: [
-          { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform" },
-        ],
       }
     }
     if (title.includes("Perfect Power Wash")) {
@@ -171,7 +184,7 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
         },
       }
     }
-    if (title.includes("Freelance")) {
+    if (title.includes("Freelance") || title.includes("Early Career")) {
       return {
         quote: {
           text: "Karol is a wildly multi-talented man with an absurd amount of expertise in numerous fields. He's an incredible mentor and played a critical role on my path to software development.",
@@ -185,13 +198,16 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
 
   const handleRoleClick = (item: TimelineItem) => {
     const modalData = getRoleModalData(item)
+    const systemsFromEngagements = item.engagements?.flatMap((engagement) =>
+      engagement.bullets.map((bullet) => `${engagement.client}: ${bullet}`)
+    )
     const roleDetails: RoleDetails = {
       period: item.period,
       officialTitle: item.officialTitle || "",
       officialDates: item.officialDates,
       reality: item.reality,
       keyProjects: item.keyProjects,
-      systems: item.systems,
+      systems: item.systems || systemsFromEngagements,
       ...modalData,
     }
     setSelectedRole(roleDetails)
@@ -203,97 +219,160 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
     setTimeout(() => setSelectedRole(null), 300)
   }
 
-  const renderTimelineItem = (item: TimelineItem, index: number, isEarly = false) => {
-    // Check if this role is relevant to the filter
-    const relevantRoles = roleFilter && roleFilter !== "all" ? lensToRoles[roleFilter] || [] : []
-    // Extract company/title part (before dates) for matching
-    const itemTitleForMatching = item.officialTitle?.split("(")[0]?.trim() || ""
-    const isRelevant = !roleFilter || roleFilter === "all" || relevantRoles.some(role => {
-      // Extract company/title part from lens role string (before dates)
-      const roleTitleForMatching = role.split("(")[0]?.trim() || ""
-      return itemTitleForMatching === roleTitleForMatching || 
-             itemTitleForMatching.includes(roleTitleForMatching) ||
-             roleTitleForMatching.includes(itemTitleForMatching)
-    })
-    
-    return (
-    <div
-      key={index}
-      className={`relative pl-6 border-l-2 pb-8 last:pb-0 last:border-l-0 ${
-        roleFilter && roleFilter !== "all" && isRelevant
-          ? "border-primary/50"
-          : "border-border/50"
-      }`}
-    >
-      <div className={`absolute -left-[7px] top-0 h-3 w-3 rounded-full border-2 border-background ${
-        roleFilter && roleFilter !== "all" && isRelevant
-          ? "bg-primary"
-          : "bg-primary/50"
-      }`} />
-      
-      <div className="space-y-3">
-        <div className="flex items-start gap-3">
-          {item.logo && (
-            <Image
-              src={item.logo}
-              alt=""
-              width={40}
-              height={40}
-              className="flex-shrink-0 h-12 w-12 object-contain mt-0.5"
-            />
-          )}
-          <div className="flex-1 min-w-0">
-            <Typography variant="body-sm" className="text-xs text-muted-foreground font-medium">
-              {item.period}
-            </Typography>
-            {item.officialTitle && (
-              <button
-                onClick={() => handleRoleClick(item)}
-                className="text-left group cursor-pointer w-full mt-0.5"
-              >
-                <Typography variant="body-sm" className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                  {item.officialTitle}
+  const renderEngagements = (engagements: ClientEngagement[]) => (
+    <div className="mt-5 ml-1 border-l border-border/40 pl-4 space-y-5">
+      <Typography variant="body-sm" className="font-semibold text-muted-foreground text-[11px] uppercase tracking-[0.14em]">
+        Client engagements under Tall Karol
+      </Typography>
+      {engagements.map((engagement) => {
+        const isSvg = engagement.logo?.endsWith(".svg")
+        return (
+          <div key={`${engagement.client}-${engagement.period}`} className="relative space-y-2.5">
+            <div className="absolute -left-[21px] top-3 h-2 w-2 rounded-full border-2 border-background bg-primary/40" />
+            <div className="flex items-start gap-3">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-md border border-border/50 bg-muted/25 p-1.5">
+                {engagement.logo ? (
+                  isSvg ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={engagement.logo}
+                      alt={`${engagement.client} logo`}
+                      className="h-full w-full object-contain"
+                    />
+                  ) : (
+                    <Image
+                      src={engagement.logo}
+                      alt={`${engagement.client} logo`}
+                      width={40}
+                      height={40}
+                      className="h-full w-full object-contain"
+                    />
+                  )
+                ) : (
+                  <span className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    {engagement.client.slice(0, 2)}
+                  </span>
+                )}
+              </div>
+              <div className="min-w-0 flex-1">
+                <Typography variant="body-sm" className="font-semibold text-foreground text-sm leading-snug">
+                  {engagement.client}
                 </Typography>
-              </button>
-            )}
-            {item.officialDates && (
-              <Typography variant="body-sm" className="text-xs text-muted-foreground italic mt-1">
-                {item.officialDates}
-              </Typography>
-            )}
-          </div>
-        </div>
-        {item.reality && (
-          <div className={`mt-2 p-3 rounded-lg border ${
-            roleFilter && roleFilter !== "all" && isRelevant
-              ? "bg-primary/5 border-primary/30"
-              : "bg-muted/30 border-border/50"
-          }`}>
-            <Typography variant="body-sm" className="text-muted-foreground italic text-xs">
-              {item.reality}
-            </Typography>
-          </div>
-        )}
-        {item.systems && item.systems.length > 0 && (
-          <div>
-            <Typography variant="body-sm" className="font-semibold mb-2 text-foreground text-xs">
-              Highlights:
-            </Typography>
-            <ul className="space-y-1.5">
-              {item.systems.map((system, pIndex) => (
-                <li key={pIndex} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                  <Typography variant="body-sm" className="text-muted-foreground text-xs">
-                    {system}
+                <Typography variant="body-sm" className="mt-0.5 text-foreground text-xs font-medium">
+                  {engagement.role}
+                </Typography>
+                <Typography variant="body-sm" className="mt-0.5 text-muted-foreground text-xs">
+                  {engagement.period}
+                </Typography>
+              </div>
+            </div>
+            <ul className="space-y-1.5 pl-[3.75rem]">
+              {engagement.bullets.map((bullet) => (
+                <li key={bullet} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-primary" />
+                  <Typography variant="body-sm" className="text-muted-foreground text-xs leading-relaxed">
+                    {bullet}
                   </Typography>
                 </li>
               ))}
             </ul>
           </div>
-        )}
-      </div>
+        )
+      })}
     </div>
   )
+
+  const renderTimelineItem = (item: TimelineItem, index: number) => {
+    const relevantRoles = roleFilter && roleFilter !== "all" ? lensToRoles[roleFilter] || [] : []
+    const itemTitleForMatching = item.officialTitle?.split("(")[0]?.trim() || ""
+    const isRelevant = !roleFilter || roleFilter === "all" || relevantRoles.some((role) => {
+      const roleTitleForMatching = role.split("(")[0]?.trim() || ""
+      return itemTitleForMatching === roleTitleForMatching ||
+        itemTitleForMatching.includes(roleTitleForMatching) ||
+        roleTitleForMatching.includes(itemTitleForMatching)
+    })
+
+    return (
+      <div
+        key={index}
+        className={`relative pl-6 border-l-2 pb-8 last:pb-0 last:border-l-0 ${
+          roleFilter && roleFilter !== "all" && isRelevant
+            ? "border-primary/50"
+            : "border-border/50"
+        }`}
+      >
+        <div className={`absolute -left-[7px] top-0 h-3 w-3 rounded-full border-2 border-background ${
+          roleFilter && roleFilter !== "all" && isRelevant
+            ? "bg-primary"
+            : "bg-primary/50"
+        }`} />
+
+        <div className="space-y-3">
+          <div className="flex items-start gap-3">
+            {item.logo && (
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-md border border-border/50 bg-muted/30 p-1.5">
+                <Image
+                  src={item.logo}
+                  alt=""
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            )}
+            <div className="flex-1 min-w-0">
+              <Typography variant="body-sm" className="text-xs text-muted-foreground font-medium">
+                {item.period}
+              </Typography>
+              {item.officialTitle && (
+                <button
+                  onClick={() => handleRoleClick(item)}
+                  className="text-left group cursor-pointer w-full mt-0.5"
+                >
+                  <Typography variant="body-sm" className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {item.officialTitle}
+                  </Typography>
+                </button>
+              )}
+              {item.officialDates && (
+                <Typography variant="body-sm" className="text-xs text-muted-foreground italic mt-1">
+                  {item.officialDates}
+                </Typography>
+              )}
+            </div>
+          </div>
+          {item.reality && (
+            <div className={`mt-2 p-3 rounded-lg border ${
+              roleFilter && roleFilter !== "all" && isRelevant
+                ? "bg-primary/5 border-primary/30"
+                : "bg-muted/30 border-border/50"
+            }`}>
+              <Typography variant="body-sm" className="text-muted-foreground italic text-xs">
+                {item.reality}
+              </Typography>
+            </div>
+          )}
+          {item.engagements && item.engagements.length > 0 && renderEngagements(item.engagements)}
+          {item.systems && item.systems.length > 0 && (
+            <div>
+              <Typography variant="body-sm" className="font-semibold mb-2 text-foreground text-xs">
+                Highlights:
+              </Typography>
+              <ul className="space-y-1.5">
+                {item.systems.map((system, pIndex) => (
+                  <li key={pIndex} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                    <Typography variant="body-sm" className="text-muted-foreground text-xs">
+                      {system}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -330,14 +409,12 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
             >
               <CardContent className="pt-6">
                 <div className="space-y-8">
-                  {/* Recent work */}
                   <div>
                     <div className="space-y-0">
                       {recentItems.map((item, index) => renderTimelineItem(item, index))}
                     </div>
                   </div>
 
-                  {/* Early years - collapsible */}
                   {earlyItems.length > 0 && (
                     <div className="pt-4 border-t border-border/50">
                       <Button
@@ -356,44 +433,11 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
                       </Button>
                       {showEarlyYears && (
                         <div className="mt-4 space-y-0">
-                          {earlyItems.map((item, index) => renderTimelineItem(item, index, true))}
+                          {earlyItems.map((item, index) => renderTimelineItem(item, index))}
                         </div>
                       )}
                     </div>
                   )}
-
-                  {/* Early Career Experience — not part of timeline */}
-                  <div className="pt-6 border-t border-border/50">
-                    <Typography variant="body-sm" className="font-semibold text-foreground uppercase tracking-wide text-xs mb-3">
-                      Early Career Experience
-                    </Typography>
-                    <ul className="space-y-1.5 pl-4">
-                      <li className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                        <Typography variant="body-sm" className="text-muted-foreground text-xs">
-                          Marketing / Design — Red Light Management <span className="text-muted-foreground/70">(2016 — 2018)</span>
-                        </Typography>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                        <Typography variant="body-sm" className="text-muted-foreground text-xs">
-                          Marketing & IT Consultant — Localtopia <span className="text-muted-foreground/70">(2014 — 2015)</span>
-                        </Typography>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                        <Typography variant="body-sm" className="text-muted-foreground text-xs">
-                          Co-Founder / Creative Director — CUBE Karaoke LLC <span className="text-muted-foreground/70">(2013 — 2014)</span>
-                        </Typography>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                        <Typography variant="body-sm" className="text-muted-foreground text-xs">
-                          Co-Founder / CEO — in2itiv media LLC <span className="text-muted-foreground/70">(2012 — 2013)</span>
-                        </Typography>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
               </CardContent>
             </motion.div>
@@ -409,4 +453,3 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
     </>
   )
 }
-

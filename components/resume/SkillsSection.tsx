@@ -6,13 +6,11 @@ import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp } from "lucide-react"
 const softSkills = [
-  "Stakeholder Orchestration: Translates business objectives into technical requirements; communicates ROI and risk mitigation to C-suite and engineering teams alike.",
-  "Organizational Adaptability: Scalable experience across high-growth startups and 3,000+ person enterprise environments.",
-  "Autonomous Ownership: Leads the full architectural lifecycle—discovery, POC, and deployment—with zero oversight required.",
-  "Strategic Scoping: Expert in technical discovery and SOW definition, balancing business velocity with technical feasibility.",
-  "Systems Thinking: Aligns architectural decisions with long-term business outcomes to ensure technology serves as a revenue multiplier.",
-  "Cross-Functional Leadership: Builds consensus across engineering, product, and marketing to drive complex, multi-departmental initiatives.",
-  "AI-Forward Practice: Utilizes AI/LLM tooling to accelerate documentation, system iteration, and architectural analysis.",
+  "Systems integration: CRM, call center (Five9), ecommerce, and email platforms connected via REST APIs, webhooks, and event-driven automation",
+  "Cloud & full-stack delivery: AWS serverless (Lambda, Cognito, S3) and Next.js/React applications shipped to production, solo when needed",
+  "Data pipelines & reporting: ETL, warehousing, and dashboards from raw operational data to leadership visibility",
+  "Client discovery & scoping: requirements, SOWs, and architecture decisions run directly with founders and executives",
+  "Buyer-side fluency: former Marketing Director; I've owned the budget and the outcomes these systems exist for",
 ]
 
 interface SkillsSectionProps {
@@ -38,7 +36,7 @@ export function SkillsSection({ isOpen: controlledIsOpen, onOpenChange }: Skills
         >
           <CardTitle className="text-lg font-display flex items-center gap-2 group-hover:text-primary transition-colors pointer-events-none">
             <span className="h-1 w-1 rounded-full bg-primary" />
-            Core Strengths
+            Focus Areas
           </CardTitle>
           {isOpen ? (
             <ChevronUp className="h-5 w-5 text-muted-foreground pointer-events-none" />

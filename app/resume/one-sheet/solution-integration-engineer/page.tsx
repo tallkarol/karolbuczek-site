@@ -16,19 +16,56 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
   }, [])
 
   const experience = [
-    { period: "2023 — Present", title: "Tall Karol — Principal Solutions Architect", logo: "/tallkarol-monogram-logo.png", bullets: ["Independent consulting practice — solutions architecture and integration engineering for enterprise and growth-stage clients.", "Standardized cross-platform governance by architecting integration bridges between CRMs and lead sources, eliminating data silos through automated schema normalization.", "Developed a persistent UTM attribution engine to solve first-touch/last-touch visibility gaps, enabling accurate marketing ROI modeling.", "Created a reusable GTM event schema and component architecture, enabling marketing teams to deploy standardized tracking events without engineering intervention.", "Architected data and event integrations between commerce platforms and marketing CRMs for synchronized customer records and reporting."] },
-    { period: "2021 — Present", title: "Mineralife Nutraceuticals — Marketing Systems Consultant", logo: "/mineralife-logo.png", bullets: ["Consulting role focused on ecommerce infrastructure, internal B2B platforms, and marketing automation architecture.", "Architected a multi-tenant CDP layer supporting event-driven lifecycle automation and segmentation for a flagship product line.", "Built a custom CRM-style interface to manage the B2B sales workflow from form submission through contact and conversion, improving lead prioritization."] },
-    { period: "2021 — 2023", title: "Universal Windows Direct — Integration Engineer (Full Stack)", logo: "/uwd-logo.png", bullets: ["Full-stack integration engineering role focused on automation infrastructure, internal platforms, and API integrations across an enterprise home services organization.", "Built a custom integration layer connecting call center, CRM, MarTech, and internal systems, including a shared logging and error-handling framework.", "Migrated server infrastructure across four VPS partitions with zero downtime, modernizing legacy PHP scripts and removing security risks."] },
-    { period: "2019 — 2021", title: "Perfect Power Wash — Marketing Director", logo: "/ppw.png", bullets: ["Leadership role responsible for marketing strategy, execution, and ownership of the organization's technology stack during expansion from one market to four.", "Built the organization's first centralized data warehouse aggregating marketing and operational data for cross-channel attribution and performance reporting.", "Implemented a customer engagement platform orchestrating multi-touch lifecycle automation across email, SMS, and direct mail.", "Designed multi-market reporting infrastructure and dashboards providing leadership with unified visibility into operational performance."] },
-    { period: "2009 — 2019", title: "Freelance Developer / Designer", logo: "/logo.png", allBullets: true, bullets: ["10 years of client-facing freelance work spanning full-stack web development, brand strategy, and digital infrastructure for small and mid-sized businesses.", "Built ecommerce systems, API integrations, and brand platforms with emphasis on data flow and system interconnectivity."] },
+    {
+      period: "Jan 2023 – Present",
+      title: "Tall Karol — Independent Solutions Architect & Consultant",
+      logo: "/tallkarol-monogram-logo.png",
+      intro: "Solo consulting practice: systems integration, automation, cloud application development, and enterprise / multi-site WordPress for retained and project clients.",
+      bullets: [
+        "Great Day Improvements (retained, Apr 2025 – present) — Enterprise home services, multi-brand. Built automations syncing data between retail store systems and brand CRMs and integrated multiple CRMs into shared cross-brand workflows. Contributing engineer on an enterprise-wide migration consolidating all brand websites onto a single WordPress VIP platform: custom Gutenberg blocks, reusable patterns, and templates that let marketing teams build pages without developer tickets.",
+        "Audit & certification provider — Designed and shipped a serverless document portal on AWS, using managed identity and signed-URL file delivery to enforce role-based access with immutable audit logging, replacing email-based file sharing for compliance-sensitive workflows. Ran discovery, scoping, and delivery end to end.",
+        "Artist House — Built and shipped a production A&R discovery platform used daily by junior and senior A&R staff: role-based access to artist analytics and reports, automated daily crawls of chart and social data, XLSX report generation, email delivery, and artist watchlists. Built as a Next.js/TypeScript application with a PostgreSQL backend, deployed on Vercel and Railway.",
+        "Mineralife Nutraceuticals (retained since 2021) — Ecommerce & B2B. Built an event-driven sync layer unifying WooCommerce, CRM, and email data to trigger lifecycle automation; built a custom B2B sales-workflow interface; re-architected the B2B site as headless WordPress + React, raising mobile Lighthouse from 51 to 94 and cutting TTI from 12.5s to 3.1s.",
+      ],
+    },
+    {
+      period: "Oct 2021 – Jan 2023",
+      title: "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack",
+      logo: "/uwd-logo.png",
+      intro: "Automation infrastructure and API integrations across marketing, sales, and call-center operations at an enterprise home services organization.",
+      bullets: [
+        "Built a centralized integration layer connecting 7+ systems including Five9, CRM, Mailchimp, and internal platforms, with a shared logging and error-handling framework that made failures traceable across all automations.",
+        "Migrated server infrastructure across four VPS partitions with zero downtime, modernizing legacy PHP and removing deprecated security risks.",
+        "Implemented server-side tagging, improving attribution reliability and first-party data capture.",
+      ],
+    },
+    {
+      period: "Apr 2019 – Sep 2021",
+      title: "Perfect Power Wash — Marketing Systems Engineer → Marketing Director",
+      logo: "/ppw.png",
+      intro: "Recruited to modernize web and data infrastructure; promoted to lead marketing, including ownership of the technology stack, through expansion from one market to four.",
+      bullets: [
+        "Built the organization's first centralized data warehouse aggregating marketing and operational data for cross-channel attribution.",
+        "Developed internal tooling across call-center operations, lead management, and automation, then hired and trained a developer to extend the systems.",
+      ],
+    },
+    {
+      period: "2009 – 2019",
+      title: "Early Career — Freelance Development & Startups",
+      logo: "/logo.png",
+      allBullets: true,
+      bullets: [
+        "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded two ventures, raising $340K for one.",
+      ],
+    },
   ]
 
-  const softSkills = [
-    "Stakeholder Orchestration: Translates business objectives into technical requirements; communicates ROI and risk mitigation to C-suite and engineering teams alike.",
-    "Implementation Ownership: Leads end-to-end delivery from design to deployment with zero oversight required.",
-    "Integration Architecture: Designs modular, maintainable systems that connect disparate platforms (CRM, call center, martech) without vendor lock-in.",
-    "Systems Thinking: Aligns technical decisions with business outcomes to ensure integrations serve as revenue multipliers.",
-    "Cross-Functional Collaboration: Works across marketing, sales, and operations to align technical roadmap with business goals.",
+  const focusAreas = [
+    "Systems integration: CRM, call center (Five9), ecommerce, and email platforms connected via REST APIs, webhooks, and event-driven automation",
+    "Cloud & full-stack delivery: AWS serverless (Lambda, Cognito, S3) and Next.js/React applications shipped to production, solo when needed",
+    "Data pipelines & reporting: ETL, warehousing, and dashboards from raw operational data to leadership visibility",
+    "Client discovery & scoping: requirements, SOWs, and architecture decisions run directly with founders and executives",
+    "Buyer-side fluency: former Marketing Director; I've owned the budget and the outcomes these systems exist for",
   ]
 
   return (
@@ -46,7 +83,7 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
             <Image src="/logo.png" alt="Karol Buczek" width={56} height={56} className="flex-shrink-0 h-14 w-14 print:h-12 print:w-12 object-contain" />
             <div>
               <h1 className="text-2xl font-bold mb-0.5 print:text-xl text-foreground">Karol Buczek</h1>
-              <p className="text-sm text-muted-foreground print:text-xs">Integration Engineer <span className="text-primary mx-1">|</span> Cloud Systems <span className="text-primary mx-1">|</span> MarTech <span className="text-primary mx-1">|</span> AI</p>
+              <p className="text-sm text-muted-foreground print:text-xs">Integration Engineer <span className="text-primary mx-1">·</span> Solutions Architect <span className="text-primary mx-1">·</span> API &amp; Cloud Automation</p>
             </div>
           </div>
           <div className="flex flex-col items-end text-right text-xs text-muted-foreground print:text-[10px] space-y-1">
@@ -71,16 +108,9 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
 
         <section className="mb-5 print:mb-4 rounded-lg border border-border bg-muted/20 p-4 print:p-3">
           <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">Summary</h2>
-          <ul className="space-y-2 text-sm print:text-xs pl-4">
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <span><strong>Integration Engineer:</strong> 10+ years building API integrations, CRM bridges, and internal tooling — connecting call center, marketing, and operations systems into unified workflows.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <span><strong>Hands-On Implementation:</strong> End-to-end delivery from requirements through deployment — logging frameworks, server migrations, GTM/GA4 instrumentation, and lifecycle automation.</span>
-            </li>
-          </ul>
+          <p className="text-sm print:text-xs text-muted-foreground">
+            Integration engineer and solutions architect with 7 years of hands-on delivery across API integrations, automation, data pipelines, and cloud applications. Former Marketing Director — I now build the systems I wish I&apos;d had. Currently running an independent practice with retained clients; looking for a full-time integration or implementation role.
+          </p>
         </section>
 
         <div className="grid grid-cols-[65%_1fr] gap-8 print:gap-6 mb-4 print:mb-3">
@@ -108,9 +138,9 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
                         </ul>
                       ) : (
                         <>
-                          <p>{item.bullets[0]}</p>
+                          {item.intro && <p className="italic">{item.intro}</p>}
                           <ul className="space-y-1.5 pl-2">
-                            {item.bullets.slice(1).map((bullet, j) => (
+                            {item.bullets.map((bullet, j) => (
                               <li key={j} className="flex items-start gap-2">
                                 <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
                                 <span>{bullet}</span>
@@ -127,9 +157,9 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
           </section>
           <div className="space-y-8 print:space-y-6">
             <section>
-              <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">Core Strengths</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">Focus Areas</h2>
               <ul className="space-y-2 text-sm print:text-xs pl-0">
-                {softSkills.map((skill, i) => {
+                {focusAreas.map((skill, i) => {
                   const [label, ...rest] = skill.split(": ")
                   return (
                     <li key={i} className="flex items-start gap-2">
@@ -143,18 +173,17 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
             <section>
               <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">Technical Skills</h2>
               <ul className="space-y-2 text-sm print:text-xs pl-0">
-                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Integrations:</strong> Five9, Mailchimp, WooCommerce, CRMs, Zapier, Webhooks</span></li>
-                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Platforms:</strong> WordPress, GTM, GA4, Meta Pixel, server-side tagging</span></li>
-                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Cloud:</strong> AWS, GCP, Vercel, Supabase</span></li>
-                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Languages:</strong> PHP, JavaScript, TypeScript, Python, SQL</span></li>
-                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Frameworks:</strong> React, Node.js</span></li>
+                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Integration:</strong> REST APIs, webhooks, event-driven automation, ETL, Zapier, Workato</span></li>
+                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Cloud:</strong> AWS (Lambda, Cognito, S3, RDS, Amplify), GCP, Vercel, Railway, Supabase</span></li>
+                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Platforms:</strong> WordPress VIP, WooCommerce, Five9, Mailchimp, GA4/GTM</span></li>
+                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Languages &amp; frameworks:</strong> PHP, JavaScript/TypeScript, Python, SQL, React, Next.js, Node.js</span></li>
               </ul>
             </section>
             <section>
               <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">Certifications</h2>
               <ul className="space-y-2 text-sm print:text-xs pl-0">
+                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span>Workato Foundations I &amp; II</span></li>
                 <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span>Google Cloud Digital Leader</span></li>
-                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span>AWS Solutions Architect Associate</span></li>
               </ul>
             </section>
             <section>
@@ -165,14 +194,14 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
               </ul>
             </section>
             <section>
-              <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">References</h2>
+              <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">Reference</h2>
               <blockquote className="border-l-2 border-primary/50 pl-4 text-xs italic text-muted-foreground print:text-[10px] print-keep-accent-border">
-                &ldquo;He&apos;s one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. Whether the work involved internal tools, customer-facing platforms, or data connections between legacy systems, he always approached challenges with clarity, logic, and a calm, solutions-focused mindset.&rdquo;
+                &ldquo;I&apos;ve worked with Karol on a wide variety of API and integration projects spanning sales, marketing, and operations. He is highly technical, incredibly quick to learn new workflows, and remarkably dynamic when it comes to evolving project requirements. ... I highly recommend Karol for any role that requires technical expertise paired with a strong business mindset.&rdquo;
               </blockquote>
               <p className="text-xs mt-2 print:text-[10px] text-muted-foreground">
-              <span className="font-semibold text-foreground">John Kosmides</span>
-              <span> — Vice President of Marketing, Perfect Power Wash & Universal Windows Direct</span>
-            </p>
+                <span className="font-semibold text-foreground">Christopher Jarvis</span>
+                <span> — VP of Enterprise Digital Marketing, Great Day Improvements (direct manager)</span>
+              </p>
             </section>
           </div>
         </div>

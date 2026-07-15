@@ -16,7 +16,7 @@ function AzureLogo({ className }: { className?: string }) {
   )
 }
 
-type CertCategory = "cloud"
+type CertCategory = "integration" | "cloud"
 
 interface Certification {
   name: string
@@ -27,6 +27,10 @@ interface Certification {
 }
 
 const certifications: Certification[] = [
+  {
+    name: "Workato Foundations I & II",
+    category: "integration",
+  },
   {
     name: "Google Cloud Digital Leader",
     category: "cloud",
@@ -54,6 +58,7 @@ const hackerRankPillIcons: Record<string, ComponentType<{ className?: string }>>
   "Intermediate PHP": SiPhp,
 }
 
+const integrationCerts = certifications.filter((c) => c.category === "integration")
 const cloudCerts = certifications.filter((c) => c.category === "cloud")
 
 const logoMap = {
@@ -125,6 +130,7 @@ export function CertificationsSection() {
           >
             <CardContent className="pt-6">
               <div className="space-y-6">
+                <CertSubsection title="Integration Certifications" certs={integrationCerts} />
                 <CertSubsection title="Cloud Certifications" certs={cloudCerts} />
                 <div className="space-y-3">
                   <Typography variant="body-sm" className="font-semibold text-foreground uppercase tracking-wide text-xs">

@@ -6,24 +6,14 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Typography } from "@/components/typography"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp } from "lucide-react"
-import { SiAmazonwebservices, SiGooglecloud, SiMysql, SiPython, SiJavascript, SiReact, SiPhp } from "react-icons/si"
-
-function AzureLogo({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
-      <path d="M5.483 21.3H24L14.025 4.013l-3.038 8.347 5.836 6.938L5.483 21.3zM13.23 2.7L6.105 8.677 0 19.253h5.505v.014L13.23 2.7z" />
-    </svg>
-  )
-}
+import { SiGooglecloud, SiMysql, SiPython, SiJavascript, SiReact, SiPhp } from "react-icons/si"
 
 type CertCategory = "integration" | "cloud"
 
 interface Certification {
   name: string
   category: CertCategory
-  inProgress?: boolean
-  expected?: string
-  logo?: "azure" | "gcp" | "aws"
+  logo?: "gcp"
 }
 
 const certifications: Certification[] = [
@@ -35,13 +25,6 @@ const certifications: Certification[] = [
     name: "Google Cloud Digital Leader",
     category: "cloud",
     logo: "gcp",
-  },
-  {
-    name: "AWS Solutions Architect Associate",
-    category: "cloud",
-    logo: "aws",
-    inProgress: true,
-    expected: "Expected Spring 2026",
   },
 ]
 
@@ -62,9 +45,7 @@ const integrationCerts = certifications.filter((c) => c.category === "integratio
 const cloudCerts = certifications.filter((c) => c.category === "cloud")
 
 const logoMap = {
-  azure: AzureLogo,
   gcp: SiGooglecloud,
-  aws: SiAmazonwebservices,
 }
 
 function CertItem({ cert }: { cert: Certification }) {
@@ -73,7 +54,6 @@ function CertItem({ cert }: { cert: Certification }) {
     <span className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-muted/30 px-2.5 py-1 text-xs text-muted-foreground">
       {Logo && <Logo className="h-3.5 w-3.5 flex-shrink-0" aria-hidden />}
       {cert.name}
-      {cert.expected && <span className="opacity-90">— {cert.expected}</span>}
     </span>
   )
 }

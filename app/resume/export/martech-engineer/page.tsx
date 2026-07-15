@@ -138,7 +138,7 @@ export default function MartechEngineerResumePage() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-0.5 print:mb-0">
                   <Typography variant="body" className="font-semibold text-[15px] print:text-[12px] leading-tight text-foreground">
-                    Universal Windows Direct — Integration Engineer (Full Stack)
+                    Universal Windows Direct — Integration Engineer
                   </Typography>
                   <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[10px]">
                     2021 — 2023

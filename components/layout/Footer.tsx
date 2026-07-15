@@ -23,7 +23,7 @@ export function Footer() {
                 KAROL BUCZEK
               </div>
               <div className="text-xs text-muted-foreground">
-                Solutions Architect <span className="text-primary">|</span> Cloud <span className="text-primary">|</span> Integrations <span className="text-primary">|</span> MarTech
+                Full-Stack Engineer · Solutions Architect
               </div>
             </div>
           </Link>

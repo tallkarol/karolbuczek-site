@@ -6,28 +6,27 @@ import { Building2 } from "lucide-react"
 
 const references = [
   {
-    quote: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. He never just built a solution, he understood the business case behind it. His integration work created a lasting impact across multiple systems and departments, with an incredible ability to simplify complexity and design solutions that actually solved the root problem instead of just addressing the symptoms.",
+    quote: "I've worked with Karol on a wide variety of API and integration projects spanning sales, marketing, and operations. He is highly technical, incredibly quick to learn new workflows, and remarkably dynamic when it comes to evolving project requirements. His responsiveness and ability to handle feedback make him a pleasure to collaborate with. I highly recommend Karol for any role that requires technical expertise paired with a strong business mindset.",
+    author: "Christopher Jarvis",
+    role: "VP of Enterprise Digital Marketing, Great Day Improvements — Direct Manager",
+  },
+  {
+    // TODO(karol): confirm this matches John's LinkedIn rec verbatim
+    quote: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. Whether the work involved internal tools, customer-facing platforms, or data connections between legacy systems, he always approached challenges with clarity, logic, and a calm, solutions-focused mindset.",
     author: "John Kosmides",
     role: "Vice President of Marketing",
     relationship: "Perfect Power Wash & Universal Windows Direct — Direct Manager",
-  },
-  {
-    quote: "Karol is a wildly multi-talented man with an absurd amount of expertise in numerous fields. He's an incredible mentor and played a critical role on my path to software development, but his skillset allows him to operate as an expert in nearly every aspect of a business. Whether you need someone to lead or support you in any role, Karol is your man.",
-    author: "Julian Quesada",
-    role: "Software Engineer",
-    relationship: "Direct Report",
-  },
-  {
-    quote: "I've worked with Karol on a wide variety of API and integration projects spanning sales, marketing, and operations. He is highly technical, incredibly quick to learn new workflows, and remarkably dynamic when it comes to evolving project requirements. His responsiveness and ability to handle feedback make him a pleasure to collaborate with. I highly recommend Karol for any role that requires technical expertise paired with a strong business mindset.",
-    author: "Christopher Jarvis",
-    role: "VP of Enterprise Digital Marketing",
-    relationship: "Universal Windows Direct & Great Day Improvements — Direct Manager",
   },
   {
     quote: "I had the pleasure of working with Karol at Universal Windows Direct and appreciated the expertise and professionalism he brought to our team. He played a key role in ensuring our lead generation systems worked seamlessly, helping implement and manage integrations using tools like Zapier to ensure leads flowed accurately from our platforms into the CRM. He also maintained strong quality control over our data pipelines, regularly validating that information was transferring correctly and that our systems remained reliable. I really valued Karol's collaboration and willingness to explain things in a way that was easy for someone who isn't as tech-savvy to understand. His positive attitude and pleasant demeanor made him easy to work with and an awesome partner.",
     author: "Anne-Marie Colant",
     role: "Director of Social Media",
     relationship: "Universal Windows Direct & Great Day Improvements — Cross-functional Collaborator",
+  },
+  {
+    quote: "Karol is a wildly multi-talented man with an absurd amount of expertise in numerous fields. He's an incredible mentor and played a critical role on my path to software development, but his skillset allows him to operate as an expert in nearly every aspect of a business. Whether you need someone to lead or support you in any role, Karol is your man.",
+    author: "Julian Quesada",
+    role: "Software Engineer — reported to Karol at Perfect Power Wash",
   },
 ]
 
@@ -62,9 +61,11 @@ export function ReferencesSection() {
                     <Typography variant="body-sm" className="text-muted-foreground text-xs">
                       {ref.role}
                     </Typography>
-                    <Typography variant="body-sm" className="text-muted-foreground/70 text-xs italic">
-                      {ref.relationship}
-                    </Typography>
+                    {"relationship" in ref && ref.relationship && (
+                      <Typography variant="body-sm" className="text-muted-foreground/70 text-xs italic">
+                        {ref.relationship}
+                      </Typography>
+                    )}
                   </div>
                 </div>
               </div>
@@ -75,4 +76,3 @@ export function ReferencesSection() {
     </Card>
   )
 }
-

@@ -21,9 +21,9 @@ import { Download, Mail, Linkedin } from "lucide-react"
 
 const featuredCaseStudies = [
   { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform", subtitle: "Customer Data Portal & Lifecycle Automation", logo: "/zemvelo-logo.png" },
-  { slug: "secure-document-management-portal", title: "Bliss Secure File Share", subtitle: "Enterprise Document Portal on AWS", logo: "/bliss-cb.png" },
+  { slug: "secure-document-management-portal", title: "Bliss Secure File Share", subtitle: "Secure Document Portal on AWS", logo: "/bliss-cb.png" },
   { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API", subtitle: "Centralized Integration Layer", logo: "/uwd-logo.png" },
-  { slug: "local-ai-meeting-intelligence", title: "Local AI Meeting Intelligence", subtitle: "Private On-Premise Transcription System", logo: "/tallkarol-monogram-logo.png" },
+  { slug: "local-ai-meeting-intelligence", title: "On-Premise Meeting Transcription", subtitle: "Private Speech-to-Text & Action-Item Pipeline", logo: "/tallkarol-monogram-logo.png" },
   { slug: "martech-extension-architecture", title: "MarTech Extension Architecture", subtitle: "Custom WordPress Engineering", logo: "/tallkarol-monogram-logo.png" },
 ]
 
@@ -84,8 +84,29 @@ export default function ResumePage() {
       <Section>
         <PageHero
           eyebrow="Resume"
-          title="Integration Engineer · Solutions Architect · API & Cloud Automation"
-          description="Integration engineer and solutions architect with 7 years of hands-on delivery across API integrations, automation, data pipelines, and cloud applications. Former Marketing Director — I now build the systems I wish I'd had. Currently running an independent practice with retained clients; looking for a full-time integration or implementation role."
+          title={
+            <Typography variant="h1" as="h1">
+              Full-Stack Engineer ·
+              <br />
+              Solutions Architect
+            </Typography>
+          }
+          description={
+            <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                  <Typography variant="body" className="text-muted-foreground">
+                    7 years of hands-on delivery for SMB, mid-market, and enterprise clients; 15+ years of coding experience.
+                  </Typography>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                  <Typography variant="body" className="text-muted-foreground">
+                    Specializing in custom web applications, enterprise WordPress, and systems integration.
+                  </Typography>
+                </li>
+            </ul>
+          }
           illustration={<ResumeIllustration />}
           buttons={
             <div className="flex flex-wrap items-center gap-4">

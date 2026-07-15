@@ -40,7 +40,7 @@ export default function UmbrellaResumePage() {
               KAROL BUCZEK
             </Typography>
             <Typography variant="body" className="text-[15px] leading-tight print:text-[13px]">
-              Integration Engineer · Solutions Architect · API & Cloud Automation
+              Full-Stack Engineer · Solutions Architect
             </Typography>
             <Typography variant="body-sm" className="text-muted-foreground text-[13px] leading-tight print:text-[11px] pt-[5px]">
               🔗 karolbuczek.com · LinkedIn.com/in/karolbuczek
@@ -55,9 +55,20 @@ export default function UmbrellaResumePage() {
               SUMMARY
             </Typography>
             <div className="space-y-2 print:space-y-1.5">
-              <Typography variant="body" className="text-[13px] leading-relaxed print:text-[11px]">
-                Integration engineer and solutions architect with 7 years of hands-on delivery across API integrations, automation, data pipelines, and cloud applications. Former Marketing Director — I now build the systems I wish I&apos;d had. Currently running an independent practice with retained clients; looking for a full-time integration or implementation role.
-              </Typography>
+              <ul className="space-y-1.5 print:space-y-1">
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                  <Typography variant="body" className="text-[13px] leading-relaxed print:text-[11px]">
+                    7 years of hands-on delivery for SMB, mid-market, and enterprise clients.
+                  </Typography>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                  <Typography variant="body" className="text-[13px] leading-relaxed print:text-[11px]">
+                    Specializing in custom web applications, enterprise WordPress, and systems integration.
+                  </Typography>
+                </li>
+              </ul>
             </div>
           </CardContent>
         </Card>
@@ -112,7 +123,7 @@ export default function UmbrellaResumePage() {
               <div>
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1 print:mb-0.5">
                   <Typography variant="body" className="font-semibold text-[15px] print:text-[13px]">
-                    Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack
+                    Universal Windows Direct (Great Day Improvements) — Integration Engineer
                   </Typography>
                   <Typography variant="body-sm" className="text-muted-foreground text-[13px] print:text-[11px]">
                     Oct 2021 – Jan 2023

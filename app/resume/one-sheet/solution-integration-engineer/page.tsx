@@ -5,6 +5,32 @@ import Image from "next/image"
 import Link from "next/link"
 import { Mail, Phone, Globe, Linkedin, ArrowLeft } from "lucide-react"
 
+type Engagement = {
+  client: string
+  role: string
+  period: string
+  logo: string
+  bullets: string[]
+}
+
+type ExperienceItem = {
+  period: string
+  title: string
+  logo: string
+  intro?: string
+  bullets?: string[]
+  allBullets?: boolean
+  engagements?: Engagement[]
+}
+
+function EngagementLogo({ src, alt }: { src: string; alt: string }) {
+  if (src.endsWith(".svg")) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={src} alt={alt} className="h-full w-full object-contain" />
+  }
+  return <Image src={src} alt={alt} width={36} height={36} className="h-full w-full object-contain" />
+}
+
 export default function SolutionIntegrationEngineerOneSheetPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -15,28 +41,63 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
     return () => clearTimeout(timer)
   }, [])
 
-  const experience = [
+  const experience: ExperienceItem[] = [
     {
       period: "Jan 2023 – Present",
       title: "Tall Karol — Independent Solutions Architect & Consultant",
       logo: "/tallkarol-monogram-logo.png",
       intro: "Solo consulting practice: systems integration, automation, cloud application development, and enterprise / multi-site WordPress for retained and project clients.",
-      bullets: [
-        "Great Day Improvements (retained, Apr 2025 – present) — Enterprise home services, multi-brand. Built automations syncing data between retail store systems and brand CRMs and integrated multiple CRMs into shared cross-brand workflows. Contributing engineer on an enterprise-wide migration consolidating all brand websites onto a single WordPress VIP platform: custom Gutenberg blocks, reusable patterns, and templates that let marketing teams build pages without developer tickets.",
-        "Audit & certification provider — Designed and shipped a serverless document portal on AWS, using managed identity and signed-URL file delivery to enforce role-based access with immutable audit logging, replacing email-based file sharing for compliance-sensitive workflows. Ran discovery, scoping, and delivery end to end.",
-        "Artist House — Built and shipped a production A&R discovery platform used daily by junior and senior A&R staff: role-based access to artist analytics and reports, automated daily crawls of chart and social data, XLSX report generation, email delivery, and artist watchlists. Built as a Next.js/TypeScript application with a PostgreSQL backend, deployed on Vercel and Railway.",
-        "Mineralife Nutraceuticals (retained since 2021) — Ecommerce & B2B. Built an event-driven sync layer unifying WooCommerce, CRM, and email data to trigger lifecycle automation; built a custom B2B sales-workflow interface; re-architected the B2B site as headless WordPress + React, raising mobile Lighthouse from 51 to 94 and cutting TTI from 12.5s to 3.1s.",
+      engagements: [
+        {
+          client: "Great Day Improvements",
+          role: "Systems Integration & WordPress VIP Engineering",
+          period: "Apr 2025 – Present",
+          logo: "/gdi-logo.svg",
+          bullets: [
+            "Built a modular integration architecture across 8 brands, connecting multiple CRMs and third-party vendors into shared cross-brand workflows.",
+            "Contributing engineer on an enterprise-wide migration consolidating all brand websites onto a single WordPress VIP platform: custom Gutenberg blocks, reusable patterns, and templates that let marketing teams build pages without developer tickets.",
+          ],
+        },
+        {
+          client: "Mineralife Nutraceuticals",
+          role: "Marketing Systems Consultant — Ecommerce & B2B",
+          period: "2021 – Present",
+          logo: "/mineralife-logo.png",
+          bullets: [
+            "Built a custom B2B sales-workflow interface to qualify inquiries and manage opportunities from submission through conversion.",
+            "Re-architected the B2B site as headless WordPress + React, raising mobile Lighthouse from 51 to 94 and cutting TTI from 12.5s to 3.1s.",
+          ],
+        },
+        {
+          client: "Bliss",
+          role: "Audit & certification provider — Secure Document Portal",
+          period: "Project engagement",
+          logo: "/bliss-cb.png",
+          bullets: [
+            "Designed and shipped a serverless document portal on AWS, using managed identity and signed-URL file delivery to enforce role-based access with immutable audit logging.",
+            "Replaced email-based file sharing for compliance-sensitive workflows.",
+          ],
+        },
+        {
+          client: "Artist House",
+          role: "Full-Stack Engineer — A&R Discovery Platform",
+          period: "Project engagement",
+          logo: "/artisthouse_logo_square.png",
+          bullets: [
+            "Built and shipped a production A&R discovery platform used daily by junior and senior A&R staff: role-based analytics, automated chart/social crawls, XLSX reports, email delivery, and artist watchlists.",
+            "Next.js/TypeScript application with a PostgreSQL backend, deployed on Vercel and Railway.",
+          ],
+        },
       ],
     },
     {
       period: "Oct 2021 – Jan 2023",
-      title: "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack",
+      title: "Universal Windows Direct (GDI) — Integration Engineer",
       logo: "/uwd-logo.png",
       intro: "Automation infrastructure and API integrations across marketing, sales, and call-center operations at an enterprise home services organization.",
       bullets: [
-        "Built a centralized integration layer connecting 7+ systems including Five9, CRM, Mailchimp, and internal platforms, with a shared logging and error-handling framework that made failures traceable across all automations.",
+        "Expanded and organized a centralized PHP script-based integration API connecting multiple systems including Five9, CRM, Mailchimp, and internal platforms. Implemented modular routes and a shared logging and error-handling framework that made failures traceable across all automations.",
         "Migrated server infrastructure across four VPS partitions with zero downtime, modernizing legacy PHP and removing deprecated security risks.",
-        "Implemented server-side tagging, improving attribution reliability and first-party data capture.",
       ],
     },
     {
@@ -53,37 +114,40 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
       period: "2009 – 2019",
       title: "Early Career — Freelance Development & Startups",
       logo: "/logo.png",
-      allBullets: true,
+      intro: "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded two ventures, raising $340K for one.",
       bullets: [
-        "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded two ventures, raising $340K for one.",
+        "Marketing / Design — Red Light Management (2016 — 2018)",
+        "Marketing & IT Consultant — Localtopia (2014 — 2015)",
+        // TODO(karol): reconcile CUBE title with LinkedIn
+        "Co-Founder / Creative Director — CUBE Karaoke LLC (2013 — 2014)",
+        // TODO(karol): reconcile in2itiv dates with LinkedIn
+        "Co-Founder / CEO — in2itiv media LLC (2012 — 2013)",
       ],
     },
   ]
 
   const focusAreas = [
     "Systems integration: CRM, call center (Five9), ecommerce, and email platforms connected via REST APIs, webhooks, and event-driven automation",
-    "Cloud & full-stack delivery: AWS serverless (Lambda, Cognito, S3) and Next.js/React applications shipped to production, solo when needed",
+    "Cloud & full-stack delivery: AWS serverless (Lambda, Cognito, S3) and Next.js/React applications shipped to production",
     "Data pipelines & reporting: ETL, warehousing, and dashboards from raw operational data to leadership visibility",
     "Client discovery & scoping: requirements, SOWs, and architecture decisions run directly with founders and executives",
-    "Buyer-side fluency: former Marketing Director; I've owned the budget and the outcomes these systems exist for",
+    "Buyer-side fluency: former Marketing Director; I've owned the budget and the KPIs these systems have to answer to",
   ]
 
   return (
     <div className="print-resume min-h-screen bg-background text-foreground" style={{ fontFamily: "system-ui, -apple-system, sans-serif", fontSize: "11pt", lineHeight: 1.4 }}>
       <div className="max-w-5xl mx-auto p-8 print:p-6 print:max-w-full">
-        {/* Back link - hidden when printing */}
         <Link href="/resume/one-sheet" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground print:hidden">
           <ArrowLeft className="h-4 w-4" />
           All one-sheets
         </Link>
 
-        {/* Header */}
         <div className="mb-5 print:mb-4 grid grid-cols-[1fr_auto] gap-4 items-center">
           <div className="flex items-center gap-4">
             <Image src="/logo.png" alt="Karol Buczek" width={56} height={56} className="flex-shrink-0 h-14 w-14 print:h-12 print:w-12 object-contain" />
             <div>
               <h1 className="text-2xl font-bold mb-0.5 print:text-xl text-foreground">Karol Buczek</h1>
-              <p className="text-sm text-muted-foreground print:text-xs">Integration Engineer <span className="text-primary mx-1">·</span> Solutions Architect <span className="text-primary mx-1">·</span> API &amp; Cloud Automation</p>
+              <p className="text-sm text-muted-foreground print:text-xs">Integration Engineer <span className="text-primary mx-1">·</span> Solutions Architect</p>
             </div>
           </div>
           <div className="flex flex-col items-end text-right text-xs text-muted-foreground print:text-[10px] space-y-1">
@@ -107,10 +171,16 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
         <hr className="border-border mb-4 print:mb-3" />
 
         <section className="mb-5 print:mb-4 rounded-lg border border-border bg-muted/20 p-4 print:p-3">
-          <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">Summary</h2>
-          <p className="text-sm print:text-xs text-muted-foreground">
-            Integration engineer and solutions architect with 7 years of hands-on delivery across API integrations, automation, data pipelines, and cloud applications. Former Marketing Director — I now build the systems I wish I&apos;d had. Currently running an independent practice with retained clients; looking for a full-time integration or implementation role.
-          </p>
+          <ul className="space-y-2 text-sm print:text-xs text-muted-foreground pl-0">
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <span>7 years of hands-on delivery for SMB, mid-market, and enterprise clients; 15+ years of coding experience.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+              <span>Specializing in custom web applications, enterprise WordPress, and systems integration.</span>
+            </li>
+          </ul>
         </section>
 
         <div className="grid grid-cols-[65%_1fr] gap-8 print:gap-6 mb-4 print:mb-3">
@@ -119,15 +189,58 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
             <div className="space-y-5 print:space-y-4">
               {experience.map((item, i) => (
                 <div key={i} className="flex gap-3">
-                  {item.logo && <Image src={item.logo} alt="" width={28} height={28} className="flex-shrink-0 h-7 w-7 print:h-6 print:w-6 object-contain" />}
-                  <div className="min-w-0">
+                  {item.logo && (
+                    <div className="flex h-7 w-7 print:h-6 print:w-6 flex-shrink-0 items-center justify-center rounded-md border border-border/50 bg-muted/25 p-1">
+                      <Image src={item.logo} alt="" width={28} height={28} className="h-full w-full object-contain" />
+                    </div>
+                  )}
+                  <div className="min-w-0 flex-1">
                     <div className="mb-1">
                       <strong className="text-sm print:text-xs">{item.title}</strong>
                       <span className="text-primary mx-3">|</span>
                       <span className="text-sm text-muted-foreground print:text-xs">{item.period}</span>
                     </div>
                     <div className="space-y-1.5 text-sm text-muted-foreground print:text-xs">
-                      {item.allBullets ? (
+                      {item.intro && <p className="italic">{item.intro}</p>}
+
+                      {item.engagements && item.engagements.length > 0 && (
+                        <div className="mt-3 ml-1 border-l border-border/40 pl-3 space-y-3.5 print:space-y-3">
+                          <p className="font-semibold text-muted-foreground text-[10px] uppercase tracking-[0.14em]">
+                            Client engagements under Tall Karol
+                          </p>
+                          {item.engagements.map((engagement) => (
+                            <div key={`${engagement.client}-${engagement.period}`} className="relative space-y-1.5">
+                              <div className="absolute -left-[16px] top-2.5 h-1.5 w-1.5 rounded-full border border-background bg-primary/40" />
+                              <div className="flex items-start gap-2.5">
+                                <div className="flex h-9 w-9 print:h-8 print:w-8 flex-shrink-0 items-center justify-center rounded-md border border-border/50 bg-muted/25 p-1">
+                                  <EngagementLogo src={engagement.logo} alt={`${engagement.client} logo`} />
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <div className="font-semibold text-foreground text-sm print:text-xs leading-snug">
+                                    {engagement.client}
+                                  </div>
+                                  <div className="mt-0.5 text-foreground text-xs print:text-[10px] font-medium">
+                                    {engagement.role}
+                                  </div>
+                                  <div className="mt-0.5 text-muted-foreground text-xs print:text-[10px]">
+                                    {engagement.period}
+                                  </div>
+                                </div>
+                              </div>
+                              <ul className="space-y-1 pl-11 print:pl-10">
+                                {engagement.bullets.map((bullet) => (
+                                  <li key={bullet} className="flex items-start gap-2">
+                                    <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-primary" />
+                                    <span>{bullet}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {item.bullets && item.bullets.length > 0 && (
                         <ul className="space-y-1.5 pl-2">
                           {item.bullets.map((bullet, j) => (
                             <li key={j} className="flex items-start gap-2">
@@ -136,18 +249,6 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
                             </li>
                           ))}
                         </ul>
-                      ) : (
-                        <>
-                          {item.intro && <p className="italic">{item.intro}</p>}
-                          <ul className="space-y-1.5 pl-2">
-                            {item.bullets.map((bullet, j) => (
-                              <li key={j} className="flex items-start gap-2">
-                                <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                                <span>{bullet}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </>
                       )}
                     </div>
                   </div>
@@ -190,7 +291,7 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
               <h2 className="text-sm font-semibold uppercase tracking-wide mb-3 print:text-xs print:mb-2 text-primary">Education</h2>
               <ul className="space-y-2 text-sm print:text-xs pl-0">
                 <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Case Western Reserve</strong> — Full Stack Web Development</span></li>
-                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Miami University</strong> — International Marketing</span></li>
+                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" /><span><strong>Miami University</strong> — International Marketing, China Business Program</span></li>
               </ul>
             </section>
             <section>
@@ -200,7 +301,7 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
               </blockquote>
               <p className="text-xs mt-2 print:text-[10px] text-muted-foreground">
                 <span className="font-semibold text-foreground">Christopher Jarvis</span>
-                <span> — VP of Enterprise Digital Marketing, Great Day Improvements (direct manager)</span>
+                <span> — VP of Enterprise Digital Marketing, Great Day Improvements — Direct Manager</span>
               </p>
             </section>
           </div>

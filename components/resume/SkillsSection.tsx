@@ -7,10 +7,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp } from "lucide-react"
 const softSkills = [
   "Systems integration: CRM, call center (Five9), ecommerce, and email platforms connected via REST APIs, webhooks, and event-driven automation",
-  "Cloud & full-stack delivery: AWS serverless (Lambda, Cognito, S3) and Next.js/React applications shipped to production, solo when needed",
+  "Cloud & full-stack delivery: AWS serverless (Lambda, Cognito, S3) and Next.js/React applications shipped to production",
   "Data pipelines & reporting: ETL, warehousing, and dashboards from raw operational data to leadership visibility",
   "Client discovery & scoping: requirements, SOWs, and architecture decisions run directly with founders and executives",
-  "Buyer-side fluency: former Marketing Director; I've owned the budget and the outcomes these systems exist for",
+  "Buyer-side fluency: former Marketing Director; I've owned the budget and the KPIs these systems have to answer to",
 ]
 
 interface SkillsSectionProps {

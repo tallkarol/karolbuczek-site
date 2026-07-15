@@ -17,7 +17,7 @@ const education = [
   },
   {
     institution: "Miami University",
-    program: "International Marketing",
+    program: "International Marketing, China Business Program",
     period: "2008–2013",
     bullets: [
       "Interdisciplinary coursework blending marketing, cultural analysis, business, language, and global systems.",
@@ -26,7 +26,8 @@ const education = [
 ]
 
 export function EducationSection() {
-  const [isOpen, setIsOpen] = useState(false)
+  // Data already exists above; default open so the section is not an empty heading on /resume
+  const [isOpen, setIsOpen] = useState(true)
 
   return (
     <Card className="border-border/50 hover:border-primary/30 transition-colors">

@@ -12,20 +12,15 @@ import {
   SiSupabase,
   SiWordpress,
   SiWoocommerce,
-  SiGoogletagmanager,
   SiGoogleanalytics,
-  SiHuggingface,
   SiZapier,
   SiMailchimp,
   SiPhp,
   SiTypescript,
   SiPython,
   SiMysql,
-  SiHtml5,
-  SiCss3,
   SiReact,
   SiNodedotjs,
-  SiTailwindcss,
 } from "react-icons/si"
 import type { ComponentType } from "react"
 
@@ -64,7 +59,6 @@ const techCategories: { label: string; items: TechItem[] }[] = [
       { name: "Five9" },
       { name: "Mailchimp", icon: SiMailchimp },
       { name: "GA4/GTM", icon: SiGoogleanalytics },
-      { name: "Google Tag Manager", icon: SiGoogletagmanager },
     ],
   },
   {
@@ -77,10 +71,6 @@ const techCategories: { label: string; items: TechItem[] }[] = [
       { name: "React", icon: SiReact },
       { name: "Next.js" },
       { name: "Node.js", icon: SiNodedotjs },
-      { name: "HTML5", icon: SiHtml5 },
-      { name: "CSS3", icon: SiCss3 },
-      { name: "TailwindCSS", icon: SiTailwindcss },
-      { name: "HuggingFace", icon: SiHuggingface },
     ],
   },
 ]
@@ -150,30 +140,6 @@ export function TechStackSection({ isOpen: controlledIsOpen, onOpenChange }: Tec
                     </div>
                   </div>
                 ))}
-                <div className="space-y-3">
-                  <Typography variant="body-sm" className="font-semibold text-foreground text-xs uppercase tracking-wide">
-                    Expertise Areas
-                  </Typography>
-                  <ul className="grid gap-x-6 gap-y-1.5 sm:grid-cols-2 pl-6">
-                    {[
-                      "Systems integration across CRM, call center, ecommerce, and email",
-                      "API design & event-driven automation",
-                      "Data pipeline & ETL engineering",
-                      "Cloud & full-stack delivery (AWS, Next.js/React)",
-                      "Client discovery, SOWs, and architecture decisions",
-                      "Workflow automation (Zapier, Workato)",
-                      "Requirements analysis & stakeholder alignment",
-                      "Buyer-side fluency from marketing leadership",
-                    ].map((strength) => (
-                      <li key={strength} className="flex items-start gap-2">
-                        <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                        <Typography variant="body-sm" className="text-muted-foreground text-xs leading-relaxed">
-                          {strength}
-                        </Typography>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             </CardContent>
           </motion.div>

@@ -43,7 +43,7 @@ const timelineData: TimelineItem[] = [
         period: "Apr 2025 – Present",
         logo: "/gdi-logo.svg",
         bullets: [
-          "Built automations syncing data between retail store systems and brand CRMs, and integrated multiple CRMs into shared cross-brand workflows.",
+          "Built a modular integration architecture across 8 brands, connecting multiple CRMs and third-party vendors into shared cross-brand workflows.",
           "Contributing engineer on an enterprise-wide migration consolidating all brand websites onto a single WordPress VIP platform: custom Gutenberg blocks, reusable patterns, and templates that let marketing teams build pages without developer tickets.",
         ],
       },
@@ -53,19 +53,18 @@ const timelineData: TimelineItem[] = [
         period: "2021 – Present",
         logo: "/mineralife-logo.png",
         bullets: [
-          "Built an event-driven sync layer unifying WooCommerce, CRM, and email data to trigger lifecycle automation.",
-          "Built a custom B2B sales-workflow interface to manage lead intake through contact and conversion.",
+          "Built a custom B2B sales-workflow interface to qualify inquiries and manage opportunities from submission through conversion.",
           "Re-architected the B2B website as a headless WordPress + React application, preserving WordPress for content management while replacing the legacy frontend with a leaner delivery layer. Raised mobile Lighthouse performance from 51 to 94, cut time to interactive from 12.5s to 3.1s, and reduced network requests from 314 to 51.",
         ],
       },
       {
-        client: "Audit & Certification Provider",
-        role: "Solutions Architect — Secure Document Portal",
+        client: "Bliss",
+        role: "Audit & certification provider — Secure Document Portal",
         period: "Project engagement",
         logo: "/bliss-cb.png",
         bullets: [
           "Designed and shipped a serverless document portal on AWS using managed identity and signed-URL file delivery to enforce role-based access with immutable audit logging.",
-          "Replaced email-based file sharing for compliance-sensitive workflows. Ran discovery, scoping, and delivery end to end.",
+          "Replaced email-based file sharing for compliance-sensitive workflows.",
         ],
       },
       {
@@ -82,23 +81,23 @@ const timelineData: TimelineItem[] = [
   },
   {
     period: "2021 — 2023",
-    officialTitle: "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack",
+    officialTitle: "Universal Windows Direct (Great Day Improvements) — Integration Engineer",
     logo: "/uwd-logo.png",
     reality: "Automation infrastructure and API integrations across marketing, sales, and call-center operations at an enterprise home services organization.",
     systems: [
-      "Built a centralized integration layer connecting 7+ systems including Five9, CRM, Mailchimp, and internal platforms, with a shared logging and error-handling framework that made failures traceable across all automations.",
+      "Expanded and organized a centralized PHP script-based integration API connecting multiple systems including Five9, CRM, Mailchimp, and internal platforms. Implemented modular routes and a shared logging and error-handling framework that made failures traceable across all automations.",
       "Migrated server infrastructure across four VPS partitions with zero downtime, modernizing legacy PHP and removing deprecated security risks.",
-      "Implemented server-side tagging, improving attribution reliability and first-party data capture.",
     ],
   },
   {
     period: "2019 — 2021",
     officialTitle: "Perfect Power Wash — Marketing Systems Engineer → Marketing Director",
     logo: "/ppw.png",
-    reality: "Recruited to modernize web and data infrastructure; promoted to lead marketing, including ownership of the technology stack, through expansion from one market to four.",
+    reality: "Recruited to modernize web and data infrastructure; promoted to lead marketing, including ownership of the technology stack.",
     systems: [
       "Built the organization's first centralized data warehouse aggregating marketing and operational data for cross-channel attribution.",
       "Developed internal tooling across call-center operations, lead management, and automation, then hired and trained a developer to extend the systems.",
+      "Built and standardized scalable marketing systems and technology that supported brand expansion from one market to four.",
     ],
   },
   {
@@ -110,7 +109,9 @@ const timelineData: TimelineItem[] = [
       "Marketing / Design — Red Light Management (2016 — 2018)",
       "Marketing & IT Consultant — Localtopia (2014 — 2015)",
       "Co-Founder / CEO — Garcia L8r (2013 — 2016)",
+      // TODO(karol): reconcile CUBE title with LinkedIn
       "Co-Founder / Creative Director — CUBE Karaoke LLC (2013 — 2014)",
+      // TODO(karol): reconcile in2itiv dates with LinkedIn
       "Co-Founder / CEO — in2itiv media LLC (2012 — 2013)",
     ],
   },

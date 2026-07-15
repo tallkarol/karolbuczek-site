@@ -48,7 +48,7 @@ export function ResumePreview() {
                 <ResumeTimeline className="h-full w-full" />
               </div>
               <div className="space-y-2">
-                <div className="font-semibold">Integration Engineer · Solutions Architect</div>
+                <div className="font-semibold">Full-Stack Engineer · Solutions Architect</div>
                 <div className="text-sm text-muted-foreground">
                   7 years hands-on delivery · API integrations, automation, cloud apps
                 </div>

@@ -102,7 +102,7 @@ export const allCaseStudies: CaseStudy[] = [
       "Eliminated manual data entry between call center and CRM — saving an estimated XX hours per week across sales and marketing operations.",
       "Single source of truth across diverse systems (Five9, Mailchimp, CRM, and others) reduced lead duplication and data discrepancies, improving reporting confidence across departments.",
     ],
-    image: "/uwd-crm-parent-files.png",
+    image: "/uwd-logo.png",
     clientDescription: "Enterprise home services company with national reach, running high-volume call center, CRM, and marketing operations.",
     previewBusOutcome: "Estimated XX hours per week saved across sales and marketing; single source of truth across diverse systems.",
   },
@@ -155,12 +155,12 @@ export const lensToRoles: Record<RoleFilter, string[]> = {
   "all": [],
   "WordPress Engineering": [
     "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
-    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer (2021-2023)",
     "Early Career — Freelance Development & Startups (2009-2019)",
   ],
   "MarTech / Growth Engineering": [
     "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
-    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer (2021-2023)",
     "Perfect Power Wash — Marketing Systems Engineer → Marketing Director (2019-2021)",
   ],
   "Product & Internal Tools": [
@@ -169,17 +169,17 @@ export const lensToRoles: Record<RoleFilter, string[]> = {
   ],
   "Integrations & Automation": [
     "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
-    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer (2021-2023)",
   ],
   "Performance Engineering": [
-    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer (2021-2023)",
   ],
   "Startup Experience": [
     "Early Career — Freelance Development & Startups (2009-2019)",
   ],
   "Implementation Engineer": [
     "Tall Karol — Independent Solutions Architect & Consultant (2023-Present)",
-    "Universal Windows Direct (Great Day Improvements) — Integration Engineer, Full Stack (2021-2023)",
+    "Universal Windows Direct (Great Day Improvements) — Integration Engineer (2021-2023)",
     "Perfect Power Wash — Marketing Systems Engineer → Marketing Director (2019-2021)",
   ],
 }

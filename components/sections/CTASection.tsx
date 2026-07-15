@@ -12,8 +12,8 @@ interface CTASectionProps {
 }
 
 export function CTASection({
-  heading = "Open to solutions architect roles and select consulting engagements.",
-  description = "If you're hiring or exploring an architecture engagement—discovery, scoping, or system design—feel free to reach out.",
+  heading = "Open to full-time integration, implementation, and solutions architect roles.",
+  description = "Also open to select consulting engagements — discovery, scoping, or system design. If you're hiring, reach out.",
 }: CTASectionProps) {
   return (
     <div className="relative rounded-lg border border-border/50 bg-muted/30 p-8 md:p-12 text-center space-y-6 overflow-hidden">

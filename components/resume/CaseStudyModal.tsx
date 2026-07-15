@@ -188,7 +188,7 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
                       src={caseStudy.image || PLACEHOLDER_IMAGE}
                       alt={caseStudy.title}
                       fill
-                      className="object-cover"
+                      className={caseStudy.imageFit === "contain" ? "object-contain p-6" : "object-cover"}
                     />
                   </button>
                   <div className="flex-1 min-w-0">

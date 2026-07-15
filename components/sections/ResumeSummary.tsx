@@ -1,11 +1,21 @@
 "use client"
 
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Typography } from "@/components/typography"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight } from "lucide-react"
+
+const glanceBullets = [
+  "7 years of hands-on delivery for SMB, mid-market, and enterprise clients; 15+ years of coding experience",
+  "Centralized integration API connecting 7+ systems — Five9, CRM, Mailchimp, and internal platforms — with shared logging and error handling at an enterprise home-services organization",
+  "Modular integration architecture across 8 brands at Great Day Improvements, connecting multiple CRMs and third-party vendors into shared cross-brand workflows",
+  "Serverless AWS document portal with managed identity, signed-URL delivery, role-based access, and immutable audit logging",
+  "Headless WordPress + React rebuild — mobile Lighthouse 51 → 94, time to interactive 12.5s → 3.1s",
+  "Production A&R analytics platform — Next.js/TypeScript with PostgreSQL, deployed on Vercel and Railway",
+  "Pre-sales experience — discovery, scoping, POC delivery, and SOW definition run directly with founders and executives",
+  "Enterprise WordPress VIP engineering — custom Gutenberg blocks, patterns, and templates for marketing self-serve",
+]
 
 export function ResumeSummary() {
   return (
@@ -16,69 +26,20 @@ export function ResumeSummary() {
             <Typography variant="h3" as="h3" className="font-display">
               Experience at a Glance
             </Typography>
+            <Typography variant="body-sm" className="text-muted-foreground">
+              Former Marketing Director — I now build the systems I wish I&apos;d had.
+            </Typography>
           </div>
 
           <ul className="space-y-2">
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-                10+ years spanning solutions architecture, full-stack engineering, and marketing leadership
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-              Operated across org sizes from early-stage startups to 3,000+ person enterprises — presenting to C-suite, collaborating with agencies, and coordinating across engineering, marketing, and operations teams
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-                Cloud infrastructure on AWS — Lambda, RDS, S3, Cognito, Amplify — and GCP
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-                End-to-end API integration experience across CRM, call center, marketing, and analytics platforms
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-                Custom data warehousing, ETL pipelines, and React-based dashboard development
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-                Pre-sales experience — scoping, POC delivery, stakeholder interviews, and SOW definition
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-                Former Marketing Director — I understand what these systems need to do for the people using them, not just how to build them
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-              AI-forward in practice — using LLM-based tooling to accelerate analysis, documentation, and system iteration
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-              Built and deployed AI-powered tooling for local inference, document automation, and workflow integration — without external data transmission
-              </Typography>
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <Typography variant="body-sm" className="text-muted-foreground">
-                AWS Solutions Architect Associate in progress (SAA-C03)
-              </Typography>
-            </li>
+            {glanceBullets.map((bullet) => (
+              <li key={bullet} className="flex items-start gap-2">
+                <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                <Typography variant="body-sm" className="text-muted-foreground">
+                  {bullet}
+                </Typography>
+              </li>
+            ))}
           </ul>
 
           <div className="flex flex-wrap gap-2 pt-2">
@@ -94,4 +55,3 @@ export function ResumeSummary() {
     </Card>
   )
 }
-

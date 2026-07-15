@@ -29,14 +29,14 @@ const skillCategories = [
     ],
   },
   {
-    name: "Optimize",
-    description: "Make existing systems observable, reliable, and measurable.",
+    name: "Build",
+    description: "Ship production applications from first commit to launch.",
     illustration: OptimizeIllustration,
     skills: [
-      "UTM and attribution architecture for multi-touch tracking",
-      "GTM event schema design and server-side tracking pipelines",
-      "Core Web Vitals and site performance remediation",
-      "Data normalization, reporting visibility, and dashboard infrastructure",
+      "Custom web applications — Next.js/React, TypeScript, and PostgreSQL",
+      "Enterprise WordPress engineering — VIP platforms, custom Gutenberg blocks, and plugins",
+      "Serverless AWS applications with managed identity and role-based access",
+      "Internal tools, dashboards, and reporting infrastructure teams use daily",
     ],
   },
 ]

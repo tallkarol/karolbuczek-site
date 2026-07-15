@@ -47,7 +47,7 @@ export function HeroIntro() {
 
       <div className="space-y-2 md:space-y-3 order-1 md:order-2">
         <Typography variant="eyebrow" className="text-muted-foreground">
-          Solutions Architect <span className="text-primary">|</span> Cloud Systems <span className="text-primary">|</span> Integrations <span className="text-primary">|</span> AI
+          Full-Stack Engineer · Solutions Architect
         </Typography>
 
         <Typography variant="h1" as="h1" className="flex flex-col gap-1">
@@ -62,7 +62,8 @@ export function HeroIntro() {
         </Typography>
 
         <Typography variant="body" className="max-w-xl text-muted-foreground">
-        Over a decade leading technical direction from stakeholder discovery through production deployment — aligning systems with operational reality.        </Typography>
+          Custom web applications, enterprise WordPress, and systems integration — scoped directly with stakeholders, shipped to production.
+        </Typography>
         <div className="flex flex-wrap items-center gap-3">
           <Button asChild className="rounded-full px-6 py-2 text-sm font-semibold font-ui">
             <a href="#case-studies">View case studies</a>

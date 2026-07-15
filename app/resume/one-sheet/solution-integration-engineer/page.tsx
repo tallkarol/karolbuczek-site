@@ -117,7 +117,6 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
       intro: "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded two ventures, raising $340K for one.",
       bullets: [
         "Marketing / Design — Red Light Management (2016 — 2018)",
-        "Marketing & IT Consultant — Localtopia (2014 — 2015)",
         // TODO(karol): reconcile CUBE title with LinkedIn
         "Co-Founder / Creative Director — CUBE Karaoke LLC (2013 — 2014)",
         // TODO(karol): reconcile in2itiv dates with LinkedIn
@@ -147,7 +146,7 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
             <Image src="/logo.png" alt="Karol Buczek" width={56} height={56} className="flex-shrink-0 h-14 w-14 print:h-12 print:w-12 object-contain" />
             <div>
               <h1 className="text-2xl font-bold mb-0.5 print:text-xl text-foreground">Karol Buczek</h1>
-              <p className="text-sm text-muted-foreground print:text-xs">Integration Engineer <span className="text-primary mx-1">·</span> Solutions Architect</p>
+              <p className="text-sm text-muted-foreground print:text-xs">Integration Engineer</p>
             </div>
           </div>
           <div className="flex flex-col items-end text-right text-xs text-muted-foreground print:text-[10px] space-y-1">
@@ -178,7 +177,7 @@ export default function SolutionIntegrationEngineerOneSheetPage() {
             </li>
             <li className="flex items-start gap-2">
               <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <span>Specializing in custom web applications, enterprise WordPress, and systems integration.</span>
+              <span>Systems integration across CRM, call-center, and marketing platforms — with enterprise WordPress and API-driven automation.</span>
             </li>
           </ul>
         </section>

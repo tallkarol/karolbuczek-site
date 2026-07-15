@@ -152,6 +152,7 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
     if (title.includes("Tall Karol")) {
       return {
         relatedCaseStudies: [
+          { slug: "mineralife-b2b-website-rebuild", title: "Mineralife B2B Website Rebuild" },
           { slug: "secure-document-management-portal", title: "Bliss Secure File Share" },
           { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform" },
           { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API" },

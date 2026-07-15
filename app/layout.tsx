@@ -28,8 +28,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://karolbuczek.com"),
-  title: "Karol Buczek | Solutions Architect | Cloud Systems | Integrations | AI",
-  description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+  title: "Karol Buczek | Full-Stack Engineer · Solutions Architect",
+  description: "Full-stack engineer and solutions architect — custom web applications, enterprise WordPress, and systems integration. Seven years of hands-on delivery for SMB, mid-market, and enterprise clients.",
   icons: {
     icon: [
       { url: "/logo-square.png", sizes: "64x64", type: "image/png" },
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     apple: "/logo-square.png",
   },
   openGraph: {
-    title: "Karol Buczek | Solutions Architect | Cloud Systems | Integrations | AI",
-    description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+    title: "Karol Buczek | Full-Stack Engineer · Solutions Architect",
+    description: "Full-stack engineer and solutions architect — custom web applications, enterprise WordPress, and systems integration. Seven years of hands-on delivery for SMB, mid-market, and enterprise clients.",
     url: "https://karolbuczek.com",
     siteName: "Karol Buczek",
     images: [
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Karol Buczek | Solutions Architect | Cloud Systems | Integrations | AI",
-    description: "Solutions architect building internal tools, automation pipelines, and integrations. Specializing in WordPress, React, APIs, MarTech systems, and full-stack development.",
+    title: "Karol Buczek | Full-Stack Engineer · Solutions Architect",
+    description: "Full-stack engineer and solutions architect — custom web applications, enterprise WordPress, and systems integration. Seven years of hands-on delivery for SMB, mid-market, and enterprise clients.",
     images: ["/logo-square.png"],
   },
 }

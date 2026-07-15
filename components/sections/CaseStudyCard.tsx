@@ -17,6 +17,8 @@ export interface CaseStudy {
   subtitle?: string
   /** Optional image path; falls back to placeholder when absent */
   image?: string
+  /** How the card image should fit its frame (default: cover) */
+  imageFit?: "cover" | "contain"
   /** Tech stack items for modal/detail view */
   techStack?: string[]
   /** Skills applied for modal/detail view */
@@ -82,7 +84,7 @@ export function CaseStudyCard({ caseStudy, index, onClick, imageSize = "default"
             src={imageSrc}
             alt={caseStudy.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className={`${caseStudy.imageFit === "contain" ? "object-contain p-6" : "object-cover"} transition-transform duration-300 group-hover:scale-105`}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-primary opacity-[0.3] group-hover:opacity-0 transition-opacity duration-300" />

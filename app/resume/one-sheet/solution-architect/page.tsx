@@ -116,7 +116,6 @@ export default function SolutionArchitectOneSheetPage() {
       intro: "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded two ventures, raising $340K for one.",
       bullets: [
         "Marketing / Design — Red Light Management (2016 — 2018)",
-        "Marketing & IT Consultant — Localtopia (2014 — 2015)",
         // TODO(karol): reconcile CUBE title with LinkedIn
         "Co-Founder / Creative Director — CUBE Karaoke LLC (2013 — 2014)",
         // TODO(karol): reconcile in2itiv dates with LinkedIn

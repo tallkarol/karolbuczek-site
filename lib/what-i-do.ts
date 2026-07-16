@@ -4,6 +4,8 @@ import type { CaseStudy } from "@/components/sections/CaseStudyCard"
 export interface WhatIDoStat {
   value: string
   label: string
+  /** Optional improvement badge, derived from the value's before → after pair */
+  delta?: string
 }
 
 export interface WhatIDoSpec {
@@ -31,6 +33,11 @@ export interface WhatIDoPillar {
   cardSkills: string[]
   /** Real, verifiable numbers only — sourced from resume data */
   stats: WhatIDoStat[]
+  /**
+   * Working principles that back up the stats and case studies — each bullet
+   * is grounded in a specific resume item (role bullet or case-study constraint).
+   */
+  approach: string[]
   /** Concrete examples with exact specs */
   specs: WhatIDoSpec[]
   caseStudySlugs: string[]
@@ -57,6 +64,12 @@ export const whatIDoPillars: WhatIDoPillar[] = [
       { value: "15+ yrs", label: "Coding experience" },
       { value: "SMB → Enterprise", label: "Client range" },
     ],
+    approach: [
+      "Requirements come from the people who own the problem — scoping happens in discovery calls with stakeholders directly, not through layers of handoff.",
+      "Platform choices follow constraints, not preferences: a client with no DevOps team got serverless; NDA-governed audio got on-premise inference; a marketing team that needed WordPress kept it — headless.",
+      "Trade-offs are made explicit and documented, so the reasoning behind every platform decision survives the project.",
+      "The design isn't the deliverable — the working system is. When the engagement calls for it, I build what I architect, from first commit through production.",
+    ],
     specs: [
       {
         title: "Serverless document portal on AWS",
@@ -74,10 +87,11 @@ export const whatIDoPillars: WhatIDoPillar[] = [
           "On-premise transcription and action-item extraction using local Whisper inference — zero external data transmission for NDA-governed environments.",
       },
     ],
+    // Ordered to match specs[] for combined example cards in the modal
     caseStudySlugs: [
       "secure-document-management-portal",
-      "local-ai-meeting-intelligence",
       "unified-customer-lifecycle-platform",
+      "local-ai-meeting-intelligence",
     ],
     roleLinks: [
       {
@@ -113,7 +127,13 @@ export const whatIDoPillars: WhatIDoPillar[] = [
     stats: [
       { value: "8 brands", label: "Cross-brand integration architecture" },
       { value: "24/7", label: "Call-center & CRM operations supported" },
-      { value: "5 → 1", label: "Tools replaced by one unified portal" },
+      { value: "5 → 1", label: "Tools replaced by one unified portal", delta: "−80%" },
+    ],
+    approach: [
+      "Failures are visible, never silent — every integration ships with shared logging and error handling, so problems are traceable across systems instead of discovered weeks later.",
+      "Modular by default: new platforms onboard through standardized routes without refactoring what's already running.",
+      "Built for operations that don't stop — automations supporting 24/7 call-center and CRM workflows have to fail gracefully and recover without manual intervention.",
+      "Data moves on real events, not overnight batch jobs — lifecycle automation fires from actual commerce activity, so the data is current when the business acts on it.",
     ],
     specs: [
       {
@@ -132,10 +152,11 @@ export const whatIDoPillars: WhatIDoPillar[] = [
           "Server infrastructure migrated across four VPS partitions with no downtime — modernizing legacy PHP and removing deprecated security risks.",
       },
     ],
+    // Ordered to match specs[] for combined example cards in the modal
     caseStudySlugs: [
       "uwd-enterprise-integration-api",
-      "martech-extension-architecture",
       "unified-customer-lifecycle-platform",
+      "martech-extension-architecture",
     ],
     roleLinks: [
       {
@@ -174,9 +195,15 @@ export const whatIDoPillars: WhatIDoPillar[] = [
       "Internal tools, dashboards, and reporting infrastructure teams use daily",
     ],
     stats: [
-      { value: "51 → 94", label: "Mobile Lighthouse score (B2B rebuild)" },
-      { value: "12.5s → 3.1s", label: "Time to interactive" },
-      { value: "314 → 51", label: "Network requests" },
+      { value: "51 → 94", label: "Mobile Lighthouse score (B2B rebuild)", delta: "+43 pts" },
+      { value: "12.5s → 3.1s", label: "Time to interactive", delta: "4× faster" },
+      { value: "314 → 51", label: "Network requests", delta: "−84%" },
+    ],
+    approach: [
+      "Every build is measured before and after — Lighthouse scores, time to interactive, request counts. A launch without numbers is a launch you can't defend.",
+      "Software is built to the spec of the people using it daily: lead forms designed with the sales team, analytics dashboards A&R staff actually open, admin tooling marketing runs without developer tickets.",
+      "Production means production — role-based access, audit logging, and deployment pipelines are part of the build, not an afterthought.",
+      "Systems are handed off maintainable: at Perfect Power Wash I hired and trained the developer who extended what I built after I moved up.",
     ],
     specs: [
       {
@@ -195,6 +222,7 @@ export const whatIDoPillars: WhatIDoPillar[] = [
           "Custom Gutenberg blocks, reusable patterns, and templates that let marketing teams build pages without developer tickets — on a consolidated multi-brand platform.",
       },
     ],
+    // Ordered to match specs[] for combined example cards in the modal
     caseStudySlugs: [
       "mineralife-b2b-website-rebuild",
       "secure-document-management-portal",

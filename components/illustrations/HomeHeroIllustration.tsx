@@ -9,8 +9,8 @@ export function HomeHeroIllustration({ className, priority }: HomeHeroIllustrati
   return (
     <div className={`relative h-full w-full ${className ?? ""}`}>
       <Image
-        src="/homepage-hero-illustration.webp"
-        alt="Illustration of a systems architect balancing design, code, strategy, and analytics"
+        src="/homepage-hero-presentation.webp"
+        alt="Illustration of a systems architect presenting solutions to a group"
         fill
         className="object-contain object-center"
         priority={priority}

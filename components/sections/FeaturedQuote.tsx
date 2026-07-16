@@ -8,7 +8,23 @@ import { Typography } from "@/components/typography"
 const ROTATE_MS = 9000
 
 // Excerpts are verbatim substrings of the full LinkedIn recommendations shown on /resume.
-const quotes = [
+type QuoteLogo = {
+  src: string
+  alt: string
+  /**
+   * Keep the asset's native colors. Use for logos with baked-in backgrounds
+   * (e.g. UWD/PPW PNGs) — brightness/invert turns those into solid boxes.
+   */
+  preserveColor?: boolean
+}
+
+const quotes: Array<{
+  excerpt: string
+  author: string
+  role: string
+  relationship: string
+  logos: QuoteLogo[]
+}> = [
   {
     excerpt:
       "Highly technical, incredibly quick to learn new workflows, and remarkably dynamic when it comes to evolving project requirements.",
@@ -24,8 +40,8 @@ const quotes = [
     role: "Vice President of Marketing, Perfect Power Wash & Universal Windows Direct",
     relationship: "Direct Manager",
     logos: [
-      { src: "/ppw.png", alt: "Perfect Power Wash" },
-      { src: "/uwd-logo.png", alt: "Universal Windows Direct" },
+      { src: "/ppw.png", alt: "Perfect Power Wash", preserveColor: true },
+      { src: "/uwd-logo.png", alt: "Universal Windows Direct", preserveColor: true },
     ],
   },
   {
@@ -34,7 +50,7 @@ const quotes = [
     author: "Julian Quesada",
     role: "Software Engineer, Perfect Power Wash",
     relationship: "Reported to Karol",
-    logos: [{ src: "/ppw.png", alt: "Perfect Power Wash" }],
+    logos: [{ src: "/ppw.png", alt: "Perfect Power Wash", preserveColor: true }],
   },
   {
     excerpt:
@@ -43,7 +59,7 @@ const quotes = [
     role: "Director of Social Media, Universal Windows Direct & Great Day Improvements",
     relationship: "Cross-functional Collaborator",
     logos: [
-      { src: "/uwd-logo.png", alt: "Universal Windows Direct" },
+      { src: "/uwd-logo.png", alt: "Universal Windows Direct", preserveColor: true },
       { src: "/gdi-logo.svg", alt: "Great Day Improvements" },
     ],
   },
@@ -130,13 +146,20 @@ export function FeaturedQuote() {
             </Typography>
             <div className="mt-3 flex items-center justify-center gap-4">
               {current.logos.map((logo) => (
-                <div key={logo.src} className="relative h-8 w-20 opacity-80 brightness-0 invert">
+                <div
+                  key={logo.src}
+                  className={
+                    logo.preserveColor
+                      ? "relative h-9 w-24 opacity-95"
+                      : "relative h-8 w-20 opacity-80 brightness-0 invert"
+                  }
+                >
                   <Image
                     src={logo.src}
                     alt={logo.alt}
                     fill
                     className="object-contain"
-                    sizes="80px"
+                    sizes="96px"
                   />
                 </div>
               ))}

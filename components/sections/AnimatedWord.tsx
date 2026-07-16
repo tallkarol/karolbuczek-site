@@ -33,7 +33,7 @@ export function AnimatedWord({ words }: AnimatedWordProps) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.3 }}
-        className="tk-gradient-text inline-block"
+        className="tk-gradient-text inline-block text-[length:inherit] font-[inherit] leading-[inherit] tracking-[inherit]"
       >
         {words[currentWordIndex]}
       </motion.span>

@@ -20,53 +20,57 @@ export function CTASection({
 }: CTASectionProps) {
   if (fullWidth) {
     return (
-      <Reveal className="mx-auto flex max-w-2xl flex-col items-center gap-7 text-center">
-        <div className="relative h-12 w-14 sm:h-14 sm:w-16">
+      <Reveal className="grid w-full lg:grid-cols-2 lg:items-stretch">
+        <div className="flex flex-col justify-center gap-7 px-6 py-16 text-left sm:px-8 lg:py-28 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-12">
+          <div className="max-w-xl space-y-3">
+            <Typography variant="h2" as="h2" className="text-2xl text-text-inverse md:text-3xl">
+              {heading}
+            </Typography>
+            <Typography variant="body" className="text-text-inverse/75">
+              {description}
+            </Typography>
+          </div>
+
+          <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <Button asChild variant="inverse">
+              <Link href="/contact">
+                <Mail className="mr-2 h-4 w-4" />
+                Get in touch
+              </Link>
+            </Button>
+            <Button asChild variant="outline-inverse">
+              <a
+                href="/resume-karol-buczek.pdf"
+                download="resume-karol-buczek.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download Resume
+              </a>
+            </Button>
+            <Button asChild variant="secondary">
+              <a
+                href="https://www.linkedin.com/in/karolbuczek/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="mr-2 h-4 w-4" />
+                LinkedIn
+              </a>
+            </Button>
+          </div>
+        </div>
+
+        <div className="relative min-h-[240px] w-full sm:min-h-[320px] lg:min-h-full">
           <Image
-            src="/logo.png"
-            alt="Karol Buczek"
+            src="/presenting-to-people.png"
+            alt="Illustration of presenting to a group"
             fill
-            className="object-contain brightness-0 invert"
+            className="object-cover object-center"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority={false}
           />
-        </div>
-
-        <div className="mx-auto max-w-xl space-y-3">
-          <Typography variant="h2" as="h2" className="text-2xl text-text-inverse md:text-3xl">
-            {heading}
-          </Typography>
-          <Typography variant="body" className="text-text-inverse/75">
-            {description}
-          </Typography>
-        </div>
-
-        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
-          <Button asChild variant="inverse">
-            <Link href="/contact">
-              <Mail className="mr-2 h-4 w-4" />
-              Get in touch
-            </Link>
-          </Button>
-          <Button asChild variant="outline-inverse">
-            <a
-              href="/resume-karol-buczek.pdf"
-              download="resume-karol-buczek.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download Resume
-            </a>
-          </Button>
-          <Button asChild variant="secondary">
-            <a
-              href="https://www.linkedin.com/in/karolbuczek/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin className="mr-2 h-4 w-4" />
-              LinkedIn
-            </a>
-          </Button>
         </div>
       </Reveal>
     )

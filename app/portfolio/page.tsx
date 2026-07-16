@@ -76,14 +76,12 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      <section className="kb-section-inverse w-full pb-0">
-        <div className="kb-content-rail py-12 lg:py-16">
-          <CTASection
-            fullWidth
-            heading="Want to talk about a role or a project?"
-            description="Let's connect."
-          />
-        </div>
+      <section className="kb-section-inverse w-full overflow-hidden pb-0">
+        <CTASection
+          fullWidth
+          heading="Want to talk about a role or a project?"
+          description="Let's connect."
+        />
       </section>
     </>
   )

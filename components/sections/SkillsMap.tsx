@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowUpRight } from "lucide-react"
 import { Typography } from "@/components/typography"
 import { BuildIllustration, OptimizeIllustration, ConnectIllustration } from "@/components/illustrations"
 import { WhatIDoModal } from "@/components/sections/WhatIDoModal"
@@ -34,6 +33,9 @@ export function SkillsMap() {
   return (
     <div className="space-y-8">
       <Reveal className="space-y-3">
+        <Typography variant="eyebrow" className="text-accent-text">
+          Capabilities
+        </Typography>
         <Typography variant="h2" as="h2">What I Do</Typography>
         <div aria-hidden className="tk-accent-rule" />
         <Typography variant="body" className="text-muted-foreground">
@@ -58,13 +60,6 @@ export function SkillsMap() {
               >
                 {/* Accent process marker */}
                 <div className="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-300 group-hover:w-full" />
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="font-ui text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-text">
-                    0{index + 1}
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground/50 transition-colors group-hover:text-accent-text" />
-                </div>
-
                 {/* Illustration */}
                 <div className="mb-4 h-24 w-full overflow-hidden rounded border border-border bg-background-alt">
                   <Illustration className="h-full w-full" />
@@ -99,7 +94,6 @@ export function SkillsMap() {
       <WhatIDoModal
         pillar={selectedPillar}
         illustration={selectedPillar ? pillarIllustrations[selectedPillar.id] : undefined}
-        index={selectedIndex ?? 0}
         isOpen={modalOpen}
         onClose={closePillar}
       />

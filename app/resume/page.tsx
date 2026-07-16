@@ -173,14 +173,12 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className="kb-section-inverse w-full pb-0">
-        <div className="kb-content-rail py-12 lg:py-16">
-          <CTASection
-            fullWidth
-            heading="Looking for a full-time integration or implementation role."
-            description="Open to select consulting engagements as well — discovery, scoping, or system design. Feel free to reach out."
-          />
-        </div>
+      <section className="kb-section-inverse w-full overflow-hidden pb-0">
+        <CTASection
+          fullWidth
+          heading="Looking for a full-time integration or implementation role."
+          description="Open to select consulting engagements as well — discovery, scoping, or system design. Feel free to reach out."
+        />
       </section>
 
       <CaseStudyModal

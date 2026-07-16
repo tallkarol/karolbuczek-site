@@ -130,7 +130,7 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-background/95 backdrop-blur-sm"
+            className="kb-surface-app fixed inset-0 z-[60] flex items-center justify-center p-4 bg-background/95 backdrop-blur-sm"
             onClick={() => setLightboxIndex(null)}
           >
             <button
@@ -197,7 +197,7 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
       <AnimatePresence mode="wait">
       {isOpen && caseStudy && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-0 md:p-[2.5vmin]"
+          className="fixed inset-0 z-[110] flex items-center justify-center p-0 md:p-[2.5vmin]"
           onClick={onClose}
         >
           {/* Backdrop */}
@@ -215,7 +215,7 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="relative w-full h-full md:w-[95vw] md:h-[95vh] md:max-w-[1400px] md:max-h-[90vh] bg-card border-2 border-border/50 rounded-none md:rounded-xl shadow-2xl overflow-hidden flex flex-col"
+            className="kb-surface-app relative w-full h-full md:w-[95vw] md:h-[95vh] md:max-w-[1400px] md:max-h-[90vh] bg-card border-2 border-border/50 rounded-none md:rounded-xl shadow-2xl overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}

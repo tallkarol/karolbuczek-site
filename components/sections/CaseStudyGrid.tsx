@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Typography } from "@/components/typography"
 import { CaseStudyCard } from "@/components/sections/CaseStudyCard"
 import { CaseStudyModal } from "@/components/resume/CaseStudyModal"
 import { allCaseStudies } from "@/lib/resume-data"
@@ -73,8 +74,19 @@ function CaseStudyCarousel({
   const scrollByPage = (direction: -1 | 1) => {
     const el = scrollerRef.current
     if (!el) return
-    const page = el.clientWidth * 0.9
-    el.scrollBy({ left: direction * page, behavior: "smooth" })
+    const track = el.firstElementChild as HTMLElement | null
+    const card = track?.firstElementChild as HTMLElement | null
+    if (!track || !card) return
+
+    // Advance by the number of fully visible cards, landing on a card edge.
+    const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0
+    const stride = card.offsetWidth + gap
+    const visibleCards = Math.max(1, Math.floor((el.clientWidth + gap) / stride))
+    const targetIndex =
+      Math.round(el.scrollLeft / stride) + direction * visibleCards
+    const maxScroll = el.scrollWidth - el.clientWidth
+    const target = Math.min(Math.max(targetIndex * stride, 0), maxScroll)
+    el.scrollTo({ left: target, behavior: "smooth" })
   }
 
   return (
@@ -198,16 +210,17 @@ export function CaseStudyGrid({
     <>
       <div className="space-y-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <Reveal>
-            <p className="mb-2 font-ui text-[11px] font-semibold uppercase tracking-[0.17em] text-ink/55 dark:text-text-inverse/55">
-              Selected work
-            </p>
-            <h2 className="font-display text-3xl font-normal tracking-tight text-ink dark:text-text-inverse md:text-4xl">
+          <Reveal className="space-y-3">
+            <Typography variant="eyebrow" className="text-accent-text">
               Case studies
-            </h2>
-            <p className="mt-2 max-w-2xl font-body text-base text-ink/75 dark:text-text-inverse/75 md:text-lg">
+            </Typography>
+            <Typography variant="h2" as="h2">
+              Selected work
+            </Typography>
+            <div aria-hidden className="tk-accent-rule" />
+            <Typography variant="body" className="max-w-2xl text-muted-foreground">
               Architecture and delivery stories from platform, data, and product work.
-            </p>
+            </Typography>
           </Reveal>
         </div>
 

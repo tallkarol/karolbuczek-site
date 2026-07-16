@@ -39,10 +39,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="kb-section-inverse w-full pb-0">
-        <div className="kb-content-rail py-20 lg:py-28">
-          <CTASection fullWidth />
-        </div>
+      <section className="kb-section-inverse w-full overflow-hidden pb-0">
+        <CTASection fullWidth />
       </section>
     </>
   )

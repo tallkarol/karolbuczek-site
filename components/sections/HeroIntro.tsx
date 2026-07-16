@@ -29,22 +29,15 @@ export function HeroIntro() {
   return (
     <section className="kb-hero-inverse relative isolate w-full overflow-hidden text-ink dark:text-text-inverse">
       <div className="kb-content-rail relative py-12 md:py-[6.65rem] lg:py-[7.6rem]">
-        {/* Mobile illustration — above copy */}
-        <HeroFlyIn side="right" className="tk-hero-visual relative z-[1] mb-8 md:hidden">
-          <div className="relative left-1/2 aspect-[1376/768] w-[112vw] max-w-none -translate-x-1/2">
+        {/*
+          Single priority LCP image — no fade/fly-in (opacity 0 delays LCP).
+          One DOM node for mobile + desktop so we don't preload two heroes.
+        */}
+        <div className="relative z-[1] mb-8 md:pointer-events-none md:absolute md:inset-y-4 md:right-0 md:mb-0 md:flex md:w-[min(68%,720px)] md:items-center lg:w-[min(62%,760px)]">
+          <div className="relative left-1/2 aspect-[1376/768] w-[112vw] max-w-none -translate-x-1/2 md:left-auto md:w-full md:translate-x-0">
             <HomeHeroIllustration priority />
           </div>
-        </HeroFlyIn>
-
-        {/* Illustration — right side, sits behind copy on desktop */}
-        <HeroFlyIn
-          side="right"
-          className="tk-hero-visual pointer-events-none absolute inset-y-4 right-0 z-[1] hidden w-[min(68%,720px)] items-center md:flex lg:w-[min(62%,760px)]"
-        >
-          <div className="relative aspect-[1376/768] w-full">
-            <HomeHeroIllustration priority />
-          </div>
-        </HeroFlyIn>
+        </div>
 
         {/* Copy — left, overlaps illustration slightly on desktop */}
         <HeroFlyIn

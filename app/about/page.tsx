@@ -8,6 +8,7 @@ import { AboutArc } from "@/components/about/AboutArc"
 import { AboutPrinciples } from "@/components/about/AboutPrinciples"
 import { AboutWork } from "@/components/about/AboutWork"
 import { BrandTrustBar } from "@/components/sections/BrandTrustBar"
+import { Reveal } from "@/components/motion/Reveal"
 
 const aboutTitle = "About | Karol Buczek — Full-Stack Engineer & Solutions Architect"
 const aboutDescription =
@@ -53,7 +54,7 @@ export default function AboutPage() {
       {/* What I'm Looking For — quiet chiffon close */}
       <section className="w-full bg-chiffon-100 dark:bg-navy-950">
         <div className="kb-content-rail py-20 lg:py-32">
-          <div className="relative max-w-3xl space-y-10">
+          <Reveal className="relative max-w-3xl space-y-10">
             <div
               aria-hidden
               className="pointer-events-none absolute -top-8 -left-2 select-none font-serif text-[9rem] leading-none text-navy-700/10 md:-top-12 md:-left-4 md:text-[12rem] dark:text-chiffon/10"
@@ -101,7 +102,7 @@ export default function AboutPage() {
                 </Button>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </>

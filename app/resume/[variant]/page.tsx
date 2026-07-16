@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { Suspense, useState, useEffect } from "react"
 import { useParams } from "next/navigation"
 import { ResumeSnapshot } from "@/components/resume/ResumeSnapshot"
 import { SkillsSection } from "@/components/resume/SkillsSection"
@@ -70,7 +70,9 @@ export default function ResumeVariantPage() {
 
         {/* Work Experience */}
         <div className="mb-8 print:mb-6">
-          <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} roleFilter={roleFilter} />
+          <Suspense fallback={null}>
+            <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} roleFilter={roleFilter} />
+          </Suspense>
         </div>
 
         {/* Featured Work */}

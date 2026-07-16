@@ -83,7 +83,7 @@ export const roleConfigs: Record<string, RoleConfig> = {
     id: "director-marketing-technology",
     label: "Director, Marketing Technology",
     shortDescription: "Leading marketing technology strategy, systems architecture, and cross-functional teams to build scalable MarTech infrastructure that drives measurable business growth.",
-    landingPath: "/director-marketing-technology",
+    landingPath: "/resume",
     targetTitles: [
       "Director Marketing Technology",
       "Marketing Technology Director",
@@ -111,7 +111,7 @@ My experience includes:
 
 I'd love to discuss how I can help [Company] build a marketing technology infrastructure that scales and delivers measurable results.
 
-Here's my role-specific landing page: https://karolbuczek.com/director-marketing-technology
+Here's my resume: https://karolbuczek.com/resume
 
 Best,
 Karol`,
@@ -135,7 +135,7 @@ I've built multi-touch attribution layers for direct mail → digital funnels, d
 
 I'd welcome the opportunity to discuss how my leadership experience and technical expertise can help [Company] build a marketing technology infrastructure that scales.
 
-You can learn more about my MarTech leadership work here: https://karolbuczek.com/director-marketing-technology
+Learn more about my work here: https://karolbuczek.com/resume
 
 Best regards,
 Karol Buczek`,
@@ -166,7 +166,7 @@ Karol Buczek`,
     id: "business-solutions-manager",
     label: "Business Solutions Manager",
     shortDescription: "Translating business requirements into technical solutions. I bridge the gap between business stakeholders and engineering teams to deliver systems that solve real problems and drive measurable outcomes.",
-    landingPath: "/business-solutions-manager",
+    landingPath: "/resume",
     targetTitles: [
       "Business Solutions Manager",
       "Solutions Manager",
@@ -195,7 +195,7 @@ My experience includes:
 
 I'd love to discuss how I can help [Company] bridge the gap between business needs and technical implementation.
 
-Here's my role-specific landing page: https://karolbuczek.com/business-solutions-manager
+Here's my resume: https://karolbuczek.com/resume
 
 Best,
 Karol`,
@@ -220,7 +220,7 @@ I've architected internal tools & workflow platforms, designed secure document s
 
 I'd welcome the opportunity to discuss how my experience bridging business and technical teams can help [Company] deliver solutions that solve real business problems.
 
-You can learn more about my solutions management work here: https://karolbuczek.com/business-solutions-manager
+Learn more about my work here: https://karolbuczek.com/resume
 
 Best regards,
 Karol Buczek`,
@@ -252,7 +252,7 @@ Karol Buczek`,
     id: "implementation-engineer",
     label: "Implementation Engineer",
     shortDescription: "5+ years integrating Web APIs, providing technical consultation, and translating business requirements into technical solutions.",
-    landingPath: "/implementation-engineer",
+    landingPath: "/resume",
     targetTitles: [
       "Implementation Engineer",
       "Solutions Engineer",
@@ -269,7 +269,7 @@ I've built backend workflow systems integrating Mailchimp, Birdeye, Five9, CRMs,
 
 I'd love to discuss how I can help [Company] implement solutions that deliver value.
 
-Here's my role-specific landing page: https://karolbuczek.com/implementation-engineer
+Here's my resume: https://karolbuczek.com/resume
 
 Best,
 Karol`,
@@ -289,7 +289,7 @@ I've built backend workflow systems integrating multiple platforms (Mailchimp, B
 
 I'd welcome the opportunity to discuss how my experience aligns with [Company]'s needs.
 
-You can learn more about my implementation engineering work here: https://karolbuczek.com/implementation-engineer
+Learn more about my work here: https://karolbuczek.com/resume
 
 Best regards,
 Karol Buczek`,
@@ -316,7 +316,7 @@ Karol Buczek`,
     id: "martech-engineer",
     label: "MarTech Engineer / Marketing Systems Engineer",
     shortDescription: "Building marketing technology systems—attribution frameworks, event architectures, automation workflows, and data pipelines—that connect marketing efforts to measurable business outcomes.",
-    landingPath: "/martech-engineer",
+    landingPath: "/resume",
     targetTitles: [
       "MarTech Engineer",
       "Marketing Systems Engineer",
@@ -334,7 +334,7 @@ I've built multi-touch attribution layers for direct mail → digital funnels, d
 
 I'd love to discuss how I can help [Company] build marketing systems that deliver measurable results.
 
-Here's my MarTech-focused work: https://karolbuczek.com/martech-engineer
+Here's my resume: https://karolbuczek.com/resume
 
 Best,
 Karol`,
@@ -355,7 +355,7 @@ I've integrated APIs including Mailchimp, Birdeye, Five9, ServiceTitan, LeadPerf
 
 I'd welcome the opportunity to discuss how my MarTech experience can contribute to [Company]'s growth.
 
-Learn more about my MarTech work: https://karolbuczek.com/martech-engineer
+Learn more about my work here: https://karolbuczek.com/resume
 
 Best regards,
 Karol Buczek`,
@@ -382,7 +382,7 @@ Karol Buczek`,
     id: "web-systems-engineer",
     label: "Solutions Architect",
     shortDescription: "Architecting and building web systems—internal tools, workflow platforms, secure document systems, and full-stack applications—that solve real business problems with clean architecture and maintainable code.",
-    landingPath: "/web-systems-engineer",
+    landingPath: "/resume",
     targetTitles: [
       "Solutions Architect",
       "Systems Engineer",
@@ -400,7 +400,7 @@ I've built end-to-end systems including an AWS Secure File Portal with role-base
 
 I'd love to discuss how I can help [Company] build web systems that solve your business challenges.
 
-Check out my systems engineering work: https://karolbuczek.com/web-systems-engineer
+Here's my resume: https://karolbuczek.com/resume
 
 Best,
 Karol`,
@@ -421,7 +421,7 @@ I've built end-to-end systems including an AWS Secure File Portal (Amplify App) 
 
 I'd welcome the opportunity to discuss how my systems engineering experience can help [Company] build scalable solutions.
 
-Learn more: https://karolbuczek.com/web-systems-engineer
+Learn more: https://karolbuczek.com/resume
 
 Best regards,
 Karol Buczek`,
@@ -447,7 +447,7 @@ Karol Buczek`,
     id: "web-dev-wordpress",
     label: "Web Developer / WordPress Engineer",
     shortDescription: "Building custom WordPress plugins, Gutenberg blocks, and performance-optimized WordPress solutions. From VIP-compliant architecture to headless implementations, delivering WordPress systems that are fast, maintainable, and scalable.",
-    landingPath: "/web-dev-wordpress",
+    landingPath: "/resume",
     targetTitles: [
       "WordPress Developer",
       "WordPress Engineer",
@@ -465,7 +465,7 @@ I've built VIP-compliant Gutenberg blocks that reduced LCP from 5.5s to 3.2s (Li
 
 I'd love to discuss how I can help [Company] build WordPress solutions that perform and scale.
 
-Here's my WordPress work: https://karolbuczek.com/web-dev-wordpress
+Here's my resume: https://karolbuczek.com/resume
 
 Best,
 Karol`,
@@ -486,7 +486,7 @@ I specialize in VIP-compliant architecture & coding standards, WooCommerce perfo
 
 I'd welcome the opportunity to discuss how my WordPress expertise can contribute to [Company]'s platform.
 
-Learn more: https://karolbuczek.com/web-dev-wordpress
+Learn more: https://karolbuczek.com/resume
 
 Best regards,
 Karol Buczek`,

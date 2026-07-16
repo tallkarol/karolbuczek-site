@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { Typography } from "@/components/typography"
@@ -20,6 +21,8 @@ interface ClientEngagement {
 }
 
 interface TimelineItem {
+  /** Stable id for ?role= deep links (e.g. /resume?role=uwd) */
+  id: string
   period: string
   officialTitle?: string
   officialDates?: string
@@ -32,6 +35,7 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
+    id: "tall-karol",
     period: "2023 — Present",
     officialTitle: "Tall Karol — Independent Solutions Architect & Consultant",
     logo: "/tallkarol-monogram-logo.png",
@@ -80,6 +84,7 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
+    id: "uwd",
     period: "2021 — 2023",
     officialTitle: "Universal Windows Direct (Great Day Improvements) — Integration Engineer",
     logo: "/uwd-logo.png",
@@ -90,6 +95,7 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
+    id: "perfect-power-wash",
     period: "2019 — 2021",
     officialTitle: "Perfect Power Wash — Marketing Systems Engineer → Marketing Director",
     logo: "/ppw.png",
@@ -101,6 +107,7 @@ const timelineData: TimelineItem[] = [
     ],
   },
   {
+    id: "early-career",
     period: "2009 — 2019",
     officialTitle: "Early Career — Freelance Development & Startups",
     logo: "/logo.png",
@@ -130,6 +137,8 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
   const [showEarlyYears, setShowEarlyYears] = useState(false)
   const [selectedRole, setSelectedRole] = useState<RoleDetails | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const searchParams = useSearchParams()
+  const [consumedRoleParam, setConsumedRoleParam] = useState<string | null>(null)
 
   const recentItems = timelineData.filter((item) => {
     const startYear = parseInt(item.period.split("—")[0]?.trim() || item.period.split("–")[0]?.trim() || "0")
@@ -263,6 +272,18 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
     setIsModalOpen(false)
     setTimeout(() => setSelectedRole(null), 300)
   }
+
+  // Deep link: /resume?role=<id> auto-opens the matching RoleModal
+  useEffect(() => {
+    const roleId = searchParams.get("role")
+    if (!roleId || roleId === consumedRoleParam) return
+    const item = timelineData.find((t) => t.id === roleId)
+    if (!item) return
+    setConsumedRoleParam(roleId)
+    setIsOpen(true)
+    handleRoleClick(item)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, consumedRoleParam])
 
   const renderEngagements = (engagements: ClientEngagement[]) => (
     <div className="mt-5 ml-1 border-l border-border/40 pl-4 space-y-5">

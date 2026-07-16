@@ -49,7 +49,7 @@ export default function PortfolioPage() {
             }
             description="Each study represents a unique business challenge, the reality it was built in, and the measurable impact it delivered."
             illustration={<CaseStudiesIllustration priority />}
-            illustrationClassName="max-w-[275px] aspect-[427/719] md:max-w-[350px]"
+            illustrationClassName="max-w-[180px] aspect-[427/719] md:max-w-[350px]"
             columnGapClassName="gap-3 md:gap-4"
           />
         </Section>

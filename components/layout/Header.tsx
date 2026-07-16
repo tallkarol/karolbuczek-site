@@ -26,20 +26,11 @@ const HERO_ROUTES = new Set([
   "/contact",
   "/resume",
   "/illustrations",
-  "/roles",
-  "/job-search",
-  "/martech-engineer",
-  "/implementation-engineer",
-  "/web-dev-wordpress",
-  "/web-systems-engineer",
-  "/business-solutions-manager",
-  "/director-marketing-technology",
 ])
 
 function isHeroRoute(pathname: string) {
   if (HERO_ROUTES.has(pathname)) return true
   if (pathname.startsWith("/resume/")) return true
-  if (pathname.startsWith("/job-search/")) return true
   return false
 }
 

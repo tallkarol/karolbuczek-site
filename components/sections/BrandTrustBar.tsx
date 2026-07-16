@@ -8,25 +8,18 @@ import { clientBrands } from "@/lib/client-brands"
 const AUTOPLAY_MS = 3500
 
 function useVisibleCount() {
-  const [visibleCount, setVisibleCount] = useState(2)
+  const [visibleCount, setVisibleCount] = useState(3)
 
   useEffect(() => {
     const mqDesktop = window.matchMedia("(min-width: 1024px)")
-    const mqTablet = window.matchMedia("(min-width: 768px)")
 
     const update = () => {
-      if (mqDesktop.matches) setVisibleCount(5)
-      else if (mqTablet.matches) setVisibleCount(3)
-      else setVisibleCount(2)
+      setVisibleCount(mqDesktop.matches ? 5 : 3)
     }
 
     update()
     mqDesktop.addEventListener("change", update)
-    mqTablet.addEventListener("change", update)
-    return () => {
-      mqDesktop.removeEventListener("change", update)
-      mqTablet.removeEventListener("change", update)
-    }
+    return () => mqDesktop.removeEventListener("change", update)
   }, [])
 
   return visibleCount

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import { Section } from "@/components/Section"
 import { PageHero } from "@/components/sections/PageHero"
 import { CTASection } from "@/components/sections/CTASection"
@@ -110,7 +110,7 @@ export default function ResumePage() {
             </ul>
           }
           illustration={<ResumeIllustration priority />}
-          illustrationClassName="max-w-[275px] aspect-[425/709] md:max-w-[350px]"
+          illustrationClassName="max-w-[180px] aspect-[425/709] md:max-w-[350px]"
           columnGapClassName="gap-3 md:gap-4"
           buttons={
             <div className="flex flex-wrap items-center gap-4">
@@ -156,7 +156,9 @@ export default function ResumePage() {
 
       <section className="w-full bg-chiffon-100 pt-4 dark:bg-navy-950 md:pt-6">
         <div className="kb-content-rail space-y-8 py-12 lg:py-16">
-          <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
+          <Suspense fallback={null}>
+            <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
+          </Suspense>
           <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
           <TechStackSection isOpen={techStackOpen} onOpenChange={setTechStackOpen} />
           <CertificationsSection />

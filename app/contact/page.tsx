@@ -30,14 +30,14 @@ export default function ContactPage() {
   return (
     <>
       <div className="kb-hero-inverse w-full">
-        <Section className="py-6 lg:py-8">
+        <Section className="pb-6 pt-2 lg:py-8">
           <PageHero
             className="min-h-0 py-2 md:min-h-0 md:py-4"
             eyebrow="Get In Touch"
             title="Let's work together"
             description="This quick configurator helps me understand what you're looking for before we connect."
             illustration={<ContactIllustration priority />}
-            illustrationClassName="max-w-[180px] aspect-[421/710] md:max-w-[350px]"
+            illustrationClassName="max-w-[240px] aspect-[421/710] md:max-w-[350px]"
             columnGapClassName="gap-3 md:gap-4"
           />
         </Section>

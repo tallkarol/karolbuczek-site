@@ -70,7 +70,8 @@ export function BuildIllustration({ className }: BuildIllustrationProps) {
           r="110"
           fill={primaryColor}
           fillOpacity="0.05"
-          animate={{ r: [95, 115, 95], opacity: [0.05, 0.1, 0.05] }}
+          style={{ transformOrigin: "180px 110px" }}
+          animate={{ scale: [0.86, 1.05, 0.86], opacity: [0.05, 0.1, 0.05] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
 
@@ -216,7 +217,8 @@ export function BuildIllustration({ className }: BuildIllustrationProps) {
             r="3.4"
             fill={primaryColor}
             fillOpacity="0.9"
-            animate={{ r: [3, 3.8, 3], opacity: [0.7, 1, 0.7] }}
+            style={{ transformOrigin: `${p.x}px ${p.y}px` }}
+            animate={{ scale: [0.88, 1.12, 0.88], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 1.7, repeat: Infinity, delay: i * 0.12, ease: "easeInOut" }}
           />
         ))}

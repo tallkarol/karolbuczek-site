@@ -141,6 +141,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${interTight.variable} ${plusJakarta.variable} ${inter.variable}`}>
       <body>
+        {/* Arm scroll reveals before first paint — only when JS is on AND motion
+            is allowed. No-JS / reduced-motion users keep content visible (no flash). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('js-reveal')}}catch(e){}",
+          }}
+        />
         <StructuredData data={personSchema} />
         <StructuredData data={professionalServiceSchema} />
         <StructuredData data={websiteSchema} />

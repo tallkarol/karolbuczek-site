@@ -82,7 +82,7 @@ export default function ResumePage() {
   return (
     <>
       <div className="kb-hero-inverse">
-      <Section className="py-8 lg:py-16">
+      <Section className="pb-8 pt-3 lg:py-16">
         <PageHero
           className="lg:min-h-[320px]"
           eyebrow="Resume"
@@ -110,7 +110,7 @@ export default function ResumePage() {
             </ul>
           }
           illustration={<ResumeIllustration priority />}
-          illustrationClassName="max-w-[180px] aspect-[425/709] md:max-w-[350px]"
+          illustrationClassName="max-w-[240px] aspect-[425/709] md:max-w-[350px]"
           columnGapClassName="gap-3 md:gap-4"
           buttons={
             <div className="flex flex-wrap items-center gap-4">

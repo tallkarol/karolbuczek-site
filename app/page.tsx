@@ -21,9 +21,14 @@ export default function HomePage() {
       </section>
 
       <Section id="portfolio">
-        <Suspense fallback={
-          <div className="h-[420px] animate-pulse rounded-lg bg-muted/50" />
-        }>
+        <Suspense
+          fallback={
+            <div
+              className="min-h-[720px] animate-pulse rounded-lg bg-muted/50 sm:min-h-[480px]"
+              aria-hidden
+            />
+          }
+        >
           <CaseStudyGrid carousel showViewAllButton />
         </Suspense>
       </Section>

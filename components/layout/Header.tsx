@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
@@ -16,8 +16,10 @@ import {
   User,
   FileText,
   Briefcase,
+  Mail,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { ScrollProgress } from "@/components/motion/ScrollProgress"
 
 /** Routes whose opening surface is a brand hero (newsprint in light, inverse in dark) */
 const HERO_ROUTES = new Set([
@@ -36,15 +38,16 @@ function isHeroRoute(pathname: string) {
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const { resolvedTheme, setTheme } = useTheme()
   // Light-mode heroes are newsprint — only use the dark nav in dark theme.
+  // Prefer class-based dark: styling for icons so the toggle always occupies
+  // space (no mount-gated render → no CLS). resolvedTheme only drives nav chrome.
   const darkNav = isHeroRoute(pathname) && resolvedTheme === "dark"
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark")
+  }
 
   return (
     <>
@@ -139,45 +142,37 @@ export function Header() {
             >
               <Link href="/contact">Hire Me</Link>
             </Button>
-            {mounted && (
-              <button
-                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                className={cn(
-                  "rounded-lg p-2 transition-colors",
-                  darkNav
-                    ? "text-slot-background/80 hover:bg-slot-background/10 hover:text-slot-background"
-                    : "text-foreground/80 hover:bg-foreground/10 hover:text-foreground"
-                )}
-                aria-label="Toggle theme"
-              >
-                {resolvedTheme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className={cn(
+                "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors",
+                darkNav
+                  ? "text-slot-background/80 hover:bg-slot-background/10 hover:text-slot-background"
+                  : "text-foreground/80 hover:bg-foreground/10 hover:text-foreground"
+              )}
+              aria-label="Toggle theme"
+            >
+              <Sun className="hidden h-5 w-5 dark:block" />
+              <Moon className="h-5 w-5 dark:hidden" />
+            </button>
           </div>
 
           <div className="flex items-center gap-2 sm:hidden">
-            {mounted && (
-              <button
-                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                className={cn(
-                  "rounded-lg p-2 transition-colors",
-                  darkNav
-                    ? "text-slot-background/80 hover:bg-slot-background/10"
-                    : "text-foreground/80 hover:bg-foreground/10"
-                )}
-                aria-label="Toggle theme"
-              >
-                {resolvedTheme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className={cn(
+                "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors",
+                darkNav
+                  ? "text-slot-background/80 hover:bg-slot-background/10"
+                  : "text-foreground/80 hover:bg-foreground/10"
+              )}
+              aria-label="Toggle theme"
+            >
+              <Sun className="hidden h-5 w-5 dark:block" />
+              <Moon className="h-5 w-5 dark:hidden" />
+            </button>
             <button
               onClick={() => setMobileMenuOpen(true)}
               className={cn(
@@ -192,6 +187,7 @@ export function Header() {
             </button>
           </div>
         </nav>
+        <ScrollProgress />
       </header>
 
       {mobileMenuOpen && (
@@ -227,6 +223,7 @@ export function Header() {
                 { href: "/about", label: "About", icon: User },
                 { href: "/resume", label: "Resume", icon: FileText },
                 { href: "/portfolio", label: "Portfolio", icon: Briefcase },
+                { href: "/contact", label: "Contact", icon: Mail },
               ].map((item) => {
                 const active =
                   pathname === item.href || pathname.startsWith(`${item.href}/`)

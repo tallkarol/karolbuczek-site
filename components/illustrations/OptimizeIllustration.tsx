@@ -70,7 +70,8 @@ export function OptimizeIllustration({ className }: OptimizeIllustrationProps) {
           r="110"
           fill={primaryColor}
           fillOpacity="0.05"
-          animate={{ r: [100, 115, 100], opacity: [0.05, 0.1, 0.05] }}
+          style={{ transformOrigin: "180px 120px" }}
+          animate={{ scale: [0.91, 1.05, 0.91], opacity: [0.05, 0.1, 0.05] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         />
 
@@ -195,7 +196,8 @@ export function OptimizeIllustration({ className }: OptimizeIllustrationProps) {
             r="4"
             fill={primaryColor}
             fillOpacity="0.85"
-            animate={{ r: [3.5, 4.5, 3.5], opacity: [0.7, 1, 0.7] }}
+            style={{ transformOrigin: `${p.x}px ${p.y}px` }}
+            animate={{ scale: [0.88, 1.12, 0.88], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.15, ease: "easeInOut" }}
           />
         ))}
@@ -253,7 +255,8 @@ export function OptimizeIllustration({ className }: OptimizeIllustrationProps) {
             r="3.2"
             fill={primaryColor}
             fillOpacity="0.85"
-            animate={{ r: [3, 3.6, 3], opacity: [0.7, 1, 0.7] }}
+            style={{ transformOrigin: `${p.x}px ${p.y}px` }}
+            animate={{ scale: [0.94, 1.12, 0.94], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 1.6, repeat: Infinity, delay: i * 0.12, ease: "easeInOut" }}
           />
         ))}

@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/typography"
 import { Mail, Linkedin, Download } from "lucide-react"
+import { Reveal } from "@/components/motion/Reveal"
 
 interface CTASectionProps {
   heading?: string
@@ -19,7 +20,7 @@ export function CTASection({
 }: CTASectionProps) {
   if (fullWidth) {
     return (
-      <div className="mx-auto flex max-w-2xl flex-col items-center gap-7 text-center">
+      <Reveal className="mx-auto flex max-w-2xl flex-col items-center gap-7 text-center">
         <div className="relative h-12 w-14 sm:h-14 sm:w-16">
           <Image
             src="/logo.png"
@@ -67,12 +68,12 @@ export function CTASection({
             </a>
           </Button>
         </div>
-      </div>
+      </Reveal>
     )
   }
 
   return (
-    <div className="relative space-y-6 overflow-hidden rounded-lg border border-border/50 bg-muted/30 p-8 text-center md:p-12">
+    <Reveal className="relative space-y-6 overflow-hidden rounded-lg border border-border/50 bg-muted/30 p-8 text-center md:p-12">
       <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
 
       <div className="flex justify-center">
@@ -124,6 +125,6 @@ export function CTASection({
           </a>
         </Button>
       </div>
-    </div>
+    </Reveal>
   )
 }

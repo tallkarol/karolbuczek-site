@@ -17,7 +17,7 @@ export function AboutHero() {
           <HeroFlyIn
             side="right"
             delay={0.08}
-            className="relative order-1 mx-auto w-full max-w-[200px] sm:max-w-sm lg:order-2 lg:max-w-none"
+            className="relative order-1 mx-auto w-full max-w-[349px] lg:order-2 lg:max-w-none"
           >
             <div
               aria-hidden

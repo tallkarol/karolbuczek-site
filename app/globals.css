@@ -727,3 +727,51 @@
     }
   }
 }
+
+/* ==========================================================================
+   SCROLL-MOTION SYSTEM
+   Shared reveal primitive. See lib/motion.ts (tokens) and components/motion/.
+
+   Progressive enhancement + accessibility:
+   - `.reveal` elements are VISIBLE by default (no-JS and reduced-motion users
+     always see content — nothing is hidden from assistive tech or search).
+   - A synchronous script in layout.tsx adds `.js-reveal` to <html> ONLY when JS
+     is on AND motion is allowed, which arms the hidden-initial state before paint
+     (no flash). The <Reveal> component then adds `.is-revealed` when in view.
+   ========================================================================== */
+:root {
+  --reveal-duration: 600ms;
+  --reveal-distance: 16px;
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal {
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+}
+
+/* Armed only when JS + motion are available; otherwise content stays visible. */
+.js-reveal .reveal:not(.is-revealed) {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance)) scale(var(--reveal-scale, 1));
+  will-change: opacity, transform;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* Belt-and-suspenders: even if `.js-reveal` were armed, never animate for users
+   who asked for reduced motion — show everything instantly. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .js-reveal .reveal:not(.is-revealed) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+}

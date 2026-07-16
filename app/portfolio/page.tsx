@@ -34,7 +34,7 @@ export default function PortfolioPage() {
   return (
     <>
       <div className="kb-hero-inverse">
-        <Section className="py-8 lg:py-16">
+        <Section className="pb-8 pt-3 lg:py-16">
           <PageHero
             className="lg:min-h-[320px]"
             eyebrow="Portfolio"
@@ -49,7 +49,7 @@ export default function PortfolioPage() {
             }
             description="Each study represents a unique business challenge, the reality it was built in, and the measurable impact it delivered."
             illustration={<CaseStudiesIllustration priority />}
-            illustrationClassName="max-w-[180px] aspect-[427/719] md:max-w-[350px]"
+            illustrationClassName="max-w-[240px] aspect-[427/719] md:max-w-[350px]"
             columnGapClassName="gap-3 md:gap-4"
           />
         </Section>
@@ -57,7 +57,14 @@ export default function PortfolioPage() {
 
       <section className="kb-section-background w-full">
         <div className="kb-content-rail py-12 lg:py-16">
-          <Suspense fallback={<div className="grid h-48 gap-6 md:grid-cols-2 lg:grid-cols-3" />}>
+          <Suspense
+            fallback={
+              <div
+                className="min-h-[960px] animate-pulse rounded-lg bg-muted/50 sm:min-h-[720px] lg:min-h-[640px]"
+                aria-hidden
+              />
+            }
+          >
             <CaseStudyGrid imageSize="large" />
           </Suspense>
         </div>

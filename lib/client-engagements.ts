@@ -132,6 +132,7 @@ export const clientDashboards: ClientDashboard[] = [
       { label: "Outputs", value: "XLSX · email · watchlists" },
     ],
     techStack: ["Next.js", "TypeScript", "PostgreSQL", "Vercel", "Railway"],
+    portfolioSlug: "artist-house-ar-discovery-platform",
   },
 ]
 

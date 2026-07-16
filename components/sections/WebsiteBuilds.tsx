@@ -9,12 +9,16 @@ import { websiteBuilds } from "@/lib/website-builds"
 export function WebsiteBuilds() {
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
+      <div className="space-y-3">
+        <Typography variant="eyebrow" className="text-accent-text">
+          Websites
+        </Typography>
         <Typography variant="h2" as="h2">
           Featured website designs and builds
         </Typography>
-        <Typography variant="body" className="text-muted-foreground max-w-2xl">
-          Brand and marketing sites shipped end-to-end — layout, performance, and production launch.
+        <div aria-hidden className="tk-accent-rule" />
+        <Typography variant="body" className="text-muted-foreground">
+          Brand and marketing sites shipped end-to-end.
         </Typography>
       </div>
 

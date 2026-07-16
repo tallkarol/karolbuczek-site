@@ -145,24 +145,45 @@ export function FeaturedQuote() {
               {current.relationship}
             </Typography>
             <div className="mt-3 flex items-center justify-center gap-4">
-              {current.logos.map((logo) => (
-                <div
-                  key={logo.src}
-                  className={
-                    logo.preserveColor
-                      ? "relative h-9 w-24 opacity-95"
-                      : "relative h-8 w-20 opacity-80 brightness-0 invert"
-                  }
-                >
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    fill
-                    className="object-contain"
-                    sizes="96px"
-                  />
-                </div>
-              ))}
+              {current.logos.map((logo) =>
+                logo.preserveColor ? (
+                  <div
+                    key={logo.src}
+                    className="relative h-9 w-24 overflow-hidden"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      fill
+                      className="object-contain [filter:grayscale(1)_saturate(0)_brightness(1.45)_contrast(0.72)]"
+                      sizes="96px"
+                    />
+                    {/* Pull logos toward the card's chiffon tone */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 bg-chiffon/55 mix-blend-color"
+                    />
+                    {/* Soften remaining contrast against olive */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 bg-olive-800/45"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    key={logo.src}
+                    className="relative h-8 w-20 opacity-80 brightness-0 invert"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      fill
+                      className="object-contain"
+                      sizes="96px"
+                    />
+                  </div>
+                )
+              )}
             </div>
           </motion.div>
         </AnimatePresence>

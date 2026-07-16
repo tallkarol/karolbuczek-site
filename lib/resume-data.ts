@@ -26,7 +26,7 @@ export const allCaseStudies: CaseStudy[] = [
     image: "/bliss-user-portal-view.png",
     additionalImages: ["/bliss-admin-portal-view.png", "/bliss-dev-portal-view.png", "/bliss-inbox.png"],
     clientDescription: "Growth-stage audit and certification provider serving manufacturing facilities and supply chains, with accredited third-party audits, internal audits, and training—requiring secure, auditable document sharing across distributed teams and stakeholders.",
-    previewBusOutcome: "Document retrieval from XX minutes to under XX seconds; compliance-ready audit trail for every file interaction.",
+    previewBusOutcome: "Secure, auditable document sharing with a compliance-ready trail for every file interaction.",
   },
   {
     slug: "unified-customer-lifecycle-platform",
@@ -50,7 +50,7 @@ export const allCaseStudies: CaseStudy[] = [
     image: "/mhat-user-dashboard.png",
     additionalImages: ["/mhat-admin-dashboard.png", "/mhat-report-view.png", "/mhat-my-tests.png", "/mhat-dark-mode.png"],
     clientDescription: "Growth-stage ecommerce brand with B2C and B2B operations, needing unified commerce data and lifecycle automation across multiple platforms.",
-    previewBusOutcome: "Replaced 5-tool workflow with one portal — estimated XX hours per week saved; single source of truth for commerce and CRM.",
+    previewBusOutcome: "Replaced a five-tool workflow with one portal — a single source of truth for commerce and CRM.",
   },
   {
     slug: "local-ai-meeting-intelligence",
@@ -158,6 +158,45 @@ export const allCaseStudies: CaseStudy[] = [
     clientDescription: "Enterprise clients across ecommerce and professional services, each with distinct attribution, tracking, and performance requirements.",
     previewBusOutcome: "LCP 5.5s → 3.2s, Lighthouse 70 → 83; first-touch and last-touch attribution across web and CRM.",
   },
+  {
+    slug: "artist-house-ar-discovery-platform",
+    title: "Artist House A&R Discovery Platform",
+    subtitle: "Production Analytics, Crawls & Watchlists for A&R Staff",
+    summary:
+      "Artist House needed a production A&R discovery platform junior and senior staff would use daily — analytics, automated chart/social crawls, report delivery, and watchlists — not a prototype dashboard.",
+    problem:
+      "A&R discovery work was fragmented across manual chart checks, social scans, spreadsheets, and ad-hoc reporting. Staff needed a single platform with role-appropriate analytics, automated data collection, and reliable export/email workflows.",
+    constraints: [
+      "Daily Production Use: The product had to be reliable enough for junior and senior A&R staff to depend on it every day — not a one-off demo.",
+      "Role-Based Access: Analytics and workflows needed to respect staff roles without complicating the day-to-day discovery loop.",
+      "Operational Outputs: Discovery had to land as XLSX reports, email delivery, and artist watchlists — not only on-screen charts.",
+    ],
+    solution:
+      "Built and shipped a Next.js/TypeScript application with a PostgreSQL backend, deployed on Vercel and Railway: role-based analytics, automated chart/social crawls, XLSX report generation, email delivery, and artist watchlists.",
+    tags: ["Full-Stack Development", "Product & Internal Tools", "Solution Architecture"],
+    techStack: ["Next.js", "TypeScript", "PostgreSQL", "Vercel", "Railway"],
+    skillsApplied: [
+      "Full-Stack Development",
+      "Product & Internal Tools",
+      "Solution Architecture",
+      "Data Pipelines",
+      "Role-Based Access Control",
+      "Report Generation",
+      "Requirements Analysis",
+    ],
+    businessImpact: [
+      "Shipped a production A&R discovery platform used daily by junior and senior A&R staff.",
+      "Automated chart and social crawls that previously required manual monitoring.",
+      "Delivered operational outputs — XLSX reports, email delivery, and artist watchlists — from a single Next.js + PostgreSQL stack.",
+    ],
+    image: "/artisthouse_logo.webp",
+    imageFit: "contain",
+    clientLogo: "/artisthouse_logo_square.png",
+    clientDescription:
+      "Music industry A&R organization needing a production discovery platform for daily artist research, analytics, and reporting.",
+    clientStage: "Growth stage",
+    previewBusOutcome: "Daily-use A&R platform: role-based analytics, automated crawls, XLSX/email reports, and watchlists.",
+  },
 ]
 
 // Map lens filters to case study slugs
@@ -165,7 +204,13 @@ export const lensToCaseStudies: Record<RoleFilter, string[]> = {
   "all": [],
   "WordPress Engineering": ["mineralife-b2b-website-rebuild", "martech-extension-architecture"],
   "MarTech / Growth Engineering": ["mineralife-b2b-website-rebuild", "unified-customer-lifecycle-platform", "martech-extension-architecture"],
-  "Product & Internal Tools": ["mineralife-b2b-website-rebuild", "unified-customer-lifecycle-platform", "secure-document-management-portal", "local-ai-meeting-intelligence"],
+  "Product & Internal Tools": [
+    "mineralife-b2b-website-rebuild",
+    "unified-customer-lifecycle-platform",
+    "secure-document-management-portal",
+    "artist-house-ar-discovery-platform",
+    "local-ai-meeting-intelligence",
+  ],
   "Integrations & Automation": ["mineralife-b2b-website-rebuild", "uwd-enterprise-integration-api", "unified-customer-lifecycle-platform"],
   "Performance Engineering": ["mineralife-b2b-website-rebuild", "martech-extension-architecture"],
   "Startup Experience": [],
@@ -174,6 +219,7 @@ export const lensToCaseStudies: Record<RoleFilter, string[]> = {
     "unified-customer-lifecycle-platform",
     "secure-document-management-portal",
     "uwd-enterprise-integration-api",
+    "artist-house-ar-discovery-platform",
     "martech-extension-architecture",
     "local-ai-meeting-intelligence",
   ],

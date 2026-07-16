@@ -22,9 +22,8 @@ import { Download } from "lucide-react"
 const featuredCaseStudies = [
   { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform", subtitle: "Customer Data Portal & Lifecycle Automation", logo: "/zemvelo-logo.png" },
   { slug: "secure-document-management-portal", title: "Bliss Secure File Share", subtitle: "Secure Document Portal on AWS", logo: "/bliss-cb.png" },
-  { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API", subtitle: "Centralized Integration Layer", logo: "/uwd-logo.png" },
-  { slug: "local-ai-meeting-intelligence", title: "On-Premise Meeting Transcription", subtitle: "Private Speech-to-Text & Action-Item Pipeline", logo: "/tallkarol-monogram-logo.png" },
-  { slug: "martech-extension-architecture", title: "MarTech Extension Architecture", subtitle: "Custom WordPress Engineering", logo: "/tallkarol-monogram-logo.png" },
+  { slug: "mineralife-b2b-website-rebuild", title: "Mineralife B2B Website", subtitle: "Headless WordPress + React", logo: "/mineralife-logo.png" },
+  { slug: "artist-house-ar-discovery-platform", title: "Artist House A&R Platform", subtitle: "Discovery Analytics, Crawls & Watchlists", logo: "/artisthouse_logo_square.png" },
 ]
 
 export default function ResumePage() {
@@ -48,34 +47,11 @@ export default function ResumePage() {
     setTimeout(() => setSelectedCaseStudy(null), 300)
   }
 
-  const handleSkillsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    setSkillsOpen(true)
-    setTimeout(() => {
-      document.getElementById("skills")?.scrollIntoView({ behavior: "smooth", block: "start" })
-    }, 100)
-  }
-
   const handleWorkExperienceClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     setWorkExperienceOpen(true)
     setTimeout(() => {
       document.getElementById("work-experience")?.scrollIntoView({ behavior: "smooth", block: "start" })
-    }, 100)
-  }
-
-  const handleReferencesClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    setTimeout(() => {
-      document.getElementById("references")?.scrollIntoView({ behavior: "smooth", block: "start" })
-    }, 100)
-  }
-
-  const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    setProjectsOpen(true)
-    setTimeout(() => {
-      document.getElementById("featured-work")?.scrollIntoView({ behavior: "smooth", block: "start" })
     }, 100)
   }
 
@@ -98,7 +74,13 @@ export default function ResumePage() {
                 <li className="flex items-start gap-2">
                   <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
                   <Typography variant="body" className="text-muted-foreground">
-                    7 years of hands-on delivery for SMB, mid-market, and enterprise clients; 15+ years of coding experience.
+                    15+ years of coding experience.
+                  </Typography>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
+                  <Typography variant="body" className="text-muted-foreground">
+                    7 years of hands-on delivery for SMB, mid-market, and enterprise clients.
                   </Typography>
                 </li>
                 <li className="flex items-start gap-2">
@@ -131,22 +113,6 @@ export default function ResumePage() {
                 className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
               >
                 Work Experience
-              </a>
-              <span className="text-muted-foreground/30">·</span>
-              <a
-                href="#skills"
-                onClick={handleSkillsClick}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
-              >
-                Focus Areas
-              </a>
-              <span className="text-muted-foreground/30">·</span>
-              <a
-                href="#references"
-                onClick={handleReferencesClick}
-                className="text-sm text-muted-foreground hover:text-primary transition-colors underline-offset-4 hover:underline"
-              >
-                References
               </a>
             </div>
           }

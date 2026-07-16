@@ -18,6 +18,28 @@ const HOMEPAGE_FEATURED_SLUGS = [
   "uwd-enterprise-integration-api",
 ]
 
+/** Hidden from the portfolio grid (still available elsewhere / deep links). */
+const PORTFOLIO_HIDDEN_SLUGS = [
+  "local-ai-meeting-intelligence",
+  "uwd-enterprise-integration-api",
+]
+
+/** Portfolio grid order; remaining studies follow allCaseStudies order. */
+const PORTFOLIO_ORDERED_SLUGS = [
+  "secure-document-management-portal",
+  "artist-house-ar-discovery-platform",
+  "mineralife-b2b-website-rebuild",
+]
+
+function getPortfolioCaseStudies() {
+  const visible = allCaseStudies.filter((c) => !PORTFOLIO_HIDDEN_SLUGS.includes(c.slug))
+  const ordered = PORTFOLIO_ORDERED_SLUGS.map((slug) =>
+    visible.find((c) => c.slug === slug)
+  ).filter((c): c is CaseStudy => c != null)
+  const rest = visible.filter((c) => !PORTFOLIO_ORDERED_SLUGS.includes(c.slug))
+  return [...ordered, ...rest]
+}
+
 interface CaseStudyGridProps {
   /** When "large", card images use taller aspect ratio (portfolio page) */
   imageSize?: "default" | "large"
@@ -204,7 +226,7 @@ export function CaseStudyGrid({
       ? HOMEPAGE_FEATURED_SLUGS.slice(0, limit)
           .map((slug) => allCaseStudies.find((c) => c.slug === slug))
           .filter((c): c is CaseStudy => c != null)
-      : allCaseStudies
+      : getPortfolioCaseStudies()
 
   return (
     <>

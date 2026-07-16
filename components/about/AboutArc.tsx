@@ -15,16 +15,10 @@ type Milestone = {
 
 const milestones: Milestone[] = [
   {
-    period: "2009 – 2019",
-    title: "The freelance decade",
-    body: "A decade of freelancing across disciplines, following the opportunities: client sites and web apps, photography and videography, illustration — including album artwork for a multi-Grammy-winning artist — and early startup ventures. All of it built alongside school, internships, and every job I held.",
-  },
-  {
-    period: "2019 – 2021",
-    title: "Marketing Director",
-    org: "Perfect Power Wash",
-    logo: { src: "/ppw.png", alt: "Perfect Power Wash" },
-    body: "Recruited to modernize web and data infrastructure, then promoted to own strategy and the technology stack through an expansion from one market to four. Built their first data warehouse, wrote the internal tooling, and hired and trained a developer to take the systems further.",
+    period: "2023 – Present",
+    title: "Independent consultant",
+    body: "Went out on my own: serverless AWS applications, production analytics platforms, headless WordPress rebuilds, and integration architecture.",
+    highlight: true,
   },
   {
     period: "2021 – 2023",
@@ -34,10 +28,16 @@ const milestones: Milestone[] = [
     body: "Went fully technical. Expanded and organized a centralized integration API connecting Five9, CRM, Mailchimp, and internal platforms — with shared logging that made failures traceable across every automation.",
   },
   {
-    period: "2023 – Present",
-    title: "Independent consultant",
-    body: "Went out on my own: serverless AWS applications, production analytics platforms, headless WordPress rebuilds, and integration architecture.",
-    highlight: true,
+    period: "2019 – 2021",
+    title: "Marketing Director",
+    org: "Perfect Power Wash",
+    logo: { src: "/ppw.png", alt: "Perfect Power Wash" },
+    body: "Recruited to modernize web and data infrastructure, then promoted to own strategy and the technology stack through an expansion from one market to four. Built their first data warehouse, wrote the internal tooling, and hired and trained a developer to take the systems further.",
+  },
+  {
+    period: "2009 – 2019",
+    title: "The freelance decade",
+    body: "A decade of freelancing across disciplines, following the opportunities: client sites and web apps, photography and videography, illustration — including album artwork for a multi-Grammy-winning artist — and early startup ventures. All of it built alongside school, internships, and every job I held.",
   },
 ]
 
@@ -45,7 +45,7 @@ export function AboutArc() {
   return (
     <section className="kb-section-background">
       <div className="kb-content-rail py-16 lg:py-24">
-        <div className="mb-12 max-w-3xl space-y-4 lg:mb-16">
+        <div className="mb-12 space-y-4 lg:mb-16">
           <Typography variant="eyebrow" className="font-semibold uppercase tracking-wider">
             The Arc
           </Typography>

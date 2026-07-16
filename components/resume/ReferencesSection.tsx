@@ -1,7 +1,6 @@
 "use client"
 
 import { Typography } from "@/components/typography"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Building2 } from "lucide-react"
 
 const references = [
@@ -18,7 +17,7 @@ const references = [
     relationship: "Perfect Power Wash & Universal Windows Direct — Direct Manager",
   },
   {
-    quote: "I had the pleasure of working with Karol at Universal Windows Direct and appreciated the expertise and professionalism he brought to our team. He played a key role in ensuring our lead generation systems worked seamlessly, helping implement and manage integrations using tools like Zapier to ensure leads flowed accurately from our platforms into the CRM. He also maintained strong quality control over our data pipelines, regularly validating that information was transferring correctly and that our systems remained reliable. I really valued Karol's collaboration and willingness to explain things in a way that was easy for someone who isn't as tech-savvy to understand. His positive attitude and pleasant demeanor made him easy to work with and an awesome partner.",
+    quote: "He played a key role in ensuring our lead generation systems worked seamlessly, helping implement and manage integrations using tools like Zapier to ensure leads flowed accurately from our platforms into the CRM. He also maintained strong quality control over our data pipelines, regularly validating that information was transferring correctly and that our systems remained reliable. I really valued Karol's collaboration and willingness to explain things in a way that was easy for someone who isn't as tech-savvy to understand.",
     author: "Anne-Marie Colant",
     role: "Director of Social Media",
     relationship: "Universal Windows Direct & Great Day Improvements — Cross-functional Collaborator",
@@ -32,47 +31,48 @@ const references = [
 
 export function ReferencesSection() {
   return (
-    <Card id="references" className="scroll-mt-20 border-navy-700/10 bg-navy-900 text-chiffon transition-colors dark:border-chiffon/10">
-      <CardHeader className="border-b border-chiffon/10 pb-4">
-        <CardTitle className="flex items-center gap-2 font-display text-lg text-chiffon">
-          <span className="h-1.5 w-1.5 rounded-full bg-olive-700" />
+    <section
+      id="references"
+      className="kb-section-secondary scroll-mt-20 rounded-2xl border border-chiffon/15 px-5 py-6 sm:px-6 md:px-8 md:py-8"
+    >
+      <div className="mb-6 border-b border-chiffon/15 pb-4">
+        <h2 className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-chiffon">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
           References
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="pt-6">
-        <div className="grid gap-10 md:grid-cols-2">
-          {references.map((ref, index) => (
-            <div key={index} className="space-y-5">
-              <blockquote className="relative pl-6">
-                <div className="absolute left-0 top-0 h-full w-0.5 bg-olive-700" />
-                <Typography variant="body-sm" className="text-xs italic leading-relaxed text-chiffon/75">
-                  &ldquo;{ref.quote}&rdquo;
-                </Typography>
-              </blockquote>
-              <div className="pl-6">
-                <div className="flex items-start gap-3">
-                  <div className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded border border-chiffon/15 bg-navy-800">
-                    <Building2 className="h-5 w-5 text-chiffon/70" />
-                  </div>
-                  <div className="min-w-0 flex-1 space-y-1.5">
-                    <Typography variant="body-sm" className="text-xs font-semibold text-chiffon">
-                      {ref.author}
+        </h2>
+      </div>
+      <div className="grid gap-10 md:grid-cols-2">
+        {references.map((ref, index) => (
+          <div key={index} className="space-y-5">
+            <blockquote className="relative pl-6">
+              <div className="absolute left-0 top-0 h-full w-0.5 bg-accent" />
+              <Typography variant="body-sm" className="text-xs italic leading-relaxed text-chiffon/75">
+                &ldquo;{ref.quote}&rdquo;
+              </Typography>
+            </blockquote>
+            <div className="pl-6">
+              <div className="flex items-start gap-3">
+                <div className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded border border-chiffon/15 bg-olive-800/40">
+                  <Building2 className="h-5 w-5 text-chiffon/70" />
+                </div>
+                <div className="min-w-0 flex-1 space-y-1.5">
+                  <Typography variant="body-sm" className="text-xs font-semibold text-chiffon">
+                    {ref.author}
+                  </Typography>
+                  <Typography variant="body-sm" className="text-xs text-chiffon/70">
+                    {ref.role}
+                  </Typography>
+                  {"relationship" in ref && ref.relationship && (
+                    <Typography variant="body-sm" className="text-xs italic text-chiffon/65">
+                      {ref.relationship}
                     </Typography>
-                    <Typography variant="body-sm" className="text-xs text-chiffon/70">
-                      {ref.role}
-                    </Typography>
-                    {"relationship" in ref && ref.relationship && (
-                      <Typography variant="body-sm" className="text-xs italic text-chiffon/65">
-                        {ref.relationship}
-                      </Typography>
-                    )}
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }

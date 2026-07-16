@@ -76,10 +76,10 @@ export default function AboutPage() {
 
             <div className="relative space-y-5">
               <Typography variant="body" className="text-lg text-muted-foreground">
-                Full transparency? I like the building more than the selling — that&apos;s why I&apos;m open to full-time roles that present a good fit, alongside the right consulting and project opportunities.
+                I&apos;m looking to contribute to any team that is looking for someone who&apos;s quick to understand business objectives and reliable at turning them into working systems.
               </Typography>
               <Typography variant="body" className="text-lg text-muted-foreground">
-                The hours I want to fill are the engineering hours: integrations, cloud applications, data pipelines, enterprise WordPress. If you need someone who&apos;s quick to understand business objectives and reliable at turning them into working systems, that&apos;s the job I want.
+                FTE, project-based, retainer contract — I&apos;m not fussed as long as it&apos;s the right culture fit.
               </Typography>
             </div>
 

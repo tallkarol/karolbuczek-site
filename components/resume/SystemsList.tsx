@@ -94,9 +94,11 @@ export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter
             className="overflow-hidden"
           >
             <CardContent className="pt-6">
-              <Typography variant="body-sm" className="text-muted-foreground text-xs mb-6">
-                {useCaseStudies ? "These projects represent the full arc — discovery, architecture, build, and measurable impact." : "A few things you can dive deeper into:"}
-              </Typography>
+              {!useCaseStudies && (
+                <Typography variant="body-sm" className="text-muted-foreground text-xs mb-6">
+                  A few things you can dive deeper into:
+                </Typography>
+              )}
               <div className="grid gap-3 sm:grid-cols-2 mb-6">
                 {useCaseStudies ? (
                   caseStudies!.map((cs) =>

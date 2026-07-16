@@ -81,14 +81,16 @@ export default function ResumePage() {
 
   return (
     <>
-      <Section>
+      <div className="kb-hero-inverse">
+      <Section className="py-8 lg:py-16">
         <PageHero
+          className="lg:min-h-[320px]"
           eyebrow="Resume"
           title={
-            <Typography variant="h1" as="h1">
-              Full-Stack Engineer /
+            <Typography variant="h1" as="h1" className="text-ink dark:text-text-inverse">
+              Full-Stack Engineer
               <br />
-              Solutions Architect
+              & Solutions Architect
             </Typography>
           }
           description={
@@ -107,10 +109,12 @@ export default function ResumePage() {
                 </li>
             </ul>
           }
-          illustration={<ResumeIllustration />}
+          illustration={<ResumeIllustration priority />}
+          illustrationClassName="max-w-[275px] aspect-[425/709] md:max-w-[350px]"
+          columnGapClassName="gap-3 md:gap-4"
           buttons={
             <div className="flex flex-wrap items-center gap-4">
-              <Button asChild size="sm" className="rounded-full">
+              <Button asChild size="sm">
                 <a
                   href="/resume-karol-buczek.pdf"
                   download="resume-karol-buczek.pdf"
@@ -148,43 +152,27 @@ export default function ResumePage() {
           }
         />
       </Section>
+      </div>
 
-      <Section className="pt-4 md:pt-6">
-        <div className="space-y-8 max-w-5xl mx-auto">
-          {/* Resume Content */}
-          <div className="space-y-8">
-            {/* Work Experience */}
-            <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
-
-            {/* Core Strengths */}
-            <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
-
-            {/* Technical Skills */}
-            <TechStackSection isOpen={techStackOpen} onOpenChange={setTechStackOpen} />
-
-            {/* Certifications */}
-            <CertificationsSection />
-
-            {/* Featured Work */}
-            <SystemsList
-              isOpen={projectsOpen}
-              onOpenChange={setProjectsOpen}
-              caseStudies={featuredCaseStudies}
-              onCaseStudyClick={handleCaseStudyClick}
-            />
-
-            {/* Education */}
-            <EducationSection />
-
-            {/* References */}
-            <ReferencesSection />
-          </div>
-
+      <section className="w-full bg-chiffon-100 pt-4 dark:bg-navy-950 md:pt-6">
+        <div className="kb-content-rail space-y-8 py-12 lg:py-16">
+          <WorkExperienceSection isOpen={workExperienceOpen} onOpenChange={setWorkExperienceOpen} />
+          <SkillsSection isOpen={skillsOpen} onOpenChange={setSkillsOpen} />
+          <TechStackSection isOpen={techStackOpen} onOpenChange={setTechStackOpen} />
+          <CertificationsSection />
+          <SystemsList
+            isOpen={projectsOpen}
+            onOpenChange={setProjectsOpen}
+            caseStudies={featuredCaseStudies}
+            onCaseStudyClick={handleCaseStudyClick}
+          />
+          <EducationSection />
+          <ReferencesSection />
         </div>
-      </Section>
+      </section>
 
-      <section className="w-full bg-primary pb-0 text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-6 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <section className="kb-section-inverse w-full pb-0">
+        <div className="kb-content-rail py-12 lg:py-16">
           <CTASection
             fullWidth
             heading="Looking for a full-time integration or implementation role."

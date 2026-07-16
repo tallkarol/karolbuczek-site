@@ -4,25 +4,39 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
+/*
+ * Standardized button — squared "architectural" style from the homepage hero:
+ * sharp corners, font-ui semibold, subtle lift on hover.
+ */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-none font-ui text-[13px] font-semibold ring-offset-background transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:hover:translate-y-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        /* Cyan accent CTA — the brand's primary call to action. */
+        default:
+          "bg-accent text-accent-foreground hover:bg-accent/90 hover:shadow-[0_12px_36px_hsl(var(--accent)/0.35)]",
+        /* Neutral dark CTA (iron-grey) for secondary emphasis. */
+        neutral:
+          "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-[0_12px_36px_hsl(var(--slot-inverse)/0.22)]",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-foreground/25 bg-transparent text-foreground hover:border-foreground/45 hover:bg-foreground/5",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/90",
+        ghost: "hover:translate-y-0 hover:bg-muted hover:text-foreground",
+        link: "hover:translate-y-0 text-primary underline-offset-4 hover:underline",
+        /* Explicit dark-environment CTA: chiffon fill, navy text (hero primary) */
+        inverse:
+          "bg-slot-background text-slot-primary hover:bg-slot-surface hover:shadow-[0_15px_45px_rgba(0,0,0,.24)]",
+        "outline-inverse":
+          "border border-slot-background/20 bg-slot-surface/5 text-slot-background backdrop-blur hover:border-slot-background/40 hover:bg-slot-surface/10",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        default: "h-11 px-5",
+        sm: "h-9 px-4",
+        lg: "h-[50px] px-6",
         icon: "h-10 w-10",
       },
     },
@@ -54,4 +68,3 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
-

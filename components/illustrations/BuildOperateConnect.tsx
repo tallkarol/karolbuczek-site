@@ -47,18 +47,18 @@ export function BuildOperateConnect({ className }: BuildOperateConnectProps) {
 
         {/* Operate - middle */}
         <motion.div
-          className="relative h-16 w-12 rounded border-2 border-primary/40 bg-[hsl(var(--paper))]"
+          className="relative h-16 w-12 rounded border-2 border-olive-700/45 bg-[hsl(var(--paper))]"
           animate={{ opacity: [0.8, 1, 0.8] }}
           transition={{ duration: 2, delay: 0.2, repeat: Infinity }}
         >
           <div className="flex h-full w-full flex-col gap-1 p-1">
             {/* Dashboard */}
-            <div className="h-2 w-full rounded bg-primary/20">
+            <div className="h-2 w-full rounded bg-olive-700/20">
               <div className="flex h-full items-end gap-0.5 p-0.5">
                 {[0.3, 0.6, 0.4, 0.8].map((height, i) => (
                   <motion.div
                     key={i}
-                    className="flex-1 rounded-t bg-primary/40"
+                    className="flex-1 rounded-t bg-olive-700/45"
                     style={{ height: `${height * 100}%` }}
                     animate={{ opacity: [0.6, 1, 0.6] }}
                     transition={{ duration: 2, delay: i * 0.15, repeat: Infinity }}
@@ -69,7 +69,7 @@ export function BuildOperateConnect({ className }: BuildOperateConnectProps) {
             {/* Metrics */}
             <div className="flex gap-0.5">
               <div className="h-0.5 flex-1 rounded bg-foreground/20" />
-              <div className="h-0.5 w-1 rounded-full bg-primary/50" />
+              <div className="h-0.5 w-1 rounded-full bg-olive-700/55" />
             </div>
           </div>
         </motion.div>

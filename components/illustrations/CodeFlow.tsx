@@ -13,14 +13,14 @@ export function CodeFlow({ className }: CodeFlowProps) {
         {/* Code lines flowing */}
         <div className="flex flex-col gap-2 w-3/4">
           {[
-            { width: "w-full", delay: 0 },
-            { width: "w-5/6", delay: 0.1 },
-            { width: "w-full", delay: 0.2 },
-            { width: "w-4/6", delay: 0.3 },
+            { width: "w-full", delay: 0, tone: "via-primary/40" },
+            { width: "w-5/6", delay: 0.1, tone: "via-olive-700/45" },
+            { width: "w-full", delay: 0.2, tone: "via-primary/40" },
+            { width: "w-4/6", delay: 0.3, tone: "via-olive-700/45" },
           ].map((line, i) => (
             <motion.div
               key={i}
-              className={`h-1 rounded bg-gradient-to-r from-primary/0 via-primary/40 to-primary/0 ${line.width}`}
+              className={`h-1 rounded bg-gradient-to-r from-transparent to-transparent ${line.tone} ${line.width}`}
               initial={{ opacity: 0, x: -20 }}
               animate={{
                 opacity: [0, 1, 0],

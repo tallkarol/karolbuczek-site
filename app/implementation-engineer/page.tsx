@@ -12,17 +12,19 @@ export default function ImplementationEngineerPage() {
 
   return (
     <>
-      <Section>
-        <PageHero
-          eyebrow="Implementation Engineer"
-          title="Integrating Web APIs, Systems, and Customer Needs"
-          description="5+ years of experience integrating Web APIs, providing technical consultation, and translating business requirements into technical solutions. I bridge the gap between complex systems and customer value."
-          illustration={<SystemNodes />}
-        />
-      </Section>
+      <div className="kb-hero-inverse">
+        <Section className="py-8 lg:py-16">
+          <PageHero
+            eyebrow="Implementation Engineer"
+            title="Integrating Web APIs, Systems, and Customer Needs"
+            description="5+ years of experience integrating Web APIs, providing technical consultation, and translating business requirements into technical solutions. I bridge the gap between complex systems and customer value."
+            illustration={<SystemNodes />}
+          />
+        </Section>
+      </div>
 
       <Section>
-        <div className="space-y-8 max-w-5xl mx-auto">
+        <div className="space-y-8">
           <RoleSection role={selectedFilter} isVisible={true} />
         </div>
       </Section>

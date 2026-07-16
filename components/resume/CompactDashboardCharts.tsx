@@ -13,10 +13,16 @@ import {
 } from "recharts"
 import type { CaseStudyPerformance } from "@/lib/case-study-performance"
 
-const AFTER = "#059669"
-const BEFORE = "hsl(var(--muted-foreground) / 0.35)"
+const AFTER = "hsl(var(--navy))"
+const BEFORE = "hsl(var(--slate) / 0.4)"
 const TRACK = "hsl(var(--border))"
-const PIE_PALETTE = ["#059669", "#10b981", "#34d399", "#6ee7b7", "hsl(var(--foreground) / 0.3)"]
+const PIE_PALETTE = [
+  "hsl(var(--navy))",
+  "hsl(var(--olive))",
+  "hsl(var(--navy) / 0.55)",
+  "hsl(var(--olive) / 0.55)",
+  "hsl(var(--slate) / 0.4)",
+]
 
 /** Dense half-column charts for client engagement dashboards. */
 export function CompactDashboardCharts({ data }: { data: CaseStudyPerformance }) {

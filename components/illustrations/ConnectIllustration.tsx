@@ -8,6 +8,7 @@ interface ConnectIllustrationProps {
 
 export function ConnectIllustration({ className }: ConnectIllustrationProps) {
   const primaryColor = "hsl(var(--primary))"
+  const oliveColor = "hsl(var(--olive-700))"
   const mutedColor = "hsl(var(--muted))"
   const bgColor = "hsl(var(--background))"
   
@@ -52,7 +53,7 @@ export function ConnectIllustration({ className }: ConnectIllustrationProps) {
                     <div className="h-0.5 w-full rounded bg-muted/30" />
                     <div className="mt-0.5 flex items-center gap-0.5">
                       <div className="h-0.5 w-2/3 rounded bg-muted/20" />
-                      <div className="h-0.5 w-0.5 rounded-full bg-destructive/50" />
+                      <div className="h-0.5 w-0.5 rounded-full bg-olive-700/60" />
                     </div>
                   </div>
                 </motion.div>
@@ -108,9 +109,9 @@ export function ConnectIllustration({ className }: ConnectIllustrationProps) {
                   <div className="h-0.5 w-1/2 rounded bg-muted/20" />
                   <div className="mt-0.5 h-0.5 w-3/4 rounded bg-primary/40" />
                 </div>
-                <div className="rounded bg-destructive/10 p-0.5">
+                <div className="rounded bg-olive-700/10 p-0.5">
                   <div className="h-0.5 w-1/2 rounded bg-muted/20" />
-                  <div className="mt-0.5 h-0.5 w-3/4 rounded bg-destructive/30" />
+                  <div className="mt-0.5 h-0.5 w-3/4 rounded bg-olive-700/40" />
                 </div>
                 <div className="rounded bg-muted/10 p-0.5">
                   <div className="h-0.5 w-1/2 rounded bg-muted/20" />
@@ -145,7 +146,7 @@ export function ConnectIllustration({ className }: ConnectIllustrationProps) {
                   <div className="h-0.5 w-1/2 rounded bg-muted/20" />
                   <div className="flex gap-0.5">
                     <div className="h-0.5 w-0.5 rounded-full bg-primary/50" />
-                    <div className="h-0.5 w-0.5 rounded-full bg-destructive/40" />
+                    <div className="h-0.5 w-0.5 rounded-full bg-olive-700/50" />
                   </div>
                 </div>
                 {/* Line graph */}
@@ -163,7 +164,7 @@ export function ConnectIllustration({ className }: ConnectIllustrationProps) {
                   <motion.polyline
                     points="5,20 15,15 25,18 35,8 45,10 55,5 65,7 75,3 85,5 95,2"
                     fill="none"
-                    stroke="hsl(var(--destructive))"
+                    stroke={oliveColor}
                     strokeWidth="1.5"
                     strokeOpacity="0.5"
                     initial={{ pathLength: 0 }}

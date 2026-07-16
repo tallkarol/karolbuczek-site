@@ -13,33 +13,33 @@ export function Footer() {
   const showCtaBlock = !PAGES_WITH_FULL_CTA.has(pathname)
 
   return (
-    <footer className="bg-muted/30 py-12">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left sm:px-6 lg:px-8">
+    <footer className="kb-section-accent relative py-12">
+      <div className="kb-content-rail flex flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
         <div className="flex flex-col items-center gap-4 sm:items-start">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
             <div className="relative h-8 w-8 flex-shrink-0">
               <Image
                 src="/logo.png"
                 alt="Karol Buczek"
                 fill
-                className="object-contain"
+                className="object-contain brightness-0 invert"
               />
             </div>
             <div className="leading-tight">
-              <div className="text-sm font-semibold tracking-wide">
+              <div className="text-sm font-semibold tracking-wide text-slot-surface">
                 KAROL BUCZEK
               </div>
-              <div className="text-xs text-muted-foreground">
+              <div className="text-xs text-slot-surface/70">
                 Full-Stack Engineer · Solutions Architect
               </div>
             </div>
           </Link>
           {showCtaBlock && (
             <div className="space-y-2">
-              <div className="text-lg font-semibold">
+              <div className="text-lg font-semibold text-slot-surface">
                 Want to talk about a role or a project?
               </div>
-              <div className="text-sm text-muted-foreground">
+              <div className="text-sm text-slot-surface/70">
                 Let&apos;s connect.
               </div>
             </div>
@@ -47,17 +47,17 @@ export function Footer() {
         </div>
         {showCtaBlock && (
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center">
-            <Button asChild className="rounded-full">
+            <Button asChild variant="inverse">
               <Link href="/contact">Get in touch</Link>
             </Button>
-            <div className="flex flex-col items-center gap-2 sm:items-start text-xs text-muted-foreground">
+            <div className="flex flex-col items-center gap-2 text-xs text-slot-surface/70 sm:items-start">
               <span>
                 Or connect on:{" "}
                 <a
                   href="https://www.linkedin.com/in/karolbuczek/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-foreground transition-colors underline"
+                  className="text-slot-surface underline decoration-slot-surface decoration-2 underline-offset-4 transition-colors hover:text-slot-surface/90"
                 >
                   LinkedIn
                 </a>
@@ -66,16 +66,16 @@ export function Footer() {
           </div>
         )}
       </div>
-      <div className="mx-auto mt-8 max-w-7xl border-t border-border px-6 pt-6 text-center text-xs text-muted-foreground sm:px-6 sm:text-left lg:px-8">
+      <div className="kb-content-rail mt-8 border-t border-slot-surface/20 pt-6 text-center text-xs text-slot-surface/70 sm:text-left">
         <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Karol Buczek. All rights reserved.</p>
-          <p className="text-muted-foreground/70">
+          <p className="text-slot-surface/65">
             View my{" "}
             <a
               href="https://tallkarol.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary transition-colors underline underline-offset-2"
+              className="underline transition-colors hover:text-slot-surface"
             >
               consulting brand
             </a>

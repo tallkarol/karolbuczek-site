@@ -10,18 +10,12 @@ import { CTASection } from "@/components/sections/CTASection"
 export default function HomePage() {
   return (
     <>
-      <Section className="pt-4 pb-0 md:pt-6 lg:pt-6 lg:pb-0">
-        <HeroIntro />
-      </Section>
+      <HeroIntro />
 
       <BrandTrustBar />
 
-      <Section>
-        <FeaturedQuote />
-      </Section>
-
-      <section className="w-full bg-muted">
-        <div className="mx-auto max-w-7xl px-6 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <section className="kb-section-secondary w-full">
+        <div className="kb-content-rail py-12 lg:py-16">
           <SkillsMap />
         </div>
       </section>
@@ -34,12 +28,17 @@ export default function HomePage() {
         </Suspense>
       </Section>
 
-      <section className="w-full bg-primary pb-0 text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-6 py-12 sm:px-6 lg:px-8 lg:py-16">
+      <section className="kb-section-background w-full">
+        <div className="kb-content-rail py-12 lg:py-16">
+          <FeaturedQuote />
+        </div>
+      </section>
+
+      <section className="kb-section-inverse w-full pb-0">
+        <div className="kb-content-rail py-20 lg:py-28">
           <CTASection fullWidth />
         </div>
       </section>
     </>
   )
 }
-

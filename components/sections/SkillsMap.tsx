@@ -50,8 +50,9 @@ export function SkillsMap() {
 
   return (
     <div className="space-y-8">
-      <div className="space-y-4">
+      <div className="space-y-3">
         <Typography variant="h2" as="h2">What I Do</Typography>
+        <div aria-hidden className="tk-accent-rule" />
         <Typography variant="body" className="text-muted-foreground">
         I work on the parts of the stack where broken handoffs, bad data, and disconnected systems are quietly costing you money — comfortably operating across engineering, product, and business stakeholders at any level of the org.
         </Typography>
@@ -67,26 +68,35 @@ export function SkillsMap() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-lg border border-border/60 bg-background p-6 shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
+              className="kb-surface-app group relative overflow-hidden rounded-lg border border-border bg-surface-card p-6 transition-all hover:border-accent/50"
             >
-              {/* Subtle accent */}
-              <div className="absolute top-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-300" />
-              
+              {/* Accent process marker */}
+              <div className="absolute left-0 top-0 h-1 w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+              <div className="mb-3 font-ui text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-accent-text">
+                0{index + 1}
+              </div>
+
               {/* Illustration */}
-              <div className="h-24 w-full mb-4 rounded border border-border/30 bg-muted/20 overflow-hidden">
+              <div className="mb-4 h-24 w-full overflow-hidden rounded border border-border bg-background-alt">
                 <Illustration className="h-full w-full" />
               </div>
-            
-            <Typography variant="h3" as="h3" className="mb-3 group-hover:text-primary transition-colors">{category.name}</Typography>
-            <Typography variant="body-sm" className="mb-4 text-muted-foreground">{category.description}</Typography>
-            <ul className="space-y-2">
-              {category.skills.map((skill) => (
-                <li key={skill} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-                  <Typography variant="body-sm" className="text-muted-foreground">{skill}</Typography>
-                </li>
-              ))}
-            </ul>
+
+              <Typography variant="h3" as="h3" className="mb-3 text-heading transition-colors group-hover:text-accent-text">
+                {category.name}
+              </Typography>
+              <Typography variant="body-sm" className="mb-4 text-muted-foreground">
+                {category.description}
+              </Typography>
+              <ul className="space-y-2">
+                {category.skills.map((skill) => (
+                  <li key={skill} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-accent" />
+                    <Typography variant="body-sm" className="text-muted-foreground">
+                      {skill}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           )
         })}

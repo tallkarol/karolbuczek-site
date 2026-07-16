@@ -19,68 +19,53 @@ export function CTASection({
 }: CTASectionProps) {
   if (fullWidth) {
     return (
-      <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10 lg:gap-12">
-        <div className="flex-shrink-0">
-          <div className="relative h-16 w-20 sm:h-20 sm:w-24">
-            <Image
-              src="/logo.png"
-              alt="Karol Buczek"
-              fill
-              className="object-contain brightness-0 invert"
-            />
-          </div>
+      <div className="mx-auto flex max-w-2xl flex-col items-center gap-7 text-center">
+        <div className="relative h-12 w-14 sm:h-14 sm:w-16">
+          <Image
+            src="/logo.png"
+            alt="Karol Buczek"
+            fill
+            className="object-contain brightness-0 invert"
+          />
         </div>
 
-        <div className="flex min-w-0 flex-1 flex-col justify-center gap-5 text-center md:text-left">
-          <div className="space-y-2">
-            <Typography variant="h2" as="h2" className="text-2xl text-primary-foreground md:text-3xl">
-              {heading}
-            </Typography>
-            <Typography variant="body" className="text-primary-foreground/80">
-              {description}
-            </Typography>
-          </div>
+        <div className="mx-auto max-w-xl space-y-3">
+          <Typography variant="h2" as="h2" className="text-2xl text-text-inverse md:text-3xl">
+            {heading}
+          </Typography>
+          <Typography variant="body" className="text-text-inverse/75">
+            {description}
+          </Typography>
+        </div>
 
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap md:justify-start">
-            <Button
-              asChild
-              className="rounded-full bg-primary-foreground px-6 py-2 text-sm font-semibold font-ui text-primary hover:bg-primary-foreground/90"
+        <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+          <Button asChild variant="inverse">
+            <Link href="/contact">
+              <Mail className="mr-2 h-4 w-4" />
+              Get in touch
+            </Link>
+          </Button>
+          <Button asChild variant="outline-inverse">
+            <a
+              href="/resume-karol-buczek.pdf"
+              download="resume-karol-buczek.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Link href="/contact">
-                <Mail className="mr-2 h-4 w-4" />
-                Get in touch
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full border-primary-foreground/35 bg-transparent px-6 py-2 text-sm font-ui text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+              <Download className="mr-2 h-4 w-4" />
+              Download Resume
+            </a>
+          </Button>
+          <Button asChild variant="secondary">
+            <a
+              href="https://www.linkedin.com/in/karolbuczek/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <a
-                href="/resume-karol-buczek.pdf"
-                download="resume-karol-buczek.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="rounded-full border-primary-foreground/35 bg-transparent px-6 py-2 text-sm font-ui text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
-            >
-              <a
-                href="https://www.linkedin.com/in/karolbuczek/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin className="mr-2 h-4 w-4" />
-                LinkedIn
-              </a>
-            </Button>
-          </div>
+              <Linkedin className="mr-2 h-4 w-4" />
+              LinkedIn
+            </a>
+          </Button>
         </div>
       </div>
     )
@@ -111,17 +96,13 @@ export function CTASection({
       </div>
 
       <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <Button asChild className="rounded-full px-6 py-2 text-sm font-semibold font-ui">
+        <Button asChild>
           <Link href="/contact">
             <Mail className="mr-2 h-4 w-4" />
             Get in touch
           </Link>
         </Button>
-        <Button
-          asChild
-          variant="outline"
-          className="rounded-full border-border/50 px-6 py-2 text-sm font-ui transition-colors hover:border-primary"
-        >
+        <Button asChild variant="outline">
           <a
             href="/resume-karol-buczek.pdf"
             download="resume-karol-buczek.pdf"
@@ -132,11 +113,7 @@ export function CTASection({
             Download Resume
           </a>
         </Button>
-        <Button
-          asChild
-          variant="outline"
-          className="rounded-full border-border/50 px-6 py-2 text-sm font-ui transition-colors hover:border-primary"
-        >
+        <Button asChild variant="outline">
           <a
             href="https://www.linkedin.com/in/karolbuczek/"
             target="_blank"

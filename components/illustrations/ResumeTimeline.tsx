@@ -16,7 +16,7 @@ export function ResumeTimeline({ className }: ResumeTimelineProps) {
             <div key={i} className="flex items-center gap-3">
               {/* Timeline dot */}
               <motion.div
-                className="h-3 w-3 rounded-full border-2 border-primary/40 bg-primary/20 flex-shrink-0"
+                className="h-3 w-3 rounded-full border-2 border-olive-700/50 bg-olive-700/25 flex-shrink-0"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{
                   duration: 2,

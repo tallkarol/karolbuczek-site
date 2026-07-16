@@ -38,11 +38,11 @@ export function BrokenCode({ className }: BrokenCodeProps) {
               }
             }}
           >
-            <motion.span className="text-muted-foreground/70" variants={typingVariants}>import</motion.span>
+            <motion.span className="text-olive-700" variants={typingVariants}>import</motion.span>
             <motion.span className="text-primary" variants={typingVariants}>{`{`}</motion.span>
             <motion.span className="text-primary" variants={typingVariants}>notFound</motion.span>
             <motion.span className="text-primary" variants={typingVariants}>{`}`}</motion.span>
-            <motion.span className="text-muted-foreground/70" variants={typingVariants}>from</motion.span>
+            <motion.span className="text-olive-700" variants={typingVariants}>from</motion.span>
             <motion.span className="text-muted-foreground" variants={typingVariants}>&apos;next/navigation&apos;</motion.span>
           </motion.div>
           
@@ -61,10 +61,10 @@ export function BrokenCode({ className }: BrokenCodeProps) {
               }
             }}
           >
-            <motion.span className="text-muted-foreground/70" variants={typingVariants}>const</motion.span>
+            <motion.span className="text-olive-700" variants={typingVariants}>const</motion.span>
             <motion.span className="text-foreground" variants={typingVariants}>page</motion.span>
             <motion.span className="text-foreground" variants={typingVariants}>=</motion.span>
-            <motion.span className="text-muted-foreground/70" variants={typingVariants}>await</motion.span>
+            <motion.span className="text-olive-700" variants={typingVariants}>await</motion.span>
             <motion.span className="text-primary" variants={typingVariants}>getPage</motion.span>
             <motion.span className="text-foreground" variants={typingVariants}>(slug)</motion.span>
           </motion.div>
@@ -84,7 +84,7 @@ export function BrokenCode({ className }: BrokenCodeProps) {
               }
             }}
           >
-            <motion.span className="text-primary" variants={typingVariants}>if</motion.span>
+            <motion.span className="text-olive-700" variants={typingVariants}>if</motion.span>
             <motion.span className="text-foreground" variants={typingVariants}>(!page)</motion.span>
             <motion.span className="text-foreground" variants={typingVariants}>{`{`}</motion.span>
           </motion.div>

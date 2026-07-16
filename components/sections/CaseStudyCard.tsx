@@ -69,17 +69,17 @@ export function CaseStudyCard({ caseStudy, index, onClick, imageSize = "default"
       className="h-full"
     >
       <Card
-        className={`group h-full flex flex-col hover:shadow-xl transition-all duration-300 border-2 border-border/50 hover:border-primary/40 relative overflow-hidden ${onClick ? "cursor-pointer" : ""}`}
+        className={`group relative flex h-full cursor-pointer flex-col overflow-hidden border-2 border-navy-700/12 bg-surface-card transition-all duration-300 hover:border-olive-700/40 dark:border-chiffon/12 dark:bg-navy-800 dark:hover:border-olive-700/50 ${onClick ? "cursor-pointer" : ""}`}
         onClick={onClick}
         role={onClick ? "button" : undefined}
         tabIndex={onClick ? 0 : undefined}
         onKeyDown={onClick ? (e) => e.key === "Enter" && onClick() : undefined}
       >
-        {/* Accent line - full width on hover */}
-        <div className="absolute top-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-300 z-10" />
+        {/* Olive process marker */}
+        <div className="absolute left-0 top-0 z-10 h-1 w-0 bg-olive-700 transition-all duration-300 group-hover:w-full" />
 
         {/* Image - prominent at top, pills overlay */}
-        <div className={`relative ${imageAspect} w-full overflow-hidden bg-muted/30`}>
+        <div className={`relative ${imageAspect} w-full overflow-hidden bg-navy-900`}>
           <Image
             src={imageSrc}
             alt={caseStudy.title}
@@ -87,13 +87,12 @@ export function CaseStudyCard({ caseStudy, index, onClick, imageSize = "default"
             className={`${caseStudy.imageFit === "contain" ? "object-contain p-6" : "object-cover"} transition-transform duration-300 group-hover:scale-105`}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-primary opacity-[0.3] group-hover:opacity-0 transition-opacity duration-300" />
-          {/* Tags over photo - top */}
-          <div className="absolute top-0 left-0 right-0 p-2 flex flex-wrap gap-1.5">
+          <div className="absolute inset-0 bg-navy-900/35 opacity-100 transition-opacity duration-300 group-hover:opacity-0" />
+          <div className="absolute left-0 right-0 top-0 flex flex-wrap gap-1.5 p-2">
             {caseStudy.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] px-2 py-0.5 rounded bg-card/90 backdrop-blur-sm text-primary font-ui font-semibold border border-primary/20 shadow-sm"
+                className="rounded border border-olive-700/25 bg-chiffon/95 px-2 py-0.5 font-ui text-[10px] font-semibold text-olive-700 shadow-sm backdrop-blur-sm"
               >
                 {tag}
               </span>
@@ -102,24 +101,24 @@ export function CaseStudyCard({ caseStudy, index, onClick, imageSize = "default"
         </div>
 
         <CardHeader className="pb-2 pt-4">
-          <CardTitle className="text-lg font-display font-semibold leading-tight mb-0.5 group-hover:text-primary transition-colors">
+          <CardTitle className="mb-0.5 font-display text-lg font-semibold leading-tight transition-colors group-hover:text-navy-700 dark:group-hover:text-chiffon">
             {caseStudy.title}
           </CardTitle>
           {caseStudy.subtitle && (
-            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+            <p className="text-xs font-medium uppercase tracking-wide text-slate-ink dark:text-chiffon/70">
               {caseStudy.subtitle}
             </p>
           )}
         </CardHeader>
 
         <CardContent className="flex-1 pt-0">
-          <p className="text-sm text-muted-foreground leading-snug">
+          <p className="text-sm leading-snug text-muted-foreground">
             {caseStudy.summary}
           </p>
           {caseStudy.previewBusOutcome && (
             <div className="mt-2 flex items-start gap-2">
-              <span className="mt-1.5 h-1 w-1 rounded-full bg-primary flex-shrink-0" />
-              <p className="text-sm text-muted-foreground leading-snug">
+              <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-olive-700" />
+              <p className="text-sm leading-snug text-muted-foreground">
                 {caseStudy.previewBusOutcome}
               </p>
             </div>
@@ -128,12 +127,12 @@ export function CaseStudyCard({ caseStudy, index, onClick, imageSize = "default"
 
         <CardFooter className="pt-2">
           {onClick ? (
-            <span className="inline-flex items-center justify-center w-full rounded-full border-2 border-border/50 font-ui text-sm py-2 px-4 group-hover:border-primary group-hover:bg-primary/5 transition-colors">
+            <span className="inline-flex h-9 w-full items-center justify-center border border-navy-700/25 px-4 font-ui text-[13px] font-semibold transition-colors group-hover:border-olive-700/50 group-hover:bg-olive-700/5 dark:border-chiffon/25">
               View case study
               <ArrowRight className="ml-2 h-3.5 w-3.5" />
             </span>
           ) : (
-            <Button asChild variant="outline" size="sm" className="w-full rounded-full border-2 border-border/50 font-ui hover:border-primary hover:bg-primary/5 transition-colors">
+            <Button asChild variant="outline" size="sm" className="w-full">
               <Link href={`/portfolio?cs=${caseStudy.slug}`}>
                 View case study
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />

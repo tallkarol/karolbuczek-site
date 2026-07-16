@@ -43,10 +43,10 @@ const milestones: Milestone[] = [
 
 export function AboutArc() {
   return (
-    <section className="bg-muted/30">
-      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-6 lg:px-8 lg:py-24">
+    <section className="kb-section-background">
+      <div className="kb-content-rail py-16 lg:py-24">
         <div className="mb-12 max-w-3xl space-y-4 lg:mb-16">
-          <Typography variant="eyebrow" className="text-primary font-semibold uppercase tracking-wider">
+          <Typography variant="eyebrow" className="font-semibold uppercase tracking-wider">
             The Arc
           </Typography>
           <Typography variant="h2" as="h2">
@@ -61,7 +61,7 @@ export function AboutArc() {
           {/* Vertical rail */}
           <div
             aria-hidden
-            className="absolute left-[7px] top-1 bottom-1 w-px bg-gradient-to-b from-primary/60 via-border to-primary/60 md:left-[168px]"
+            className="absolute left-[7px] top-1 bottom-1 w-px bg-gradient-to-b from-navy-700/60 via-slate-500/40 to-navy-700/60 md:left-[168px]"
           />
 
           <ol className="space-y-10 md:space-y-12">
@@ -79,24 +79,40 @@ export function AboutArc() {
                   aria-hidden
                   className={`absolute left-0 top-1.5 flex h-[15px] w-[15px] items-center justify-center rounded-full border-2 md:left-[161px] ${
                     m.highlight
-                      ? "border-primary bg-primary"
-                      : "border-primary/50 bg-background"
+                      ? "border-navy-700 bg-navy-700 dark:border-chiffon dark:bg-chiffon"
+                      : "border-olive-700 bg-olive-700"
                   }`}
                 />
 
                 <div className="md:text-right">
-                  <p className="font-ui text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                  <p className="font-ui text-xs font-semibold uppercase tracking-[0.18em] text-slate-ink dark:text-chiffon/70">
                     {m.period}
                   </p>
                 </div>
 
-                <div className="max-w-2xl space-y-2">
+                <div
+                  className={`max-w-2xl space-y-2 rounded-lg border p-5 md:p-6 ${
+                    m.highlight
+                      ? "border-navy-700/20 bg-navy-800 text-chiffon dark:border-chiffon/20"
+                      : "border-navy-700/10 bg-surface-card dark:border-chiffon/10 dark:bg-navy-800"
+                  }`}
+                >
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <h3 className="font-display text-xl font-semibold tracking-tight text-foreground">
+                    <h3
+                      className={`font-display text-xl font-semibold tracking-tight ${
+                        m.highlight ? "text-chiffon" : "text-foreground"
+                      }`}
+                    >
                       {m.title}
                     </h3>
                     {m.org && (
-                      <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background px-3 py-1">
+                      <span
+                        className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 ${
+                          m.highlight
+                            ? "border-chiffon/25 bg-navy-900"
+                            : "border-border/60 bg-background"
+                        }`}
+                      >
                         {m.logo && (
                           <span className="relative h-4 w-4 overflow-hidden">
                             {m.logo.src.endsWith(".svg") ? (
@@ -111,13 +127,23 @@ export function AboutArc() {
                             )}
                           </span>
                         )}
-                        <span className="font-ui text-xs font-semibold text-muted-foreground">
+                        <span
+                          className={`font-ui text-xs font-semibold ${
+                            m.highlight ? "text-chiffon/70" : "text-muted-foreground"
+                          }`}
+                        >
                           {m.org}
                         </span>
                       </span>
                     )}
                   </div>
-                  <p className="text-base leading-relaxed text-muted-foreground">{m.body}</p>
+                  <p
+                    className={`text-base leading-relaxed ${
+                      m.highlight ? "text-chiffon/75" : "text-muted-foreground"
+                    }`}
+                  >
+                    {m.body}
+                  </p>
                 </div>
               </motion.li>
             ))}

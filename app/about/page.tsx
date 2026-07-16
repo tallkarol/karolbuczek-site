@@ -50,13 +50,13 @@ export default function AboutPage() {
 
       <AboutWork />
 
-      {/* What I'm Looking For */}
-      <section className="w-full bg-foreground text-background">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-6 lg:px-8 lg:py-32">
+      {/* What I'm Looking For — quiet chiffon close */}
+      <section className="w-full bg-chiffon-100 dark:bg-navy-950">
+        <div className="kb-content-rail py-20 lg:py-32">
           <div className="relative max-w-3xl space-y-10">
             <div
               aria-hidden
-              className="pointer-events-none absolute -top-8 -left-2 select-none font-serif text-[9rem] leading-none text-background/10 md:-top-12 md:-left-4 md:text-[12rem]"
+              className="pointer-events-none absolute -top-8 -left-2 select-none font-serif text-[9rem] leading-none text-navy-700/10 md:-top-12 md:-left-4 md:text-[12rem] dark:text-chiffon/10"
             >
               &ldquo;
             </div>
@@ -64,46 +64,39 @@ export default function AboutPage() {
             <div className="relative space-y-4">
               <Typography
                 variant="eyebrow"
-                className="font-semibold uppercase tracking-wider text-primary"
+                className="font-semibold uppercase tracking-wider"
               >
                 Next chapter
               </Typography>
-              <Typography variant="h2" as="h2" className="text-background">
+              <Typography variant="h2" as="h2" className="text-navy-700 dark:text-chiffon">
                 What I&apos;m Looking For
               </Typography>
             </div>
 
             <div className="relative space-y-5">
-              <Typography variant="body" className="text-lg text-background/75">
+              <Typography variant="body" className="text-lg text-muted-foreground">
                 Full transparency? I like the building more than the selling — that&apos;s why I&apos;m open to full-time roles that present a good fit, alongside the right consulting and project opportunities.
               </Typography>
-              <Typography variant="body" className="text-lg text-background/75">
+              <Typography variant="body" className="text-lg text-muted-foreground">
                 The hours I want to fill are the engineering hours: integrations, cloud applications, data pipelines, enterprise WordPress. If you need someone who&apos;s quick to understand business objectives and reliable at turning them into working systems, that&apos;s the job I want.
               </Typography>
             </div>
 
-            <div className="relative space-y-6 border-t border-background/15 pt-10">
+            <div className="relative space-y-6 border-t border-navy-700/15 pt-10 dark:border-chiffon/15">
               <Typography
                 variant="body"
-                className="font-display text-xl font-semibold tracking-tight text-background md:text-2xl"
+                className="font-display text-xl font-semibold tracking-tight text-navy-700 md:text-2xl dark:text-chiffon"
               >
                 If that sounds like your team, let&apos;s talk.
               </Typography>
               <div className="flex flex-wrap items-center gap-3">
-                <Button
-                  asChild
-                  className="rounded-full bg-primary px-7 py-2.5 text-sm font-semibold font-ui text-primary-foreground hover:bg-primary/90"
-                >
+                <Button asChild className="px-7">
                   <Link href="/contact">
                     Get in Touch
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="rounded-full border-background/35 bg-transparent px-7 py-2.5 text-sm font-ui text-background hover:bg-background/10 hover:text-background"
-                >
+                <Button asChild variant="outline" className="px-7">
                   <Link href="/resume">View Resume</Link>
                 </Button>
               </div>

@@ -24,11 +24,10 @@ export function QuestionCard({
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={cn(
-        "rounded-lg border-2 px-4 py-3 text-left text-sm font-medium transition-all font-ui",
-        "hover:shadow-sm",
+        "rounded-lg border-2 px-4 py-3 text-left text-sm font-medium font-ui transition-all",
         selected
-          ? "border-primary bg-primary/5 text-foreground"
-          : "border-border/50 bg-card text-foreground hover:border-border",
+          ? "border-olive-700 bg-olive-700 text-chiffon"
+          : "border-navy-700/15 bg-surface-card text-navy-900 hover:border-navy-700/35 dark:border-chiffon/15 dark:bg-navy-900 dark:text-chiffon dark:hover:border-chiffon/35",
         className
       )}
     >
@@ -36,4 +35,3 @@ export function QuestionCard({
     </motion.button>
   )
 }
-

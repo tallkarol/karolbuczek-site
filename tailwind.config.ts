@@ -19,10 +19,59 @@ const config = {
     extend: {
       colors: {
         border: "hsl(var(--border))",
+        "border-strong": "hsl(var(--border-strong))",
+        "border-subtle": "hsl(var(--border-subtle))",
+        "border-emphasis": "hsl(var(--border-emphasis))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
+        "background-alt": "hsl(var(--background-alt))",
+        "background-primary": "hsl(var(--background-primary))",
+        "background-secondary": "hsl(var(--background-secondary))",
+        "background-elevated": "hsl(var(--background-elevated))",
+        "background-inverse": "hsl(var(--background-inverse))",
+        "background-process": "hsl(var(--background-process))",
         foreground: "hsl(var(--foreground))",
+        heading: "hsl(var(--heading))",
+        ink: "hsl(var(--ink))",
+        paper: "hsl(var(--paper))",
+        "text-primary": "hsl(var(--text-primary))",
+        "text-secondary": "hsl(var(--text-secondary))",
+        "text-tertiary": "hsl(var(--text-tertiary))",
+        "text-inverse": "hsl(var(--text-inverse))",
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          950: "hsl(var(--navy-950))",
+          900: "hsl(var(--navy-900))",
+          800: "hsl(var(--navy-800))",
+          700: "hsl(var(--navy-700))",
+        },
+        olive: {
+          DEFAULT: "hsl(var(--olive))",
+          800: "hsl(var(--olive-800))",
+          700: "hsl(var(--olive-700))",
+        },
+        chiffon: {
+          DEFAULT: "hsl(var(--lemon-chiffon))",
+          100: "hsl(var(--chiffon-100))",
+          200: "hsl(var(--chiffon-200))",
+        },
+        cream: "hsl(var(--cream))",
+        slate: {
+          DEFAULT: "hsl(var(--slate))",
+          500: "hsl(var(--slate-500))",
+          ink: "hsl(var(--slate-ink))",
+        },
+        surface: {
+          card: "hsl(var(--surface-card))",
+          "card-hover": "hsl(var(--surface-card-hover))",
+          selected: "hsl(var(--surface-selected))",
+        },
+        signal: {
+          success: "hsl(var(--signal-success))",
+          processing: "hsl(var(--signal-processing))",
+          inactive: "hsl(var(--signal-inactive))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -35,6 +84,23 @@ const config = {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
+        // Functional status tier (success / warning / danger / info)
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        danger: {
+          DEFAULT: "hsl(var(--danger))",
+          foreground: "hsl(var(--danger-foreground))",
+        },
+        info: {
+          DEFAULT: "hsl(var(--info))",
+          foreground: "hsl(var(--info-foreground))",
+        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
@@ -42,6 +108,20 @@ const config = {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          primary: "hsl(var(--accent-primary))",
+          secondary: "hsl(var(--accent-secondary))",
+          active: "hsl(var(--accent-active))",
+          text: "hsl(var(--accent-text))",
+        },
+        "accent-text": "hsl(var(--accent-text))",
+        slot: {
+          primary: "hsl(var(--slot-primary))",
+          secondary: "hsl(var(--slot-secondary))",
+          accent: "hsl(var(--slot-accent))",
+          background: "hsl(var(--slot-background))",
+          surface: "hsl(var(--slot-surface))",
+          inverse: "hsl(var(--slot-inverse))",
+          neutral: "hsl(var(--slot-neutral))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -91,4 +171,3 @@ const config = {
 } satisfies Config
 
 export default config
-

@@ -105,7 +105,7 @@ export function ResumePreview() {
       </Card>
 
         <div className="flex justify-center pt-4">
-          <Button asChild variant="outline" className="rounded-full px-6 py-2 text-sm font-ui border-border/50 hover:border-primary transition-colors">
+          <Button asChild variant="outline">
             <Link href="/resume">
               Open full resume
               <ArrowRight className="ml-2 h-4 w-4" />

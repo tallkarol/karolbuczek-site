@@ -4,55 +4,157 @@
 
 @layer base {
   :root {
-    /* Base brand colors */
-    --paper: 35 20% 96%;
-    --ink: 0 0% 6%;
-    --stamp-red: 358 78% 42%;
+    /*
+     * Brand palette — karolbuczek.com · premium slate-grey + pacific-cyan
+     * iron grey     #46494C — primary · headings · CTAs
+     * blue slate    #4C5C68 — secondary · process / support bands
+     * pacific cyan  #157893 — accent · highlights · links · active states
+     * alabaster     #DCDCDD — background · page canvas
+     * white         #FFFFFF — surface · elevated cards
+     * charcoal      #16191D — inverse · heroes · footer
+     * pale slate    #C5C3C6 — neutral · borders · metadata
+     */
 
-    /* Light mode */
-    --background: var(--paper);
-    --foreground: var(--ink);
-    --card: 35 18% 94%;
-    --card-foreground: var(--ink);
-    --popover: var(--paper);
-    --popover-foreground: var(--ink);
-    --primary: var(--stamp-red);
-    --primary-foreground: 0 0% 98%;
-    --secondary: 35 15% 88%;
-    --secondary-foreground: var(--ink);
-    --muted: 35 12% 92%;
-    --muted-foreground: 0 0% 35%;
-    --accent: var(--stamp-red);
-    --accent-foreground: 0 0% 98%;
-    --destructive: var(--stamp-red);
-    --destructive-foreground: 0 0% 98%;
-    --border: 35 15% 85%;
-    --input: 35 15% 85%;
-    --ring: var(--stamp-red);
+    /* Design-system tokens — contract: lib/design-system/README.md
+     * SOURCE OF TRUTH = the 7 --slot-* values. Everything else is derived +
+     * WCAG-checked by scripts/generate-tokens.ts. To re-theme: change the
+     * DEFAULT_COLOR_SYSTEM slot hexes and run `npx tsx scripts/generate-tokens.ts`. */
+    /* >>> generated-tokens:root — derived from the 7 slots by scripts/generate-tokens.ts — do not hand-edit <<< */
+    --slot-primary: 210 4% 29%;
+    --slot-secondary: 206 16% 35%;
+    --slot-accent: 193 75% 33%;
+    --slot-background: 240 1% 86%;
+    --slot-surface: 0 0% 100%;
+    --slot-inverse: 214 14% 10%;
+    --slot-neutral: 280 3% 77%;
+    --brand-accent: 193 75% 33%;
+    --regal-navy: 210 4% 29%;
+    --olive-leaf: 206 16% 35%;
+    --lemon-chiffon: 240 1% 86%;
+    --slate-grey: 280 3% 77%;
+    --pure-white: 0 0% 100%;
+    --navy-950: 214 14% 8%;
+    --navy-900: 214 14% 10%;
+    --navy-800: 210 4% 16%;
+    --navy-700: 210 4% 29%;
+    --olive-800: 206 16% 16%;
+    --olive-700: 206 16% 35%;
+    --chiffon-100: 240 1% 94%;
+    --chiffon-200: 240 1% 86%;
+    --slate-500: 280 3% 77%;
+    --slate-ink: 280 3% 38%;
+    --navy: 210 4% 29%;
+    --olive: 206 16% 35%;
+    --cream: 240 1% 86%;
+    --slate: 280 3% 77%;
+    --paper: 240 1% 94%;
+    --ink: 214 14% 10%;
+    --background-primary: 240 1% 94%;
+    --background-secondary: 240 1% 86%;
+    --background-elevated: 0 0% 100%;
+    --background-inverse: 214 14% 10%;
+    --background-process: 206 16% 35%;
+    --text-primary: 214 14% 10%;
+    --text-secondary: 210 2% 28%;
+    --text-tertiary: 280 3% 38%;
+    --text-inverse: 240 1% 86%;
+    --text-on-dark: 240 1% 86%;
+    --border-subtle: 280 3% 82%;
+    --border-default: 280 3% 74%;
+    --border-emphasis: 210 2% 55%;
+    --accent-primary: 210 4% 29%;
+    --accent-secondary: 206 16% 35%;
+    --accent-active: 206 16% 35%;
+    --surface-card: 0 0% 100%;
+    --surface-card-hover: 0 0% 100%;
+    --surface-selected: 210 4% 16%;
+    --signal-success: 135 33% 37%;
+    --signal-processing: 240 1% 86%;
+    --signal-inactive: 280 3% 77%;
+    --background: 240 1% 94%;
+    --background-alt: 240 1% 86%;
+    --background-dark: 214 14% 10%;
+    --foreground: 214 14% 10%;
+    --heading: 210 4% 29%;
+    --card: 0 0% 100%;
+    --card-foreground: 214 14% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 214 14% 10%;
+    --primary: 210 4% 29%;
+    --primary-foreground: 240 1% 86%;
+    --secondary: 240 1% 86%;
+    --secondary-foreground: 214 14% 10%;
+    --muted: 240 1% 90%;
+    --muted-foreground: 210 2% 28%;
+    --accent: 193 75% 33%;
+    --accent-foreground: 240 5% 96%;
+    --accent-text: 192 91% 29%;
+    --accent-text-on-dark: 194 46% 50%;
+    --destructive: 0 68% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 280 3% 82%;
+    --border-strong: 280 3% 74%;
+    --input: 280 3% 82%;
+    --ring: 210 4% 29%;
     --radius: 0.5rem;
+    --success: 135 33% 37%;
+    --success-foreground: 0 0% 100%;
+    --warning: 36 71% 42%;
+    --warning-foreground: 0 0% 0%;
+    --danger: 0 68% 42%;
+    --danger-foreground: 0 0% 100%;
+    --info: 211 53% 37%;
+    --info-foreground: 0 0% 100%;
+    --on-secondary: 240 1% 86%;
+    --on-secondary-muted: 240 1% 86%;
+    --on-primary: 240 1% 86%;
+    --on-primary-muted: 280 3% 77%;
+    --on-accent: 0 0% 100%;
+    --on-accent-muted: 240 5% 96%;
+    --on-neutral: 214 14% 10%;
+    --on-neutral-muted: 210 4% 29%;
+    --on-inverse: 240 1% 86%;
+    --on-inverse-muted: 280 3% 77%;
+    /* <<< end generated-tokens:root */
   }
 
   .dark {
-    /* Dark mode */
-    --background: 0 0% 8%;
-    --foreground: var(--paper);
-    --card: 0 0% 10%;
-    --card-foreground: var(--paper);
-    --popover: 0 0% 10%;
-    --popover-foreground: var(--paper);
-    --primary: var(--stamp-red);
-    --primary-foreground: var(--paper);
-    --secondary: 0 0% 18%;
-    --secondary-foreground: var(--paper);
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: var(--stamp-red);
-    --accent-foreground: var(--paper);
-    --destructive: var(--stamp-red);
-    --destructive-foreground: var(--paper);
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: var(--stamp-red);
+    /* >>> generated-tokens:dark — do not hand-edit <<< */
+    --background-primary: 214 14% 8%;
+    --background-secondary: 214 14% 10%;
+    --background-elevated: 210 4% 16%;
+    --background-process: 206 16% 16%;
+    --text-primary: 240 1% 86%;
+    --text-secondary: 240 0% 78%;
+    --text-tertiary: 280 3% 77%;
+    --border-subtle: 210 1% 19%;
+    --border-default: 210 1% 28%;
+    --border-emphasis: 240 0% 55%;
+    --accent-primary: 240 1% 86%;
+    --surface-card: 210 4% 16%;
+    --surface-card-hover: 210 4% 18%;
+    --surface-selected: 206 16% 35%;
+    --background: 214 14% 8%;
+    --background-alt: 214 14% 10%;
+    --background-dark: 214 14% 8%;
+    --foreground: 240 1% 86%;
+    --heading: 240 1% 86%;
+    --card: 210 4% 16%;
+    --card-foreground: 240 1% 86%;
+    --popover: 210 4% 16%;
+    --popover-foreground: 240 1% 86%;
+    --primary: 240 1% 86%;
+    --primary-foreground: 214 14% 10%;
+    --secondary: 206 16% 16%;
+    --secondary-foreground: 240 1% 86%;
+    --muted: 210 4% 16%;
+    --muted-foreground: 240 0% 78%;
+    --accent-text: 194 46% 50%;
+    --border: 210 1% 19%;
+    --border-strong: 210 1% 28%;
+    --input: 210 1% 19%;
+    --ring: 240 1% 86%;
+    /* <<< end generated-tokens:dark */
   }
 }
 
@@ -63,75 +165,434 @@
   body {
     @apply bg-background text-foreground font-body;
   }
+
+  ::selection {
+    background: hsl(var(--chiffon-200));
+    color: hsl(var(--navy-900));
+  }
+  .dark ::selection {
+    background: hsl(var(--navy-700) / 0.9);
+    color: hsl(var(--chiffon-200));
+  }
+
+  a:focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer components {
   /* TYPOGRAPHY UTILITIES */
-  
-  /* HERO / H1 */
+
   .tk-h1 {
-    @apply font-display text-tk-h1 font-semibold tracking-tight text-foreground
+    @apply font-display text-tk-h1 font-semibold tracking-tight text-heading
       sm:text-[2.75rem] sm:leading-[3rem]
       lg:text-[3.25rem] lg:leading-[3.4rem];
   }
-  
-  /* SECTION H2 */
+
   .tk-h2 {
-    @apply font-display text-tk-h2 font-semibold tracking-tight text-foreground
+    @apply font-display text-tk-h2 font-semibold tracking-tight text-heading
       sm:text-[2rem] sm:leading-[2.4rem];
   }
-  
-  /* H3 / Card titles */
+
   .tk-h3 {
-    @apply font-display text-tk-h3 font-semibold text-foreground;
+    @apply font-display text-tk-h3 font-semibold text-heading;
   }
-  
-  /* Subheader / section intro */
+
   .tk-subtitle {
     @apply font-ui text-tk-sub font-medium text-muted-foreground;
   }
-  
-  /* Eyebrow label */
+
   .tk-eyebrow {
     @apply font-ui text-tk-eyebrow font-semibold uppercase tracking-[0.22em]
-      text-muted-foreground;
+      text-accent-text;
   }
-  
-  /* Body text (default) */
+
   .tk-body {
     @apply font-body text-tk-body text-foreground leading-relaxed;
   }
-  
-  /* Small body text (notes, meta) */
+
   .tk-body-sm {
     @apply font-body text-tk-body-sm text-muted-foreground leading-relaxed;
   }
-  
-  /* Button text */
+
   .tk-button {
     @apply font-ui text-xs font-semibold uppercase tracking-[0.16em];
+  }
+
+  /* Site content rail — one max edge for header, heroes, sections, footer */
+  .kb-content-rail {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-6 lg:px-8;
+  }
+
+  /* Accent text (rotating hero phrase) — legible cyan, env-aware (light vs dark). */
+  .tk-gradient-text {
+    color: hsl(var(--accent-text));
+  }
+
+  /*
+   * KB design system — 7-slot section & surface utilities
+   * primary · secondary · accent · background · surface · inverse · neutral
+   * (tk-* = typography / motion primitives — separate from KB environments)
+   */
+
+  /* ── Section: background slot — editorial page canvas ── */
+  .kb-section-background,
+  .tk-section-chiffon,
+  .tk-section-wash {
+    background-color: hsl(var(--slot-background));
+    background-image:
+      radial-gradient(46rem 24rem at 88% 0%, hsl(var(--slot-surface) / 0.45), transparent 60%),
+      radial-gradient(38rem 22rem at 4% 100%, hsl(var(--slot-primary) / 0.04), transparent 55%);
+    color: hsl(var(--slot-primary));
+    --heading: var(--slot-primary);
+    --foreground: var(--slot-primary);
+    --muted-foreground: var(--slate-ink);
+  }
+  .dark .kb-section-background,
+  .dark .tk-section-chiffon,
+  .dark .tk-section-wash {
+    background-image:
+      radial-gradient(46rem 24rem at 88% 0%, hsl(var(--slot-primary) / 0.12), transparent 60%);
+    background-color: hsl(var(--background-alt));
+    color: hsl(var(--slot-background));
+    --heading: var(--slot-background);
+    --foreground: var(--slot-background);
+    --muted-foreground: var(--slot-neutral);
+  }
+
+  /* ── Section: secondary slot — process / operational bands ── */
+  .kb-section-secondary,
+  .tk-section-olive,
+  .tk-section-process {
+    background-color: hsl(var(--slot-secondary));
+    background-image:
+      radial-gradient(40rem 24rem at 90% -10%, hsl(var(--slot-secondary) / 0.85), transparent 60%),
+      radial-gradient(36rem 20rem at 0% 110%, hsl(var(--slot-inverse) / 0.28), transparent 55%);
+    color: hsl(var(--slot-background));
+    --heading: var(--on-secondary);
+    --foreground: var(--on-secondary);
+    --muted-foreground: var(--on-secondary-muted);
+    --accent: var(--slot-accent);
+    --card: var(--slot-surface);
+    --card-foreground: var(--slot-primary);
+    --border: var(--slot-neutral);
+    --primary: var(--slot-background);
+    --primary-foreground: var(--slot-secondary);
+  }
+  .kb-section-secondary .tk-eyebrow,
+  .tk-section-olive .tk-eyebrow,
+  .tk-section-process .tk-eyebrow {
+    color: hsl(var(--slot-background) / 0.75);
+  }
+
+  /* ── Section: primary slot — brand anchor bands ── */
+  .kb-section-primary {
+    background-color: hsl(var(--slot-primary));
+    background-image:
+      radial-gradient(44rem 26rem at 92% -20%, hsl(var(--slot-accent) / 0.2), transparent 58%),
+      radial-gradient(36rem 22rem at -5% 110%, hsl(var(--slot-inverse) / 0.35), transparent 55%);
+    color: hsl(var(--slot-background));
+    --heading: var(--on-primary);
+    --foreground: var(--on-primary);
+    --muted-foreground: var(--on-primary-muted);
+    --accent: var(--slot-accent);
+    --primary: var(--slot-background);
+    --primary-foreground: var(--slot-primary);
+  }
+
+  /* ── Section: accent slot — highlight / feature bands ── */
+  .kb-section-accent {
+    background-color: hsl(var(--slot-accent));
+    background-image:
+      radial-gradient(40rem 24rem at 88% 0%, hsl(var(--slot-surface) / 0.2), transparent 60%),
+      radial-gradient(34rem 20rem at 0% 100%, hsl(var(--slot-primary) / 0.15), transparent 55%);
+    color: hsl(var(--slot-surface));
+    --heading: var(--on-accent);
+    --foreground: var(--on-accent);
+    --muted-foreground: var(--on-accent-muted);
+    --accent: var(--slot-surface);
+    --primary: var(--slot-surface);
+    --primary-foreground: var(--slot-accent);
+  }
+
+  /* ── Section: surface slot — elevated neutral canvas ── */
+  .kb-section-surface {
+    background-color: hsl(var(--slot-surface));
+    color: hsl(var(--slot-primary));
+    --heading: var(--slot-primary);
+    --foreground: var(--slot-primary);
+    --muted-foreground: var(--slate-ink);
+    --card: var(--slot-surface);
+    --card-foreground: var(--slot-primary);
+    --border: var(--slot-neutral);
+  }
+
+  /* ── Section: neutral slot — metadata / quiet bands ── */
+  .kb-section-neutral {
+    background-color: hsl(var(--slot-neutral));
+    background-image:
+      radial-gradient(38rem 20rem at 90% 0%, hsl(var(--slot-surface) / 0.12), transparent 58%);
+    color: hsl(var(--slot-inverse));
+    --heading: var(--on-neutral);
+    --foreground: var(--on-neutral);
+    --muted-foreground: var(--on-neutral-muted);
+    --muted: var(--slot-background);
+  }
+
+  /* ── Section: inverse slot — heroes, CTAs, dark feature bands ── */
+  .kb-section-inverse,
+  .tk-cta-gradient,
+  .tk-section-inverse,
+  .tk-hero-brand,
+  .tk-hero-wash {
+    background-color: hsl(var(--slot-inverse));
+    background-image:
+      radial-gradient(52rem 30rem at 92% -10%, hsl(var(--slot-primary) / 0.55), transparent 62%),
+      radial-gradient(40rem 26rem at -8% 110%, hsl(var(--slot-primary) / 0.35), transparent 58%);
+    color: hsl(var(--slot-background));
+    --heading: var(--on-inverse);
+    --foreground: var(--on-inverse);
+    --muted-foreground: var(--on-inverse-muted);
+    --accent: var(--slot-accent);
+    --accent-text: var(--accent-text-on-dark);
+    --primary: var(--slot-background);
+    --primary-foreground: var(--slot-inverse);
+    --border: var(--slot-neutral);
+    --card: var(--background-elevated);
+    --card-foreground: var(--slot-background);
+  }
+
+  /* ── Hero: light = newsprint grey + ink; dark = inverse stage ── */
+  .kb-hero-inverse,
+  .tk-hero-dark {
+    background-color: hsl(var(--paper));
+    background-image:
+      radial-gradient(circle at 78% 36%, hsl(var(--slot-neutral) / 0.28), transparent 46%),
+      radial-gradient(circle at 10% 90%, hsl(var(--slot-primary) / 0.05), transparent 50%),
+      linear-gradient(180deg, hsl(var(--paper)) 0%, hsl(var(--slot-background)) 100%);
+    color: hsl(var(--ink));
+    --heading: var(--ink);
+    --foreground: var(--ink);
+    --muted-foreground: var(--text-secondary);
+    --primary: var(--slot-primary);
+    --primary-foreground: var(--slot-background);
+    --border: var(--slot-neutral);
+  }
+  .kb-hero-inverse .tk-eyebrow,
+  .tk-hero-dark .tk-eyebrow {
+    color: hsl(var(--accent-text));
+  }
+  .dark .kb-hero-inverse,
+  .dark .tk-hero-dark {
+    background-color: hsl(var(--slot-inverse));
+    background-image:
+      radial-gradient(circle at 74% 44%, hsl(var(--slot-background) / 0.08), transparent 28%),
+      radial-gradient(circle at 78% 60%, hsl(var(--slot-accent) / 0.22), transparent 26%),
+      radial-gradient(circle at 15% 12%, hsl(var(--slot-neutral) / 0.12), transparent 30%),
+      linear-gradient(
+        135deg,
+        hsl(var(--slot-inverse)) 0%,
+        hsl(var(--slot-primary) / 0.88) 42%,
+        hsl(var(--slot-inverse)) 100%
+      );
+    color: hsl(var(--slot-background));
+    --heading: var(--slot-background);
+    --foreground: var(--slot-background);
+    --muted-foreground: var(--slot-neutral);
+    --primary: var(--slot-background);
+    --primary-foreground: var(--slot-inverse);
+    --border: var(--slot-neutral);
+  }
+  .dark .kb-hero-inverse .tk-eyebrow,
+  .dark .tk-hero-dark .tk-eyebrow {
+    color: hsl(var(--slot-background) / 0.75);
+  }
+  .color-sampler-preview.dark .kb-section-background {
+    background-color: hsl(var(--background-alt));
+    color: hsl(var(--slot-background));
+    --heading: var(--slot-background);
+    --foreground: var(--slot-background);
+    --muted-foreground: var(--slot-neutral);
+  }
+  .color-sampler-preview .kb-surface-app,
+  .color-sampler-preview .tk-app-surface {
+    --heading: var(--slot-primary);
+    --foreground: var(--slot-primary);
+    --muted-foreground: var(--slot-neutral);
+    --accent: var(--slot-accent);
+    --primary: var(--slot-primary);
+    --primary-foreground: var(--slot-background);
+    --secondary: var(--slot-secondary);
+    --secondary-foreground: var(--slot-background);
+    --border: var(--slot-neutral);
+    --card: var(--slot-surface);
+    --card-foreground: var(--slot-primary);
+    --muted: var(--slot-background);
+    color: hsl(var(--slot-primary));
+  }
+  .color-sampler-preview.dark .kb-surface-app,
+  .color-sampler-preview.dark .tk-app-surface {
+    --heading: var(--slot-background);
+    --foreground: var(--slot-background);
+    --muted-foreground: var(--slot-neutral);
+    --accent: var(--slot-accent);
+    --primary: var(--slot-background);
+    --primary-foreground: var(--slot-inverse);
+    --card: var(--background-elevated);
+    --card-foreground: var(--slot-background);
+    --border: var(--slot-neutral);
+    --muted: var(--background-elevated);
+    color: hsl(var(--slot-background));
+  }
+
+  /* ── Surface: inverse — footer / quiet dark panels ── */
+  .kb-surface-inverse,
+  .tk-navy-surface {
+    background-color: hsl(var(--slot-inverse));
+    background-image:
+      radial-gradient(40rem 22rem at 85% -20%, hsl(var(--slot-primary) / 0.45), transparent 60%);
+    color: hsl(var(--slot-background));
+    --accent-text: var(--accent-text-on-dark);
+  }
+
+  /* ── Surface: elevated card ── */
+  .kb-surface-elevated,
+  .tk-surface-card {
+    background-color: hsl(var(--slot-surface));
+    color: hsl(var(--slot-primary));
+    border: 1px solid hsl(var(--slot-neutral) / 0.35);
+  }
+  .dark .kb-surface-elevated,
+  .dark .tk-surface-card {
+    background-color: hsl(var(--background-elevated));
+    color: hsl(var(--slot-background));
+    border-color: hsl(var(--slot-neutral) / 0.25);
+  }
+
+  /* ── Surface: selected / inverted card ── */
+  .kb-surface-selected,
+  .tk-surface-selected {
+    background-color: hsl(var(--surface-selected));
+    color: hsl(var(--slot-background));
+    border-color: hsl(var(--slot-primary));
+  }
+
+  /* ── Surface: app — restores readable typography inside brand bands ── */
+  .kb-surface-app,
+  .tk-app-surface {
+    --heading: var(--slot-primary);
+    --foreground: var(--slot-primary);
+    /* Use ink-tier muted text — slot-neutral is a light border tone (~1.7:1 on white). */
+    --muted-foreground: var(--text-secondary);
+    --accent: var(--slot-accent);
+    --primary: var(--slot-primary);
+    --primary-foreground: var(--slot-background);
+    --secondary: var(--slot-secondary);
+    --secondary-foreground: var(--slot-background);
+    --border: var(--border-default);
+    --card: var(--slot-surface);
+    --card-foreground: var(--slot-primary);
+    --muted: var(--slot-background);
+    color: hsl(var(--slot-primary));
+  }
+  .dark .kb-surface-app,
+  .dark .tk-app-surface {
+    --heading: var(--slot-background);
+    --foreground: var(--slot-background);
+    --muted-foreground: var(--slot-neutral);
+    --accent: var(--slot-accent);
+    --primary: var(--slot-background);
+    --primary-foreground: var(--slot-inverse);
+    --card: var(--background-elevated);
+    --card-foreground: var(--slot-background);
+    --border: var(--slot-neutral);
+    --muted: var(--background-elevated);
+    color: hsl(var(--slot-background));
+  }
+
+  /* WebGL hero entrance animations (tk motion primitives) */
+  .tk-hero-rise {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: tk-hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes tk-hero-rise {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .tk-hero-title-line {
+    transform: translateY(115%);
+    animation: tk-hero-title-in 1.08s cubic-bezier(0.2, 0.9, 0.2, 1) forwards;
+  }
+  @keyframes tk-hero-title-in {
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .tk-hero-visual {
+    opacity: 0;
+    transform: scale(0.94);
+    animation: tk-hero-visual-in 1.4s 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  @keyframes tk-hero-visual-in {
+    to {
+      opacity: var(--hero-visual-opacity, 1);
+      transform: scale(1);
+    }
+  }
+
+  /* Accent hairline rules */
+  .kb-accent-rule,
+  .tk-accent-rule {
+    @apply h-[3px] w-16 rounded-full;
+    background-color: hsl(var(--slot-accent) / 0.85);
+  }
+
+  .kb-divider-accent,
+  .tk-gradient-divider {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--slot-accent) / 0.55) 30%,
+      hsl(var(--slot-accent) / 0.55) 70%,
+      transparent
+    );
   }
 }
 
 @layer utilities {
   /* Print styles for resume variants */
   @media print {
-    /* Hide navigation, header, footer */
     header,
     footer,
     nav,
     .no-print {
       display: none !important;
     }
-    
-    /* Hide header/footer in print layout */
+
     .no-print-layout header,
     .no-print-layout footer,
     .no-print-layout nav {
       display: none !important;
     }
 
-    /* Optimize layout for print */
     .print-resume-layout {
       margin: 0;
       padding: 0;
@@ -143,7 +604,6 @@
       padding: 0;
     }
 
-    /* Ensure cards and sections print well */
     .print-resume [class*="Card"],
     .print-resume [class*="Section"] {
       break-inside: avoid;
@@ -151,42 +611,36 @@
       margin-bottom: 1rem;
     }
 
-    /* Optimize spacing */
     .print-resume * {
       print-color-adjust: exact;
       -webkit-print-color-adjust: exact;
     }
 
-    /* Ensure proper page breaks */
     .print-resume h1,
     .print-resume h2,
     .print-resume h3 {
       page-break-after: avoid;
     }
 
-    /* Remove shadows and borders for cleaner print */
     .print-resume [class*="shadow"] {
       box-shadow: none !important;
     }
-    
+
     .print-resume [class*="border"] {
       border: 1px solid #e5e5e5 !important;
     }
 
-    /* Flatten nested boxes for cleaner one-sheet print */
     .print-resume .print-flat {
       border: none !important;
       background: transparent !important;
       box-shadow: none !important;
     }
 
-    /* Preserve accent/primary left border when printing (e.g. References blockquote) */
     .print-resume .print-keep-accent-border {
       border: none !important;
-      border-left: 2px solid hsl(358 78% 42%) !important;
+      border-left: 2px solid hsl(209 77% 23%) !important;
     }
 
-    /* Strip borders from work experience timeline items when printing */
     .print-resume .print-timeline,
     .print-resume .print-timeline *,
     .print-resume .print-timeline-item,
@@ -195,37 +649,31 @@
       box-shadow: none !important;
     }
 
-    /* Remove box around Early Career Experience when printing */
     .print-resume .early-career-print-flat {
       border: none !important;
       background: transparent !important;
       box-shadow: none !important;
     }
 
-    /* Ensure text is black for readability */
     .print-resume {
       color: #000 !important;
       background: #fff !important;
     }
 
-    /* Hide interactive elements */
     .print-resume button:not(.print-keep),
     .print-resume [role="button"]:not(.print-keep) {
       display: none !important;
     }
 
-    /* Show all collapsed sections */
     .print-resume [class*="overflow-hidden"] {
       overflow: visible !important;
       height: auto !important;
     }
-    
-    /* Ensure proper page margins */
+
     @page {
       margin: 0.5in;
     }
 
-    /* Print styles for cover letters */
     .print-cover-letter-layout {
       margin: 0;
       padding: 0;
@@ -237,7 +685,6 @@
       padding: 0;
     }
 
-    /* Ensure cards and sections print well */
     .print-cover-letter [class*="Card"],
     .print-cover-letter [class*="Section"] {
       break-inside: avoid;
@@ -245,45 +692,38 @@
       margin-bottom: 1rem;
     }
 
-    /* Optimize spacing */
     .print-cover-letter * {
       print-color-adjust: exact;
       -webkit-print-color-adjust: exact;
     }
 
-    /* Ensure proper page breaks */
     .print-cover-letter h1,
     .print-cover-letter h2,
     .print-cover-letter h3 {
       page-break-after: avoid;
     }
 
-    /* Remove shadows and borders for cleaner print */
     .print-cover-letter [class*="shadow"] {
       box-shadow: none !important;
     }
-    
+
     .print-cover-letter [class*="border"] {
       border: 1px solid #e5e5e5 !important;
     }
 
-    /* Ensure text is black for readability */
     .print-cover-letter {
       color: #000 !important;
       background: #fff !important;
     }
 
-    /* Hide interactive elements */
     .print-cover-letter button:not(.print-keep),
     .print-cover-letter [role="button"]:not(.print-keep),
     .print-cover-letter .no-print {
       display: none !important;
     }
 
-    /* Ensure proper page margins for cover letters */
     @page {
       margin: 0.75in;
     }
   }
 }
-

@@ -11,7 +11,7 @@ export function PageLayout({ children }: PageLayoutProps) {
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       <Header />
       <main className="flex-1">
-        <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
+        <div className="kb-content-rail">
           {children}
         </div>
       </main>

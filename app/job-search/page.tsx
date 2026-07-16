@@ -148,14 +148,16 @@ export default function JobSearchPage() {
   if (!isAuthenticated) {
     return (
       <>
-        <Section>
-          <PageHero
-            eyebrow="Job Search Tools"
-            title="LinkedIn Boolean Search Queries"
-            description="Enter the password to access curated LinkedIn job search queries."
-            illustration={<SystemNodes />}
-          />
-        </Section>
+        <div className="kb-hero-inverse">
+          <Section className="py-8 lg:py-16">
+            <PageHero
+              eyebrow="Job Search Tools"
+              title="LinkedIn Boolean Search Queries"
+              description="Enter the password to access curated LinkedIn job search queries."
+              illustration={<SystemNodes />}
+            />
+          </Section>
+        </div>
 
         <Section>
           <div className="max-w-md mx-auto">
@@ -197,14 +199,15 @@ export default function JobSearchPage() {
 
   return (
     <>
-      <Section>
+      <div className="kb-hero-inverse">
+      <Section className="py-8 lg:py-16">
         <PageHero
           eyebrow="Job Search Tools"
           title="LinkedIn Boolean Search Queries"
           description="Curated boolean search queries for finding relevant engineering roles. Copy and paste directly into LinkedIn Jobs."
           illustration={<SystemNodes />}
         />
-        <div className="max-w-5xl mx-auto mt-4">
+        <div className="mt-4">
           <a
             href="/job-search/solution-architect"
             className="text-sm text-muted-foreground hover:text-primary transition-colors underline underline-offset-4"
@@ -213,9 +216,10 @@ export default function JobSearchPage() {
           </a>
         </div>
       </Section>
+      </div>
 
       <Section>
-        <div className="max-w-5xl mx-auto">
+        <div>
           <div className="space-y-6">
             {searchQueries.map((search) => (
               <Card

@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0D3B66" />
+  <title>Karol Buczek — Premium WebGL Dashboard Hero Prototype</title>
+  <style>
+    :root {
+      --regal-navy: #0D3B66;
+      --olive-leaf: #474B24;
+      --lemon-chiffon: #FAF0CA;
+      --slate-grey: #828A95;
+      --white: #FFFFFF;
+      --bg-deep: #07182a;
+      --bg-darker: #061321;
+      --panel: rgba(255,255,255,.055);
+      --panel-line: rgba(250,240,202,.18);
+      --text: var(--lemon-chiffon);
+      --muted: rgba(250,240,202,.68);
+      --muted-2: rgba(250,240,202,.42);
+      --accent: var(--olive-leaf);
+      --accent-soft: rgba(71,75,36,.5);
+      --signal: #FAF0CA;
+      --max: 1440px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; margin: 0; background: var(--bg-deep); color: var(--text); }
+    body {
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+      letter-spacing: -.015em;
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 74% 44%, rgba(250,240,202,.08), transparent 28%),
+        radial-gradient(circle at 78% 60%, rgba(71,75,36,.22), transparent 26%),
+        radial-gradient(circle at 15% 12%, rgba(130,138,149,.12), transparent 30%),
+        linear-gradient(135deg, #0b2743 0%, #081d32 40%, #061321 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(130,138,149,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(130,138,149,.06) 1px, transparent 1px);
+      background-size: 68px 68px;
+      mask-image: radial-gradient(circle at 72% 50%, black 0%, rgba(0,0,0,.72) 42%, transparent 82%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      pointer-events: none;
+      opacity: .18;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
+    }
+
+    .topbar {
+      position: absolute;
+      z-index: 10;
+      inset: 0 0 auto;
+      height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(24px, 5vw, 80px);
+      border-bottom: 1px solid rgba(250,240,202,.08);
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(7,24,42,.74), rgba(7,24,42,.18));
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      width: 34px;
+      aspect-ratio: 1;
+      position: relative;
+      border: 1px solid rgba(250,240,202,.22);
+      background: rgba(255,255,255,.04);
+      overflow: hidden;
+    }
+    .mark::before,
+    .mark::after {
+      content: "";
+      position: absolute;
+      background: var(--text);
+      transform-origin: left center;
+      animation: trace 1.15s cubic-bezier(.22,1,.36,1) both;
+    }
+    .mark::before { left: 8px; right: 7px; top: 10px; height: 2px; transform: rotate(38deg) scaleX(0); }
+    .mark::after { left: 8px; right: 7px; bottom: 10px; height: 2px; transform: rotate(-38deg) scaleX(0); animation-delay: .12s; }
+    @keyframes trace { to { transform: rotate(var(--r, 38deg)) scaleX(1); } }
+    .mark::after { --r: -38deg; }
+
+    nav { display: flex; gap: clamp(20px, 2.6vw, 42px); font-size: 12px; color: rgba(250,240,202,.58); }
+    nav span:last-child { color: var(--text); }
+
+    .stage {
+      width: min(var(--max), 100%);
+      min-height: 100svh;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(340px, .9fr) minmax(540px, 1.38fr);
+      align-items: center;
+      gap: clamp(20px, 3vw, 56px);
+      padding: 140px clamp(24px, 5vw, 80px) 70px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .copy { position: relative; z-index: 5; max-width: 670px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(250,240,202,.66);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise .8s .5s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--accent); box-shadow: 0 0 18px rgba(71,75,36,.7); }
+
+    h1 {
+      font-size: clamp(54px, 6.3vw, 102px);
+      line-height: .91;
+      letter-spacing: -.064em;
+      font-weight: 640;
+      margin: 26px 0 30px;
+      max-width: 760px;
+    }
+    h1 .line { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+    h1 .line > span { display: inline-block; transform: translateY(115%); animation: titleIn 1.08s cubic-bezier(.2,.9,.2,1) forwards; }
+    h1 .line:nth-child(2) > span { animation-delay: .09s; }
+    h1 em { font-style: normal; color: rgba(250,240,202,.48); }
+    @keyframes titleIn { to { transform: translateY(0); } }
+
+    .lede {
+      max-width: 590px;
+      font-size: clamp(16px, 1.35vw, 20px);
+      line-height: 1.58;
+      color: var(--muted);
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise .9s .72s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 38px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise .9s .86s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .button {
+      min-height: 52px;
+      padding: 0 23px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 1px solid rgba(250,240,202,.16);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 620;
+      background: rgba(255,255,255,.045);
+      backdrop-filter: blur(10px);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+    .button:hover { transform: translateY(-2px); border-color: rgba(250,240,202,.34); background: rgba(255,255,255,.075); }
+    .button.primary { background: var(--lemon-chiffon); color: #0a1724; border-color: var(--lemon-chiffon); }
+    .button.primary:hover { background: white; box-shadow: 0 15px 45px rgba(0,0,0,.24); }
+    .button .arrow { font-size: 16px; transition: transform .25s ease; }
+    .button:hover .arrow { transform: translateX(3px); }
+
+    .proof {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 54px;
+      color: var(--muted-2);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: rise .9s 1.05s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .proof-line { flex: 1; height: 1px; max-width: 110px; background: linear-gradient(90deg, rgba(250,240,202,.22), transparent); }
+
+    .visual {
+      position: relative;
+      min-height: min(74vh, 780px);
+      width: 100%;
+      z-index: 1;
+      cursor: grab;
+      opacity: 0;
+      transform: scale(.94);
+      animation: visualIn 1.4s .18s cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .visual:active { cursor: grabbing; }
+    @keyframes visualIn { to { opacity: 1; transform: scale(1); } }
+
+    canvas { position: absolute; inset: -7% -10% -7% -10%; width: 120%; height: 114%; display: block; }
+
+    .visual::before {
+      content: "";
+      position: absolute;
+      inset: 9% 2% 7% 8%;
+      border: 1px solid rgba(250,240,202,.085);
+      background: linear-gradient(135deg, rgba(255,255,255,.03), transparent 45%);
+      pointer-events: none;
+      clip-path: polygon(0 0, 94% 0, 100% 8%, 100% 100%, 7% 100%, 0 91%);
+    }
+    .visual::after {
+      content: "";
+      position: absolute;
+      inset: 23% 12% 19% 20%;
+      border: 1px solid rgba(71,75,36,.16);
+      transform: rotate(-7deg);
+      pointer-events: none;
+    }
+
+    .hud {
+      position: absolute;
+      z-index: 4;
+      inset: 0;
+      pointer-events: none;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: rgba(250,240,202,.42);
+    }
+    .hud-a { position: absolute; top: 13%; left: 11%; }
+    .hud-b { position: absolute; right: 7%; top: 23%; text-align: right; }
+    .hud-c { position: absolute; left: 14%; bottom: 10%; display: flex; align-items: center; gap: 10px; }
+    .hud-c i { width: 5px; height: 5px; border-radius: 50%; background: var(--lemon-chiffon); box-shadow: 0 0 14px rgba(250,240,202,.9); animation: blink 2.2s infinite; }
+    @keyframes blink { 50% { opacity: .32; } }
+
+    .axis-labels {
+      position: absolute;
+      right: -4px;
+      bottom: 8%;
+      z-index: 5;
+      display: grid;
+      gap: 8px;
+      font-size: 9px;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: rgba(250,240,202,.28);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    .scroll {
+      position: absolute;
+      z-index: 10;
+      right: clamp(24px, 5vw, 80px);
+      bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 9px;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: rgba(250,240,202,.36);
+    }
+    .scroll::after { content: ""; width: 48px; height: 1px; background: linear-gradient(90deg, rgba(250,240,202,.32), transparent); animation: breathe 2s ease-in-out infinite; }
+    @keyframes breathe { 50% { width: 74px; opacity: .45; } }
+
+    .fallback {
+      display:none;
+      position:absolute;
+      inset: 20% 12%;
+      border: 1px solid rgba(250,240,202,.12);
+      place-items:center;
+      color: var(--muted);
+      text-align:center;
+      padding: 30px;
+      background: rgba(255,255,255,.03);
+    }
+
+    @media (max-width: 1040px) {
+      .stage { grid-template-columns: 1fr; align-content: center; padding-top: 128px; }
+      .copy { max-width: 760px; }
+      .visual { position: absolute; inset: 80px -18% -80px 36%; opacity: .66 !important; z-index: -1; }
+      .copy::after { content:""; position:absolute; inset:-80px -18vw; z-index:-1; background:linear-gradient(90deg, rgba(7,24,42,.98) 10%, rgba(7,24,42,.8) 58%, transparent); }
+      h1 { font-size: clamp(58px, 10vw, 94px); max-width: 790px; }
+    }
+
+    @media (max-width: 680px) {
+      .topbar { height: 70px; }
+      nav span:not(:last-child) { display:none; }
+      .stage { padding-top: 118px; padding-bottom: 56px; min-height: 100svh; }
+      h1 { font-size: clamp(48px, 15.5vw, 72px); }
+      .visual { inset: 56px -58% -30px 8%; opacity: .48 !important; }
+      .actions { align-items: stretch; }
+      .button { flex: 1 1 160px; }
+      .proof { margin-top: 40px; }
+      .scroll, .axis-labels { display:none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <header class="topbar">
+      <div class="brand"><span class="mark" aria-hidden="true"></span><span>Karol Buczek</span></div>
+      <nav aria-label="Prototype navigation"><span>About</span><span>Resume</span><span>Case Studies</span><span>Contact ↗</span></nav>
+    </header>
+
+    <div class="stage">
+      <section class="copy">
+        <div class="eyebrow">Solutions Architecture · Systems Integration</div>
+        <h1>
+          <span class="line"><span>I design systems</span></span>
+          <span class="line"><span>that <em>become interfaces.</em></span></span>
+        </h1>
+        <p class="lede">A premium hero concept built around live dashboard components, orchestration logic, and visible data flow—so the visual language feels like architecture in motion, not decoration.</p>
+        <div class="actions">
+          <a class="button primary" href="#" onclick="event.preventDefault()">View case studies <span class="arrow">→</span></a>
+          <a class="button" href="#" onclick="event.preventDefault()">Open interactive resume <span class="arrow">↗</span></a>
+        </div>
+        <div class="proof"><span>Dashboards</span><span>Orchestration</span><span>Observability</span><span class="proof-line"></span></div>
+      </section>
+
+      <section class="visual" id="visual" aria-label="Interactive premium dashboard architecture illustration. Drag or move the pointer to pivot it.">
+        <canvas id="gl"></canvas>
+        <div class="fallback" id="fallback">WebGL is unavailable in this browser. The production version would show a lightweight static fallback here.</div>
+        <div class="hud" aria-hidden="true">
+          <div class="hud-a">Dashboard Orchestration / 02</div>
+          <div class="hud-b">Live pipeline mesh<br>Synced + observable</div>
+          <div class="hud-c"><i></i><span>System state: routing signals</span></div>
+        </div>
+        <div class="axis-labels" aria-hidden="true">Drag to pivot · UI components linked by data</div>
+      </section>
+    </div>
+
+    <div class="scroll">Explore system</div>
+  </main>
+
+<script>
+(() => {
+  'use strict';
+
+  const canvas = document.getElementById('gl');
+  const visual = document.getElementById('visual');
+  const fallback = document.getElementById('fallback');
+  const gl = canvas.getContext('webgl2', { antialias: true, alpha: true, premultipliedAlpha: true });
+  if (!gl) { fallback.style.display = 'grid'; return; }
+
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DPR_CAP = reducedMotion ? 1 : 1.75;
+
+  const M4 = {
+    identity() { return new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]); },
+    mul(a,b) {
+      const o = new Float32Array(16);
+      for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) {
+        o[c*4+r] = a[r]*b[c*4] + a[4+r]*b[c*4+1] + a[8+r]*b[c*4+2] + a[12+r]*b[c*4+3];
+      }
+      return o;
+    },
+    perspective(fovy, aspect, near, far) {
+      const f = 1 / Math.tan(fovy / 2), nf = 1 / (near - far);
+      return new Float32Array([f/aspect,0,0,0, 0,f,0,0, 0,0,(far+near)*nf,-1, 0,0,2*far*near*nf,0]);
+    },
+    translate(x,y,z) { const m = M4.identity(); m[12] = x; m[13] = y; m[14] = z; return m; },
+    scale(x,y,z) { const m = M4.identity(); m[0] = x; m[5] = y; m[10] = z; return m; },
+    rotX(a){ const c = Math.cos(a), s = Math.sin(a); return new Float32Array([1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1]); },
+    rotY(a){ const c = Math.cos(a), s = Math.sin(a); return new Float32Array([c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1]); },
+    rotZ(a){ const c = Math.cos(a), s = Math.sin(a); return new Float32Array([c,s,0,0, -s,c,0,0, 0,0,1,0, 0,0,0,1]); },
+    lookAt(eye, target, up) {
+      let zx = eye[0] - target[0], zy = eye[1] - target[1], zz = eye[2] - target[2];
+      let l = Math.hypot(zx, zy, zz); zx /= l; zy /= l; zz /= l;
+      let xx = up[1]*zz - up[2]*zy, xy = up[2]*zx - up[0]*zz, xz = up[0]*zy - up[1]*zx;
+      l = Math.hypot(xx, xy, xz); xx /= l; xy /= l; xz /= l;
+      const yx = zy*xz - zz*xy, yy = zz*xx - zx*xz, yz = zx*xy - zy*xx;
+      return new Float32Array([
+        xx,yx,zx,0, xy,yy,zy,0, xz,yz,zz,0,
+        -(xx*eye[0]+xy*eye[1]+xz*eye[2]),
+        -(yx*eye[0]+yy*eye[1]+yz*eye[2]),
+        -(zx*eye[0]+zy*eye[1]+zz*eye[2]),1
+      ]);
+    }
+  };
+  const compose = (...mats) => mats.reduce((a,b) => M4.mul(a,b), M4.identity());
+  const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+  const mix = (a,b,t) => a + (b-a) * t;
+  const ease = t => 1 - Math.pow(1 - clamp(t,0,1), 4);
+
+  function shader(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+  function program(vs, fs) {
+    const p = gl.createProgram();
+    gl.attachShader(p, shader(gl.VERTEX_SHADER, vs));
+    gl.attachShader(p, shader(gl.FRAGMENT_SHADER, fs));
+    gl.linkProgram(p);
+    if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+    return p;
+  }
+
+  const meshVS = `#version 300 es
+    precision highp float;
+    layout(location=0) in vec3 position;
+    layout(location=1) in vec3 normal;
+    uniform mat4 uMVP;
+    uniform mat4 uModel;
+    out vec3 vNormal;
+    out vec3 vWorld;
+    void main() {
+      vec4 w = uModel * vec4(position, 1.0);
+      vWorld = w.xyz;
+      vNormal = normalize(mat3(uModel) * normal);
+      gl_Position = uMVP * vec4(position, 1.0);
+    }`;
+
+  const meshFS = `#version 300 es
+    precision highp float;
+    in vec3 vNormal;
+    in vec3 vWorld;
+    uniform vec4 uColor;
+    uniform float uTime;
+    uniform float uKind;
+    out vec4 outColor;
+    void main() {
+      vec3 n = normalize(vNormal);
+      vec3 viewDir = normalize(vec3(0.0, 0.6, 7.0) - vWorld);
+      float fres = pow(1.0 - max(dot(n, viewDir), 0.0), 2.4);
+      vec3 key = normalize(vec3(-0.42, 0.74, 0.52));
+      float diff = max(dot(n, key), 0.0);
+      float rim = smoothstep(.14, .95, fres);
+      float micro = 0.97 + 0.03*sin(vWorld.x*30.0 + uTime*.35) * sin(vWorld.y*27.0 - uTime*.2);
+      vec3 c = uColor.rgb;
+      if (uKind < .5) {
+        c *= .30 + .62 * diff;
+        c += vec3(.78, .82, .92) * rim * .28;
+      } else {
+        c *= .50 + .28 * diff;
+        c += vec3(.99, .96, .84) * rim * .36;
+      }
+      c *= micro;
+      outColor = vec4(c, uColor.a * (.72 + .28 * rim));
+    }`;
+
+  const lineVS = `#version 300 es
+    precision highp float;
+    layout(location=0) in vec3 position;
+    uniform mat4 uVP;
+    uniform mat4 uGroup;
+    void main() { gl_Position = uVP * uGroup * vec4(position, 1.0); }`;
+  const lineFS = `#version 300 es
+    precision highp float;
+    uniform vec4 uColor;
+    out vec4 outColor;
+    void main() { outColor = uColor; }`;
+
+  const pointVS = `#version 300 es
+    precision highp float;
+    layout(location=0) in vec3 position;
+    layout(location=1) in float size;
+    uniform mat4 uVP;
+    uniform mat4 uGroup;
+    uniform float uDpr;
+    void main() {
+      vec4 p = uVP * uGroup * vec4(position, 1.0);
+      gl_Position = p;
+      gl_PointSize = size * uDpr * (7.0 / max(2.4, -p.z));
+    }`;
+  const pointFS = `#version 300 es
+    precision highp float;
+    uniform vec4 uColor;
+    out vec4 outColor;
+    void main() {
+      vec2 q = gl_PointCoord * 2.0 - 1.0;
+      float r = length(q);
+      if (r > 1.0) discard;
+      float core = smoothstep(.34, .02, r);
+      float halo = smoothstep(1.0, .06, r);
+      vec3 c = mix(uColor.rgb, vec3(1.0), core * .42);
+      float a = (core * .78 + halo * .24) * uColor.a;
+      outColor = vec4(c, a);
+    }`;
+
+  const pMesh = program(meshVS, meshFS), pLine = program(lineVS, lineFS), pPoint = program(pointVS, pointFS);
+
+  const cubePos = new Float32Array([
+    -.5,-.5,.5, .5,-.5,.5, .5,.5,.5, -.5,-.5,.5, .5,.5,.5, -.5,.5,.5,
+    .5,-.5,-.5, -.5,-.5,-.5, -.5,.5,-.5, .5,-.5,-.5, -.5,.5,-.5, .5,.5,-.5,
+    .5,-.5,.5, .5,-.5,-.5, .5,.5,-.5, .5,-.5,.5, .5,.5,-.5, .5,.5,.5,
+    -.5,-.5,-.5, -.5,-.5,.5, -.5,.5,.5, -.5,-.5,-.5, -.5,.5,.5, -.5,.5,-.5,
+    -.5,.5,.5, .5,.5,.5, .5,.5,-.5, -.5,.5,.5, .5,.5,-.5, -.5,.5,-.5,
+    -.5,-.5,-.5, .5,-.5,-.5, .5,-.5,.5, -.5,-.5,-.5, .5,-.5,.5, -.5,-.5,.5
+  ]);
+  const cubeNorm = [];
+  [[0,0,1],[0,0,-1],[1,0,0],[-1,0,0],[0,1,0],[0,-1,0]].forEach(n => { for (let i=0;i<6;i++) cubeNorm.push(...n); });
+  const cubeEdges = new Float32Array([
+    -.5,-.5,-.5,.5,-.5,-.5, .5,-.5,-.5,.5,.5,-.5, .5,.5,-.5,-.5,.5,-.5, -.5,.5,-.5,-.5,-.5,-.5,
+    -.5,-.5,.5,.5,-.5,.5, .5,-.5,.5,.5,.5,.5, .5,.5,.5,-.5,.5,.5, -.5,.5,.5,-.5,-.5,.5,
+    -.5,-.5,-.5,-.5,-.5,.5, .5,-.5,-.5,.5,-.5,.5, .5,.5,-.5,.5,.5,.5, -.5,.5,-.5,-.5,.5,.5
+  ]);
+
+  function buffer(data) {
+    const b = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, b);
+    gl.bufferData(gl.ARRAY_BUFFER, data, gl.STATIC_DRAW);
+    return b;
+  }
+  const cubePB = buffer(cubePos), cubeNB = buffer(new Float32Array(cubeNorm)), edgeB = buffer(cubeEdges);
+
+  function makeTorus(R=.9, r=.018, seg=96, tube=7) {
+    const pos = [], norm = [];
+    for (let i=0;i<seg;i++) for (let j=0;j<tube;j++) {
+      const a0 = i/seg*Math.PI*2, a1 = (i+1)/seg*Math.PI*2, b0 = j/tube*Math.PI*2, b1 = (j+1)/tube*Math.PI*2;
+      for (const [a,b] of [[a0,b0],[a1,b0],[a1,b1],[a0,b0],[a1,b1],[a0,b1]]) {
+        const cb = Math.cos(b), sb = Math.sin(b), ca = Math.cos(a), sa = Math.sin(a);
+        pos.push((R+r*cb)*ca, (R+r*cb)*sa, r*sb);
+        norm.push(cb*ca, cb*sa, sb);
+      }
+    }
+    return { p: buffer(new Float32Array(pos)), n: buffer(new Float32Array(norm)), count: pos.length/3 };
+  }
+  const torus = makeTorus(1.0, .022, 112, 8);
+
+  function bindMesh(posB, normB) {
+    gl.bindBuffer(gl.ARRAY_BUFFER, posB); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, normB); gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,3,gl.FLOAT,false,0,0);
+  }
+  function loc(p,n) { return gl.getUniformLocation(p,n); }
+  const meshU = { mvp: loc(pMesh,'uMVP'), model: loc(pMesh,'uModel'), color: loc(pMesh,'uColor'), time: loc(pMesh,'uTime'), kind: loc(pMesh,'uKind') };
+  const lineU = { vp: loc(pLine,'uVP'), group: loc(pLine,'uGroup'), color: loc(pLine,'uColor') };
+  const pointU = { vp: loc(pPoint,'uVP'), group: loc(pPoint,'uGroup'), color: loc(pPoint,'uColor'), dpr: loc(pPoint,'uDpr') };
+
+  function rectLines(x1, y1, x2, y2, z) {
+    return [x1,y1,z, x2,y1,z, x2,y1,z, x2,y2,z, x2,y2,z, x1,y2,z, x1,y2,z, x1,y1,z];
+  }
+  function polyline(points, z) {
+    const arr = [];
+    for (let i=0; i<points.length-1; i++) arr.push(points[i][0], points[i][1], z, points[i+1][0], points[i+1][1], z);
+    return arr;
+  }
+  function lineGeo(arr) { return { buffer: buffer(new Float32Array(arr)), count: arr.length / 3 }; }
+
+  const sparkA = lineGeo([
+    ...rectLines(-.38,-.18,.38,.18,.54),
+    ...polyline([[-.32,-.08],[-.24,-.06],[-.16,-.1],[-.05,.02],[.02,.08],[.12,.01],[.22,.12],[.32,.09]], .55),
+    ...polyline([[-.36,-.08],[.36,-.08]], .545),
+    ...polyline([[-.36,.02],[.36,.02]], .545)
+  ]);
+  const sparkB = lineGeo([
+    ...rectLines(-.35,-.17,.35,.15,.54),
+    ...polyline([[-.30,-.06],[-.22,.02],[-.14,-.02],[-.04,.09],[.08,.06],[.18,.13],[.28,.03]], .55),
+    ...polyline([[-.33,-.08],[.33,-.08]], .545)
+  ]);
+  const tableGeo = lineGeo([
+    ...rectLines(-.38,-.18,.38,.19,.54),
+    ...polyline([[-.34,.09],[.34,.09]], .55),
+    ...polyline([[-.34,.02],[.34,.02]], .55),
+    ...polyline([[-.34,-.05],[.34,-.05]], .55),
+    ...polyline([[-.34,-.12],[.34,-.12]], .55),
+    ...polyline([[-.08,.16],[-.08,-.16]], .55),
+    ...polyline([[.12,.16],[.12,-.16]], .55)
+  ]);
+  const nodeGeo = lineGeo([
+    ...rectLines(-.35,-.18,.35,.18,.54),
+    ...polyline([[-.23,.06],[-.06,.12],[.07,.02],[.23,.12]], .55),
+    ...polyline([[-.23,.06],[-.12,-.06]], .55),
+    ...polyline([[.07,.02],[.12,-.09]], .55),
+    ...polyline([[-.12,-.06],[.12,-.09]], .55)
+  ]);
+  const flowGeo = lineGeo([
+    ...rectLines(-.40,-.19,.40,.19,.54),
+    ...polyline([[-.32,.06],[-.14,.06]], .55),
+    ...polyline([[-.08,.06],[.08,.06]], .55),
+    ...polyline([[.14,.06],[.31,.06]], .55),
+    ...polyline([[-.24,-.07],[-.06,-.07]], .55),
+    ...polyline([[.00,-.07],[.19,-.07]], .55),
+    ...polyline([[.18,.12],[.18,-.12]], .55),
+    ...polyline([[-.18,.12],[-.18,-.12]], .55)
+  ]);
+
+  const panels = [
+    { key: 'telemetry',     pos: [-1.70,  0.98, -0.10], size: [1.06, 0.62, 0.07], rot: [ 0.08,  0.20, -0.10], kind: 'spark' },
+    { key: 'pipeline',      pos: [ 1.52,  0.84,  0.10], size: [1.02, 0.72, 0.07], rot: [-0.06, -0.18,  0.07], kind: 'bars' },
+    { key: 'identity',      pos: [-1.56, -0.92,  0.18], size: [0.98, 0.68, 0.07], rot: [ 0.05,  0.23,  0.05], kind: 'kpis' },
+    { key: 'customer360',   pos: [ 1.34, -1.00, -0.12], size: [1.14, 0.74, 0.07], rot: [-0.05, -0.16, -0.05], kind: 'table' },
+    { key: 'observability', pos: [ 0.00,  1.56, -0.34], size: [0.88, 0.50, 0.06], rot: [ 0.03,  0.02,  0.03], kind: 'spark-small' },
+    { key: 'workflow',      pos: [ 0.02, -1.58,  0.24], size: [0.92, 0.52, 0.06], rot: [-0.03, -0.02, -0.03], kind: 'nodes' }
+  ];
+
+  const hubAnchors = [
+    [-0.52, 0.28, 0.18],
+    [ 0.54, 0.24, 0.16],
+    [-0.48,-0.26, 0.16],
+    [ 0.50,-0.28, 0.14],
+    [ 0.00, 0.42, 0.05],
+    [ 0.00,-0.44, 0.05]
+  ];
+  const panelAnchors = panels.map((p, i) => {
+    if (i === 0) return [p.pos[0] + 0.54, p.pos[1] - 0.02, p.pos[2] + 0.01];
+    if (i === 1) return [p.pos[0] - 0.54, p.pos[1] - 0.02, p.pos[2] + 0.01];
+    if (i === 2) return [p.pos[0] + 0.50, p.pos[1] + 0.02, p.pos[2] + 0.01];
+    if (i === 3) return [p.pos[0] - 0.58, p.pos[1] + 0.02, p.pos[2] + 0.01];
+    if (i === 4) return [p.pos[0], p.pos[1] - 0.30, p.pos[2] + 0.01];
+    return [p.pos[0], p.pos[1] + 0.30, p.pos[2] + 0.01];
+  });
+  const connections = panelAnchors.map((a, i) => [a, hubAnchors[i]]);
+  connections.push([hubAnchors[0], hubAnchors[1]], [hubAnchors[2], hubAnchors[3]], [hubAnchors[4], hubAnchors[5]]);
+
+  function buildArcLineData() {
+    const a = [];
+    const add = (p, q, steps=18, lift=.18) => {
+      const mx = (p[0]+q[0]) * .5, my = (p[1]+q[1]) * .5, mz = (p[2]+q[2]) * .5 + lift;
+      let prev = p;
+      for (let i=1; i<=steps; i++) {
+        const t = i/steps, it = 1 - t;
+        const cur = [
+          it*it*p[0] + 2*it*t*mx + t*t*q[0],
+          it*it*p[1] + 2*it*t*my + t*t*q[1],
+          it*it*p[2] + 2*it*t*mz + t*t*q[2]
+        ];
+        a.push(...prev, ...cur);
+        prev = cur;
+      }
+    };
+    connections.forEach((c, i) => add(c[0], c[1], i < 6 ? 18 : 12, i < 6 ? .22 : .08));
+    return new Float32Array(a);
+  }
+  const networkGeo = { buffer: buffer(buildArcLineData()), count: buildArcLineData().length / 3 };
+
+  const particleBase = [];
+  for (let i = 0; i < 74; i++) {
+    const a = i * 2.399963, r = .9 + ((i*37)%100)/100*1.7, z = ((i*73)%100)/100*1.8 - .9;
+    particleBase.push([Math.cos(a)*r, Math.sin(a)*r, z, 1.0 + ((i*17)%5)*.26]);
+  }
+  const pointB = gl.createBuffer(), sizeB = gl.createBuffer();
+
+  let pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+  let drag = false, last = { x: 0, y: 0 }, manual = { x: 0, y: 0 };
+  visual.addEventListener('pointermove', e => {
+    const r = visual.getBoundingClientRect();
+    pointer.tx = (e.clientX - r.left) / r.width * 2 - 1;
+    pointer.ty = (e.clientY - r.top) / r.height * 2 - 1;
+    if (drag) {
+      manual.y += (e.clientX - last.x) * .007;
+      manual.x += (e.clientY - last.y) * .006;
+      last = { x: e.clientX, y: e.clientY };
+    }
+  });
+  visual.addEventListener('pointerleave', () => { pointer.tx = 0; pointer.ty = 0; });
+  visual.addEventListener('pointerdown', e => { drag = true; last = { x: e.clientX, y: e.clientY }; visual.setPointerCapture(e.pointerId); });
+  visual.addEventListener('pointerup', e => { drag = false; visual.releasePointerCapture(e.pointerId); });
+
+  function resize() {
+    const r = canvas.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, DPR_CAP);
+    const w = Math.max(1, Math.round(r.width * dpr)), h = Math.max(1, Math.round(r.height * dpr));
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+    return { w, h, dpr };
+  }
+
+  function drawMesh(geo, model, color, kind, vp, time) {
+    gl.useProgram(pMesh);
+    bindMesh(geo.p || cubePB, geo.n || cubeNB);
+    gl.uniformMatrix4fv(meshU.model, false, model);
+    gl.uniformMatrix4fv(meshU.mvp, false, M4.mul(vp, model));
+    gl.uniform4fv(meshU.color, color);
+    gl.uniform1f(meshU.time, time);
+    gl.uniform1f(meshU.kind, kind);
+    gl.drawArrays(gl.TRIANGLES, 0, geo.count || 36);
+  }
+  function drawEdges(model, color, vp) {
+    gl.useProgram(pLine);
+    gl.bindBuffer(gl.ARRAY_BUFFER, edgeB); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    gl.uniformMatrix4fv(lineU.vp, false, vp);
+    gl.uniformMatrix4fv(lineU.group, false, model);
+    gl.uniform4fv(lineU.color, color);
+    gl.drawArrays(gl.LINES, 0, cubeEdges.length / 3);
+  }
+  function drawLineGeo(geo, model, vp, color) {
+    gl.useProgram(pLine);
+    gl.bindBuffer(gl.ARRAY_BUFFER, geo.buffer); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    gl.uniformMatrix4fv(lineU.vp, false, vp);
+    gl.uniformMatrix4fv(lineU.group, false, model);
+    gl.uniform4fv(lineU.color, color);
+    gl.drawArrays(gl.LINES, 0, geo.count);
+  }
+  function drawDynamicLines(data, model, vp, color) {
+    gl.useProgram(pLine);
+    gl.bindBuffer(gl.ARRAY_BUFFER, pointB);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data), gl.DYNAMIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    gl.uniformMatrix4fv(lineU.vp, false, vp);
+    gl.uniformMatrix4fv(lineU.group, false, model);
+    gl.uniform4fv(lineU.color, color);
+    gl.drawArrays(gl.LINES, 0, data.length / 3);
+  }
+  function drawPoints(points, group, vp, color, dpr) {
+    const positions = new Float32Array(points.flatMap(p => p.slice(0,3)));
+    const sizes = new Float32Array(points.map(p => p[3] || 6));
+    gl.bindBuffer(gl.ARRAY_BUFFER, pointB); gl.bufferData(gl.ARRAY_BUFFER, positions, gl.DYNAMIC_DRAW);
+    gl.bindBuffer(gl.ARRAY_BUFFER, sizeB); gl.bufferData(gl.ARRAY_BUFFER, sizes, gl.DYNAMIC_DRAW);
+    gl.useProgram(pPoint);
+    gl.bindBuffer(gl.ARRAY_BUFFER, pointB); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,0,0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, sizeB); gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,1,gl.FLOAT,false,0,0);
+    gl.uniformMatrix4fv(pointU.vp, false, vp);
+    gl.uniformMatrix4fv(pointU.group, false, group);
+    gl.uniform4fv(pointU.color, color);
+    gl.uniform1f(pointU.dpr, dpr);
+    gl.drawArrays(gl.POINTS, 0, points.length);
+  }
+
+  function drawHeader(model, vp, time) {
+    const bar = compose(model, M4.translate(0, .36, .42), M4.scale(.82, .08, .22));
+    drawMesh({p:cubePB,n:cubeNB,count:36}, bar, [.98,.94,.83,.18], 1, vp, time);
+    const chip = compose(model, M4.translate(.28, .36, .46), M4.scale(.12, .05, .16));
+    drawMesh({p:cubePB,n:cubeNB,count:36}, chip, [.28,.30,.14,.62], 1, vp, time);
+  }
+
+  function drawSparkCard(model, vp, dpr, time, variant) {
+    drawLineGeo(variant === 'small' ? sparkB : sparkA, model, vp, [.98,.94,.83,.34]);
+    const pulseX = -0.26 + ((time * (variant === 'small' ? .18 : .22)) % .58);
+    drawPoints([[pulseX, variant === 'small' ? .04 : .08, .56, 10]], model, vp, [.98,.94,.83,.92], dpr);
+    const chipRow = compose(model, M4.translate(-.18, -.30, .44), M4.scale(.22, .05, .12));
+    const chipRow2 = compose(model, M4.translate(.12, -.30, .44), M4.scale(.18, .05, .12));
+    drawMesh({p:cubePB,n:cubeNB,count:36}, chipRow, [.34,.38,.43,.30], 1, vp, time);
+    drawMesh({p:cubePB,n:cubeNB,count:36}, chipRow2, [.28,.30,.14,.50], 1, vp, time);
+  }
+
+  function drawBarCard(model, vp, time) {
+    drawLineGeo(flowGeo, model, vp, [.98,.94,.83,.26]);
+    const bars = [
+      [-.22,-.05,.10,.18],[-.08,-.05,.10,.28],[.06,-.05,.10,.22],[.20,-.05,.10,.36]
+    ];
+    bars.forEach((b, i) => {
+      const bar = compose(model, M4.translate(b[0], -0.05 + b[3] * .5, .43), M4.scale(.08, b[3], .12));
+      const active = i === 3 || i === 1;
+      drawMesh({p:cubePB,n:cubeNB,count:36}, bar, active ? [.28,.30,.14,.78] : [.55,.60,.67,.34], 1, vp, time);
+    });
+    const slot = compose(model, M4.translate(-.18, .14, .44), M4.scale(.22, .05, .12));
+    drawMesh({p:cubePB,n:cubeNB,count:36}, slot, [.98,.94,.83,.16], 1, vp, time);
+  }
+
+  function drawKpiCard(model, vp, time) {
+    const tile1 = compose(model, M4.translate(-.18, .06, .43), M4.scale(.24, .18, .12));
+    const tile2 = compose(model, M4.translate(.18, .06, .43), M4.scale(.24, .18, .12));
+    drawMesh({p:cubePB,n:cubeNB,count:36}, tile1, [.98,.94,.83,.12], 1, vp, time);
+    drawMesh({p:cubePB,n:cubeNB,count:36}, tile2, [.28,.30,.14,.36], 1, vp, time);
+    const mini = [
+      ...rectLines(-.34,-.20,-.02,-.01,.55),
+      ...rectLines(.02,-.20,.34,-.01,.55),
+      ...polyline([[-.30,-.13],[-.24,-.08],[-.18,-.11],[-.10,-.04]], .56),
+      ...polyline([[.06,-.12],[.14,-.04],[.22,-.08],[.30,.02]], .56)
+    ];
+    drawDynamicLines(mini, model, vp, [.98,.94,.83,.28]);
+  }
+
+  function drawTableCard(model, vp, time) {
+    drawLineGeo(tableGeo, model, vp, [.98,.94,.83,.28]);
+    const pills = [
+      compose(model, M4.translate(-.23, .06, .44), M4.scale(.12, .035, .12)),
+      compose(model, M4.translate(.22, .06, .44), M4.scale(.08, .035, .12)),
+      compose(model, M4.translate(.22, -.01, .44), M4.scale(.13, .035, .12)),
+      compose(model, M4.translate(.18, -.08, .44), M4.scale(.10, .035, .12))
+    ];
+    pills.forEach((p, i) => drawMesh({p:cubePB,n:cubeNB,count:36}, p, i === 1 ? [.28,.30,.14,.56] : [.55,.60,.67,.28], 1, vp, time));
+  }
+
+  function drawNodeCard(model, vp, dpr, time) {
+    drawLineGeo(nodeGeo, model, vp, [.98,.94,.83,.30]);
+    const pts = [[-.23,.06,.56,8],[-.06,.12,.56,8],[.07,.02,.56,8],[.23,.12,.56,8],[-.12,-.06,.56,8],[.12,-.09,.56,8]];
+    drawPoints(pts, model, vp, [.98,.94,.83,.84], dpr);
+    const pulse = [[-0.02 + Math.sin(time*.8)*.09, -0.015 + Math.cos(time*.8)*.05, .57, 10]];
+    drawPoints(pulse, model, vp, [.28,.30,.14,.95], dpr);
+  }
+
+  function drawHub(model, vp, dpr, time) {
+    drawMesh({p:cubePB,n:cubeNB,count:36}, model, [.07,.12,.18,.98], 0, vp, time);
+    drawEdges(model, [.98,.94,.83,.34], vp);
+
+    const glass = compose(model, M4.translate(0,0,.28), M4.scale(.92,.78,.10));
+    gl.depthMask(false);
+    drawMesh({p:cubePB,n:cubeNB,count:36}, glass, [.66,.72,.80,.08], 1, vp, time);
+    gl.depthMask(true);
+
+    const content = [
+      ...rectLines(-.40,-.24,.40,.24,.56),
+      ...polyline([[-.34,.10],[-.12,.10]], .56),
+      ...polyline([[-.08,.10],[.08,.10]], .56),
+      ...polyline([[.14,.10],[.33,.10]], .56),
+      ...polyline([[-.34,-.02],[-.04,-.02]], .56),
+      ...polyline([[.06,-.02],[.33,-.02]], .56),
+      ...polyline([[-.26,-.15],[-.12,-.15]], .56),
+      ...polyline([[.02,-.15],[.18,-.15]], .56),
+      ...polyline([[-.22,.18],[-.22,-.18]], .56),
+      ...polyline([[.22,.18],[.22,-.18]], .56),
+      ...polyline([[-.02,.18],[-.02,-.18]], .56)
+    ];
+    drawDynamicLines(content, model, vp, [.98,.94,.83,.28]);
+
+    const innerBars = [
+      compose(model, M4.translate(-.31,-.11,.44), M4.scale(.12,.08,.12)),
+      compose(model, M4.translate(-.14,-.07,.44), M4.scale(.12,.16,.12)),
+      compose(model, M4.translate(.09,-.09,.44), M4.scale(.12,.12,.12)),
+      compose(model, M4.translate(.29,-.04,.44), M4.scale(.12,.22,.12))
+    ];
+    innerBars.forEach((b, i) => drawMesh({p:cubePB,n:cubeNB,count:36}, b, i === 3 ? [.28,.30,.14,.70] : [.55,.60,.67,.36], 1, vp, time));
+
+    drawPoints([[0,0,.58,12],[-.24,.10,.58,8],[.24,.10,.58,8],[-.24,-.12,.58,8],[.24,-.12,.58,8]], model, vp, [.98,.94,.83,.88], dpr);
+  }
+
+  function drawPanel(panel, index, group, vp, dpr, time) {
+    const delay = index * .07;
+    const k = ease((time - .18 - delay) / 1.15);
+    const overshoot = (1 - k) * (1.42 + (index % 3) * .16);
+    const px = panel.pos[0] + Math.sign(panel.pos[0] || ((index%2)*2-1)) * overshoot;
+    const py = panel.pos[1] + Math.sign(panel.pos[1] || 1) * overshoot * .32;
+    const pz = panel.pos[2] + (1 - k) * (index % 2 ? .9 : -.9);
+    const model = compose(
+      group,
+      M4.translate(px, py, pz),
+      M4.rotX(panel.rot[0]),
+      M4.rotY(panel.rot[1]),
+      M4.rotZ(panel.rot[2]),
+      M4.scale(...panel.size)
+    );
+
+    drawMesh({p:cubePB,n:cubeNB,count:36}, model, [.08,.12,.17,.96], 0, vp, time);
+    drawEdges(model, index === 1 || index === 5 ? [.28,.30,.14,.52] : [.98,.94,.83,.18], vp);
+    gl.depthMask(false);
+    const face = compose(model, M4.translate(0,0,.37), M4.scale(.96,.92,.14));
+    drawMesh({p:cubePB,n:cubeNB,count:36}, face, [.74,.80,.88,.05], 1, vp, time);
+    gl.depthMask(true);
+    drawHeader(model, vp, time);
+
+    if (panel.kind === 'spark') drawSparkCard(model, vp, dpr, time, 'large');
+    else if (panel.kind === 'spark-small') drawSparkCard(model, vp, dpr, time, 'small');
+    else if (panel.kind === 'bars') drawBarCard(model, vp, time);
+    else if (panel.kind === 'kpis') drawKpiCard(model, vp, time);
+    else if (panel.kind === 'table') drawTableCard(model, vp, time);
+    else if (panel.kind === 'nodes') drawNodeCard(model, vp, dpr, time);
+  }
+
+  const start = performance.now();
+  function frame(now) {
+    const { w, h, dpr } = resize();
+    const t = (now - start) / 1000;
+    const intro = ease(t / 1.9);
+    pointer.x = mix(pointer.x, pointer.tx, .045);
+    pointer.y = mix(pointer.y, pointer.ty, .045);
+
+    gl.clearColor(0,0,0,0);
+    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+    gl.enable(gl.DEPTH_TEST);
+    gl.depthFunc(gl.LEQUAL);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+    const proj = M4.perspective(Math.PI / 4.15, w / h, .1, 30);
+    const view = M4.lookAt([0, .04, 6.7], [0,0,0], [0,1,0]);
+    const vp = M4.mul(proj, view);
+    const idle = reducedMotion ? 0 : Math.sin(t * .36) * .04;
+    const group = compose(
+      M4.rotX(-.18 + pointer.y * .12 + manual.x),
+      M4.rotY(-.32 + pointer.x * .22 + manual.y + idle),
+      M4.rotZ(-.045 + Math.sin(t * .22) * .016),
+      M4.scale(.78 + .22 * intro, .78 + .22 * intro, .78 + .22 * intro)
+    );
+
+    const dust = particleBase.map((p,i) => {
+      const a = t * (.022 + (i%5) * .004), c = Math.cos(a), s = Math.sin(a);
+      return [p[0]*c - p[2]*s, p[1] + Math.sin(t*.24 + i) * .035, p[0]*s + p[2]*c, p[3]];
+    });
+    gl.depthMask(false);
+    drawPoints(dust, group, vp, [.52,.58,.64,.18], dpr);
+    gl.depthMask(true);
+
+    const backPlane = compose(group, M4.translate(-.02, .02, -.86), M4.rotZ(-.10), M4.scale(4.0, 2.1, .022));
+    const midPlane = compose(group, M4.translate(.16, -.04, -.46), M4.rotZ(.06), M4.scale(3.4, 1.9, .022));
+    gl.depthMask(false);
+    drawMesh({p:cubePB,n:cubeNB,count:36}, backPlane, [.62,.68,.76,.035], 1, vp, t);
+    drawEdges(backPlane, [.98,.94,.83,.10], vp);
+    drawMesh({p:cubePB,n:cubeNB,count:36}, midPlane, [.74,.80,.88,.04], 1, vp, t);
+    drawEdges(midPlane, [.98,.94,.83,.08], vp);
+    const ring = compose(group, M4.rotX(.90), M4.rotZ(t * (reducedMotion ? 0 : .022)), M4.scale(2.18, 2.18, 2.18));
+    drawMesh(torus, ring, [.98,.94,.83,.08], 1, vp, t);
+    gl.depthMask(true);
+
+    const hub = compose(group, M4.scale(1.26, .90, .18));
+    drawHub(hub, vp, dpr, t);
+
+    panels.forEach((panel, i) => drawPanel(panel, i, group, vp, dpr, t));
+
+    gl.depthMask(false);
+    drawLineGeo(networkGeo, group, vp, [.98,.94,.83,.16]);
+    drawPoints(panelAnchors.map(p => [...p, 7]).concat(hubAnchors.map((p, i) => [...p, i < 6 ? 8 : 6])), group, vp, [.98,.94,.83,.52], dpr);
+
+    const pulses = [];
+    connections.forEach((c, i) => {
+      const phase = (t * (.13 + (i%3) * .018) + i * .12) % 1;
+      const p = c[0], q = c[1];
+      const lift = i < 6 ? .22 : .08;
+      const mx = (p[0]+q[0]) * .5, my = (p[1]+q[1]) * .5, mz = (p[2]+q[2]) * .5 + lift;
+      const it = 1 - phase;
+      pulses.push([
+        it*it*p[0] + 2*it*phase*mx + phase*phase*q[0],
+        it*it*p[1] + 2*it*phase*my + phase*phase*q[1],
+        it*it*p[2] + 2*it*phase*mz + phase*phase*q[2],
+        i < 6 ? 11 : 9
+      ]);
+    });
+    drawPoints(pulses, group, vp, [.98,.94,.83,.95], dpr);
+    const olivePulses = [
+      [Math.sin(t*.7)*.24, .16, .50, 10],
+      [-.28 + (Math.sin(t*.9)+1)*.12, -.06, .52, 9],
+      [.18 + Math.cos(t*.8)*.10, -.16, .52, 9]
+    ];
+    drawPoints(olivePulses, hub, vp, [.28,.30,.14,.90], dpr);
+    gl.depthMask(true);
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

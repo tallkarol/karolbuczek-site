@@ -29,9 +29,9 @@ export function WordPressFlow({ className }: WordPressFlowProps) {
             {/* Block editor */}
             <div className="flex flex-1 flex-col gap-0.5 p-1">
               {/* Block */}
-              <div className="h-2.5 w-full rounded border border-primary/30 bg-primary/10">
+              <div className="h-2.5 w-full rounded border border-olive-700/40 bg-olive-700/15">
                 <div className="flex h-full items-center gap-1 p-0.5">
-                  <div className="h-1 w-1 rounded bg-primary/50" />
+                  <div className="h-1 w-1 rounded bg-olive-700/60" />
                   <div className="flex-1">
                     <div className="h-0.5 w-3/4 rounded bg-foreground/20" />
                     <div className="mt-0.5 h-0.5 w-1/2 rounded bg-foreground/15" />

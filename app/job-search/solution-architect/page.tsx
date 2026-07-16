@@ -171,14 +171,16 @@ export default function SolutionArchitectPage() {
   if (!isAuthenticated) {
     return (
       <>
-        <Section>
-          <PageHero
-            eyebrow="Job Search Tools"
-            title="Solution Architect Research"
-            description="Enter the password to access the solution architect market research and resume pack."
-            illustration={<SystemNodes />}
-          />
-        </Section>
+        <div className="kb-hero-inverse">
+          <Section className="py-8 lg:py-16">
+            <PageHero
+              eyebrow="Job Search Tools"
+              title="Solution Architect Research"
+              description="Enter the password to access the solution architect market research and resume pack."
+              illustration={<SystemNodes />}
+            />
+          </Section>
+        </div>
         <Section>
           <div className="max-w-md mx-auto">
             <Card className="border-border/50">
@@ -240,7 +242,7 @@ export default function SolutionArchitectPage() {
       </Section>
 
       <Section className="pt-0">
-        <div className="max-w-5xl mx-auto space-y-6">
+        <div className="space-y-6">
           {/* Global filters */}
           <div className="flex flex-wrap items-center gap-3">
             <div className="relative flex-1 min-w-[200px] max-w-sm">

@@ -20,17 +20,17 @@ const illustrations = [
   {
     name: "Resume Illustration",
     component: ResumeIllustration,
-    description: "Document with sections and timeline elements representing an interactive resume",
+    description: "Character presenting resume sections, skills, and career timeline elements",
   },
   {
     name: "Case Studies Illustration",
     component: CaseStudiesIllustration,
-    description: "Grid of project cards showing multiple case studies",
+    description: "Character presenting code, interfaces, logic diagrams, and 3D wireframes",
   },
   {
     name: "Contact Illustration",
     component: ContactIllustration,
-    description: "Form submission transforming into successful connection",
+    description: "Character bridging mail, phone, and digital contact channels",
   },
   {
     name: "Code to System",
@@ -72,13 +72,15 @@ const illustrations = [
 export default function IllustrationsGalleryPage() {
   return (
     <>
-      <Section>
-        <PageHero
-          eyebrow="Illustration Gallery"
-          title="CSS Graphic Illustrations"
-          description="A collection of animated illustrations used throughout the site."
-        />
-      </Section>
+      <div className="kb-hero-inverse">
+        <Section className="py-8 lg:py-16">
+          <PageHero
+            eyebrow="Illustration Gallery"
+            title="CSS Graphic Illustrations"
+            description="A collection of animated illustrations used throughout the site."
+          />
+        </Section>
+      </div>
 
       <Section>
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-2">

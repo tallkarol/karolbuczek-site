@@ -32,7 +32,7 @@ export function StatStrip() {
 
   return (
     <div className="border-y border-border/50 py-10 bg-muted/20">
-      <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
+      <div className="kb-content-rail">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {focusAreas.map((area, index) => (
             <motion.div

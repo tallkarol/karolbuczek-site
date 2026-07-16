@@ -6,20 +6,18 @@ interface ProgressIndicatorProps {
   currentStep: number
   totalSteps: number
   onStepClick?: (step: number) => void
-  accessibleSteps?: number[] // Steps that can be navigated to
+  accessibleSteps?: number[]
 }
 
-export function ProgressIndicator({ 
-  currentStep, 
-  totalSteps, 
+export function ProgressIndicator({
+  currentStep,
+  totalSteps,
   onStepClick,
-  accessibleSteps 
+  accessibleSteps,
 }: ProgressIndicatorProps) {
   const isStepAccessible = (step: number) => {
     if (!onStepClick) return false
-    // Always allow backward navigation to completed steps
     if (step < currentStep) return true
-    // Forward navigation only if step is in accessibleSteps
     if (accessibleSteps && accessibleSteps.includes(step)) return true
     return false
   }
@@ -46,14 +44,14 @@ export function ProgressIndicator({
               onClick={() => handleStepClick(step)}
               disabled={!isClickable}
               className={cn(
-                "flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold transition-all font-ui",
-                "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2",
+                "flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold font-ui transition-all",
+                "focus:outline-none focus:ring-2 focus:ring-olive-700 focus:ring-offset-2 focus:ring-offset-chiffon-100 dark:focus:ring-offset-navy-800",
                 isActive
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-olive-700 text-chiffon"
                   : isComplete
-                  ? "bg-primary/20 text-primary"
-                  : "bg-muted text-muted-foreground",
-                isClickable && !isActive && "hover:bg-primary/30 hover:scale-110 cursor-pointer",
+                  ? "border-2 border-olive-700 bg-white text-olive-700 dark:bg-navy-900"
+                  : "border-2 border-navy-700/40 bg-white text-navy-700 dark:border-chiffon/40 dark:bg-navy-900 dark:text-chiffon",
+                isClickable && !isActive && "cursor-pointer hover:scale-110 hover:border-olive-700",
                 !isClickable && "cursor-default"
               )}
               aria-label={`Go to step ${step}`}
@@ -61,7 +59,7 @@ export function ProgressIndicator({
             >
               {isComplete ? (
                 <svg
-                  className="h-3 w-3"
+                  className="h-3.5 w-3.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -81,7 +79,7 @@ export function ProgressIndicator({
               <div
                 className={cn(
                   "mx-2 h-0.5 w-8 transition-colors",
-                  isComplete ? "bg-primary" : "bg-muted"
+                  isComplete ? "bg-olive-700" : "bg-navy-700/50 dark:bg-chiffon/45"
                 )}
               />
             )}
@@ -91,4 +89,3 @@ export function ProgressIndicator({
     </div>
   )
 }
-

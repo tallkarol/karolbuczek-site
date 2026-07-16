@@ -12,17 +12,19 @@ export default function WebSystemsEngineerPage() {
 
   return (
     <>
-      <Section>
-        <PageHero
-          eyebrow="Solutions Architect"
-          title="Building Web Systems That Scale"
-          description="I architect and build web systems—internal tools, workflow platforms, secure document systems, and full-stack applications—that solve real business problems with clean architecture and maintainable code."
-          illustration={<SystemNodes />}
-        />
-      </Section>
+      <div className="kb-hero-inverse">
+        <Section className="py-8 lg:py-16">
+          <PageHero
+            eyebrow="Solutions Architect"
+            title="Building Web Systems That Scale"
+            description="I architect and build web systems—internal tools, workflow platforms, secure document systems, and full-stack applications—that solve real business problems with clean architecture and maintainable code."
+            illustration={<SystemNodes />}
+          />
+        </Section>
+      </div>
 
       <Section>
-        <div className="space-y-8 max-w-5xl mx-auto">
+        <div className="space-y-8">
           <RoleSection role={selectedFilter} isVisible={true} />
         </div>
       </Section>

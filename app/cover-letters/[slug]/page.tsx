@@ -127,7 +127,7 @@ export default function CoverLetterPage() {
             <Download className="mr-2 h-4 w-4" />
             Save as PDF
           </Button>
-          <Button asChild variant="outline" className="rounded-full px-6 py-2 text-sm font-ui border-border/50 hover:border-primary transition-colors">
+          <Button asChild variant="outline">
             <Link href="/cover-letters">
               Back to Cover Letters
             </Link>

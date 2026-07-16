@@ -37,7 +37,7 @@ export function CodeToSystem({ className }: CodeToSystemProps) {
             ))}
             {/* Function highlight */}
             <motion.div
-              className="mt-1 h-1 w-full rounded bg-primary/20"
+              className="mt-1 h-1 w-full rounded bg-olive-700/30"
               animate={{ opacity: [0.5, 0.8, 0.5] }}
               transition={{ duration: 2, delay: 0.5, repeat: Infinity }}
             />
@@ -78,7 +78,7 @@ export function CodeToSystem({ className }: CodeToSystemProps) {
             {/* Top node */}
             <div className="flex items-center justify-center gap-1">
               <motion.div
-                className="h-2 w-2 rounded-full bg-primary/40"
+                className="h-2 w-2 rounded-full bg-olive-700/50"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />

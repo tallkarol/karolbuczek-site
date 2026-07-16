@@ -274,7 +274,7 @@ export function ContactConfigurator() {
           <Button
             onClick={handleNext}
             disabled={config.contactTypes.length === 0}
-            className="rounded-full px-8 py-2 text-sm font-semibold font-ui disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-8"
           >
             Continue →
           </Button>
@@ -314,13 +314,12 @@ export function ContactConfigurator() {
             <Button
               onClick={handleBack}
               variant="outline"
-              className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
             >
               ← Back
             </Button>
             <Button
               onClick={handleNext}
-              className="rounded-full px-8 py-2 text-sm font-semibold font-ui"
+              className="px-8"
             >
               Continue →
             </Button>
@@ -475,14 +474,13 @@ export function ContactConfigurator() {
             <Button
               onClick={handleBackType}
               variant="outline"
-              className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
             >
               ← Back
             </Button>
             <Button
               onClick={handleNextType}
               disabled={showLocationRestriction}
-              className="rounded-full px-8 py-2 text-sm font-semibold font-ui disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-8"
             >
               {currentTypeIndex < specificTypes.length - 1 ? "Next →" : "Continue →"}
             </Button>
@@ -553,13 +551,12 @@ export function ContactConfigurator() {
             <Button
               onClick={handleBackType}
               variant="outline"
-              className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
             >
               ← Back
             </Button>
             <Button
               onClick={handleNextType}
-              className="rounded-full px-8 py-2 text-sm font-semibold font-ui"
+              className="px-8"
             >
               {currentTypeIndex < specificTypes.length - 1 ? "Next →" : "Continue →"}
             </Button>
@@ -581,7 +578,6 @@ export function ContactConfigurator() {
             <Button
               onClick={handleBack}
               variant="outline"
-              className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
             >
               ← Back
             </Button>
@@ -607,7 +603,6 @@ export function ContactConfigurator() {
               <Button
                 onClick={handleBack}
                 variant="outline"
-                className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
               >
                 ← Back
               </Button>
@@ -643,13 +638,12 @@ export function ContactConfigurator() {
           <Button
             onClick={handleBack}
             variant="outline"
-            className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
           >
             ← Back
           </Button>
           <Button
             onClick={handleNext}
-            className="rounded-full px-8 py-2 text-sm font-semibold font-ui"
+            className="px-8"
           >
             Continue →
           </Button>
@@ -771,14 +765,13 @@ export function ContactConfigurator() {
             type="button"
             onClick={handleBack}
             variant="outline"
-            className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
           >
             ← Back
           </Button>
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="rounded-full px-8 py-2 text-sm font-semibold font-ui"
+            className="px-8"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>

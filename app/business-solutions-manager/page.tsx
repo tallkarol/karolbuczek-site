@@ -13,17 +13,19 @@ export default function BusinessSolutionsManagerPage() {
 
   return (
     <>
-      <Section>
-        <PageHero
-          eyebrow="Business Solutions Manager"
-          title="Translating Business Requirements Into Technical Solutions"
-          description="I bridge the gap between business stakeholders and engineering teams to deliver systems that solve real problems and drive measurable outcomes. I translate workflows into technical specifications and ensure solutions align with business goals."
-          illustration={<SystemNodes />}
-        />
-      </Section>
+      <div className="kb-hero-inverse">
+        <Section className="py-8 lg:py-16">
+          <PageHero
+            eyebrow="Business Solutions Manager"
+            title="Translating Business Requirements Into Technical Solutions"
+            description="I bridge the gap between business stakeholders and engineering teams to deliver systems that solve real problems and drive measurable outcomes. I translate workflows into technical specifications and ensure solutions align with business goals."
+            illustration={<SystemNodes />}
+          />
+        </Section>
+      </div>
 
       <Section>
-        <div className="space-y-8 max-w-5xl mx-auto">
+        <div className="space-y-8">
           <RoleSection role={selectedFilter} isVisible={true} />
         </div>
       </Section>

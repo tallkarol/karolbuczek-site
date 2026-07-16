@@ -11,4 +11,5 @@ export const clientBrands: ClientBrand[] = [
   { src: "/mineralife-logo.png", alt: "Mineralife Nutraceuticals" },
   { src: "/bliss-cb.png", alt: "Bliss" },
   { src: "/artisthouse_logo_square.png", alt: "Artist House" },
+  { src: "/rlm-logo.png", alt: "RLM" },
 ]

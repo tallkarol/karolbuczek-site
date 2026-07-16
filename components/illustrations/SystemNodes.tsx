@@ -32,7 +32,7 @@ export function SystemNodes({ className }: SystemNodesProps) {
           return (
             <motion.div
               key={i}
-              className="absolute h-4 w-4 rounded-full border border-primary/30 bg-primary/20"
+              className="absolute h-4 w-4 rounded-full border border-olive-700/40 bg-olive-700/25"
               style={{
                 left: `calc(50% + ${x}px)`,
                 top: `calc(50% + ${y}px)`,

@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Typography } from "@/components/typography"
 import { clientBrands } from "@/lib/client-brands"
 
 const AUTOPLAY_MS = 3500
@@ -37,7 +36,7 @@ function BrandLogo({ src, alt }: { src: string; alt: string }) {
   const isSvg = src.endsWith(".svg")
 
   return (
-    <div className="relative mx-auto flex h-10 w-full max-w-[112px] items-center justify-center opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 sm:h-11">
+    <div className="relative mx-auto flex h-10 w-full max-w-[112px] items-center justify-center opacity-50 grayscale contrast-125 brightness-75 transition-all duration-300 hover:opacity-100 hover:grayscale-0 hover:brightness-100 sm:h-11 dark:opacity-60 dark:brightness-125 dark:hover:brightness-100">
       {isSvg ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={src} alt={alt} className="max-h-full max-w-full object-contain" />
@@ -114,15 +113,12 @@ export function BrandTrustBar() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5 }}
-      className="border-b border-border/50 bg-muted/20 py-8 md:py-10"
+      className="border-b border-navy-700/10 bg-chiffon-100 py-6 md:py-8 dark:border-chiffon/10 dark:bg-navy-900"
     >
-      <div className="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8">
-        <Typography
-          variant="eyebrow"
-          className="mb-6 text-center text-muted-foreground"
-        >
+      <div className="kb-content-rail">
+        <p className="mb-6 text-center font-ui text-[11px] font-semibold uppercase tracking-[0.17em] text-ink/65 dark:text-text-inverse/70">
           Brands I&apos;ve worked with
-        </Typography>
+        </p>
 
         <div
           ref={containerRef}

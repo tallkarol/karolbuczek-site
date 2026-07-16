@@ -55,15 +55,16 @@ export function AboutWork() {
 
   return (
     <>
-      <section className="mx-auto max-w-7xl px-6 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <section className="kb-section-inverse w-full">
+        <div className="kb-content-rail py-16 lg:py-24">
         <div className="mb-12 max-w-3xl space-y-4 lg:mb-16">
-          <Typography variant="eyebrow" className="text-primary font-semibold uppercase tracking-wider">
+          <Typography variant="eyebrow" className="font-semibold uppercase tracking-wider text-chiffon/75">
             The Work
           </Typography>
-          <Typography variant="h2" as="h2">
+          <Typography variant="h2" as="h2" className="text-chiffon">
             Systems teams actually run on
           </Typography>
-          <Typography variant="body" className="text-lg text-muted-foreground">
+          <Typography variant="body" className="text-lg text-chiffon/75">
             Integration layers, cloud applications, analytics platforms, and enterprise WordPress — scoped with stakeholders, shipped to production, and still in use.
           </Typography>
         </div>
@@ -87,16 +88,15 @@ export function AboutWork() {
                   <div className="group relative">
                     <div
                       aria-hidden
-                      className={`absolute h-full w-full rounded-lg border border-primary/20 ${
+                      className={`absolute h-full w-full rounded-lg border border-slate-500/30 ${
                         reversed ? "-left-3 -bottom-3" : "-right-3 -bottom-3"
                       }`}
                     />
-                    <div className="relative overflow-hidden rounded-lg border border-border/60 bg-muted/30 shadow-sm">
-                      {/* Browser chrome */}
-                      <div className="flex items-center gap-1.5 border-b border-border/50 bg-muted/40 px-4 py-2.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-border" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-border" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-border" />
+                    <div className="relative overflow-hidden rounded-lg border border-slate-500/25 bg-navy-950">
+                      <div className="flex items-center gap-1.5 border-b border-slate-500/20 bg-navy-800 px-4 py-2.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-slate-500/50" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-slate-500/50" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-slate-500/50" />
                       </div>
                       <div className="relative aspect-[16/10]">
                         <Image
@@ -113,31 +113,31 @@ export function AboutWork() {
 
                 {/* Copy */}
                 <div className={`space-y-5 ${reversed ? "lg:order-1" : ""}`}>
-                  <p className="font-ui text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                  <p className="font-ui text-xs font-semibold uppercase tracking-[0.18em] text-chiffon/80">
                     {work.eyebrow}
                   </p>
-                  <h3 className="font-display text-2xl font-semibold tracking-tight text-foreground lg:text-3xl">
+                  <h3 className="font-display text-2xl font-semibold tracking-tight text-chiffon lg:text-3xl">
                     {work.headline}
                   </h3>
-                  <p className="text-base leading-relaxed text-muted-foreground">{work.body}</p>
+                  <p className="text-base leading-relaxed text-chiffon/75">{work.body}</p>
 
-                  <dl className="grid grid-cols-3 gap-4 border-t border-border/60 pt-5">
+                  <dl className="grid grid-cols-3 gap-4 border-t border-slate-500/25 pt-5">
                     {work.stats.map((stat) => (
                       <div key={stat.label}>
-                        <dd className="font-display text-xl font-semibold tracking-tight text-foreground">
+                        <dd className="font-display text-xl font-semibold tracking-tight text-chiffon">
                           {stat.value}
                         </dd>
-                        <dt className="mt-0.5 text-xs leading-snug text-muted-foreground">{stat.label}</dt>
+                        <dt className="mt-0.5 text-xs leading-snug text-chiffon/70">{stat.label}</dt>
                       </div>
                     ))}
                   </dl>
 
                   {caseStudy && (
                     <Button
-                      variant="outline"
+                      variant="outline-inverse"
                       size="sm"
                       onClick={() => setSelected(caseStudy)}
-                      className="gap-2 rounded-full"
+                      className="gap-2"
                     >
                       <FileText className="h-4 w-4" />
                       Read the case study
@@ -150,12 +150,13 @@ export function AboutWork() {
         </div>
 
         <div className="mt-14 flex justify-center lg:mt-20">
-          <Button asChild variant="outline" className="rounded-full px-7">
+          <Button asChild variant="inverse" className="px-7">
             <Link href="/portfolio">
               See the full portfolio
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
+        </div>
         </div>
       </section>
 

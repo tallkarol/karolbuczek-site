@@ -99,14 +99,16 @@ export default function RolesPage() {
   if (!isAuthenticated) {
     return (
       <>
-        <Section>
-          <PageHero
-            eyebrow="Role Landing Pages"
-            title="Access Role Pages"
-            description="Enter the password to view all role-specific landing pages."
-            illustration={<SystemNodes />}
-          />
-        </Section>
+        <div className="kb-hero-inverse">
+          <Section className="py-8 lg:py-16">
+            <PageHero
+              eyebrow="Role Landing Pages"
+              title="Access Role Pages"
+              description="Enter the password to view all role-specific landing pages."
+              illustration={<SystemNodes />}
+            />
+          </Section>
+        </div>
 
         <Section>
           <div className="max-w-md mx-auto">
@@ -148,17 +150,19 @@ export default function RolesPage() {
 
   return (
     <>
-      <Section>
-        <PageHero
-          eyebrow="Role Landing Pages"
-          title="All Role-Specific Pages"
-          description="Quick access to all role-focused landing pages for sharing with recruiters and potential employers."
-          illustration={<SystemNodes />}
-        />
-      </Section>
+      <div className="kb-hero-inverse">
+        <Section className="py-8 lg:py-16">
+          <PageHero
+            eyebrow="Role Landing Pages"
+            title="All Role-Specific Pages"
+            description="Quick access to all role-focused landing pages for sharing with recruiters and potential employers."
+            illustration={<SystemNodes />}
+          />
+        </Section>
+      </div>
 
       <Section>
-        <div className="max-w-4xl mx-auto">
+        <div>
           <div className="grid gap-6 md:grid-cols-2">
             {roles.map((role, index) => (
               <Card

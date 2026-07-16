@@ -110,7 +110,7 @@ export function ClientEngagementModal({ client, isOpen, onClose }: ClientEngagem
                 {client.portfolioSlug && (
                   <Link
                     href={`/portfolio?cs=${client.portfolioSlug}`}
-                    className="hidden items-center gap-1 rounded-full border border-border/50 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary sm:inline-flex"
+                    className="hidden items-center gap-1 border border-border/50 px-3 py-1.5 font-ui text-xs font-semibold text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary sm:inline-flex"
                   >
                     Full case study
                     <ArrowUpRight className="h-3.5 w-3.5" />

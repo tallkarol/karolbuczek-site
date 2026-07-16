@@ -10,6 +10,7 @@ interface OptimizeIllustrationProps {
 // Interactive dashboard visual with mobile
 export function OptimizeIllustration({ className }: OptimizeIllustrationProps) {
   const primaryColor = "hsl(var(--primary))"
+  const oliveColor = "hsl(var(--olive-700))"
   const bgColor = "hsl(var(--background))"
 
   const datasets = {
@@ -208,8 +209,8 @@ export function OptimizeIllustration({ className }: OptimizeIllustrationProps) {
             width="12"
             height={h * 40}
             rx="3"
-            fill={primaryColor}
-            fillOpacity="0.5"
+            fill={oliveColor}
+            fillOpacity="0.55"
             style={{ transformOrigin: `${101 + idx * 24}px 160px` }}
             animate={{ scaleY: [0.85, 1, 0.9] }}
             transition={{ duration: 2.2, repeat: Infinity, delay: idx * 0.1, ease: "easeInOut" }}

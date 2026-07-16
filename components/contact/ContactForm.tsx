@@ -161,7 +161,7 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full rounded-full font-ui"
+            className="w-full"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>

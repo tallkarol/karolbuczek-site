@@ -19,19 +19,19 @@ import type {
   ScoreMetric,
 } from "@/lib/case-study-performance"
 
-/** Green = improvement. Avoid brand red for “good” metrics. */
-const AFTER = "#059669"
-const AFTER_TEXT = "text-emerald-700 dark:text-emerald-400"
-const BEFORE = "hsl(var(--muted-foreground) / 0.35)"
+/** Brand palette: navy = improved/after, slate tints = before/rest. */
+const AFTER = "hsl(var(--navy))"
+const AFTER_TEXT = "text-navy dark:text-cream"
+const BEFORE = "hsl(var(--slate) / 0.4)"
 const TRACK = "hsl(var(--border))"
 const PIE_PALETTE = [
-  "#059669",
-  "#10b981",
-  "#34d399",
-  "#6ee7b7",
-  "hsl(var(--foreground) / 0.35)",
-  "hsl(var(--foreground) / 0.22)",
-  "hsl(var(--muted-foreground) / 0.35)",
+  "hsl(var(--navy))",
+  "hsl(var(--olive))",
+  "hsl(var(--navy) / 0.55)",
+  "hsl(var(--olive) / 0.55)",
+  "hsl(var(--slate) / 0.6)",
+  "hsl(var(--slate) / 0.4)",
+  "hsl(var(--slate) / 0.25)",
 ]
 
 function formatTransfer(kb: number) {

@@ -12,17 +12,19 @@ export default function MarTechEngineerPage() {
 
   return (
     <>
-      <Section>
-        <PageHero
-          eyebrow="MarTech Engineer / Marketing Systems Engineer"
-          title="Building Marketing Technology Systems That Drive Growth"
-          description="I design and implement marketing technology systems—attribution frameworks, event architectures, automation workflows, and data pipelines—that connect marketing efforts to measurable business outcomes."
-          illustration={<SystemNodes />}
-        />
-      </Section>
+      <div className="kb-hero-inverse">
+        <Section className="py-8 lg:py-16">
+          <PageHero
+            eyebrow="MarTech Engineer / Marketing Systems Engineer"
+            title="Building Marketing Technology Systems That Drive Growth"
+            description="I design and implement marketing technology systems—attribution frameworks, event architectures, automation workflows, and data pipelines—that connect marketing efforts to measurable business outcomes."
+            illustration={<SystemNodes />}
+          />
+        </Section>
+      </div>
 
       <Section>
-        <div className="space-y-8 max-w-5xl mx-auto">
+        <div className="space-y-8">
           <RoleSection role={selectedFilter} isVisible={true} />
         </div>
       </Section>

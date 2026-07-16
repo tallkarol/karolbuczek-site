@@ -1,8 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
 import { Typography } from "@/components/typography"
+import { HeroFlyIn } from "@/components/motion/HeroFlyIn"
+import { cn } from "@/lib/utils"
 import { ReactNode } from "react"
 
 interface PageHeroProps {
@@ -11,40 +11,67 @@ interface PageHeroProps {
   description: string | ReactNode
   className?: string
   illustration?: ReactNode
+  illustrationClassName?: string
+  /** Desktop side for the illustration. Mobile always stacks illustration above text. */
+  illustrationSide?: "left" | "right"
+  columnGapClassName?: string
   buttons?: ReactNode
 }
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
-}
-
-export function PageHero({ eyebrow, title, description, className, illustration, buttons }: PageHeroProps) {
-  const [mounted, setMounted] = useState(false)
+export function PageHero({
+  eyebrow,
+  title,
+  description,
+  className,
+  illustration,
+  illustrationClassName,
+  illustrationSide = "left",
+  columnGapClassName,
+  buttons,
+}: PageHeroProps) {
   const isCentered = className?.includes("text-center")
+  const illustrationOnRight = illustrationSide === "right"
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-  
   return (
-    <section className={`flex items-center min-h-[200px] md:min-h-[240px] py-6 relative z-0 ${className || ""}`}>
+    <section className={`flex items-center min-h-[160px] md:min-h-[240px] py-4 md:py-6 relative z-0 ${className || ""}`}>
       {illustration ? (
-        <div className="grid gap-6 md:gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:items-center w-full">
-          {/* Illustration */}
-          <div className="flex items-center justify-center order-1 md:order-1 w-full mb-4 md:mb-0">
-            <div className="w-full max-w-[180px] md:max-w-[200px] aspect-square relative">
+        <div
+          className={cn(
+            "grid w-full gap-6 md:items-center",
+            illustrationOnRight
+              ? "md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
+              : "md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]",
+            columnGapClassName
+          )}
+        >
+          <HeroFlyIn
+            side={illustrationOnRight ? "right" : "left"}
+            className={cn(
+              "mb-4 flex w-full items-center justify-center md:mb-0",
+              // Mobile: illustration first. Desktop: honor illustrationSide.
+              "order-1",
+              illustrationOnRight ? "md:order-2" : "md:order-1"
+            )}
+          >
+            <div
+              className={cn(
+                "relative aspect-square w-full max-w-[180px] md:max-w-[200px]",
+                illustrationClassName
+              )}
+            >
               {illustration}
             </div>
-          </div>
-          
-          {/* Text content */}
-          <motion.div
-            initial={mounted ? "hidden" : "visible"}
-            animate="visible"
-            variants={fadeUp}
-            transition={{ duration: 0.6 }}
-            className={`space-y-2 md:space-y-3 order-2 md:order-2 ${isCentered ? "text-center md:text-left" : ""}`}
+          </HeroFlyIn>
+
+          <HeroFlyIn
+            side={illustrationOnRight ? "left" : "right"}
+            delay={0.08}
+            className={cn(
+              "space-y-2 md:space-y-3",
+              "order-2",
+              illustrationOnRight ? "md:order-1" : "md:order-2",
+              isCentered && "text-center md:text-left"
+            )}
           >
             {eyebrow && (
               <Typography variant="eyebrow" className={isCentered ? "mx-auto md:mx-0" : ""}>
@@ -70,10 +97,10 @@ export function PageHero({ eyebrow, title, description, className, illustration,
                 {buttons}
               </div>
             )}
-          </motion.div>
+          </HeroFlyIn>
         </div>
       ) : (
-        <div className={`space-y-2 md:space-y-3 w-full ${isCentered ? "text-center" : ""}`}>
+        <HeroFlyIn side="left" className={`space-y-2 md:space-y-3 w-full ${isCentered ? "text-center" : ""}`}>
           {eyebrow && (
             <Typography variant="eyebrow" className={isCentered ? "mx-auto" : ""}>
               {eyebrow}
@@ -98,9 +125,8 @@ export function PageHero({ eyebrow, title, description, className, illustration,
               {buttons}
             </div>
           )}
-        </div>
+        </HeroFlyIn>
       )}
     </section>
   )
 }
-

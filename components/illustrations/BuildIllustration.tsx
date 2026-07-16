@@ -10,6 +10,7 @@ interface BuildIllustrationProps {
 // Mobile apps showcase: stacked screens with interactive dataset toggle
 export function BuildIllustration({ className }: BuildIllustrationProps) {
   const primaryColor = "hsl(var(--primary))"
+  const oliveColor = "hsl(var(--olive-700))"
   const bgColor = "hsl(var(--background))"
 
   const datasets = {
@@ -142,8 +143,8 @@ export function BuildIllustration({ className }: BuildIllustrationProps) {
             width="12"
             height={h * 30}
             rx="3"
-            fill={primaryColor}
-            fillOpacity="0.45"
+            fill={oliveColor}
+            fillOpacity="0.5"
             style={{ transformOrigin: `${134 + idx * 20}px 110px` }}
             animate={{ scaleY: [0.82, 1, 0.9] }}
             transition={{ duration: 2.4, repeat: Infinity, delay: idx * 0.12, ease: "easeInOut" }}
@@ -229,8 +230,8 @@ export function BuildIllustration({ className }: BuildIllustrationProps) {
             width="10"
             height={h * 30}
             rx="3"
-            fill={primaryColor}
-            fillOpacity="0.4"
+            fill={oliveColor}
+            fillOpacity="0.5"
             style={{ transformOrigin: `${193 + idx * 18}px 150px` }}
             animate={{ scaleY: [0.85, 1, 0.92] }}
             transition={{ duration: 2, repeat: Infinity, delay: idx * 0.1, ease: "easeInOut" }}

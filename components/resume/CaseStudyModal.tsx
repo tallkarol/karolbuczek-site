@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Code2 } from "lucide-react"
+import { X, Code2, ChevronLeft, ChevronRight } from "lucide-react"
 import {
   SiReact,
   SiPostgresql,
@@ -72,10 +72,15 @@ function TechStackLine({ items }: { items: string[] }) {
 }
 
 export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalProps) {
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+  // All images for the case study, in display order: cover first, then additional shots
+  const galleryImages = caseStudy
+    ? [caseStudy.image || PLACEHOLDER_IMAGE, ...(caseStudy.additionalImages ?? [])]
+    : []
 
   useEffect(() => {
-    if (!isOpen) setLightboxImage(null)
+    if (!isOpen) setLightboxIndex(null)
   }, [isOpen])
 
   useEffect(() => {
@@ -90,41 +95,87 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
   }, [isOpen])
 
   useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
+    const handleKeydown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (lightboxImage) setLightboxImage(null)
+        if (lightboxIndex !== null) setLightboxIndex(null)
         else onClose()
+        return
+      }
+      if (lightboxIndex === null || galleryImages.length < 2) return
+      if (e.key === "ArrowRight") {
+        e.preventDefault()
+        setLightboxIndex((prev) => (prev === null ? prev : (prev + 1) % galleryImages.length))
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault()
+        setLightboxIndex((prev) =>
+          prev === null ? prev : (prev - 1 + galleryImages.length) % galleryImages.length
+        )
       }
     }
     if (isOpen) {
-      window.addEventListener("keydown", handleEscape)
+      window.addEventListener("keydown", handleKeydown)
     }
     return () => {
-      window.removeEventListener("keydown", handleEscape)
+      window.removeEventListener("keydown", handleKeydown)
     }
-  }, [isOpen, onClose, lightboxImage])
+  }, [isOpen, onClose, lightboxIndex, galleryImages.length])
 
   return (
     <>
       {/* Image lightbox */}
       <AnimatePresence>
-        {lightboxImage && (
+        {lightboxIndex !== null && galleryImages[lightboxIndex] && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-background/95 backdrop-blur-sm"
-            onClick={() => setLightboxImage(null)}
+            onClick={() => setLightboxIndex(null)}
           >
             <button
-              onClick={() => setLightboxImage(null)}
+              onClick={() => setLightboxIndex(null)}
               className="absolute top-4 right-4 p-2 rounded-lg hover:bg-muted transition-colors z-10"
               aria-label="Close"
             >
               <X className="h-6 w-6 text-muted-foreground" />
             </button>
+
+            {galleryImages.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setLightboxIndex((prev) =>
+                      prev === null ? prev : (prev - 1 + galleryImages.length) % galleryImages.length
+                    )
+                  }}
+                  className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-10 border border-border/60 bg-card/90 p-2.5 shadow-lg backdrop-blur-sm transition-colors hover:bg-muted"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-6 w-6 text-foreground" />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setLightboxIndex((prev) =>
+                      prev === null ? prev : (prev + 1) % galleryImages.length
+                    )
+                  }}
+                  className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-10 border border-border/60 bg-card/90 p-2.5 shadow-lg backdrop-blur-sm transition-colors hover:bg-muted"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-6 w-6 text-foreground" />
+                </button>
+
+                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 rounded-full border border-border/60 bg-card/90 px-3 py-1 font-ui text-xs font-semibold text-muted-foreground shadow-lg backdrop-blur-sm">
+                  {lightboxIndex + 1} / {galleryImages.length}
+                </div>
+              </>
+            )}
+
             <motion.div
+              key={lightboxIndex}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -133,7 +184,7 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={lightboxImage}
+                src={galleryImages[lightboxIndex]}
                 alt="Enlarged view"
                 fill
                 className="object-contain rounded-lg"
@@ -183,7 +234,7 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
                 <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-6">
                   <button
                     type="button"
-                    onClick={() => setLightboxImage(caseStudy.image || PLACEHOLDER_IMAGE)}
+                    onClick={() => setLightboxIndex(0)}
                     className="relative aspect-video md:aspect-[21/9] w-full md:w-2/5 rounded-lg overflow-hidden bg-muted/30 flex-shrink-0 cursor-zoom-in hover:opacity-95 transition-opacity"
                   >
                     <Image
@@ -338,7 +389,7 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
                       <button
                         key={i}
                         type="button"
-                        onClick={() => setLightboxImage(src)}
+                        onClick={() => setLightboxIndex(i + 1)}
                         className="relative aspect-video rounded-lg overflow-hidden bg-muted/30 cursor-zoom-in hover:opacity-95 transition-opacity"
                       >
                         <Image

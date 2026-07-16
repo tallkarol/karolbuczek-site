@@ -151,10 +151,11 @@ export function CaseStudyGrid({
   const skeletonCount = carousel ? 3 : limit ? Math.min(limit, 3) : allCaseStudies.length
 
   const header = (
-    <div className="space-y-2 mb-8">
+    <div className="space-y-3 mb-8">
       <Typography variant="h2" as="h2">
         Portfolio
       </Typography>
+      <div aria-hidden className="tk-accent-rule" />
       <Typography variant="body" className="text-muted-foreground">
         Real-world constraints, practical architecture, measurable outcomes.
       </Typography>
@@ -187,7 +188,7 @@ export function CaseStudyGrid({
               onClick={goPrev}
               disabled={!canLoop}
               aria-label="Previous portfolio items"
-              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border/50 bg-background text-foreground transition-colors hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-30"
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center border border-border/50 bg-background text-foreground transition-colors hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-30"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -224,7 +225,7 @@ export function CaseStudyGrid({
               onClick={goNext}
               disabled={!canLoop}
               aria-label="Next portfolio items"
-              className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-border/50 bg-background text-foreground transition-colors hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-30"
+              className="flex h-10 w-10 flex-shrink-0 items-center justify-center border border-border/50 bg-background text-foreground transition-colors hover:border-primary hover:text-primary disabled:pointer-events-none disabled:opacity-30"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
@@ -245,7 +246,7 @@ export function CaseStudyGrid({
 
         {showViewAllButton && (
           <div className="flex justify-start pt-4">
-            <Button asChild variant="outline" className="rounded-full">
+            <Button asChild variant="outline">
               <Link href="/portfolio">See full portfolio</Link>
             </Button>
           </div>

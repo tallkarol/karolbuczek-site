@@ -273,7 +273,7 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
         const isSvg = engagement.logo?.endsWith(".svg")
         return (
           <div key={`${engagement.client}-${engagement.period}`} className="relative space-y-2.5">
-            <div className="absolute -left-[21px] top-3 h-2 w-2 rounded-full border-2 border-background bg-primary/40" />
+            <div className="absolute -left-[21px] top-3 h-2 w-2 rounded-full border-2 border-background bg-olive-700" />
             <div className="flex items-start gap-3">
               <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-md border border-border/50 bg-muted/25 p-1.5">
                 {engagement.logo ? (
@@ -340,16 +340,16 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
     return (
       <div
         key={index}
-        className={`relative pl-6 border-l-2 pb-8 last:pb-0 last:border-l-0 ${
+        className={`relative border-l-2 pb-8 pl-6 last:border-l-0 last:pb-0 ${
           roleFilter && roleFilter !== "all" && isRelevant
-            ? "border-primary/50"
-            : "border-border/50"
+            ? "border-olive-700/60"
+            : "border-navy-700/20 dark:border-chiffon/15"
         }`}
       >
         <div className={`absolute -left-[7px] top-0 h-3 w-3 rounded-full border-2 border-background ${
           roleFilter && roleFilter !== "all" && isRelevant
-            ? "bg-primary"
-            : "bg-primary/50"
+            ? "bg-olive-700"
+            : "bg-olive-700/70"
         }`} />
 
         <div className="space-y-3">
@@ -366,7 +366,7 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
               </div>
             )}
             <div className="flex-1 min-w-0">
-              <Typography variant="body-sm" className="text-xs text-muted-foreground font-medium">
+              <Typography variant="body-sm" className="text-xs font-semibold uppercase tracking-[0.12em] text-olive-700">
                 {item.period}
               </Typography>
               {item.officialTitle && (

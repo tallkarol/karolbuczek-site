@@ -58,31 +58,16 @@ export default function NotFound() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-wrap items-center justify-center gap-3 pt-2"
         >
-          <Button
-            asChild
-            className="rounded-full px-6 py-2 text-sm font-semibold font-ui"
-          >
+          <Button asChild>
             <Link href="/">Go Home</Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
-          >
+          <Button asChild variant="outline">
             <Link href="/portfolio">Portfolio</Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
-          >
+          <Button asChild variant="outline">
             <Link href="/resume">Resume</Link>
           </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
-          >
+          <Button asChild variant="outline">
             <Link href="/contact">Get In Touch</Link>
           </Button>
         </motion.div>

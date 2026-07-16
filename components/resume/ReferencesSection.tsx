@@ -32,10 +32,10 @@ const references = [
 
 export function ReferencesSection() {
   return (
-    <Card id="references" className="border-border/50 hover:border-primary/30 transition-colors scroll-mt-20">
-      <CardHeader className="pb-4 border-b border-border/30">
-        <CardTitle className="text-lg font-display flex items-center gap-2">
-          <span className="h-1 w-1 rounded-full bg-primary" />
+    <Card id="references" className="scroll-mt-20 border-navy-700/10 bg-navy-900 text-chiffon transition-colors dark:border-chiffon/10">
+      <CardHeader className="border-b border-chiffon/10 pb-4">
+        <CardTitle className="flex items-center gap-2 font-display text-lg text-chiffon">
+          <span className="h-1.5 w-1.5 rounded-full bg-olive-700" />
           References
         </CardTitle>
       </CardHeader>
@@ -44,25 +44,25 @@ export function ReferencesSection() {
           {references.map((ref, index) => (
             <div key={index} className="space-y-5">
               <blockquote className="relative pl-6">
-                <div className="absolute left-0 top-0 h-full w-0.5 bg-primary/40" />
-                <Typography variant="body-sm" className="text-muted-foreground text-xs italic leading-relaxed">
+                <div className="absolute left-0 top-0 h-full w-0.5 bg-olive-700" />
+                <Typography variant="body-sm" className="text-xs italic leading-relaxed text-chiffon/75">
                   &ldquo;{ref.quote}&rdquo;
                 </Typography>
               </blockquote>
               <div className="pl-6">
                 <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 h-10 w-10 rounded border border-border/50 bg-muted/30 flex items-center justify-center mt-0.5">
-                    <Building2 className="h-5 w-5 text-muted-foreground" />
+                  <div className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded border border-chiffon/15 bg-navy-800">
+                    <Building2 className="h-5 w-5 text-chiffon/70" />
                   </div>
-                  <div className="flex-1 min-w-0 space-y-1.5">
-                    <Typography variant="body-sm" className="font-semibold text-foreground text-xs">
+                  <div className="min-w-0 flex-1 space-y-1.5">
+                    <Typography variant="body-sm" className="text-xs font-semibold text-chiffon">
                       {ref.author}
                     </Typography>
-                    <Typography variant="body-sm" className="text-muted-foreground text-xs">
+                    <Typography variant="body-sm" className="text-xs text-chiffon/70">
                       {ref.role}
                     </Typography>
                     {"relationship" in ref && ref.relationship && (
-                      <Typography variant="body-sm" className="text-muted-foreground/70 text-xs italic">
+                      <Typography variant="body-sm" className="text-xs italic text-chiffon/65">
                         {ref.relationship}
                       </Typography>
                     )}

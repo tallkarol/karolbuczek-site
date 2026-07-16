@@ -67,7 +67,7 @@ export function SkillsMap() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative p-6 border border-border/50 rounded-lg bg-card hover:shadow-lg transition-all hover:border-primary/30 overflow-hidden"
+              className="group relative overflow-hidden rounded-lg border border-border/60 bg-background p-6 shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
             >
               {/* Subtle accent */}
               <div className="absolute top-0 left-0 h-1 w-0 bg-primary group-hover:w-full transition-all duration-300" />

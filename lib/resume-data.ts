@@ -122,8 +122,8 @@ export const allCaseStudies: CaseStudy[] = [
     techStack: ["WordPress (headless CMS)", "React", "Next.js", "TypeScript", "Vercel", "WordPress REST API", "Custom form workflows", "CRM integration"],
     skillsApplied: ["Full-Stack Development", "WordPress Engineering", "Headless CMS Architecture", "Performance Optimization", "Lead Capture & Qualification", "CRM Integration", "Requirements Analysis", "Solution Architecture"],
     businessImpact: [
-      "Mobile Lighthouse performance score 67 → 94 (mycustommanufacturer.com → mineralife-frontend.vercel.app, Jul 2026 audit).",
-      "Time to interactive 14.6s → 3.1s on mobile.",
+      "Mobile Lighthouse performance 67 → 94, with Accessibility, Best Practices, and SEO all at 100.",
+      "Time to interactive 14.6s → 3.1s; page weight cut from ~13.3 MB to ~535 KB.",
       "Network requests on initial load reduced from 109 → 51.",
       "Rebuilt lead capture with qualifying and scheduling flows routing into a custom sales CRM built to staff specifications.",
     ],

@@ -137,7 +137,7 @@ export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter
                           {sharedContent}
                         </button>
                       ) : (
-                        <Link key={cs.slug} href={`/case-studies?cs=${cs.slug}`} className={sharedClass}>
+                        <Link key={cs.slug} href={`/portfolio?cs=${cs.slug}`} className={sharedClass}>
                           {sharedContent}
                         </Link>
                       )
@@ -149,7 +149,7 @@ export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter
                     return (
                       <Link
                         key={index}
-                        href={`/case-studies#${system.toLowerCase().replace(/\s+/g, "-")}`}
+                        href={`/portfolio#${system.toLowerCase().replace(/\s+/g, "-")}`}
                         className={`group flex items-center justify-between gap-3 p-3 rounded-lg border transition-all ${
                           roleFilter && roleFilter !== "all" && isRelevant
                             ? "border-primary/50 bg-primary/5 hover:border-primary/70 hover:bg-primary/10"
@@ -166,10 +166,10 @@ export function SystemsList({ isOpen: controlledIsOpen, onOpenChange, roleFilter
                 )}
               </div>
               <Link
-                href="/case-studies"
+                href="/portfolio"
                 className="group flex items-center justify-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
               >
-                View all case studies
+                View full portfolio
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </CardContent>

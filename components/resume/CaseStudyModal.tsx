@@ -17,6 +17,8 @@ import {
 } from "react-icons/si"
 import { Typography } from "@/components/typography"
 import { Card, CardContent } from "@/components/ui/card"
+import { PerformanceImpactCharts } from "@/components/case-studies/PerformanceImpactCharts"
+import { caseStudyPerformanceBySlug } from "@/lib/case-study-performance"
 import type { CaseStudy } from "@/components/sections/CaseStudyCard"
 
 const PLACEHOLDER_IMAGE = "/placeholder-image.png"
@@ -287,6 +289,16 @@ export function CaseStudyModal({ caseStudy, isOpen, onClose }: CaseStudyModalPro
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {/* Impact charts — performance audits or structural before/after */}
+              {caseStudyPerformanceBySlug[caseStudy.slug] && (
+                <div className="mb-6">
+                  <Typography variant="body-sm" as="h3" className="font-semibold mb-4">
+                    {caseStudyPerformanceBySlug[caseStudy.slug].sectionTitle ?? "Impact Snapshot"}
+                  </Typography>
+                  <PerformanceImpactCharts data={caseStudyPerformanceBySlug[caseStudy.slug]} />
                 </div>
               )}
 

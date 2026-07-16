@@ -151,23 +151,50 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
     const title = item.officialTitle || ""
     if (title.includes("Tall Karol")) {
       return {
-        relatedCaseStudies: [
-          { slug: "mineralife-b2b-website-rebuild", title: "Mineralife B2B Website Rebuild" },
-          { slug: "secure-document-management-portal", title: "Bliss Secure File Share" },
-          { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform" },
-          { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API" },
-          { slug: "local-ai-meeting-intelligence", title: "Local AI Meeting Intelligence" },
-          { slug: "martech-extension-architecture", title: "MarTech Extension Architecture" },
+        clientHub: true,
+        stats: [
+          { label: "Active / project clients", value: "4" },
+          { label: "Focus", value: "Build + integrate" },
+          { label: "Delivery model", value: "End-to-end" },
+        ],
+        techStack: [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "WordPress",
+          "AWS Lambda",
+          "AWS Cognito",
+          "Amazon S3",
+          "PostgreSQL",
+          "Vercel",
+          "REST APIs",
         ],
       }
     }
     if (title.includes("Universal Windows Direct")) {
       return {
+        stats: [
+          { label: "Systems connected", value: "Multiple" },
+          { label: "VPS migrations", value: "Zero downtime" },
+          { label: "Focus", value: "Integrations" },
+        ],
+        techStack: [
+          "PHP",
+          "JavaScript",
+          "MySQL",
+          "REST APIs",
+          "Five9 API",
+          "Mailchimp API",
+          "Webhook Architecture",
+          "Cron Automation",
+          "Custom Logging Framework",
+          "AWS S3",
+        ],
         relatedCaseStudies: [
           { slug: "uwd-enterprise-integration-api", title: "UWD Enterprise Integration API" },
         ],
         quote: {
-          text: "I've worked with Karol on a wide variety of API and integration projects spanning sales, marketing, and operations. He is highly technical, incredibly quick to learn new workflows, and remarkably dynamic when it comes to evolving project requirements. I highly recommend Karol for any role that requires technical expertise paired with a strong business mindset.",
+          text: "I've worked with Karol on a wide variety of API and integration projects spanning sales, marketing, and operations. He is highly technical, incredibly quick to learn new workflows, and remarkably dynamic when it comes to evolving project requirements. His responsiveness and ability to handle feedback make him a pleasure to collaborate with. I highly recommend Karol for any role that requires technical expertise paired with a strong business mindset.",
           author: "Christopher Jarvis",
           role: "VP of Enterprise Digital Marketing, Great Day Improvements — Direct Manager",
         },
@@ -176,22 +203,39 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
     if (title.includes("Perfect Power Wash")) {
       return {
         stats: [
-          { label: "Conversion rate increase", value: "237%" },
+          { label: "Conversion rate", value: "237%" },
           { label: "CTR improvement", value: "175%" },
+          { label: "Market expansion", value: "1 → 4" },
+        ],
+        techStack: [
+          "PHP",
+          "JavaScript",
+          "SQL",
+          "WordPress",
+          "Google Tag Manager",
+          "Google Analytics 4",
+          "REST APIs",
+          "Data Warehousing",
         ],
         quote: {
-          text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. He never just built a solution, he understood the business case behind it.",
+          text: "He's one of the rare professionals who can bridge the gap between deep technical capability and real business understanding. Whether the work involved internal tools, customer-facing platforms, or data connections between legacy systems, he always approached challenges with clarity, logic, and a calm, solutions-focused mindset.",
           author: "John Kosmides",
-          role: "Vice President of Marketing — Direct Manager",
+          role: "Vice President of Marketing — Perfect Power Wash & Universal Windows Direct — Direct Manager",
         },
       }
     }
     if (title.includes("Freelance") || title.includes("Early Career")) {
       return {
+        highlights: [
+          "Ten years of client-facing full-stack web development and digital infrastructure for SMBs",
+          "Co-founded ventures spanning media, entertainment, and early-stage product work",
+          "Hands-on marketing, design, and IT consulting before moving into systems engineering leadership",
+        ],
+        techStack: ["PHP", "JavaScript", "WordPress", "HTML/CSS", "MySQL"],
         quote: {
-          text: "Karol is a wildly multi-talented man with an absurd amount of expertise in numerous fields. He's an incredible mentor and played a critical role on my path to software development.",
-          author: "Julian Quesada",
-          role: "Software Engineer — Direct Report",
+          text: "His JavaScript skills saved the day several times during the build process. He was a great team player and his optimism and work ethic inspired the whole group.",
+          author: "Todd Zverloff",
+          role: "Associate Technical Consultant, Salesforce — Case Western classmate & project teammate",
         },
       }
     }
@@ -200,16 +244,15 @@ export function WorkExperienceSection({ isOpen: controlledIsOpen, onOpenChange, 
 
   const handleRoleClick = (item: TimelineItem) => {
     const modalData = getRoleModalData(item)
-    const systemsFromEngagements = item.engagements?.flatMap((engagement) =>
-      engagement.bullets.map((bullet) => `${engagement.client}: ${bullet}`)
-    )
     const roleDetails: RoleDetails = {
       period: item.period,
       officialTitle: item.officialTitle || "",
       officialDates: item.officialDates,
       reality: item.reality,
+      logo: item.logo,
       keyProjects: item.keyProjects,
-      systems: item.systems || systemsFromEngagements,
+      engagements: item.engagements,
+      systems: item.engagements?.length ? undefined : item.systems,
       ...modalData,
     }
     setSelectedRole(roleDetails)

@@ -66,7 +66,7 @@ export function HeroIntro() {
         </Typography>
         <div className="flex flex-wrap items-center gap-3">
           <Button asChild className="rounded-full px-6 py-2 text-sm font-semibold font-ui">
-            <a href="#case-studies">View case studies</a>
+            <a href="#portfolio">View portfolio</a>
           </Button>
           <Button
             asChild

@@ -128,7 +128,7 @@ const websiteSchema = {
   url: "https://karolbuczek.com",
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://karolbuczek.com/case-studies?q={search_term_string}",
+    target: "https://karolbuczek.com/portfolio?q={search_term_string}",
     "query-input": "required name=search_term_string",
   },
 }

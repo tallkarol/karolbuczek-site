@@ -78,19 +78,19 @@ export default function ResumeVariantPage() {
           <SystemsList isOpen={projectsOpen} onOpenChange={setProjectsOpen} roleFilter={roleFilter} />
         </div>
 
-        {/* Case Studies */}
+        {/* Portfolio */}
         {caseStudies.length > 0 && (
           <div className="mb-8 print:mb-6">
             <Card className="border-border/50">
               <CardHeader className="pb-0 border-b-0">
                 <CardTitle className="text-lg font-display flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-primary" />
-                  Featured Case Studies
+                  Featured Portfolio
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-6">
                 <Typography variant="body-sm" className="text-muted-foreground mb-4">
-                  Detailed case studies with links to learn more:
+                  Detailed portfolio entries with links to learn more:
                 </Typography>
                 <div className="space-y-3">
                   {caseStudies.map((caseStudy: CaseStudy) => (
@@ -101,7 +101,7 @@ export default function ResumeVariantPage() {
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <Link
-                            href={`/case-studies/${caseStudy.slug}`}
+                            href={`/portfolio?cs=${caseStudy.slug}`}
                             className="group"
                           >
                             <Typography variant="body-sm" className="font-semibold mb-1 group-hover:text-primary transition-colors">
@@ -118,9 +118,9 @@ export default function ResumeVariantPage() {
                           </Link>
                         </div>
                         <Link
-                          href={`/case-studies/${caseStudy.slug}`}
+                          href={`/portfolio?cs=${caseStudy.slug}`}
                           className="flex-shrink-0 text-muted-foreground hover:text-primary transition-colors"
-                          aria-label={`View ${caseStudy.title} case study`}
+                          aria-label={`View ${caseStudy.title} portfolio entry`}
                         >
                           <ExternalLink className="h-4 w-4" />
                         </Link>

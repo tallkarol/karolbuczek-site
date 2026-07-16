@@ -134,7 +134,7 @@ export function CaseStudyCard({ caseStudy, index, onClick, imageSize = "default"
             </span>
           ) : (
             <Button asChild variant="outline" size="sm" className="w-full rounded-full border-2 border-border/50 font-ui hover:border-primary hover:bg-primary/5 transition-colors">
-              <Link href={`/case-studies/${caseStudy.slug}`}>
+              <Link href={`/portfolio?cs=${caseStudy.slug}`}>
                 View case study
                 <ArrowRight className="ml-2 h-3.5 w-3.5" />
               </Link>

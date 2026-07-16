@@ -191,7 +191,7 @@ export function RoleSection({ role, isVisible }: RoleSectionProps) {
           <div className="flex items-center gap-2">
             <div className="h-1 w-1 rounded-full bg-primary" />
             <Typography variant="h3" as="h3" className="text-lg font-display font-semibold">
-              Related Case Studies
+              Related Portfolio
             </Typography>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

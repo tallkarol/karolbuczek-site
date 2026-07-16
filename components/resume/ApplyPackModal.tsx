@@ -349,15 +349,15 @@ export function ApplyPackModal({ roleId, isOpen, onClose }: ApplyPackModalProps)
                 </AnimatePresence>
               </div>
 
-              {/* Case Studies */}
+              {/* Portfolio */}
               {caseStudies.length > 0 && (
                 <div className="mb-8">
                   <Typography variant="body-sm" className="font-semibold mb-4 text-foreground">
-                    Featured Case Studies
+                    Featured Portfolio
                   </Typography>
                   <div className="space-y-2">
                     {caseStudies.map((caseStudy: CaseStudy) => {
-                      const caseStudyUrl = `/case-studies/${caseStudy.slug}`
+                      const caseStudyUrl = `/portfolio?cs=${caseStudy.slug}`
                       const fullCaseStudyUrl = typeof window !== "undefined" 
                         ? `${window.location.origin}${caseStudyUrl}`
                         : caseStudyUrl

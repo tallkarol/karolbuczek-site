@@ -69,7 +69,7 @@ export default function NotFound() {
             variant="outline"
             className="rounded-full border-border/50 px-6 py-2 text-sm font-ui hover:border-foreground/20"
           >
-            <Link href="/case-studies">Case Studies</Link>
+            <Link href="/portfolio">Portfolio</Link>
           </Button>
           <Button
             asChild

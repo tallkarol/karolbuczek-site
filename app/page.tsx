@@ -1,46 +1,44 @@
 import { Suspense } from "react"
 import { Section } from "@/components/Section"
 import { HeroIntro } from "@/components/sections/HeroIntro"
+import { BrandTrustBar } from "@/components/sections/BrandTrustBar"
 import { FeaturedQuote } from "@/components/sections/FeaturedQuote"
 import { SkillsMap } from "@/components/sections/SkillsMap"
-import { ResumeSummary } from "@/components/sections/ResumeSummary"
 import { CaseStudyGrid } from "@/components/sections/CaseStudyGrid"
 import { CTASection } from "@/components/sections/CTASection"
 
 export default function HomePage() {
   return (
     <>
-      <Section className="py-4 md:py-6">
+      <Section className="pt-4 pb-0 md:pt-6 lg:pt-6 lg:pb-0">
         <HeroIntro />
       </Section>
+
+      <BrandTrustBar />
 
       <Section>
         <FeaturedQuote />
       </Section>
 
-      <Section>
-        <SkillsMap />
-      </Section>
+      <section className="w-full bg-muted">
+        <div className="mx-auto max-w-7xl px-6 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <SkillsMap />
+        </div>
+      </section>
 
-      <Section>
-        <ResumeSummary />
-      </Section>
-
-      <Section id="case-studies">
+      <Section id="portfolio">
         <Suspense fallback={
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="h-[200px] animate-pulse bg-muted/50 rounded-lg" />
-            ))}
-          </div>
+          <div className="h-[420px] animate-pulse rounded-lg bg-muted/50" />
         }>
-          <CaseStudyGrid limit={3} showViewAllButton />
+          <CaseStudyGrid carousel showViewAllButton />
         </Suspense>
       </Section>
 
-      <Section>
-        <CTASection />
-      </Section>
+      <section className="w-full bg-primary pb-0 text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-6 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <CTASection fullWidth />
+        </div>
+      </section>
     </>
   )
 }

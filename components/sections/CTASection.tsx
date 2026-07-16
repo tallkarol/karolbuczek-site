@@ -9,20 +9,89 @@ import { Mail, Linkedin, Download } from "lucide-react"
 interface CTASectionProps {
   heading?: string
   description?: string
+  fullWidth?: boolean
 }
 
 export function CTASection({
   heading = "Open to full-time integration, implementation, and solutions architect roles.",
-  description = "Also open to select consulting engagements — discovery, scoping, or system design. If you're hiring, reach out.",
+  description = "Also open to select consulting engagements. If you're hiring, reach out.",
+  fullWidth = false,
 }: CTASectionProps) {
+  if (fullWidth) {
+    return (
+      <div className="flex flex-col items-center gap-8 md:flex-row md:items-center md:gap-10 lg:gap-12">
+        <div className="flex-shrink-0">
+          <div className="relative h-16 w-20 sm:h-20 sm:w-24">
+            <Image
+              src="/logo.png"
+              alt="Karol Buczek"
+              fill
+              className="object-contain brightness-0 invert"
+            />
+          </div>
+        </div>
+
+        <div className="flex min-w-0 flex-1 flex-col justify-center gap-5 text-center md:text-left">
+          <div className="space-y-2">
+            <Typography variant="h2" as="h2" className="text-2xl text-primary-foreground md:text-3xl">
+              {heading}
+            </Typography>
+            <Typography variant="body" className="text-primary-foreground/80">
+              {description}
+            </Typography>
+          </div>
+
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap md:justify-start">
+            <Button
+              asChild
+              className="rounded-full bg-primary-foreground px-6 py-2 text-sm font-semibold font-ui text-primary hover:bg-primary-foreground/90"
+            >
+              <Link href="/contact">
+                <Mail className="mr-2 h-4 w-4" />
+                Get in touch
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="rounded-full border-primary-foreground/35 bg-transparent px-6 py-2 text-sm font-ui text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            >
+              <a
+                href="/resume-karol-buczek.pdf"
+                download="resume-karol-buczek.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download Resume
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="rounded-full border-primary-foreground/35 bg-transparent px-6 py-2 text-sm font-ui text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+            >
+              <a
+                href="https://www.linkedin.com/in/karolbuczek/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="mr-2 h-4 w-4" />
+                LinkedIn
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="relative rounded-lg border border-border/50 bg-muted/30 p-8 md:p-12 text-center space-y-6 overflow-hidden">
-      {/* Subtle accent */}
-      <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
-      
-      {/* Logo */}
+    <div className="relative space-y-6 overflow-hidden rounded-lg border border-border/50 bg-muted/30 p-8 text-center md:p-12">
+      <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
+
       <div className="flex justify-center">
-        <div className="relative h-[175px] w-[210px] md:h-[250px] md:w-[300px] flex-shrink-0">
+        <div className="relative h-[175px] w-[210px] flex-shrink-0 md:h-[250px] md:w-[300px]">
           <Image
             src="/logo.png"
             alt="Karol Buczek"
@@ -31,19 +100,28 @@ export function CTASection({
           />
         </div>
       </div>
-      
+
       <div className="space-y-2">
-        <Typography variant="h2" as="h2" className="text-2xl md:text-3xl">{heading}</Typography>
-        <Typography variant="body" className="text-muted-foreground">{description}</Typography>
+        <Typography variant="h2" as="h2" className="text-2xl md:text-3xl">
+          {heading}
+        </Typography>
+        <Typography variant="body" className="text-muted-foreground">
+          {description}
+        </Typography>
       </div>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+
+      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
         <Button asChild className="rounded-full px-6 py-2 text-sm font-semibold font-ui">
           <Link href="/contact">
             <Mail className="mr-2 h-4 w-4" />
             Get in touch
           </Link>
         </Button>
-        <Button asChild variant="outline" className="rounded-full px-6 py-2 text-sm font-ui border-border/50 hover:border-primary transition-colors">
+        <Button
+          asChild
+          variant="outline"
+          className="rounded-full border-border/50 px-6 py-2 text-sm font-ui transition-colors hover:border-primary"
+        >
           <a
             href="/resume-karol-buczek.pdf"
             download="resume-karol-buczek.pdf"
@@ -54,7 +132,11 @@ export function CTASection({
             Download Resume
           </a>
         </Button>
-        <Button asChild variant="outline" className="rounded-full px-6 py-2 text-sm font-ui border-border/50 hover:border-primary transition-colors">
+        <Button
+          asChild
+          variant="outline"
+          className="rounded-full border-border/50 px-6 py-2 text-sm font-ui transition-colors hover:border-primary"
+        >
           <a
             href="https://www.linkedin.com/in/karolbuczek/"
             target="_blank"
@@ -68,4 +150,3 @@ export function CTASection({
     </div>
   )
 }
-

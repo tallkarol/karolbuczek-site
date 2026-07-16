@@ -4,6 +4,26 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/case-studies",
+        destination: "/portfolio",
+        permanent: true,
+      },
+      {
+        source: "/case-studies/:path*",
+        destination: "/portfolio/:path*",
+        permanent: true,
+      },
+      {
+        source: "/portfolio/overview",
+        destination: "/portfolio",
+        permanent: true,
+      },
+      {
+        source: "/case-studies/overview",
+        destination: "/portfolio",
+        permanent: true,
+      },
+      {
         source: "/one-sheets",
         destination: "/resume/one-sheet",
         permanent: true,

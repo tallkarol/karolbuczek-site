@@ -51,8 +51,8 @@ export function Header() {
               Resume
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
             </Link>
-            <Link href="/case-studies" className="hover:text-primary transition-colors uppercase tracking-[0.05em] relative group">
-              Case Studies
+            <Link href="/portfolio" className="hover:text-primary transition-colors uppercase tracking-[0.05em] relative group">
+              Portfolio
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
             </Link>
             <Link href="/contact" className="hover:text-primary transition-colors uppercase tracking-[0.05em] relative group">
@@ -140,11 +140,11 @@ export function Header() {
                 Resume
               </Link>
               <Link
-                href="/case-studies"
+                href="/portfolio"
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-lg font-medium hover:text-primary transition-colors"
               >
-                Case Studies
+                Portfolio
               </Link>
               <Link
                 href="/contact"

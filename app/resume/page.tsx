@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { Section } from "@/components/Section"
 import { PageHero } from "@/components/sections/PageHero"
+import { CTASection } from "@/components/sections/CTASection"
 import { ResumeIllustration } from "@/components/illustrations"
 import { EducationSection } from "@/components/resume/EducationSection"
 import { CertificationsSection } from "@/components/resume/CertificationsSection"
@@ -17,7 +17,7 @@ import { allCaseStudies } from "@/lib/resume-data"
 import type { CaseStudy } from "@/components/sections/CaseStudyCard"
 import { Button } from "@/components/ui/button"
 import { Typography } from "@/components/typography"
-import { Download, Mail, Linkedin } from "lucide-react"
+import { Download } from "lucide-react"
 
 const featuredCaseStudies = [
   { slug: "unified-customer-lifecycle-platform", title: "MHAT Platform", subtitle: "Customer Data Portal & Lifecycle Automation", logo: "/zemvelo-logo.png" },
@@ -86,7 +86,7 @@ export default function ResumePage() {
           eyebrow="Resume"
           title={
             <Typography variant="h1" as="h1">
-              Full-Stack Engineer ·
+              Full-Stack Engineer /
               <br />
               Solutions Architect
             </Typography>
@@ -180,51 +180,18 @@ export default function ResumePage() {
             <ReferencesSection />
           </div>
 
-          {/* CTA Section */}
-          <div className="relative rounded-lg border border-border/50 bg-muted/30 p-8 md:p-12 text-center space-y-6 overflow-hidden mt-12">
-            {/* Subtle accent */}
-            <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
-            
-            <div className="space-y-2">
-              <Typography variant="h2" as="h2" className="text-2xl md:text-3xl">
-                Looking for a full-time integration or implementation role.
-              </Typography>
-              <Typography variant="body" className="text-muted-foreground">
-                Open to select consulting engagements as well — discovery, scoping, or system design. Feel free to reach out.
-              </Typography>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button asChild className="rounded-full px-6 py-2 text-sm font-semibold font-ui">
-                <Link href="/contact">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Get in touch
-                </Link>
-              </Button>
-              <Button asChild variant="outline" className="rounded-full px-6 py-2 text-sm font-ui border-border/50 hover:border-primary transition-colors">
-                <a
-                  href="/resume-karol-buczek.pdf"
-                  download="resume-karol-buczek.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download PDF
-                </a>
-              </Button>
-              <Button asChild variant="outline" className="rounded-full px-6 py-2 text-sm font-ui border-border/50 hover:border-primary transition-colors">
-                <a
-                  href="https://www.linkedin.com/in/karolbuczek/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin className="mr-2 h-4 w-4" />
-                  LinkedIn
-                </a>
-              </Button>
-            </div>
-          </div>
         </div>
       </Section>
+
+      <section className="w-full bg-primary pb-0 text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-6 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <CTASection
+            fullWidth
+            heading="Looking for a full-time integration or implementation role."
+            description="Open to select consulting engagements as well — discovery, scoping, or system design. Feel free to reach out."
+          />
+        </div>
+      </section>
 
       <CaseStudyModal
         caseStudy={selectedCaseStudy}

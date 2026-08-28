@@ -149,6 +149,14 @@ export default function RootLayout({
               "try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('js-reveal')}}catch(e){}",
           }}
         />
+        {/* Capture first-touch UTMs before in-app navigation; queue events until tk-collect.js loads. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{!function(){var P=new URLSearchParams(location.search),K=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','gbraid','wbraid','msclkid','fbclid','li_fat_id'],t={landing_page:location.pathname+location.search,referrer:document.referrer||'',at:Date.now()},h=0;K.forEach(function(k){var v=P.get(k);if(v){t[k]=v.slice(0,200);h=1}});var c=localStorage.getItem('tk_cid');if(!c||c.indexOf('.')<0)localStorage.setItem('tk_cid',Math.floor(1e9+Math.random()*9e9)+'.'+Math.floor(Date.now()/1e3));var f=localStorage.getItem('tk_first'),o=f&&JSON.parse(f);if(!o||!o.at||Date.now()-o.at>7776e6)localStorage.setItem('tk_first',JSON.stringify(t));else if(h&&!o.utm_source&&!o.gclid)localStorage.setItem('tk_first',JSON.stringify(t));if(h||!sessionStorage.getItem('tk_last'))sessionStorage.setItem('tk_last',JSON.stringify(t));window.tk=window.tk||{q:[],track:function(n,p){this.q.push([n,p])}}}()}catch(e){}",
+          }}
+        />
+        <script src="/tk-collect.js" defer />
         <StructuredData data={personSchema} />
         <StructuredData data={professionalServiceSchema} />
         <StructuredData data={websiteSchema} />

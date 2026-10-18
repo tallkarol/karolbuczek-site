@@ -60,16 +60,17 @@
    The hero is the SAME size with and without .is-scrubbing (100svh / min 720px on desktop, 1050px on phones — see the
    base .hero rules above), so enabling the scrub after hydration adds only the off-screen runway and never shifts
    anything that is in the first viewport (CLS 0). Keep the two sets of heights in step. */
-/* --scrub-end: the video second at which the hero unpins and the page starts to scroll (he is nearly out of frame
-   there); the runway length sets how much scroll that takes. The rest of the clip keeps playing while the hero
-   scrolls out of view. Tune per breakpoint here, the Hero reads it. */
-.character-site .hero-scroll.is-scrubbing{--scrub-end:2.1;position:relative;height:calc(max(720px,100svh) + 36vh)}
+/* --scrub-end: the video second the walk reaches by the end of the pinned runway; --scrub-hold: the last fraction
+   of the runway on which that final frame holds before the hero unpins (a flick on a phone carries far, so phones
+   get a long runway and a hold). The rest of the clip keeps playing while the hero scrolls out of view. Tune per
+   breakpoint here, the Hero reads both. */
+.character-site .hero-scroll.is-scrubbing{--scrub-end:2.1;--scrub-hold:0;position:relative;height:calc(max(720px,100svh) + 36vh)}
 .character-site .hero-scroll.is-scrubbing .hero{position:sticky;top:0;height:100svh;min-height:720px}
 .character-site .hero-video{position:absolute;top:0;left:0;width:1px;height:1px;object-fit:cover;object-position:center;z-index:-1;opacity:0;pointer-events:none}/* 1×1 and transparent until ready AND scrubbed: Chrome records a video's first frame as an LCP candidate even at opacity 0 or visibility hidden, but a 1 px² paint can never be the largest; and the element must stay in the render tree, inside the viewport, or headed Chrome and Safari never load it (display:none killed the effect) */
 .character-site .hero-video.is-ready{width:100%;height:100%;opacity:1}
 .character-site .hero-canvas{display:block}/* phones: the frame scrubber; it shares the .hero-video box rules and draws its own cover-fit */
 @media(max-width:700px){
- .character-site .hero-scroll.is-scrubbing{--scrub-end:2.6;height:calc(max(640px,100svh) + 42svh)}
+ .character-site .hero-scroll.is-scrubbing{--scrub-end:2.6;--scrub-hold:.15;height:calc(max(640px,100svh) + 80svh)}
  .character-site .hero-scroll.is-scrubbing .hero{height:100svh;min-height:640px;top:min(0px,calc(100svh - 640px))}
  .character-site .hero-video{object-position:62% 38%;z-index:-2}
  .character-site .hero-video.is-ready{height:70%}

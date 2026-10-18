@@ -87,8 +87,13 @@ export function Hero() {
     // instead of following every raw touch delta, and the picture settles with a little weight after a flick.
     let shown = 0
     let follower = 0
-    let scrubEnd = parseFloat(getComputedStyle(container).getPropertyValue('--scrub-end'))
-    const readScrubEnd = () => { scrubEnd = parseFloat(getComputedStyle(container).getPropertyValue('--scrub-end')) }
+    let scrubEnd = 0, scrubHold = 0
+    const readScrubEnd = () => {
+      const cs = getComputedStyle(container)
+      scrubEnd = parseFloat(cs.getPropertyValue('--scrub-end'))
+      scrubHold = Math.max(0, Math.min(0.9, parseFloat(cs.getPropertyValue('--scrub-hold')) || 0))
+    }
+    readScrubEnd()
     // Canvas path: draw the latest loaded frame at or before `shown`, cover-fit at the poster's focal point.
     const draw = () => {
       if (!cv) return
@@ -131,7 +136,8 @@ export function Hero() {
       const heroEl = container.firstElementChild as HTMLElement
       const range = container.offsetHeight - heroEl.offsetHeight
       const y = -container.getBoundingClientRect().top
-      const progress = Math.max(0, Math.min(1, y / Math.max(1, range)))
+      // The walk completes at (1 - hold) of the runway; the rest of the runway holds the final frame.
+      const progress = Math.max(0, Math.min(1, y / Math.max(1, range * (1 - scrubHold))))
       if (progress > 0) setScrubbed(true)
       // Pinned: the runway maps onto 0 … --scrub-end seconds (set per breakpoint in character.css), so the page
       // starts scrolling while he is still leaving the frame. Unpinned: the rest of the clip keeps playing as the

@@ -69,7 +69,7 @@
 .character-site .hero-video.is-ready{width:100%;height:100%;opacity:1}
 .character-site .hero-canvas{display:block}/* phones: the frame scrubber; it shares the .hero-video box rules and draws its own cover-fit */
 @media(max-width:700px){
- .character-site .hero-scroll.is-scrubbing{--scrub-end:2.1;height:calc(max(640px,100svh) + 34svh)}
+ .character-site .hero-scroll.is-scrubbing{--scrub-end:2.6;height:calc(max(640px,100svh) + 42svh)}
  .character-site .hero-scroll.is-scrubbing .hero{height:100svh;min-height:640px;top:min(0px,calc(100svh - 640px))}
  .character-site .hero-video{object-position:62% 38%;z-index:-2}
  .character-site .hero-video.is-ready{height:70%}

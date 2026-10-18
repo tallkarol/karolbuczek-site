@@ -10,13 +10,13 @@ import { useCharacterMotion } from "./CharacterShell"
 /** Phones scrub a pre-rendered frame set on a canvas instead of seeking the video: a video seek decodes up to a
  *  keyframe interval of frames before it can show one, which is what made touch scrolling feel choppy, while a
  *  canvas draw is instant at any scroll speed. The frames are the phone's crop of the same clip (public/character/
- *  scrub): 20 fps through the pinned walk (p00–p42, 0 … 2.1 s), 12 fps through the exit (x01–x18, … 3.6 s).
+ *  scrub): 20 fps through the pinned walk (p00–p52, 0 … 2.6 s), 12 fps through the exit (x01–x12, … 3.6 s).
  *  Each frame is the 940 px wide slice of the 1920×1080 clip starting at x = 650, scaled to 760 px wide, which
  *  covers the cover-fit window of every phone size at the poster's focal point (62% 38%). */
 const CLIP_W = 1920, CLIP_H = 1080, CROP_X = 650, CROP_W = 940
 const PHONE_FRAMES: { src: string; t: number }[] = []
-for (let i = 0; i <= 42; i++) PHONE_FRAMES.push({ src: `/character/scrub/p${String(i).padStart(2, '0')}.webp`, t: i / 20 })
-for (let j = 1; j <= 18; j++) PHONE_FRAMES.push({ src: `/character/scrub/x${String(j).padStart(2, '0')}.webp`, t: 2.1 + j / 12 })
+for (let i = 0; i <= 52; i++) PHONE_FRAMES.push({ src: `/character/scrub/p${String(i).padStart(2, '0')}.webp`, t: i / 20 })
+for (let j = 1; j <= 12; j++) PHONE_FRAMES.push({ src: `/character/scrub/x${String(j).padStart(2, '0')}.webp`, t: 2.6 + j / 12 })
 const PHONE_LAST = PHONE_FRAMES[PHONE_FRAMES.length - 1].t
 /** Frames that must be decoded before the scrub counts as ready (the curtain waits for this). */
 const PHONE_READY_AFTER = 10
@@ -180,9 +180,9 @@ export function Wisps({children}: {children: React.ReactNode}) {
   return <div className="flow"><svg ref={ref} className="wisp wisp-one" viewBox="0 0 240 1000" fill="none" aria-hidden="true"><path d="M180 -20C-100 180 330 270 110 480S-20 780 190 1020"/><path d="M194 -20C-70 180 345 270 126 480S-2 780 204 1020"/></svg>{children}</div>
 }
 export const career = [
-  {period:'2021 – Present',title:'Engineer',org:'Tall Karol · previously Integration Engineer, Universal Windows Direct',body:'Independent since 2023: serverless AWS applications, production analytics platforms, and headless WordPress rebuilds. Before that, expanded a centralized integration API connecting Five9, CRM, Mailchimp, and internal platforms.'},
-  {period:'2019 – 2021',title:'Marketing Director',org:'Perfect Power Wash',body:'Owned strategy and the technology stack through an expansion from one market to four. Built the first data warehouse and internal tools, then hired and trained a developer.'},
-  {period:'2012 – 2019',title:'Founder',org:'in2itiv media · CUBE Karaoke · Garcia L8r · Modular Studios',body:'Started and ran my own ventures, with client sites, web applications, and photography built alongside them.'},
+  {period:'2021 – Present',title:'Engineer',org:'Tall Karol · previously Integration Engineer, Universal Windows Direct',body:'AWS applications, analytics platforms, and integration architecture.'},
+  {period:'2019 – 2021',title:'Marketing Director',org:'Perfect Power Wash',body:'Owned strategy and the tech stack through an expansion from one market to four.'},
+  {period:'2012 – 2019',title:'Founder',org:'in2itiv media · CUBE Karaoke · Garcia L8r · Modular Studios',body:'My own ventures, with client work alongside.'},
 ]
 export function Experience({full=false}: {full?:boolean}) {
   return <section className="experience section" id="experience"><div className="section-intro"><p className="eyebrow">The experience behind the work</p><h2>{full ? <>I’ve worked on<br/>both sides of the brief.</> : <>An engineer with<br/>business context.</>}</h2><p className="lead">I’ve owned the budget, the brief,<br/>and the code that had to deliver.</p><p>Before moving into engineering full-time, I led marketing and its technology stack. That experience still shapes my work: understand how the team operates, make the trade-offs explicit, and build something they can rely on.</p><Link className="text-link" href="/resume">Explore my full résumé ↗</Link></div><div className="experience-rows">{career.slice(0,full?4:3).map(job=><article key={job.period}><span className="career-date">{job.period}</span><div><h3>{job.title}</h3><p className="career-org">{job.org}</p><p>{job.body}</p></div></article>)}</div></section>

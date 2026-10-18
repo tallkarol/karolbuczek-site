@@ -33,8 +33,8 @@ function Curtain({ onDone }: { onDone: () => void }) {
     let timer = 0
     const tick = () => {
       const t = performance.now()
-      const video = document.querySelector<HTMLVideoElement>('.hero-video')
-      const ready = !!video && video.readyState >= 3
+      const video = document.querySelector<HTMLVideoElement>('video.hero-video')
+      const ready = (!!video && video.readyState >= 3) || !!document.querySelector('.hero-scroll[data-scrub-ready]')
       if (t >= CURTAIN_MAX || (t >= CURTAIN_MIN && ready)) { setLifting(true); timer = window.setTimeout(onDone, CURTAIN_LIFT + 100) }
       else timer = window.setTimeout(tick, 50)
     }

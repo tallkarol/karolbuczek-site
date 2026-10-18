@@ -7,22 +7,80 @@ import { allCaseStudies } from "@/lib/resume-data"
 import { ProjectArtwork } from "./ProjectArtwork"
 import { useCharacterMotion } from "./CharacterShell"
 
+/** Phones scrub a pre-rendered frame set on a canvas instead of seeking the video: a video seek decodes up to a
+ *  keyframe interval of frames before it can show one, which is what made touch scrolling feel choppy, while a
+ *  canvas draw is instant at any scroll speed. The frames are the phone's crop of the same clip (public/character/
+ *  scrub): 20 fps through the pinned walk (p00–p42, 0 … 2.1 s), 12 fps through the exit (x01–x18, … 3.6 s).
+ *  Each frame is the 940 px wide slice of the 1920×1080 clip starting at x = 650, scaled to 760 px wide, which
+ *  covers the cover-fit window of every phone size at the poster's focal point (62% 38%). */
+const CLIP_W = 1920, CLIP_H = 1080, CROP_X = 650, CROP_W = 940
+const PHONE_FRAMES: { src: string; t: number }[] = []
+for (let i = 0; i <= 42; i++) PHONE_FRAMES.push({ src: `/character/scrub/p${String(i).padStart(2, '0')}.webp`, t: i / 20 })
+for (let j = 1; j <= 18; j++) PHONE_FRAMES.push({ src: `/character/scrub/x${String(j).padStart(2, '0')}.webp`, t: 2.1 + j / 12 })
+const PHONE_LAST = PHONE_FRAMES[PHONE_FRAMES.length - 1].t
+/** Frames that must be decoded before the scrub counts as ready (the curtain waits for this). */
+const PHONE_READY_AFTER = 10
+
 export function Hero() {
   const track = useRef<HTMLDivElement>(null)
   const video = useRef<HTMLVideoElement>(null)
+  const canvas = useRef<HTMLCanvasElement>(null)
   const motion = useCharacterMotion()
   const [ready, setReady] = useState(false)
   const [failed, setFailed] = useState(false)
+  const [phone, setPhone] = useState(false)
+  useEffect(() => {
+    const q = matchMedia('(max-width: 700px)')
+    const update = () => setPhone(q.matches)
+    update(); q.addEventListener('change', update)
+    return () => q.removeEventListener('change', update)
+  }, [])
   // The video stays invisible until the reader has actually scrolled. At progress 0 its frame is the poster image
   // underneath anyway, and a video that reveals during load becomes the LCP candidate (it is larger than the
   // upscaled phone image), which costs ~2 s of LCP in the lab and the field.
   const [scrubbed, setScrubbed] = useState(false)
   const enabled = motion && !failed
+  // Phone frame scrubber: loads the frames in the order they are needed, draws the nearest loaded frame at or
+  // before the asked time with the same cover-fit and focal point as the poster image (62% 38%), and marks the
+  // hero ready once the first frames are decoded. The browser keeps decoded images in its own cache, so the
+  // nearby frames are decoded ahead in the scroll direction and nothing is held beyond what it decides to keep.
+  const frames = useRef<(HTMLImageElement | null)[]>([])
+  const drawn = useRef(-1)
+  useEffect(() => {
+    if (!enabled || !phone) return
+    const container = track.current
+    const cv = canvas.current
+    if (!container || !cv) return
+    let cancelled = false
+    const imgs: (HTMLImageElement | null)[] = PHONE_FRAMES.map(() => null)
+    frames.current = imgs
+    drawn.current = -1
+    let loaded = 0
+    let next = 0
+    const loadOne = (): Promise<void> => {
+      if (cancelled || next >= PHONE_FRAMES.length) return Promise.resolve()
+      const i = next++
+      const img = document.createElement('img') // not `new Image()`: that name is next/image in this file
+      img.decoding = 'async'
+      img.src = PHONE_FRAMES[i].src
+      return img.decode().then(() => {
+        if (cancelled) return
+        imgs[i] = img
+        loaded++
+        if (loaded === PHONE_READY_AFTER) { setReady(true); container.dataset.scrubReady = '1' }
+      }).catch(() => undefined).then(loadOne)
+    }
+    // three lanes keep the first frames arriving in order while the connection stays busy
+    loadOne(); loadOne(); loadOne()
+    return () => { cancelled = true; frames.current = []; delete container.dataset.scrubReady }
+  }, [enabled, phone])
+
   useEffect(() => {
     if (!enabled) return
     const media = video.current
+    const cv = canvas.current
     const container = track.current
-    if (!media || !container) return
+    if ((!media && !cv) || !container) return
     let frame = 0
     let target = 0
     // The shown time eases towards the scroll-mapped target (≈90% in 100 ms) so seeks land at an even cadence
@@ -31,8 +89,35 @@ export function Hero() {
     let follower = 0
     let scrubEnd = parseFloat(getComputedStyle(container).getPropertyValue('--scrub-end'))
     const readScrubEnd = () => { scrubEnd = parseFloat(getComputedStyle(container).getPropertyValue('--scrub-end')) }
+    // Canvas path: draw the latest loaded frame at or before `shown`, cover-fit at the poster's focal point.
+    const draw = () => {
+      if (!cv) return
+      const imgs = frames.current
+      let i = -1
+      for (let k = 0; k < PHONE_FRAMES.length && PHONE_FRAMES[k].t <= shown + 0.001; k++) if (imgs[k]) i = k
+      if (i < 0 || i === drawn.current) return
+      const img = imgs[i] as HTMLImageElement
+      const hero = container.firstElementChild as HTMLElement
+      const cw = hero.clientWidth, ch = Math.round(hero.clientHeight * 0.7)
+      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      if (cv.width !== Math.round(cw * dpr) || cv.height !== Math.round(ch * dpr)) { cv.width = Math.round(cw * dpr); cv.height = Math.round(ch * dpr) }
+      const ctx = cv.getContext('2d')
+      if (!ctx) return
+      // Reproduce the poster's object-fit: cover at object-position 62% 38% on the FULL clip frame, then map that
+      // window into the cropped frame's pixels — so the first canvas frame sits exactly where the poster was.
+      const s = Math.max(cw / CLIP_W, ch / CLIP_H)
+      const vw = cw / s, vh = ch / s
+      const x0 = 0.62 * (CLIP_W - vw), y0 = 0.38 * (CLIP_H - vh)
+      const k = img.naturalWidth / CROP_W
+      const sx = Math.max(0, Math.min(img.naturalWidth - vw * k, (x0 - CROP_X) * k))
+      ctx.drawImage(img, sx, y0 * k, vw * k, vh * k, 0, 0, cv.width, cv.height)
+      drawn.current = i
+      // decode a few frames ahead so the next draws never wait on the decoder
+      for (let k = i + 1; k < Math.min(PHONE_FRAMES.length, i + 6); k++) imgs[k]?.decode().catch(() => undefined)
+    }
     const seek = () => {
-      if (!media.seeking && Number.isFinite(media.duration) && Math.abs(media.currentTime - shown) > 0.02) media.currentTime = shown
+      if (cv) { draw(); return }
+      if (media && !media.seeking && Number.isFinite(media.duration) && Math.abs(media.currentTime - shown) > 0.02) media.currentTime = shown
     }
     const follow = () => {
       follower = 0
@@ -51,12 +136,12 @@ export function Hero() {
       // Pinned: the runway maps onto 0 … --scrub-end seconds (set per breakpoint in character.css), so the page
       // starts scrolling while he is still leaving the frame. Unpinned: the rest of the clip keeps playing as the
       // hero scrolls away, reaching the end as the video leaves the viewport.
-      if (Number.isFinite(media.duration)) {
-        const last = Math.max(0, media.duration - 0.05)
+      const last = cv ? PHONE_LAST : media && Number.isFinite(media.duration) ? Math.max(0, media.duration - 0.05) : -1
+      if (last >= 0) {
         const end = scrubEnd > 0 ? Math.min(scrubEnd, last) : last
         if (y <= range) target = progress * end
         else {
-          const vb = media.getBoundingClientRect()
+          const vb = (cv ?? media)!.getBoundingClientRect()
           const box = vb.height > 2 ? vb : heroEl.getBoundingClientRect()
           const exit = Math.max(0, Math.min(1, 1 - box.bottom / Math.max(1, box.height)))
           target = end + exit * (last - end)
@@ -65,22 +150,22 @@ export function Hero() {
       if (!follower) follower = requestAnimationFrame(follow)
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
-    const onResize = () => { readScrubEnd(); schedule() }
-    media.addEventListener('loadedmetadata', schedule)
-    media.addEventListener('seeked', seek)
+    const onResize = () => { readScrubEnd(); drawn.current = -1; schedule() }
+    media?.addEventListener('loadedmetadata', schedule)
+    media?.addEventListener('seeked', seek)
     window.addEventListener('scroll', schedule, {passive:true})
     window.addEventListener('resize', onResize)
     schedule()
     return () => {
       cancelAnimationFrame(frame)
       cancelAnimationFrame(follower)
-      media.removeEventListener('loadedmetadata', schedule)
-      media.removeEventListener('seeked', seek)
+      media?.removeEventListener('loadedmetadata', schedule)
+      media?.removeEventListener('seeked', seek)
       window.removeEventListener('scroll', schedule)
       window.removeEventListener('resize', onResize)
     }
-  }, [enabled])
-  return <div ref={track} className={`hero-scroll ${enabled ? 'is-scrubbing' : ''}`}><section className="hero" aria-labelledby="hero-title"><Image className="hero-image" src="/character/hero-exit-poster.jpg" alt="Karol in his sunlit studio, standing beside the desk" fill priority sizes="(max-width: 700px) 150vw, 100vw"/>{enabled && <video ref={video} className={`hero-video ${ready && scrubbed ? 'is-ready' : ''}`} src="/character/hero-exit-scroll.mp4" muted playsInline preload="auto" aria-hidden="true" onLoadedData={() => setReady(true)} onError={() => setFailed(true)}/>}<div className="hero-copy"><p className="eyebrow">Studio founder & full-stack engineer</p><h1 id="hero-title">Hello! I’m Karol.<br/>I build websites<br/>and apps.</h1><p>I’ve spent fifteen years across marketing and engineering, so I’m fluent in both KPI and CLI.</p><div className="actions"><Link className="button primary" href="#work">See selected work ↓</Link><Link className="button" href="/resume">View résumé ↗</Link></div></div></section></div>
+  }, [enabled, phone])
+  return <div ref={track} className={`hero-scroll ${enabled ? 'is-scrubbing' : ''}`}><section className="hero" aria-labelledby="hero-title"><Image className="hero-image" src="/character/hero-exit-poster.jpg" alt="Karol in his sunlit studio, standing beside the desk" fill priority sizes="(max-width: 700px) 150vw, 100vw"/>{enabled && phone && <canvas ref={canvas} className={`hero-video hero-canvas ${ready && scrubbed ? 'is-ready' : ''}`} aria-hidden="true"/>}{enabled && !phone && <video ref={video} className={`hero-video ${ready && scrubbed ? 'is-ready' : ''}`} src="/character/hero-exit-scroll.mp4" muted playsInline preload="auto" aria-hidden="true" onLoadedData={() => { setReady(true); if (track.current) track.current.dataset.scrubReady = '1' }} onError={() => setFailed(true)}/>}<div className="hero-copy"><p className="eyebrow">Studio founder & full-stack engineer</p><h1 id="hero-title">Hello! I’m Karol.<br/>I build websites<br/>and apps.</h1><p>I’ve spent fifteen years across marketing and engineering, so I’m fluent in both KPI and CLI.</p><div className="actions"><Link className="button primary" href="#work">See selected work ↓</Link><Link className="button" href="/resume">View résumé ↗</Link></div></div></section></div>
 }
 export function Wisps({children}: {children: React.ReactNode}) {
   const ref = useRef<SVGSVGElement>(null)

@@ -72,26 +72,20 @@ export const whatIDoPillars: WhatIDoPillar[] = [
     ],
     specs: [
       {
+        title: "Production A&R discovery platform",
+        detail:
+          "Next.js/TypeScript application with a PostgreSQL backend, used daily by A&R staff: role-based analytics, automated chart and social crawls, XLSX reports, and watchlists.",
+      },
+      {
         title: "Serverless document portal on AWS",
         detail:
           "Multi-tenant portal with Cognito identity, Lambda, S3 Signed-URL delivery, and RDS — role-based access control and audit logging with zero infrastructure management.",
       },
-      {
-        title: "Decoupled commerce data layer",
-        detail:
-          "Event-driven sync engine bridging WooCommerce and a centralized Supabase/PostgreSQL backend, so lifecycle automation runs on real commerce events instead of batch jobs.",
-      },
-      {
-        title: "Air-gapped AI pipeline",
-        detail:
-          "On-premise transcription and action-item extraction using local Whisper inference — zero external data transmission for NDA-governed environments.",
-      },
     ],
     // Ordered to match specs[] for combined example cards in the modal
     caseStudySlugs: [
+      "artist-house-ar-discovery-platform",
       "secure-document-management-portal",
-      "unified-customer-lifecycle-platform",
-      "local-ai-meeting-intelligence",
     ],
     roleLinks: [
       {
@@ -137,26 +131,20 @@ export const whatIDoPillars: WhatIDoPillar[] = [
     ],
     specs: [
       {
-        title: "Centralized integration API",
+        title: "Unified customer lifecycle portal",
         detail:
-          "A modular service connecting Five9, Mailchimp, CRM, and internal platforms — a shared logging and error-handling framework made failures traceable across every automation.",
+          "A decoupled sync layer bridging commerce and CRM — replacing a five-tool workflow with one portal so lifecycle automation fires from real commerce events.",
       },
       {
-        title: "Multi-brand CRM orchestration",
+        title: "Production A&R platform",
         detail:
-          "Modular integration architecture connecting multiple CRMs and third-party vendors into shared cross-brand workflows across 8 brands.",
-      },
-      {
-        title: "Zero-downtime migrations",
-        detail:
-          "Server infrastructure migrated across four VPS partitions with no downtime — modernizing legacy PHP and removing deprecated security risks.",
+          "Next.js/TypeScript application with a PostgreSQL backend, used daily by A&R staff: role-based analytics, automated chart and social crawls, XLSX reports, and watchlists.",
       },
     ],
     // Ordered to match specs[] for combined example cards in the modal
     caseStudySlugs: [
-      "uwd-enterprise-integration-api",
       "unified-customer-lifecycle-platform",
-      "martech-extension-architecture",
+      "artist-house-ar-discovery-platform",
     ],
     roleLinks: [
       {

@@ -3,12 +3,13 @@
 import { motion } from "framer-motion"
 import { Activity, Crosshair, Wrench } from "lucide-react"
 import { Typography } from "@/components/typography"
+import { Grain } from "@/components/ui/grain"
 
 const principles = [
   {
     icon: Activity,
     title: "Build for observable failure",
-    body: "Problems should surface immediately, not silently. When a pipeline fails, a lead drops, or data drifts — you know. Idempotency, retries, and logging are the difference between a weekend fire drill and a Monday morning status update.",
+    body: "When a pipeline fails, a lead drops, or data drifts, the system tells you — you don't find out weeks later from someone downstream. Idempotency, retries, and logging are the difference between a weekend fire drill and a Monday-morning status update.",
   },
   {
     icon: Crosshair,
@@ -24,8 +25,9 @@ const principles = [
 
 export function AboutPrinciples() {
   return (
-    <section className="kb-section-secondary w-full">
-      <div className="kb-content-rail py-16 lg:py-24">
+    <section className="kb-section-secondary kb-section-flat relative w-full overflow-hidden">
+      <Grain opacity={0.14} animate />
+      <div className="kb-content-rail relative z-10 py-16 lg:py-24">
         <div className="mb-12 max-w-3xl space-y-4">
           <Typography variant="eyebrow" className="font-semibold uppercase tracking-wider text-chiffon/70">
             How I Work

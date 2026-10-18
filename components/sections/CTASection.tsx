@@ -21,7 +21,7 @@ export function CTASection({
   if (fullWidth) {
     return (
       <Reveal className="grid w-full lg:grid-cols-2 lg:items-stretch">
-        <div className="flex flex-col justify-center gap-7 px-6 py-16 text-left sm:px-8 lg:py-28 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-12">
+        <div className="order-2 flex flex-col justify-center gap-7 px-6 py-16 text-left sm:px-8 lg:order-1 lg:py-28 lg:pl-[max(2rem,calc((100vw-80rem)/2+2rem))] lg:pr-12">
           <div className="max-w-xl space-y-3">
             <Typography variant="h2" as="h2" className="text-2xl text-text-inverse md:text-3xl">
               {heading}
@@ -62,7 +62,7 @@ export function CTASection({
           </div>
         </div>
 
-        <div className="relative min-h-[240px] w-full sm:min-h-[320px] lg:min-h-full">
+        <div className="relative order-1 min-h-[240px] w-full sm:min-h-[320px] lg:order-2 lg:min-h-full">
           <Image
             src="/presenting-to-people.png"
             alt="Illustration of presenting to a group"

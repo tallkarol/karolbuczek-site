@@ -10,6 +10,8 @@ type Milestone = {
   org?: string
   logo?: { src: string; alt: string; className?: string }
   body: string
+  /** Client logos shown under the body (e.g. consulting engagements). */
+  clientLogos?: { src: string; alt: string }[]
   highlight?: boolean
 }
 
@@ -18,6 +20,12 @@ const milestones: Milestone[] = [
     period: "2023 – Present",
     title: "Independent consultant",
     body: "Went out on my own: serverless AWS applications, production analytics platforms, headless WordPress rebuilds, and integration architecture.",
+    clientLogos: [
+      { src: "/gdi-logo.svg", alt: "Great Day Improvements" },
+      { src: "/mineralife-logo.png", alt: "Mineralife Nutraceuticals" },
+      { src: "/bliss-cb.png", alt: "Bliss" },
+      { src: "/artisthouse_logo_square.png", alt: "Artist House" },
+    ],
     highlight: true,
   },
   {
@@ -25,7 +33,7 @@ const milestones: Milestone[] = [
     title: "Integration Engineer",
     org: "Universal Windows Direct",
     logo: { src: "/uwd-logo.png", alt: "Universal Windows Direct" },
-    body: "Went fully technical. Expanded and organized a centralized integration API connecting Five9, CRM, Mailchimp, and internal platforms — with shared logging that made failures traceable across every automation.",
+    body: "Went fully technical in advanced PHP, JavaScript, and SQL. Expanded and organized a centralized integration API connecting Five9, CRM, Mailchimp, and internal platforms — with shared logging that made failures traceable across every automation.",
   },
   {
     period: "2019 – 2021",
@@ -37,7 +45,7 @@ const milestones: Milestone[] = [
   {
     period: "2009 – 2019",
     title: "The freelance decade",
-    body: "A decade of freelancing across disciplines, following the opportunities: client sites and web apps, photography and videography, illustration — including album artwork for a multi-Grammy-winning artist — and early startup ventures. All of it built alongside school, internships, and every job I held.",
+    body: "A decade of following the work across disciplines — including album artwork for a multi-Grammy-winning artist. Client sites, web apps, photography, and early startup ventures, all built alongside school and every job I held.",
   },
 ]
 
@@ -53,7 +61,7 @@ export function AboutArc() {
             Marketing seat, engineering hands
           </Typography>
           <Typography variant="body" className="text-lg text-muted-foreground">
-            The part of consulting I&apos;m proudest of: the people who&apos;ve seen my work up close keep hiring me.
+            Fifteen years from first commit to solutions architect — the short version.
           </Typography>
         </div>
 
@@ -79,7 +87,7 @@ export function AboutArc() {
                   aria-hidden
                   className={`absolute left-0 top-1.5 flex h-[15px] w-[15px] items-center justify-center rounded-full border-2 md:left-[161px] ${
                     m.highlight
-                      ? "border-navy-700 bg-navy-700 dark:border-chiffon dark:bg-chiffon"
+                      ? "border-accent bg-accent"
                       : "border-olive-700 bg-olive-700"
                   }`}
                 />
@@ -93,26 +101,16 @@ export function AboutArc() {
                 <div
                   className={`max-w-2xl space-y-2 rounded-lg border p-5 md:p-6 ${
                     m.highlight
-                      ? "border-navy-700/20 bg-navy-800 text-chiffon dark:border-chiffon/20"
+                      ? "kb-section-accent border-accent/40"
                       : "border-navy-700/10 bg-surface-card dark:border-chiffon/10 dark:bg-navy-800"
                   }`}
                 >
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <h3
-                      className={`font-display text-xl font-semibold tracking-tight ${
-                        m.highlight ? "text-chiffon" : "text-foreground"
-                      }`}
-                    >
+                    <h3 className="font-display text-xl font-semibold tracking-tight text-foreground">
                       {m.title}
                     </h3>
                     {m.org && (
-                      <span
-                        className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 ${
-                          m.highlight
-                            ? "border-chiffon/25 bg-navy-900"
-                            : "border-border/60 bg-background"
-                        }`}
-                      >
+                      <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background px-3 py-1">
                         {m.logo && (
                           <span className="relative h-4 w-4 overflow-hidden">
                             {m.logo.src.endsWith(".svg") ? (
@@ -127,23 +125,47 @@ export function AboutArc() {
                             )}
                           </span>
                         )}
-                        <span
-                          className={`font-ui text-xs font-semibold ${
-                            m.highlight ? "text-chiffon/70" : "text-muted-foreground"
-                          }`}
-                        >
+                        <span className="font-ui text-xs font-semibold text-slate-ink dark:text-chiffon/70">
                           {m.org}
                         </span>
                       </span>
                     )}
                   </div>
-                  <p
-                    className={`text-base leading-relaxed ${
-                      m.highlight ? "text-chiffon/75" : "text-muted-foreground"
-                    }`}
-                  >
+                  <p className="text-base leading-relaxed text-muted-foreground">
                     {m.body}
                   </p>
+                  {m.clientLogos && m.clientLogos.length > 0 && (
+                    <ul className="flex flex-wrap items-center gap-2 pt-3" aria-label="Client engagements">
+                      {m.clientLogos.map((client) => (
+                        <li
+                          key={client.src}
+                          className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background px-3 py-1"
+                        >
+                          <span className="relative h-4 w-4 overflow-hidden">
+                            {client.src.endsWith(".svg") ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src={client.src}
+                                alt=""
+                                className="h-full w-full object-contain"
+                              />
+                            ) : (
+                              <Image
+                                src={client.src}
+                                alt=""
+                                fill
+                                className="object-contain"
+                                sizes="16px"
+                              />
+                            )}
+                          </span>
+                          <span className="font-ui text-xs font-semibold text-slate-ink dark:text-chiffon/70">
+                            {client.alt}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </motion.li>
             ))}
@@ -158,6 +180,9 @@ export function AboutArc() {
           transition={{ duration: 0.6 }}
           className="relative mx-auto mt-16 max-w-3xl lg:mt-20"
         >
+          <p className="mb-8 text-center text-base text-muted-foreground">
+            The part I&apos;m proudest of: the people who&apos;ve seen the work up close keep hiring me back.
+          </p>
           <div
             aria-hidden
             className="pointer-events-none absolute -top-8 -left-2 select-none font-serif text-[7rem] leading-none text-primary/10 md:-left-10 md:text-[9rem]"

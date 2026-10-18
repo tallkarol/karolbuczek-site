@@ -29,46 +29,36 @@ export function ProgressIndicator({
   }
 
   return (
-    <div className="mb-8 flex items-center justify-center gap-2">
+    <div className="stepper" aria-label="Form progress">
       {Array.from({ length: totalSteps }).map((_, index) => {
         const step = index + 1
         const isActive = step === currentStep
         const isComplete = step < currentStep
-        const isAccessible = isStepAccessible(step)
-        const isClickable = onStepClick && isAccessible
+        const isClickable = Boolean(onStepClick && isStepAccessible(step))
 
         return (
-          <div key={step} className="flex items-center">
+          <div key={step} className="step-item">
             <button
               type="button"
               onClick={() => handleStepClick(step)}
               disabled={!isClickable}
               className={cn(
-                "flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold font-ui transition-all",
-                "focus:outline-none focus:ring-2 focus:ring-olive-700 focus:ring-offset-2 focus:ring-offset-chiffon-100 dark:focus:ring-offset-navy-800",
-                isActive
-                  ? "bg-olive-700 text-chiffon"
-                  : isComplete
-                  ? "border-2 border-olive-700 bg-white text-olive-700 dark:bg-navy-900"
-                  : "border-2 border-navy-700/40 bg-white text-navy-700 dark:border-chiffon/40 dark:bg-navy-900 dark:text-chiffon",
-                isClickable && !isActive && "cursor-pointer hover:scale-110 hover:border-olive-700",
-                !isClickable && "cursor-default"
+                "step",
+                isActive && "is-current",
+                isComplete && "is-done"
               )}
               aria-label={`Go to step ${step}`}
               aria-current={isActive ? "step" : undefined}
             >
               {isComplete ? (
-                <svg
-                  className="h-3.5 w-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path
+                    d="M5 13l4 4L19 7"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
                   />
                 </svg>
               ) : (
@@ -76,12 +66,7 @@ export function ProgressIndicator({
               )}
             </button>
             {index < totalSteps - 1 && (
-              <div
-                className={cn(
-                  "mx-2 h-0.5 w-8 transition-colors",
-                  isComplete ? "bg-olive-700" : "bg-navy-700/50 dark:bg-chiffon/45"
-                )}
-              />
+              <span className={cn("step-line", isComplete && "is-done")} />
             )}
           </div>
         )

@@ -69,44 +69,52 @@ export function ContactConfigurator() {
     return { step: 1, config: { contactTypes: [] }, name: "", email: "", company: "" }
   }
 
-  const savedState = loadSavedState()
-  const [step, setStep] = useState(savedState.step)
-  const [config, setConfig] = useState<ContactConfig>(savedState.config)
+  const [step, setStep] = useState(1)
+  const [config, setConfig] = useState<ContactConfig>({ contactTypes: [] })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [showLocationRestriction, setShowLocationRestriction] = useState(false)
   // Step 2: Track which type is currently being shown
   const [currentTypeIndex, setCurrentTypeIndex] = useState(0)
   // Step 4 form state
-  const [name, setName] = useState(savedState.name)
-  const [email, setEmail] = useState(savedState.email)
-  const [company, setCompany] = useState(savedState.company)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [company, setCompany] = useState("")
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
 
   useEffect(() => {
+    const saved = loadSavedState()
+    setStep(saved.step)
+    setConfig(saved.config)
+    setName(saved.name)
+    setEmail(saved.email)
+    setCompany(saved.company)
+    const location = saved.config.role?.location
+    if (location === "On-site" || location === "Hybrid") {
+      setShowLocationRestriction(true)
+    }
     setMounted(true)
   }, [])
 
   // Save state to localStorage whenever it changes
   useEffect(() => {
-    if (typeof window !== "undefined" && submitStatus !== "success") {
-      try {
-        localStorage.setItem(
-          STORAGE_KEY,
-          JSON.stringify({
-            step,
-            config,
-            name,
-            email,
-            company,
-            timestamp: Date.now(),
-          })
-        )
-      } catch (e) {
-        console.error("Failed to save state:", e)
-      }
+    if (!mounted || submitStatus === "success") return
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          step,
+          config,
+          name,
+          email,
+          company,
+          timestamp: Date.now(),
+        })
+      )
+    } catch (e) {
+      console.error("Failed to save state:", e)
     }
-  }, [step, config, name, email, company, submitStatus])
+  }, [mounted, step, config, name, email, company, submitStatus])
 
   // Clear saved state on successful submission
   useEffect(() => {
@@ -254,7 +262,7 @@ export function ContactConfigurator() {
             Select all that apply
           </Typography>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
+        <div className="type-grid">
           {contactTypes.map((type) => (
             <MultiSelectCard
               key={type.id}
@@ -274,7 +282,7 @@ export function ContactConfigurator() {
           <Button
             onClick={handleNext}
             disabled={config.contactTypes.length === 0}
-            className="px-8"
+            className="form-action is-primary"
           >
             Continue →
           </Button>
@@ -314,12 +322,13 @@ export function ContactConfigurator() {
             <Button
               onClick={handleBack}
               variant="outline"
+              className="form-action"
             >
               ← Back
             </Button>
             <Button
               onClick={handleNext}
-              className="px-8"
+              className="form-action is-primary"
             >
               Continue →
             </Button>
@@ -380,11 +389,11 @@ export function ContactConfigurator() {
             )}
           </div>
 
-          <div>
-            <Typography variant="h3" as="h3" className="mb-4">
+          <div className="choice-group">
+            <Typography variant="h3" as="h3">
               Role type?
             </Typography>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="choice-grid" role="group" aria-label="Role type">
               {["Full-time", "Contract", "Consulting", "Part-time"].map((option) => (
                 <QuestionCard
                   key={option}
@@ -401,11 +410,11 @@ export function ContactConfigurator() {
             </div>
           </div>
 
-          <div>
-            <Typography variant="h3" as="h3" className="mb-4">
+          <div className="choice-group">
+            <Typography variant="h3" as="h3">
               Level?
             </Typography>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="choice-grid" role="group" aria-label="Level">
               {["Senior", "Lead", "Staff", "Principal"].map((option) => (
                 <QuestionCard
                   key={option}
@@ -422,11 +431,11 @@ export function ContactConfigurator() {
             </div>
           </div>
 
-          <div>
-            <Typography variant="h3" as="h3" className="mb-4">
+          <div className="choice-group">
+            <Typography variant="h3" as="h3">
               Location?
             </Typography>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="choice-grid" role="group" aria-label="Location">
               {["Remote", "Hybrid", "On-site", "Flexible"].map((option) => (
                 <QuestionCard
                   key={option}
@@ -451,22 +460,11 @@ export function ContactConfigurator() {
           </div>
 
           {showLocationRestriction && (
-            <div className="rounded-lg border-2 border-primary/20 bg-primary/5 p-6 space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 mt-0.5">
-                  <svg className="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <Typography variant="h3" as="h3" className="mb-2 text-primary">
-                    Location Preference
-                  </Typography>
-                  <Typography variant="body" className="text-muted-foreground">
-                    I&apos;m currently only open to <strong>Remote</strong> or <strong>Flexible</strong> work arrangements. If this role can accommodate remote work, please select one of those options.
-                  </Typography>
-                </div>
-              </div>
+            <div className="location-note" role="status">
+              <p className="location-note-title">Location preference</p>
+              <p>
+                I&apos;m currently only open to <strong>Remote</strong> or <strong>Flexible</strong> work arrangements. If this role can accommodate remote work, please select one of those options.
+              </p>
             </div>
           )}
 
@@ -474,13 +472,14 @@ export function ContactConfigurator() {
             <Button
               onClick={handleBackType}
               variant="outline"
+              className="form-action"
             >
               ← Back
             </Button>
             <Button
               onClick={handleNextType}
               disabled={showLocationRestriction}
-              className="px-8"
+              className="form-action is-primary"
             >
               {currentTypeIndex < specificTypes.length - 1 ? "Next →" : "Continue →"}
             </Button>
@@ -505,11 +504,11 @@ export function ContactConfigurator() {
             )}
           </div>
 
-          <div>
-            <Typography variant="h3" as="h3" className="mb-4">
+          <div className="choice-group">
+            <Typography variant="h3" as="h3">
               Project type?
             </Typography>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="choice-grid" role="group" aria-label="Project type">
               {["WordPress", "Backend Automation", "MarTech Systems", "Full-Stack", "Other"].map((option) => (
                 <QuestionCard
                   key={option}
@@ -526,11 +525,11 @@ export function ContactConfigurator() {
             </div>
           </div>
 
-          <div>
-            <Typography variant="h3" as="h3" className="mb-4">
+          <div className="choice-group">
+            <Typography variant="h3" as="h3">
               Timeline?
             </Typography>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="choice-grid" role="group" aria-label="Timeline">
               {["ASAP", "1-3 months", "3-6 months", "Flexible"].map((option) => (
                 <QuestionCard
                   key={option}
@@ -551,12 +550,13 @@ export function ContactConfigurator() {
             <Button
               onClick={handleBackType}
               variant="outline"
+              className="form-action"
             >
               ← Back
             </Button>
             <Button
               onClick={handleNextType}
-              className="px-8"
+              className="form-action is-primary"
             >
               {currentTypeIndex < specificTypes.length - 1 ? "Next →" : "Continue →"}
             </Button>
@@ -578,6 +578,7 @@ export function ContactConfigurator() {
             <Button
               onClick={handleBack}
               variant="outline"
+              className="form-action"
             >
               ← Back
             </Button>
@@ -603,6 +604,7 @@ export function ContactConfigurator() {
               <Button
                 onClick={handleBack}
                 variant="outline"
+              className="form-action"
               >
                 ← Back
               </Button>
@@ -638,12 +640,13 @@ export function ContactConfigurator() {
           <Button
             onClick={handleBack}
             variant="outline"
+            className="form-action"
           >
             ← Back
           </Button>
           <Button
             onClick={handleNext}
-            className="px-8"
+            className="form-action is-primary"
           >
             Continue →
           </Button>
@@ -706,7 +709,7 @@ export function ContactConfigurator() {
                 setName(e.target.value)
                 if (errors.name) setErrors({ ...errors, name: "" })
               }}
-              className={errors.name ? "border-destructive" : ""}
+              className={errors.name ? "is-invalid" : ""}
               placeholder="Your name"
               required
             />
@@ -727,7 +730,7 @@ export function ContactConfigurator() {
                 setEmail(e.target.value)
                 if (errors.email) setErrors({ ...errors, email: "" })
               }}
-              className={errors.email ? "border-destructive" : ""}
+              className={errors.email ? "is-invalid" : ""}
               placeholder="your@email.com"
               required
             />
@@ -765,13 +768,14 @@ export function ContactConfigurator() {
             type="button"
             onClick={handleBack}
             variant="outline"
+            className="form-action"
           >
             ← Back
           </Button>
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="px-8"
+            className="form-action is-primary"
           >
             {isSubmitting ? "Sending..." : "Send Message"}
           </Button>
@@ -780,8 +784,12 @@ export function ContactConfigurator() {
     )
   }
 
+  if (!mounted) {
+    return <div className="contact-config is-pending" aria-busy="true" />
+  }
+
   return (
-    <div className="max-w-3xl mx-auto relative z-10">
+    <div className="contact-config">
       <ProgressIndicator 
         currentStep={step} 
         totalSteps={TOTAL_STEPS}

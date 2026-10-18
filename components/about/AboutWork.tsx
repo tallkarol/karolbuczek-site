@@ -62,10 +62,10 @@ export function AboutWork() {
             The Work
           </Typography>
           <Typography variant="h2" as="h2" className="text-chiffon">
-            Systems teams actually run on
+            Shipped, and still in production
           </Typography>
           <Typography variant="body" className="text-lg text-chiffon/75">
-            Integration layers, cloud applications, analytics platforms, and enterprise WordPress — scoped with stakeholders, shipped to production, and still in use.
+            Integration layers, cloud applications, analytics platforms, enterprise WordPress. Each one scoped with the people who&apos;d use it, then built and put into production.
           </Typography>
         </div>
 

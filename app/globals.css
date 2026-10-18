@@ -298,6 +298,11 @@
     color: hsl(var(--slot-background) / 0.75);
   }
 
+  /* Solid slot fill only — for pattern/texture overlays without gradient washes */
+  .kb-section-flat {
+    background-image: none;
+  }
+
   /* ── Section: primary slot — brand anchor bands ── */
   .kb-section-primary {
     background-color: hsl(var(--slot-primary));
@@ -779,3 +784,17 @@
     will-change: auto !important;
   }
 }
+
+/* Comfortaa identity: shared by legacy pages and the character redesign.
+   Kept outside the generated token block. */
+html { --font-inter-tight: var(--font-comfortaa); --font-plus-jakarta: var(--font-comfortaa); --font-inter: var(--font-comfortaa); }
+body { font-family:var(--font-comfortaa),sans-serif; }
+.brand-lockup{display:inline-flex!important;align-items:baseline;gap:14px;font-family:var(--font-comfortaa),sans-serif!important;font-weight:700!important;line-height:1;letter-spacing:-.055em!important;white-space:nowrap}
+.brand-monogram{display:inline-flex!important;font-size:38px!important;line-height:1;letter-spacing:0!important;margin:0!important;font-weight:700!important}
+.brand-reverse-k{display:inline-block!important;transform:scaleX(-1);font:inherit!important;letter-spacing:0!important;margin:0!important}
+.brand-b{display:inline-block!important;font:inherit!important;letter-spacing:0!important;margin:0 0 0 -.27em!important}
+.brand-name{display:inline-block!important;font-size:32px!important;line-height:1;letter-spacing:-.055em!important;margin:0!important;font-weight:700!important}
+
+.brand-lockup.brand-full-name{align-items:center}
+.brand-lockup.brand-full-name .brand-name{font-size:24px!important}
+@media(max-width:700px){.brand-lockup.brand-full-name .brand-name{font-size:21px!important}}

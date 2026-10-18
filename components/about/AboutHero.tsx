@@ -62,7 +62,7 @@ export function AboutHero() {
             </Typography>
 
             <Typography variant="body" className="max-w-2xl text-lg text-muted-foreground">
-              That job taught me the lesson behind everything I build: strategy is only as good as the pipelines under it. The bottleneck was never creativity — it was plumbing. So I brought it all full circle with solution engineering, and for seven years I&apos;ve shipped the integrations and applications that marketing, ops, and leadership teams actually run on.
+              That job taught me the lesson behind everything I build: strategy is only as good as the pipelines under it. The bottleneck was never creativity — it was plumbing. So I moved back into engineering, and for seven years I&apos;ve shipped the integrations and applications that marketing, ops, and leadership teams actually run on.
             </Typography>
           </HeroFlyIn>
         </div>

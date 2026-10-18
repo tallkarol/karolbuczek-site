@@ -178,7 +178,7 @@ export function WhatIDoModal({ pillar, illustration: Illustration, isOpen, onClo
                     <Typography variant="body-sm" as="h3" className="mb-4 font-semibold uppercase tracking-wider text-accent-text">
                       How I Work
                     </Typography>
-                    <ul className="max-w-3xl space-y-3">
+                    <ul className="space-y-3">
                       {pillar.approach.map((item) => (
                         <li key={item} className="flex items-start gap-3">
                           <span className="mt-[0.55rem] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent" />

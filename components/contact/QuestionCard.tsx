@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import type { MouseEventHandler } from "react"
 import { cn } from "@/lib/utils"
 
@@ -18,20 +17,14 @@ export function QuestionCard({
   className,
 }: QuestionCardProps) {
   return (
-    <motion.button
+    <button
       type="button"
       onClick={onClick}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className={cn(
-        "rounded-lg border-2 px-4 py-3 text-left text-sm font-medium font-ui transition-all",
-        selected
-          ? "border-olive-700 bg-olive-700 text-chiffon"
-          : "border-navy-700/15 bg-surface-card text-navy-900 hover:border-navy-700/35 dark:border-chiffon/15 dark:bg-navy-900 dark:text-chiffon dark:hover:border-chiffon/35",
-        className
-      )}
+      aria-pressed={selected}
+      className={cn("choice", selected && "is-selected", className)}
     >
-      {label}
-    </motion.button>
+      <span className="choice-mark" aria-hidden="true" />
+      <span>{label}</span>
+    </button>
   )
 }

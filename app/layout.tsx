@@ -1,43 +1,25 @@
 import type { Metadata } from "next"
-import { Inter_Tight, Plus_Jakarta_Sans, Inter } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 import { LayoutShell } from "@/components/layout/LayoutShell"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { StructuredData } from "@/components/seo/StructuredData"
 
-const interTight = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--font-inter-tight",
-  display: "swap",
+const comfortaa = localFont({
+  src: [
+    { path: '../public/fonts/comfortaa/regular.woff2', weight: '400', style: 'normal' },
+    { path: '../public/fonts/comfortaa/bold.woff2', weight: '700', style: 'normal' },
+  ],
+  variable: '--font-comfortaa',
+  display: 'swap',
   preload: true,
-})
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-plus-jakarta",
-  display: "swap",
-  preload: false,
-})
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: false,
 })
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://karolbuczek.com"),
   title: "Karol Buczek | Full-Stack Engineer · Solutions Architect",
   description: "Full-stack engineer and solutions architect — custom web applications, enterprise WordPress, and systems integration. Seven years of hands-on delivery for SMB, mid-market, and enterprise clients.",
-  icons: {
-    icon: [
-      { url: "/logo-square.png", sizes: "64x64", type: "image/png" },
-      { url: "/logo-square.png", sizes: "32x32", type: "image/png" },
-      { url: "/logo-square.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: "/logo-square.png",
-  },
+  icons: { icon: '/character/monogram-comfortaa.svg' },
   openGraph: {
     title: "Karol Buczek | Full-Stack Engineer · Solutions Architect",
     description: "Full-stack engineer and solutions architect — custom web applications, enterprise WordPress, and systems integration. Seven years of hands-on delivery for SMB, mid-market, and enterprise clients.",
@@ -139,7 +121,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${interTight.variable} ${plusJakarta.variable} ${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning className={comfortaa.variable}>
       <body>
         {/* Arm scroll reveals before first paint — only when JS is on AND motion
             is allowed. No-JS / reduced-motion users keep content visible (no flash). */}

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
+import { BrandLogo } from "@/components/character/BrandLogo"
 import { usePathname } from "next/navigation"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
@@ -60,41 +60,8 @@ export function Header() {
         )}
       >
         <nav className="kb-content-rail flex items-center justify-between py-3">
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="relative h-8 w-8 flex-shrink-0">
-              <Image
-                src="/logo.png"
-                alt="Karol Buczek"
-                fill
-                className={cn(
-                  "object-contain",
-                  darkNav
-                    ? "brightness-0 invert"
-                    : "brightness-0 opacity-90 dark:brightness-0 dark:invert dark:opacity-100"
-                )}
-                priority
-              />
-            </div>
-            <div className="leading-tight hidden sm:block">
-              <div
-                className={cn(
-                  "text-sm font-semibold tracking-wide",
-                  darkNav ? "text-slot-background" : "text-foreground"
-                )}
-              >
-                KAROL BUCZEK
-              </div>
-              <div
-                className={cn(
-                  "text-xs",
-                  darkNav
-                    ? "text-slot-background/70"
-                    : "text-text-tertiary"
-                )}
-              >
-                Full-Stack Engineer · Solutions Architect
-              </div>
-            </div>
+          <Link href="/" aria-label="Karol Buczek — home" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <BrandLogo fullName/>
           </Link>
 
           <div
@@ -200,14 +167,7 @@ export function Header() {
                 className="flex items-center"
                 aria-label="Karol Buczek — Home"
               >
-                <div className="relative h-14 w-14 flex-shrink-0">
-                  <Image
-                    src="/logo.png"
-                    alt=""
-                    fill
-                    className="object-contain brightness-0 opacity-90 dark:brightness-0 dark:invert"
-                  />
-                </div>
+                <BrandLogo fullName/>
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}

@@ -3,8 +3,6 @@
 import { Suspense, useState } from "react"
 import { Section } from "@/components/Section"
 import { PageHero } from "@/components/sections/PageHero"
-import { CTASection } from "@/components/sections/CTASection"
-import { ResumeIllustration } from "@/components/illustrations"
 import { EducationSection } from "@/components/resume/EducationSection"
 import { CertificationsSection } from "@/components/resume/CertificationsSection"
 import { SkillsSection } from "@/components/resume/SkillsSection"
@@ -91,9 +89,6 @@ export default function ResumePage() {
                 </li>
             </ul>
           }
-          illustration={<ResumeIllustration priority />}
-          illustrationClassName="max-w-[240px] aspect-[425/709] md:max-w-[350px]"
-          columnGapClassName="gap-3 md:gap-4"
           buttons={
             <div className="flex flex-wrap items-center gap-4">
               <Button asChild size="sm">
@@ -137,14 +132,6 @@ export default function ResumePage() {
           <EducationSection />
           <ReferencesSection />
         </div>
-      </section>
-
-      <section className="kb-section-inverse w-full overflow-hidden pb-0">
-        <CTASection
-          fullWidth
-          heading="Looking for a full-time integration or implementation role."
-          description="Open to select consulting engagements as well — discovery, scoping, or system design. Feel free to reach out."
-        />
       </section>
 
       <CaseStudyModal

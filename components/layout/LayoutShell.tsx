@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react"
 import { usePathname } from "next/navigation"
+import { CharacterShell } from "@/components/character/CharacterShell"
 import { Header } from "./Header"
 import { Footer } from "./Footer"
 
@@ -16,6 +17,10 @@ export function LayoutShell({ children }: LayoutShellProps) {
 
   if (STANDALONE_ROUTES.has(pathname)) {
     return <>{children}</>
+  }
+
+  if (["/", "/about", "/portfolio", "/contact", "/resume"].includes(pathname) || pathname.startsWith("/portfolio/")) {
+    return <CharacterShell>{children}</CharacterShell>
   }
 
   return (

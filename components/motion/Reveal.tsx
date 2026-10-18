@@ -19,6 +19,13 @@ interface RevealProps {
   threshold?: number
 }
 
+function isInViewport(el: HTMLElement) {
+  const rect = el.getBoundingClientRect()
+  const vh = window.innerHeight || document.documentElement.clientHeight
+  const vw = window.innerWidth || document.documentElement.clientWidth
+  return rect.bottom > 0 && rect.right > 0 && rect.top < vh && rect.left < vw
+}
+
 /**
  * Lightweight in-view reveal. Uses IntersectionObserver + a CSS transition
  * (see the SCROLL-MOTION block in globals.css) rather than per-element JS
@@ -55,19 +62,41 @@ export function Reveal({
       return
     }
 
+    let done = false
+    const reveal = () => {
+      if (done) return
+      done = true
+      setRevealed(true)
+    }
+
+    // Already on screen (common above-the-fold case) — don't wait on IO.
+    if (isInViewport(el)) {
+      reveal()
+      return
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            setRevealed(true)
+            reveal()
             observer.unobserve(entry.target)
           }
         }
       },
-      { threshold }
+      // threshold 0 is more reliable than a fractional threshold when
+      // layout/fonts are still settling on first paint.
+      { threshold: Math.min(threshold, 0.01), rootMargin: "40px 0px" }
     )
     observer.observe(el)
-    return () => observer.disconnect()
+
+    // Never leave copy stuck at opacity 0 if IO misses (overflow, race, etc.).
+    const fallback = window.setTimeout(reveal, 1500)
+
+    return () => {
+      observer.disconnect()
+      window.clearTimeout(fallback)
+    }
   }, [threshold])
 
   const style: CSSProperties = {}

@@ -234,3 +234,21 @@
 .character-site .nav.is-riding,.character-site .nav.is-riding nav{transition:none}/* tracking the scroll: nothing may lag, and the look switch happens off screen */
 .character-site .nav.is-scrolled.is-over-hero{background:transparent;border-bottom-color:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
 .character-site .nav.is-scrolled.is-over-hero nav{background:#faf8f3d9;border-color:#ffffffb3;box-shadow:0 1px 2px #14212b0f,0 14px 34px -18px #14212b4d;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+
+/* ── CURTAIN (home page, once per session). Lives OUTSIDE .character-site so the shell's no-motion rules cannot stop
+   the pen before hydration. The pen writes the ʞb mark along the glyph centerlines at constant speed (durations ∝
+   limb length, done at 660 ms). JS lifts it between 850 and 1400 ms (.is-lifting, transition); the CSS animations
+   are the no-JS fallback at 1400 ms and are cancelled the moment JS takes over, so the two never fight. ── */
+.kb-curtain{--paper:#faf8f3;--ink:#14212b;position:fixed;inset:0;z-index:80;background:var(--paper);display:grid;place-items:center;transition:transform .55s cubic-bezier(.76,0,.24,1);animation:kb-curtain-lift .55s cubic-bezier(.76,0,.24,1) 1.4s forwards}
+.kb-curtain.is-lifting{transform:translateY(-100%);pointer-events:none;animation:none}
+@keyframes kb-curtain-lift{to{transform:translateY(-100%)}}
+.kb-curtain-mark{width:92px;height:92px;display:block;transition:opacity .16s ease;animation:kb-curtain-fade .16s ease 1.4s forwards}
+.kb-curtain.is-lifting .kb-curtain-mark{opacity:0;animation:none}
+@keyframes kb-curtain-fade{to{opacity:0}}
+.kb-curtain .pen{fill:none;stroke:var(--ink);stroke-width:96;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 1;stroke-dashoffset:1;opacity:0;animation:kb-pen var(--d) linear var(--at) forwards,kb-pen-on 1ms step-end var(--at) forwards}
+@keyframes kb-pen{to{stroke-dashoffset:0}}
+@keyframes kb-pen-on{to{opacity:1}}
+.kb-curtain .k1{--d:122ms;--at:60ms}.kb-curtain .k2{--d:77ms;--at:182ms}.kb-curtain .k3{--d:64ms;--at:259ms}.kb-curtain .b1{--d:81ms;--at:323ms}.kb-curtain .b2{--d:256ms;--at:404ms}
+html.no-curtain .kb-curtain{display:none}
+@media(prefers-reduced-motion:reduce){.kb-curtain{display:none}}
+@media(max-width:700px){.kb-curtain-mark{width:72px;height:72px}}

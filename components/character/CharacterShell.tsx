@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, useContext, useEffect, useRef, useState } from "react"
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import "./character.css"
@@ -15,6 +15,37 @@ const LINKEDIN = 'https://www.linkedin.com/in/karolbuczek/'
 const HIDE_AFTER = 140
 /** Scroll jitter smaller than this never flips the bar. */
 const DEADZONE = 6
+
+/** Curtain: paper over the home page while fonts, hero image and video settle. Holds at least CURTAIN_MIN ms, lifts as
+ *  soon as the hero video can play through, never later than CURTAIN_MAX ms (character.css also lifts it at that
+ *  point with a pure CSS animation, so no one is stuck behind it without JavaScript). Once per session, home page
+ *  only, skipped for reduced motion — decided by an inline script before first paint so returning visitors never
+ *  see it flash. The ʞb mark is written by a pen along the glyph centerlines (see the pen rules in character.css). */
+const CURTAIN_MIN = 850
+const CURTAIN_MAX = 1400
+const CURTAIN_LIFT = 550
+const CURTAIN_SCRIPT = "try{var d=document.documentElement;if(sessionStorage.getItem('kb-curtain')||matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('no-curtain')}else{sessionStorage.setItem('kb-curtain','1')}}catch(e){}"
+
+function Curtain({ onDone }: { onDone: () => void }) {
+  const [lifting, setLifting] = useState(false)
+  useEffect(() => {
+    if (document.documentElement.classList.contains('no-curtain')) { onDone(); return }
+    let timer = 0
+    const tick = () => {
+      const t = performance.now()
+      const video = document.querySelector<HTMLVideoElement>('.hero-video')
+      const ready = !!video && video.readyState >= 3
+      if (t >= CURTAIN_MAX || (t >= CURTAIN_MIN && ready)) { setLifting(true); timer = window.setTimeout(onDone, CURTAIN_LIFT + 100) }
+      else timer = window.setTimeout(tick, 50)
+    }
+    tick()
+    return () => window.clearTimeout(timer)
+  }, [onDone])
+  return <div className={`kb-curtain${lifting ? ' is-lifting' : ''}`} aria-hidden="true">
+    <script dangerouslySetInnerHTML={{ __html: CURTAIN_SCRIPT }}/>
+    <svg className="kb-curtain-mark" viewBox="-60 -60 1122 1120"><g transform="translate(0 1000) scale(1 -1)"><path className="pen k1" pathLength={1} d="M430 732 V49"/><path className="pen k2" pathLength={1} d="M430 220 L106 508"/><path className="pen k3" pathLength={1} d="M325 314 L102 32"/><path className="pen b1" pathLength={1} d="M440 730 V274"/><path className="pen b2" pathLength={1} d="M440 274 A229 229 0 1 1 898 274 A229 229 0 1 1 440 274"/></g></svg>
+  </div>
+}
 
 function current(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`) ? 'page' : undefined
@@ -32,6 +63,9 @@ export function CharacterShell({ children }: { children: React.ReactNode }) {
   // other page content. The paper bar only exists once the hero has passed. Only the home page has a .hero today.
   const [overHero, setOverHero] = useState(false)
   const [riding, setRiding] = useState(false)
+  // The curtain exists only for a server-rendered landing on the home page, and only until it has lifted once.
+  const [curtain, setCurtain] = useState(() => pathname === '/')
+  const endCurtain = useCallback(() => setCurtain(false), [])
   const headerRef = useRef<HTMLElement>(null)
   const toggleRef = useRef<HTMLButtonElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
@@ -115,7 +149,7 @@ export function CharacterShell({ children }: { children: React.ReactNode }) {
   const close = () => setMenu(false)
   const drawerInert = menu ? {} : ({ inert: '' } as Record<string, string>)
 
-  return <MotionContext.Provider value={animate}><div className={`character-site ${animate ? '' : 'no-motion'} ${pathname === '/' ? 'home' : 'inner-page'}`}>
+  return <MotionContext.Provider value={animate}>{curtain && pathname === '/' && <Curtain onDone={endCurtain}/>}<div className={`character-site ${animate ? '' : 'no-motion'} ${pathname === '/' ? 'home' : 'inner-page'}`}>
     <a className="skip" href="#main">Skip to content</a>
     <header ref={headerRef} className={`nav${scrolled ? ' is-scrolled' : ''}${overHero ? ' is-over-hero' : ''}${riding ? ' is-riding' : ''}${hidden && !menu ? ' is-hidden' : ''}`} onFocusCapture={() => setHidden(false)}>
       <Link className="wordmark" href="/" aria-label="Karol Buczek — home"><BrandLogo fullName/></Link>

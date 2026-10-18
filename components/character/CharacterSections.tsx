@@ -25,8 +25,21 @@ export function Hero() {
     if (!media || !container) return
     let frame = 0
     let target = 0
+    // The shown time eases towards the scroll-mapped target (≈90% in 100 ms) so seeks land at an even cadence
+    // instead of following every raw touch delta, and the picture settles with a little weight after a flick.
+    let shown = 0
+    let follower = 0
+    let scrubEnd = parseFloat(getComputedStyle(container).getPropertyValue('--scrub-end'))
+    const readScrubEnd = () => { scrubEnd = parseFloat(getComputedStyle(container).getPropertyValue('--scrub-end')) }
     const seek = () => {
-      if (!media.seeking && Number.isFinite(media.duration) && Math.abs(media.currentTime - target) > 0.035) media.currentTime = target
+      if (!media.seeking && Number.isFinite(media.duration) && Math.abs(media.currentTime - shown) > 0.02) media.currentTime = shown
+    }
+    const follow = () => {
+      follower = 0
+      const diff = target - shown
+      shown = Math.abs(diff) < 0.004 ? target : shown + diff * 0.35
+      seek()
+      if (shown !== target) follower = requestAnimationFrame(follow)
     }
     const update = () => {
       frame = 0
@@ -40,8 +53,7 @@ export function Hero() {
       // hero scrolls away, reaching the end as the video leaves the viewport.
       if (Number.isFinite(media.duration)) {
         const last = Math.max(0, media.duration - 0.05)
-        const endVar = parseFloat(getComputedStyle(container).getPropertyValue('--scrub-end'))
-        const end = endVar > 0 ? Math.min(endVar, last) : last
+        const end = scrubEnd > 0 ? Math.min(scrubEnd, last) : last
         if (y <= range) target = progress * end
         else {
           const vb = media.getBoundingClientRect()
@@ -50,20 +62,22 @@ export function Hero() {
           target = end + exit * (last - end)
         }
       }
-      seek()
+      if (!follower) follower = requestAnimationFrame(follow)
     }
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
+    const onResize = () => { readScrubEnd(); schedule() }
     media.addEventListener('loadedmetadata', schedule)
     media.addEventListener('seeked', seek)
     window.addEventListener('scroll', schedule, {passive:true})
-    window.addEventListener('resize', schedule)
+    window.addEventListener('resize', onResize)
     schedule()
     return () => {
       cancelAnimationFrame(frame)
+      cancelAnimationFrame(follower)
       media.removeEventListener('loadedmetadata', schedule)
       media.removeEventListener('seeked', seek)
       window.removeEventListener('scroll', schedule)
-      window.removeEventListener('resize', schedule)
+      window.removeEventListener('resize', onResize)
     }
   }, [enabled])
   return <div ref={track} className={`hero-scroll ${enabled ? 'is-scrubbing' : ''}`}><section className="hero" aria-labelledby="hero-title"><Image className="hero-image" src="/character/hero-exit-poster.jpg" alt="Karol in his sunlit studio, standing beside the desk" fill priority sizes="(max-width: 700px) 150vw, 100vw"/>{enabled && <video ref={video} className={`hero-video ${ready && scrubbed ? 'is-ready' : ''}`} src="/character/hero-exit-scroll.mp4" muted playsInline preload="auto" aria-hidden="true" onLoadedData={() => setReady(true)} onError={() => setFailed(true)}/>}<div className="hero-copy"><p className="eyebrow">Studio founder & full-stack engineer</p><h1 id="hero-title">Hello! I’m Karol.<br/>I build websites<br/>and apps.</h1><p>I’ve spent fifteen years across marketing and engineering, so I’m fluent in both KPI and CLI.</p><div className="actions"><Link className="button primary" href="#work">See selected work ↓</Link><Link className="button" href="/resume">View résumé ↗</Link></div></div></section></div>

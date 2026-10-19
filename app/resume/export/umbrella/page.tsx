@@ -160,7 +160,7 @@ export default function UmbrellaResumePage() {
                   </Typography>
                 </div>
                 <Typography variant="body-sm" className="text-[13px] leading-relaxed print:text-[11px]">
-                  Ten years of client-facing full-stack web development and digital infrastructure; co-founded two ventures, raising $340K for one.
+                  Ten years of client-facing full-stack web development and digital infrastructure; co-founded three ventures, raising $340K for one.
                 </Typography>
               </div>
             </div>

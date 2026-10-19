@@ -113,9 +113,10 @@ export default function SolutionArchitectOneSheetPage() {
       period: "2009 – 2019",
       title: "Early Career — Freelance Development & Startups",
       logo: "/logo.png",
-      intro: "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded two ventures, raising $340K for one.",
+      intro: "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded three ventures, raising $340K for one.",
       bullets: [
         "Marketing / Design — Red Light Management (2016 — 2018)",
+        "Co-Founder / CEO — Garcia L8r (2013 — 2016)",
         // TODO(karol): reconcile CUBE title with LinkedIn
         "Co-Founder / Creative Director — CUBE Karaoke LLC (2013 — 2014)",
         // TODO(karol): reconcile in2itiv dates with LinkedIn

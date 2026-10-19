@@ -111,7 +111,7 @@ const timelineData: TimelineItem[] = [
     period: "2009 — 2019",
     officialTitle: "Early Career — Freelance Development & Startups",
     logo: "/logo.png",
-    reality: "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded two ventures, raising $340K for one.",
+    reality: "Ten years of client-facing full-stack web development and digital infrastructure for small and mid-sized businesses; co-founded three ventures, raising $340K for one.",
     systems: [
       "Marketing / Design — Red Light Management (2016 — 2018)",
       "Marketing & IT Consultant — Localtopia (2014 — 2015)",

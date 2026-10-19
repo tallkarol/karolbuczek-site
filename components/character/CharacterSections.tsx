@@ -188,7 +188,7 @@ export function Wisps({children}: {children: React.ReactNode}) {
 export const career = [
   {period:'2021 – Present',title:'Software Engineer',org:'Tall Karol',body:'A development consultancy for enterprise clients: integration work, multisite WordPress development, and custom web applications.'},
   {period:'2019 – 2021',title:'Marketing Director',org:'Perfect Power Wash',body:'Owned strategy and the tech stack through an expansion from one market to four.'},
-  {period:'2012 – 2019',title:'Founder',org:'in2itiv media · CUBE Karaoke · Garcia L8r',body:'My own ventures, with client work alongside.'},
+  {period:'2012 – 2018',title:'Founder',org:'in2itiv media · CUBE Karaoke · Garcia L8r',body:'My own ventures, with client work alongside.'},
 ]
 export function Experience({full=false}: {full?:boolean}) {
   return <section className="experience section" id="experience"><div className="section-intro"><p className="eyebrow">The experience behind the work</p><h2>{full ? <>I’ve worked on<br/>both sides of the brief.</> : <>An engineer with<br/>business context.</>}</h2><p className="lead">I’ve owned the budget, the brief,<br/>and the code that had to deliver.</p><p>Before moving into engineering full-time, I led marketing and its technology stack. That experience still shapes my work: understand how the team operates, make the trade-offs explicit, and build something they can rely on.</p><Link className="text-link" href="/resume">Explore my full resume ↗</Link></div><div className="experience-rows">{career.slice(0,full?4:3).map(job=><article key={job.period}><span className="career-date">{job.period}</span><div><h3>{job.title}</h3><p className="career-org">{job.org}</p><p>{job.body}</p></div></article>)}</div></section>

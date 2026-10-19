@@ -254,3 +254,5 @@
 html.no-curtain .kb-curtain{display:none}
 @media(prefers-reduced-motion:reduce){.kb-curtain{display:none}}
 @media(max-width:700px){.kb-curtain-mark{width:72px;height:72px}}
+.character-site .experience-rows article{align-items:baseline}.character-site .experience-rows article>span{flex:0 0 7.25em}
+@media(max-width:700px){.character-site .experience-rows article{flex-direction:column;gap:4px}.character-site .experience-rows article>span{flex-basis:auto}}

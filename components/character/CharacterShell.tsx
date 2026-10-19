@@ -9,7 +9,7 @@ import { BrandLogo } from "./BrandLogo"
 const MotionContext = createContext(true)
 export const useCharacterMotion = () => useContext(MotionContext)
 
-const PAGES = [['/portfolio', 'Work'], ['/resume', 'Résumé'], ['/about', 'About']] as const
+const PAGES = [['/portfolio', 'Work'], ['/resume', 'Resume'], ['/about', 'About']] as const
 const LINKEDIN = 'https://www.linkedin.com/in/karolbuczek/'
 /** The bar hides only after this much downward travel; any upward travel brings it back. */
 const HIDE_AFTER = 140
